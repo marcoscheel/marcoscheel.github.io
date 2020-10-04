@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Marco Scheel aka GeekDotNet</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Marco Scheel aka GeekDotNet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 17 Aug 2020 08:31:05 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enable Unified Labeling for Microsoft 365 Groups (and Teams) in your tenant via PowerShell script</title>
+      <link>/post/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</link>
+      <pubDate>Mon, 17 Aug 2020 08:31:05 +0000</pubDate>
+      
+      <guid>/post/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</guid>
+      <description>&lt;p&gt;Microsoft announced end of June 2020 the “General Availability” of the Microsoft Information Protection integration for Group labeling. Unified labeling is now available für all Microsoft 365 Groups (Teams, SharePoint, &amp;hellip;).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Microsoft Information Protection is a built-in, intelligent, unified, and extensible solution to protect sensitive data across your enterprise – in Microsoft 365 cloud services, on-premises, third-party SaaS applications, and more. Microsoft Information Protection provides a unified set of capabilities to know your data, protect your data, and prevent data loss across Microsoft 365 apps (e.g. Word, PowerPoint, Excel, Outlook) and services (e.g. Teams, SharePoint, and Exchange).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Source: &lt;a href=&#34;https://techcommunity.microsoft.com/t5/microsoft-security-and/general-availability-microsoft-information-protection/ba-p/1497769&#34; target=&#34;_blank&#34;&gt;https://techcommunity.microsoft.com/t5/microsoft-security-and/general-availability-microsoft-information-protection/ba-p/1497769&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Beware of the Teams Admin center to create new teams (and assign owners)</title>
+      <link>/post/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</link>
+      <pubDate>Tue, 21 Jul 2020 16:13:19 +0000</pubDate>
+      
+      <guid>/post/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://admin.teams.microsoft.com/teams/manage&#34; target=&#34;_blank&#34;&gt;Microsoft Teams Admin Center&lt;/a&gt; can be used to create a new Team. The initial dialog allows you to set multiple owners for the Team. This feature was added over time and is a welcome addition to make the life of an administrator easier. But the implementation has a big shortcoming: The specified owners in this dialog will not become a member of the underlying Microsoft 365 Group in Azure Active Directory. As a result all Microsoft 365 group services checking for members will not behave as expected. For example: These owners will not be able to access Planner. Other services like Teams and SharePoint work by accident.
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/2a/8a/ee93247423d6326e5e728bed8116.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Teams Live Events für (Krisen-)Vorträge</title>
+      <link>/post/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/</link>
+      <pubDate>Mon, 30 Mar 2020 12:20:42 +0000</pubDate>
+      
+      <guid>/post/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/</guid>
+      <description>&lt;p&gt;Online Meetings sind aus den heutigen Unternehmen nicht mehr wegzudenken. Microsoft Teams ist die Meeting-Lösung im Microsoft 365 Service. Ein &lt;strong&gt;Teams Meeting&lt;/strong&gt; ermöglicht es allen Teilnehmern, &lt;strong&gt;aktiv&lt;/strong&gt; an der Besprechung teilzunehmen. Es gibt nur wenig Kontrolle für den Besprechungsleiter. Die Teilnehmer müssen die Disziplin aufbringen und sich im Meeting “korrekt” verhalten. Durch die aktuelle Corona-Krise wird aber deutlich, dass sich viele Teilnehmer schwerer damit tun als gedacht. &lt;strong&gt;Besonders für Neulinge sind die verschiedenen Optionen in der Software ungewohnt und Grundregeln für ein gutes Meeting eventuell unbekannt&lt;/strong&gt;. Es wäre toll, wenn die Software hier besser unterstützt, aber der aktuelle Stand (”Mute all”, &amp;hellip;) wird sich kurzfristig nicht ändern.&lt;/p&gt;
+&lt;p&gt;Ich möchte euch heute eine &lt;strong&gt;Alternative zum klassischen Meeting&lt;/strong&gt; zeigen. Es wird nicht für jede Situation passen, aber ihr solltet es kennenlernen und selbst entscheiden. Ich wurde von einer Schule angesprochen, welche Optionen es gibt, die Schüler Online zu unterrichten. Die Zielgruppe ist nicht besonders gut ausgebildet, wenn es um eine gute Meeting-Kultur geht :) Die Eltern und die Schüler dürften oft Anfänger sein und da passieren automatisch Fehler. In dieser Situation kann es sin machen auf ein &lt;strong&gt;Microsoft Teams Live Event&lt;/strong&gt; auszuweichen.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Is Microsoft Teams a remote support tool?</title>
+      <link>/post/613300443898068992-is-microsoft-teams-a-remote-support-tool/</link>
+      <pubDate>Sun, 22 Mar 2020 14:54:41 +0000</pubDate>
+      
+      <guid>/post/613300443898068992-is-microsoft-teams-a-remote-support-tool/</guid>
+      <description>&lt;p&gt;My buddy &lt;a href=&#34;https://twitter.com/okieselb&#34; target=&#34;_blank&#34;&gt;Oliver Kieselbach&lt;/a&gt; did a &lt;a href=&#34;https://oliverkieselbach.com/2020/03/03/quick-assist-the-built-in-remote-control-in-windows-10/&#34; target=&#34;_blank&#34;&gt;blog post about the capabilities of Microsoft Quick Assist&lt;/a&gt; (as part of the current operation system). In his post he raised the question if Microsoft Teams is not enough for this kind of IT support scenarios. Check out his blog to see it live in action and what the biggest shortcoming is. Microsoft Teams is not a good option for anything &lt;a href=&#34;https://en.wikipedia.org/wiki/User_Account_Control&#34; target=&#34;_blank&#34;&gt;UAC&lt;/a&gt; related. Even without the so called &lt;a href=&#34;https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/user-account-control-switch-to-the-secure-desktop-when-prompting-for-elevation&#34; target=&#34;_blank&#34;&gt;secure desktop&lt;/a&gt; feature Microsoft Teams will not allow the support staff to enter admin credentials if needed. I also would suggest (for the most customers) to pick a proper IT support tool for these scenarios.&lt;/p&gt;
+&lt;p&gt;Microsoft Teams is the hub for teamwork, but that doesn’t mean you could not support your colleagues, if they are experiencing non admin related issues. But first things first, we should check, if your tenant settings are ready to allow remote control during a desktop sharing session. In quite a few customer environments I’ve noticed that remote sharing is restricted or completely disabled.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Teams - Known issues... no more!?</title>
+      <link>/post/189806058922-microsoft-teams-known-issues-no-more/</link>
+      <pubDate>Sun, 22 Dec 2019 08:06:03 +0000</pubDate>
+      
+      <guid>/post/189806058922-microsoft-teams-known-issues-no-more/</guid>
+      <description>&lt;p&gt;Microsoft is documenting a list of things (about Microsoft Teams) that are not working as expected by Microsoft or customers. The list has been around for quite some time. New things are added, but I noticed things on the list that are clearly working as of this writing are not removed. So let’s have a look together and maybe you support my pull request.&lt;/p&gt;
+&lt;p&gt;The article: &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/known-issues&#34; target=&#34;_blank&#34;&gt;Known issues for Microsoft Teams&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;My pull request:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/MicrosoftDocs/OfficeDocs-SkypeForBusiness/pull/3686&#34; target=&#34;_blank&#34;&gt;Known issues that are no longer known issues&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Manage Microsoft Teams membership with Azure AD Access Review</title>
+      <link>/post/186728523052-manage-microsoft-teams-membership-with-azure-ad/</link>
+      <pubDate>Fri, 02 Aug 2019 19:41:30 +0000</pubDate>
+      
+      <guid>/post/186728523052-manage-microsoft-teams-membership-with-azure-ad/</guid>
+      <description>&lt;p&gt;This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).&lt;/p&gt;
+&lt;p&gt;&amp;lt;DE&amp;gt;Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&amp;lt;/DE&amp;gt;&lt;/p&gt;
+&lt;p&gt;Microsoft has great &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview&#34; target=&#34;_blank&#34;&gt;resources&lt;/a&gt; to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview&#34; target=&#34;_blank&#34;&gt;Identity Governance)&lt;/a&gt; on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.&lt;/p&gt;
+&lt;p&gt;Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>App Permissions für Microsoft Graph Calls automatisiert einrichten</title>
+      <link>/post/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</link>
+      <pubDate>Mon, 08 Jul 2019 11:47:21 +0000</pubDate>
+      
+      <guid>/post/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</guid>
+      <description>&lt;p&gt;Für unser Glück &amp;amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0&#34; target=&#34;_blank&#34;&gt;PowerShell AZ&lt;/a&gt; und die &lt;a href=&#34;https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest&#34; target=&#34;_blank&#34;&gt;Azure CLI&lt;/a&gt;. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.&lt;/p&gt;
+&lt;p&gt;Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview&#34; target=&#34;_blank&#34;&gt;Access Reviews&lt;/a&gt; Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 62a82d76-70ea-41e2-9197-370581804d09=Role #msgraph Group.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions ef5f7d5c-338f-44b0-86c3-351f46c8bb5f=Role #msgraph AccessReview.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 60a901ed-09f7-4aa5-a16e-7dd3d6f9de36=Role #msgraph ProgramControl.ReadWrite.All
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</title>
+      <link>/post/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</link>
+      <pubDate>Mon, 01 Jul 2019 15:06:23 +0000</pubDate>
+      
+      <guid>/post/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</guid>
+      <description>&lt;p&gt;Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im &lt;a href=&#34;https://hairlessinthecloud.com&#34; target=&#34;_blank&#34;&gt;Hairless in the Cloud&lt;/a&gt; Podcast Nummer &lt;a href=&#34;https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff&#34; target=&#34;_blank&#34;&gt;18&lt;/a&gt; habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.&lt;/p&gt;
+&lt;p&gt;Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem &lt;a href=&#34;https://developer.microsoft.com/en-us/graph/blogs/postman-collections/&#34; target=&#34;_blank&#34;&gt;Graph Explorer in einer Collection für Postman&lt;/a&gt; zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.&lt;/p&gt;
+&lt;p&gt;In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/cd/ef/cad14ee0d8e93c6d3b12f08d7601.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>What’s in your bag, Marco?</title>
+      <link>/post/170223335212-whats-in-your-bag-marco/</link>
+      <pubDate>Sun, 28 Jan 2018 12:20:40 +0000</pubDate>
+      
+      <guid>/post/170223335212-whats-in-your-bag-marco/</guid>
+      <description>&lt;p&gt;Ich bin ein Fan von diesem Typ Blog-Post. Tolle Beispiele gibt es zum Beispiel bei &lt;a href=&#34;https://www.theverge.com/whats-in-your-bag&#34; target=&#34;_blank&#34;&gt;The Verge&lt;/a&gt;. Ich möchte euch heute Einblick in meine Tasche geben und zeigen, was ein 100% Cloud &lt;strike&gt;Berater&lt;/strike&gt; Lead Cloud Architect für einen erfolgreichen Tag braucht.&lt;/p&gt;
+&lt;p&gt;Wir
+reden oft über den modernen Arbeitsplatz, aber gerade für mich ist der moderne
+Arbeitsplatz nirgendwo und überall. Was habe ich dabei? Es gibt immer mal wieder
+Blogs in denen ihr Autor beschreibt, was er mit sich trägt und welche
+Motivation dahintersteckt. In vielen Meetings kann man sehen, dass ich ein Microsoft
+Surface Book (GEN1) nutze, aber was noch alles in meiner Tasche steckt, zeige
+ich euch jetzt. Für die spannenden Dinge gibt es dann auch noch ein Satz zum
+Warum.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/8b/66/c55801c3306e1400d8149727909c.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/marcoscheel/status/957591102118416384&#34; target=&#34;_blank&#34;&gt;Das Bild nochmal in XL auf Twitter&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</title>
+      <link>/post/165449521992-sharepoint-online-device-access-option-fehlt/</link>
+      <pubDate>Sun, 17 Sep 2017 21:11:09 +0000</pubDate>
+      
+      <guid>/post/165449521992-sharepoint-online-device-access-option-fehlt/</guid>
+      <description>&lt;p&gt;In meinen Projekten (&lt;a href=&#34;https://www.glueckkanja.com/technologien/office-365/&#34; target=&#34;_blank&#34;&gt;Office 365&lt;/a&gt; / &lt;a href=&#34;https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/&#34; target=&#34;_blank&#34;&gt;100% Cloud&lt;/a&gt;) ist &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference&#34; target=&#34;_blank&#34;&gt;Conditional Access&lt;/a&gt; (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912&#34; target=&#34;_blank&#34;&gt;Blogpost&lt;/a&gt; beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827&#34; target=&#34;_blank&#34;&gt;einzelne Site Collections &lt;/a&gt;adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&amp;hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Eigentlich sollte der Dialog so aussehen:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The Future of SharePoint (Online)</title>
+      <link>/post/144716486707-the-future-of-sharepoint-online/</link>
+      <pubDate>Sat, 21 May 2016 20:33:42 +0000</pubDate>
+      
+      <guid>/post/144716486707-the-future-of-sharepoint-online/</guid>
+      <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;Die Roadmap schließt somit eine Lücke, die überwiegend Hardcore
+SharePoint User (Publishing, echte Listen und Metadaten) betroffen hat und
+begeistern wird. Für den Rest wird es einfach einfacher und schöner.&lt;/p&gt;
+&lt;p&gt;Alle die Office 365 noch nicht verwenden können die Zeit bis Ende 2016 nutzen,
+um eine solide Basis aufzubauen. Alle mit einer guten Office 365 Basis können
+die Zeit nutzen in ersten Gehversuchen mit Office 365 Groups eigene Erfahrungen
+zu sammeln. In nächsten Jahr (2017) können dann hoffentlich alle das volle
+Potential von SharePoint Online nutzen und über den Datei-Tellerrand schauen
+und den nächsten Level der modernen Teamräume ausnutzen.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Zeit für einen Neustart</title>
+      <link>/post/143746644752-zeit-f%C3%BCr-einen-neustart/</link>
+      <pubDate>Mon, 02 May 2016 17:30:19 +0000</pubDate>
+      
+      <guid>/post/143746644752-zeit-f%C3%BCr-einen-neustart/</guid>
+      <description>&lt;p&gt;Marco Scheel nach seinem Umzug von Wordpress zu Tumblr&lt;/p&gt;
+&lt;p&gt;Das alte Zeug gibt es hier: &lt;a href=&#34;https://marcoscheel.wordpress.com/&#34; target=&#34;_blank&#34;&gt;https://marcoscheel.wordpress.com/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Minor update &#34;Sign In As A Different User&#34; für OWA und HTML Redirection</title>
+      <link>/2012/06/13/minor-sign-in-as-a-different-user-fur-owa-und-html-redirection/</link>
+      <pubDate>Wed, 13 Jun 2012 16:05:08 +0000</pubDate>
+      
+      <guid>/2012/06/13/minor-sign-in-as-a-different-user-fur-owa-und-html-redirection/</guid>
+      <description>Ich hatte heute auf unserem Bootcamp eine Anfrage von einem unserer Consultants bezüglich meines Projektes zum Wechseln von Benutzern auf dem IIS bekommen. Ich hatte das vor kurzem in einem Post gebloggt. Es ging um eine Konfiguration im Bereich Publishing TMG und genauer um Forms Authentication vs. Integrated Authentication. Wir haben kurz die Anwendung im Lab OWA erfolgreich getestet. Je nachdem wie der Kunde sich entscheidet gehen wir damit auch Live.
+Bei der Konfiguration sind uns allerdings ein paar Dinge aufgefallen:
+ * Die Konfiguration im OWA Ordner war nicht erfolgreich. Alle Aufrufe für den Handler wurden ignoriert und es wurde OWA angezeigt.</description>
+    </item>
+    
+    <item>
+      <title>ASP.NET 4.5, SQLMembership und (keine) Roles</title>
+      <link>/2012/06/11/asp-net-4-5-sqlmembership-und-keine-roles-2/</link>
+      <pubDate>Mon, 11 Jun 2012 15:37:11 +0000</pubDate>
+      
+      <guid>/2012/06/11/asp-net-4-5-sqlmembership-und-keine-roles-2/</guid>
+      <description>Wir sind aktuell auf Bootcamp und ich habe Claims und alles drum herum zum Thema. Natürlich ist auch die Migration aus &amp;ldquo;alten&amp;rdquo; Systemen ein Punkt auf der Agenda. Ich brauche also ein altes System&amp;hellip; Also habe ich schnell eine ASP.NET 4.5 WebForms Site angelegt und konnte auch schnell die Logins aus dem SQL Membership Provider zum Fliegen bekommen. Allerdings konnte ich keine Seiten vor Zugriff über eine spezielle Role schützen. Hier meine Web.Config:
+&amp;lt;system.web&amp;gt;
+  &amp;lt;/system.web&amp;gt;
+ Bei einem Test hattet die Konfiguration aber kein Erfolg. Mein Admin User durfte die Admin.aspx einfach nicht sehen. Eine kurze Recherche hat gezeigt, dass ich den Role Provider der zwar vorkonfiguriert war noch enablen mußte.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010 Diagnostics Log Files werden nicht komprimiert</title>
+      <link>/2012/05/29/sharepoint-2010-diagnostics-log-files-werden-nicht-komprimiert/</link>
+      <pubDate>Tue, 29 May 2012 16:44:11 +0000</pubDate>
+      
+      <guid>/2012/05/29/sharepoint-2010-diagnostics-log-files-werden-nicht-komprimiert/</guid>
+      <description>Ich hatte vor einiger Zeit bei einem Kunden das Problem, dass die Diagnostic Logs von Microsoft SharePoint 2010 nicht automatisch komprimieren ließen. SharePoint kümmert sich ja selber um die Verwaltung des Speicherplatzes. Eines der neuen Features ist, dass auf die Files in dem LOGS Ordner automatisch die NTFS Kompression aktiviert wird.
+Der Kunde betreibt mehrere Farmen (Production, Staging, Testing und Dev), um den ganzen Lifecyle des Deployments korrekt abzudecken. Bis auf die Produktion laufen alle Farmen als Guest in geshared virtuellen Umgebungen. Die Produktion hat eigene Virtualisierungshosts und wurde extra für SharePoint neu aufgebaut. Ich konfiguriere (abweichend vom Standard) das Verzeichnis der LOGS nicht in den 14er Hive sondern auf &amp;ldquo;D:SP2010-DiagLogs&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Sign In As A Different User - Benutzer wechseln für IIS basierte Sites</title>
+      <link>/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/</link>
+      <pubDate>Sun, 27 May 2012 20:23:06 +0000</pubDate>
+      
+      <guid>/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/</guid>
+      <description>Meine Kollege Karten Kleinschmidt und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.
+In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie SharePoint, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &amp;ldquo;richtige&amp;rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms).</description>
+    </item>
+    
+    <item>
+      <title>Windows Phone 7 test</title>
+      <link>/2010/12/20/windows-phone-7-test/</link>
+      <pubDate>Sun, 19 Dec 2010 22:45:16 +0000</pubDate>
+      
+      <guid>/2010/12/20/windows-phone-7-test/</guid>
+      <description> Coole Sache  Posted from WordPress for Windows Phone</description>
+    </item>
+    
+    <item>
+      <title>SharePoint Blob Cache Corrupt</title>
+      <link>/2010/10/03/sharepoint-blob-cache-corrupt/</link>
+      <pubDate>Sun, 03 Oct 2010 10:45:18 +0000</pubDate>
+      
+      <guid>/2010/10/03/sharepoint-blob-cache-corrupt/</guid>
+      <description>In einer der SharePoint 2007 Farmen, die ich betreue, nutzen wir die Blobcache Funktion, um Video’s, Flash und Bilder zu cachen. Wir haben zwei Web Front End Server (WFE) und die Funktion leistet eigentlich gute Dienste. Es kommt allerdings immer mal wieder vor, dass Bilder (das Verhältnis ist viel höher zum restlichen Content im Cache) nicht mehr angezeigt werden und es ein ASP.NET Error gibt. Genau es gibt folgendes Fehler:
+Server Error in &#39;/&#39; Application. -------------------------------------------------------------------------------- Cannot complete this action. Please try again. Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.</description>
+    </item>
+    
+    <item>
+      <title>Call 2 Action: ASP.NET Security Update Now Available</title>
+      <link>/2010/09/29/call-2-action-asp-net-security-update-now-available/</link>
+      <pubDate>Wed, 29 Sep 2010 07:30:06 +0000</pubDate>
+      
+      <guid>/2010/09/29/call-2-action-asp-net-security-update-now-available/</guid>
+      <description>Eigentlich nicht mein Dinge auf irgendwelche Blogposts hinzuweisen, aber denke hier ist mal eine Ausnahme angesagt. Es geht um eine Lücke in ASP.NET, die seit einigen Tagen die Runde macht. Hier das Security Bulitin von MS: http://www.microsoft.com/technet/security/bulletin/ms10-sep.mspx
+ScottGu beschreibt sehr schön, was zu tun ist und welche Auswirkungen es hat, wenn man das ASP.NET Security Update anwendet. http://weblogs.asp.net/scottgu/archive/2010/09/28/asp-net-security-update-now-available.aspx
+Betroffen ist auch SharePoint (2007/2010) und somit sollten alle Admins loslegen.
+
+Unsere Sharepoint 2010 Installation hat leider eine Reboot benötigt. Auch wenn ScottGu sagt, dass es eigentlich keinen braucht… Schade.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Zune Software 4.2 ist da</title>
+      <link>/2010/09/24/zune-software-4-2-ist-da/</link>
+      <pubDate>Fri, 24 Sep 2010 07:22:14 +0000</pubDate>
+      
+      <guid>/2010/09/24/zune-software-4-2-ist-da/</guid>
+      <description>Jetzt fehlt nur noch das passende Telefon. Windows Phone 7 ich komme.
+
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Umzug - Phase Zwei</title>
+      <link>/2010/09/21/umzug-phase-zwei/</link>
+      <pubDate>Tue, 21 Sep 2010 20:00:47 +0000</pubDate>
+      
+      <guid>/2010/09/21/umzug-phase-zwei/</guid>
+      <description>Heute bin ich wieder ein Schritt weiter. Die fehlenden Bilder aus meinem GraffitiCMS wurden dank S3 und dem Search &amp;amp; Replace Plugin gerade gezogen.
+Offen sind jetzt noch ein paar URL’s, die ins Leere laufen, aber mal sehen, ob mir da noch was einfällt :-)
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Website ist umgezogen</title>
+      <link>/2010/09/19/website-ist-umgezogen/</link>
+      <pubDate>Sun, 19 Sep 2010 19:30:47 +0000</pubDate>
+      
+      <guid>/2010/09/19/website-ist-umgezogen/</guid>
+      <description>Lange ist es her und dann so was langweiliges. Der Blog läuft jetzt auf Wordpress. Mein vServer wird in den nächsten Tagen geplättet. Ich hoffe auf einen reibungslosen Umzug. Dank der eingesetzten Tools sollte keiner was merken. Das Theme update ich irgendwann nochmal, allerdings halte ich nicht viel davon Arbeit in die Oberfläche zu stecken. Der wahre Blick auf ein Blog geht sowieso durch Google Reader. Danke Feedburner muss NIEMAND sein RSS Reader anfassen.
+Drückt mir die Daumen, dann gibt es hier bald auch wieder echten Content.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2008 R2, Sharepoint 2007 und WebDav Probleme</title>
+      <link>/2010/01/17/windows-server-2008-r2-sharepoint-2007-und-webdav-probleme/</link>
+      <pubDate>Sun, 17 Jan 2010 14:25:33 +0000</pubDate>
+      
+      <guid>/2010/01/17/windows-server-2008-r2-sharepoint-2007-und-webdav-probleme/</guid>
+      <description>Die letzten SharePoint 2007 Installationen werden immer häufiger auf Windows Server 2008 R2 (W2K8R2) ausgeführt. Der Unterschied (für SharePoint relevant) zum “alten” Windows Server 2008 (W2K8) liegt zum Beispiel in einigen IIS7 Änderungen. Eine dieser Änderungen hat mich in einer der letzten Installationen “eingeholt”. Wie ich SharePoint installiere, habe ich bereits dokumentiert. Bei der Auswahl der Internet Information Server 7 (IIS7) Konfiguration sind nun die ersten Out-Of-Band Komponenten direkt anwählbar. Hier habe ich, ohne mir weiter Gedanken zu machen, auch WebDav ausgewählt, da nun die downloadbare Variante von W2K8 direkt integriert ist.
+Nach einer Woche hatte ich dann die Kundenanfrage auf dem Tisch: WebDav geht nicht unter Vista und höher.</description>
+    </item>
+    
+    <item>
+      <title>Office und SharePoint 2010 Beta für MSDN Subscriber verfügbar</title>
+      <link>/2009/11/16/office-und-sharepoint-2010-beta-fr-msdn-subscriber-verfgbar/</link>
+      <pubDate>Mon, 16 Nov 2009 16:47:18 +0000</pubDate>
+      
+      <guid>/2009/11/16/office-und-sharepoint-2010-beta-fr-msdn-subscriber-verfgbar/</guid>
+      <description>Twitter ist schon cool… Ich dachte ich checke mal, ob sich in der Beta Welt von Office was tut und siehe da… alles voll. In der MSDN war zuerst nur über den RSS Feed was zu sehen… und seit 5 Minuten kann ich auch die gewohnte Struktur der MSDN nutzen.
+Viel Spaß beim Downloaden :-) Der Server ist schon da (rund 1,5 MB/s) und der Rest ist gescheduled.
+Wenn ich mir am Wochenede nicht irgendwie ne Nervenentzündung unterm Schulterblatt zugezogen hätte… würde ich heute vielleicht noch etwas länger durch halten… aber so muss ich gleich Schluss machen :-S
+Viele Spaß.</description>
+    </item>
+    
+    <item>
+      <title>ITPros.de schon abonniert?</title>
+      <link>/2009/08/13/itpros-de-schon-abonniert/</link>
+      <pubDate>Thu, 13 Aug 2009 11:55:29 +0000</pubDate>
+      
+      <guid>/2009/08/13/itpros-de-schon-abonniert/</guid>
+      <description>Wieder ein Kollege mehr, der sich dem &amp;ldquo;harten” Wettbewerb des Blogging stellt. Seit ein paar Tagen gibt’s Content unter http://www.itpros.de
+
+Nach Jan (Exchange, SharePoint, IT Stuff) und Karsten (OCS, Exchange, IT Stuff) ist nun auch Jochen dabei sein Wissen für andere bereit zu stellen. Vielleicht schaffen wir es auch noch Oliver zu motivieren und sonst passt der Plural im Domainnamen nicht ganz :-)
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Last.fm, Larissa Ness und Amazon MP3</title>
+      <link>/2009/08/04/last-fm-larissa-ness-und-amazon-mp3/</link>
+      <pubDate>Tue, 04 Aug 2009 11:30:29 +0000</pubDate>
+      
+      <guid>/2009/08/04/last-fm-larissa-ness-und-amazon-mp3/</guid>
+      <description>Ich bin seit einiger Zeit ein echter Last.fm Fan. Über den Service habe ich schon ein Paar echt interessante Künstler gefunden. Larissa Ness ist eine von diesen Entdeckungen. Am Anfang gab es das Album nur über iTunes zu kaufen oder bei Amazon als CD für 26 Euro!!! Heute habe ich mal wieder bei Amazon MP3 vorbei gesehen und siehe da… Larissa Ness für 8,99 Euro. Die Entscheidung war einfach und schon habe ich den Amazon MP3 Downloader angeworfen:
+
+Ich bin echt Happy, dass ich über Last.fm darüber gestolpert bin und Amazon mir den Zugang so solcher Musik ermöglicht :-) Natürlich DRM Free.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint, FQDN, ServiceAccounts und SSP Provisioning failed</title>
+      <link>/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/</link>
+      <pubDate>Thu, 25 Jun 2009 06:26:00 +0000</pubDate>
+      
+      <guid>/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/</guid>
+      <description>In meiner letzten SharePoint Installation wurde ich mit einem Active Directory mit Windows NT 4.0 Wurzeln begrüßt. Die Domäne wurde von “kunde.de” auf “neu.kunde.de” upgegraded. Der NETBIOS Name der Domain ist somit “kunde.de” und der Full Qualified Domain Name (FQDN) ist “neu.kunde.de”. In der Vergangenheit hatte ich keine gute Erfahrung mit FQDN’s im Bezug auf den SQL Server gemacht. Mein Versuch den Server über den vollen Namen anzusprechend, ist gescheitert (Pre SP1 Erfahrung).
+Im aktuellen Fall haben wir versucht, den FQDN für die Angabe der Domain Accounts in der Form “neu.kunde.deaccountname” zu verwenden. Bis zur Provisionierung des Shared Service Provider hat das auch super funktioniert.</description>
+    </item>
+    
+    <item>
+      <title>OCS, e-Book und ein weiterer Kollege bloggt</title>
+      <link>/2009/06/24/ocs-e-book-und-ein-weiterer-kollege-bloggt/</link>
+      <pubDate>Wed, 24 Jun 2009 14:41:01 +0000</pubDate>
+      
+      <guid>/2009/06/24/ocs-e-book-und-ein-weiterer-kollege-bloggt/</guid>
+      <description>Ein weitere Kollege von Glück &amp;amp; Kanja versucht sich in der Blogosphäre ;-) Nach dem erfolgreichen Exchange-Pro-Expert-Guru und “Junior” C# Coder Jan Geisbauer ist nun auch Karsten Kleinschmidt mit von der Partie :-) Er betätigt sich zumindest in seinem Blog aktuell mit OCS (Office Communication Server). Sein aktueller Blogeintrag über das freie e-Book zum Thema OCS Programmierung war für mich ein Volltreffer :-)
+
+Für eine OCS Applikation (Prototyp für Communicator Automation API und UCC API) habe ich doch glatt “entdeckt”, dass ich die Objekte aus dem Communicator Automation API per “System.Runtime.InteropServices.Marshal.ReleaseComObject(object)” frei geben muss :-)
+Danke Karsten und weiter so.</description>
+    </item>
+    
+    <item>
+      <title>Fresh SharePoint Install mit SP2 und Language Pack DE</title>
+      <link>/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/</link>
+      <pubDate>Wed, 24 Jun 2009 14:07:41 +0000</pubDate>
+      
+      <guid>/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/</guid>
+      <description>Nachdem in letzter Zeit viel Maintenance an bestehenden Systemen betrieben wurde, gab es auch mal wieder eine Initialinstallation bei einem Kunden. Es wurde sich für ein Single Box Deployment entschieden. Folgende Details (sehr übliche Konfiguration und von mir empfohlene Konfiguration):
+1. Windows Server 2008 Standard – X64 – SP2 – EN 2. Microsoft SQL Server 2008 Standard – X64 – SP1 – EN 3. Microsoft SharePoint Server 2007 Standard – X64 – SP2 – EN – Language Pack German  Ich hab mich an meine übliche Installationsreihenfolge gehalten und das Setup lief Weitestgehends reibungslos. Als einer der letzten Schritte kommt das Erstellen der Haupt-Portal-Applikation (in der Regel das Intranet Portal) an die Reihe.</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2008 DNS Snap-In – Copy &amp; Paste</title>
+      <link>/2009/06/24/windows-server-2008-dns-snap-in-copy-paste/</link>
+      <pubDate>Wed, 24 Jun 2009 08:29:39 +0000</pubDate>
+      
+      <guid>/2009/06/24/windows-server-2008-dns-snap-in-copy-paste/</guid>
+      <description>Manchmal sind es Kleinigkeiten, die mich erfreuen :-) Beim Eintragen eines A-Record über ein W2K8 Server ist mir eben aufgefallen, dass man hier endlich mit Copy &amp;amp; Paste arbeiten kann. Gerade im DNS kann ein Tippfehler echt tödlich sein :-) In den Vorgängerversionen waren die einzelnen Quads abgebildet und der Versuch, etwas in das geteilte Eingabefeld zu kopieren, scheitert. Manchmal in weniger mehr.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>ADO.NET Data Services, Entity Framework und SQL/HTTP Timeouts</title>
+      <link>/2009/06/13/ado-net-data-services-entity-framework-und-sqlhttp-timeouts/</link>
+      <pubDate>Sat, 13 Jun 2009 19:12:00 +0000</pubDate>
+      
+      <guid>/2009/06/13/ado-net-data-services-entity-framework-und-sqlhttp-timeouts/</guid>
+      <description>Beim Arbeiten mit den ADO.NET Data Services (aka Astoria) kommt man irgendwann an den Punkt, dass die Aufgaben komplizierter werden oder die Last auf die Server steigt. In solchen Situationen ist man mit potentiellen Timeouts in allen Ebenen konfrontiert. In diesem Post zeige ich welche Timeouts es gibt, aber speziell will ich zeigen wie ich das Timeout des Entity Frameworks (SQL) in Kombination mit der MS REST Schicht ADO.NET Data Services anpassen kann.
+Es bleibt anzumerken, dass in der aktuellen Version V1 ein Bug existiert. Die Serverkomponente wirft bei einem Timeout eine NullReferenceException anstatt die eigentliche Fehlermeldung, was leider nicht wirklich weiter hilft.</description>
+    </item>
+    
+    <item>
+      <title>Aktuellsten SharePoint Patchstand finden</title>
+      <link>/2009/06/06/aktuellsten-sharepoint-patchstand-finden/</link>
+      <pubDate>Sat, 06 Jun 2009 20:38:46 +0000</pubDate>
+      
+      <guid>/2009/06/06/aktuellsten-sharepoint-patchstand-finden/</guid>
+      <description>Microsoft bietet unter folgender URL immer die letzte verfügbare PatchVersion für SharePoint 2007 an: Cumulative updates are available from the Microsoft Office team to fix reported problems
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Trusted Location in Office 2007</title>
+      <link>/2009/06/06/trusted-location-in-office-2007/</link>
+      <pubDate>Sat, 06 Jun 2009 20:13:42 +0000</pubDate>
+      
+      <guid>/2009/06/06/trusted-location-in-office-2007/</guid>
+      <description>Wer mit SharePoint arbeitet und darin die üblichen verdächtigen Dateitypen der Office Familie verwendet, kennt vielleicht die Securityhinweise, wenn zum Beispiel Excel aus einer SharePoint Lib geladen wird. SharePoint gilt in solchen Situationen eigentlich als Vertrauenswürdig ;-) Also sollten wir es auch so behandeln. Hier ein paar Info’s wie man das machen kann.
+Genereller Artikel: http://technet.microsoft.com/en-us/library/cc178946.aspx#trustedsettings
+Detail Informationen: MS Excel Team Blog - Trust Center Part 4: Trusted Locations
+
+Wie komme ich zu dem Dialog? http://office.microsoft.com/en-us/help/HA100319991033.aspx
+Alternativ kann man die Einstellungen auch per Group Policy setzen und im Unternehmen verteilen.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>C# FTP gegen OpenVMS FTP Server</title>
+      <link>/2009/06/06/c-ftp-gegen-openvms-ftp-server/</link>
+      <pubDate>Sat, 06 Jun 2009 19:45:39 +0000</pubDate>
+      
+      <guid>/2009/06/06/c-ftp-gegen-openvms-ftp-server/</guid>
+      <description>In einem meiner letzten Projekte bin ich in die “glückliche” Lage gekommen, mit einer VAX über FTP zu kommunizieren. Gegen unser IIS7 FTP hatten alle Tests super funktioniert. Ich verbinde mich gegen den Server und mache dann einen Upload mit der Angabe der vollen URI:
+Connect: ftp.servername.com
+Upload File: /upd/knr/abc/request.txt
+Mein erster Code nutzte die native C# FTP Api und antwortet einfach nur mit einem Fehler ohne Details. Ich habe dann auf eine Komponente von Aspose zurückgegriffen (wir nutzen Aspose.NET Total, was ich nur empfehlen kann). Ich bekam folgende Fehlermeldung:
+Aspose.Network.Ftp.FtpException: Failed to upload file :500 %CLI-W-IVQUAL, unrecognized qualifier - check validity, spelling, and placement at Aspose.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint – Send To – Could not find the destination item or folder on this server.</title>
+      <link>/2009/06/06/sharepoint-send-to-could-not-find-the-destination-item-or-folder-on-this-server/</link>
+      <pubDate>Sat, 06 Jun 2009 19:23:10 +0000</pubDate>
+      
+      <guid>/2009/06/06/sharepoint-send-to-could-not-find-the-destination-item-or-folder-on-this-server/</guid>
+      <description>SharePoint und WSS können Dokumente von einer Bibliothek in eine andere, über ein DropDown Menü am Item selber, kopieren. Jetzt hatten wir bei einem Kunden ein echt komisches Problem. Auf einigen Rechnern gab es ein Problem beim Kopieren. Es ist auch aufgefallen, das bei einem Test auf einem Windows Server 2003, die Oberfläche für den Dialog ganz anders aussieht, also auf einer Standard Workstation. Mit Office 2007 auf der Maschine nutzt der Client ein ActiveX Control. Ohne ActiveX nutzt SharePoint eine ASPX Page und die kann zwar über SiteCollections hinweg kopieren, aber nicht über Application, also von http://portal.ms.local auf http://mysite.</description>
+    </item>
+    
+    <item>
+      <title>Tolles Trio – Eventlog, Task Scheduler und Eventcreate.exe – Attach task to this event</title>
+      <link>/2009/06/06/tolles-trio-eventlog-task-scheduler-und-eventcreate-exe-attach-task-to-this-event/</link>
+      <pubDate>Sat, 06 Jun 2009 19:16:21 +0000</pubDate>
+      
+      <guid>/2009/06/06/tolles-trio-eventlog-task-scheduler-und-eventcreate-exe-attach-task-to-this-event/</guid>
+      <description>Seit Vista und Windows Server 2008 kann man den Task Scheduler sehr vielfältig einsetzen. Eine sehr praktische Funktion ist das Auslösen von Aktionen (Email, Run Program, etc), wenn ein spezielles Event eintritt. Entweder man erstellt den Task direkt im Task Scheduler oder man kann auf das entsprechende Event klicken und ein Task anhängen.
+
+Jetzt stellt sich die Frage, wie man das ganze aber testen kann? Warten bis das Event ausgelöst wird? Die Situation erzwingen? Je nach Komplexität der Anwendung oder der Situation, die den Event erzeugt, kann das nicht ganz befriedigend sein. Den Task einfach über Run zu starten, ist eine Option, allerdings kann man dann nicht auf Eigenschaften des Events zugreifen, welches normalerweise das Ereignis auslöst.</description>
+    </item>
+    
+    <item>
+      <title>Unblock aller Dateien in einem Verzeichnis</title>
+      <link>/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/</link>
+      <pubDate>Sat, 06 Jun 2009 18:55:58 +0000</pubDate>
+      
+      <guid>/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/</guid>
+      <description>Ich habe immer mal wieder in der Vergangenheit Probleme beim Ansehen von CHM Dateien, die ich aus dem Internet oder von einem Fileshare kopiert habe. Das Inhaltsverzeichnis wird angezeigt, aber egal was angeklickt wird, es kommt einer Fehlerdarstellung. Microsoft hat dazu eine KB Artikel: http://support.microsoft.com/kb/902225/
+Wenn man das Unblocken jetzt nicht immer von Hand machen will, da es auch bei anderen Dateien potentiell störend sein kann, habe ich ein Tool von SysInternal (Microsoft) im Einsatz: Streams - http://technet.microsoft.com/en-us/sysinternals/bb897440.aspx
+Mit diesem Tool kann man sehr einfach den NTFS Stream löschen, der diesen “Schutz” auslöst.
+streams.exe -d -s *.chm  Fertig :-)</description>
+    </item>
+    
+    <item>
+      <title>14-1=0 oder Windows Server 2008 SP2 als Development Workstation</title>
+      <link>/2009/05/13/14-10-oder-windows-server-2008-sp2-als-development-workstation/</link>
+      <pubDate>Wed, 13 May 2009 10:56:07 +0000</pubDate>
+      
+      <guid>/2009/05/13/14-10-oder-windows-server-2008-sp2-als-development-workstation/</guid>
+      <description>Dirk Primbs hat seine Top 10 Tools auf 14 erweitert, nachdem er meinen Post gelesen hatte. Live Mesh wurde besonders hervorgehoben. Ich nutzte für einige Dev-Aufgaben wie angedeutet ja ein Windows Server 2008. Die Basis Installation wurde überarbeitet und ich starte direkt mit SP2 die Neuinstallation. Jetzt wollte ich die tollen Tools mit dem “tollen” Tool Live Mesh auf meine Maschine holen… aber es wollte sich nicht installieren lassen :-S
+ http://msdn.microsoft.com/en-us/library/aa368304.aspx
+Mein Rechnung sieht also so aus: 14 Tools minus 1 Tool macht nicht 13 sondern 0, weil das eine Tool alle transportiert :-S
+Ich glaube, ich hatte in der alten Installation UAC abgeschaltet und eventuell deswegen den Fehler nicht bekommen.</description>
+    </item>
+    
+    <item>
+      <title>RE: 10 Tools, die jeder .NET Entwickler kennen sollte</title>
+      <link>/2009/05/12/re-10-tools-die-jeder-net-entwickler-kennen-sollte/</link>
+      <pubDate>Tue, 12 May 2009 07:03:47 +0000</pubDate>
+      
+      <guid>/2009/05/12/re-10-tools-die-jeder-net-entwickler-kennen-sollte/</guid>
+      <description>Dirk Primbs stellt die Frage nach den Top Development Tools. Dirk Primbs: 10 Tools, die jeder .NET Entwickler kennen sollte
+Ich stimme zu und hier meine Erweiterungen:
+* [LinqPad](http://www.linqpad.net/): Dirk nennt den [Snipped Compiler](http://www.sliver.com/dotnet/snippetcompiler/)… ich selber stehe auf [LinqPad](http://www.linqpad.net/), der mehr als nur Linq kann. Für 19$ gibt es dann auch [Autocompletion](http://www.linqpad.net/Purchase.aspx). * [Live Mesh](http://www.mesh.com): Ich habe eine Hauptentwicklermaschine und zusätzlich noch eine Windows Server 2008 VM. Meine Tools (um die es hier und in Dirks Post geht) und meine Reference Libraries (SharePoint DLL’s, Log4Net, …) halte ich so auf allen Rechnern aktuell und das ohne großen Aufwand. * [XML Notepad 2007](http://www.</description>
+    </item>
+    
+    <item>
+      <title>Lenovo X61 Tablet PC mit Windows 7 (Beta/RC)</title>
+      <link>/2009/05/11/lenovo-x61-tablet-pc-mit-windows-7-betarc/</link>
+      <pubDate>Mon, 11 May 2009 12:32:00 +0000</pubDate>
+      
+      <guid>/2009/05/11/lenovo-x61-tablet-pc-mit-windows-7-betarc/</guid>
+      <description>Ich bin nun schon seit einer Weile auf der Beta von Win7 unterwegs gewesen und habe gleich nach Verfugbarkeit des Release Candidate an diesem Wochenende auch neu installiert. In meinem letzten Beitrag hat mit dann Tobias angesprochen. Wie meine Erfahrungen mit dem Laptop und dem aktuellen Stand von Windows 7 sind. Hier nun mein Antwort fur &amp;ldquo;alle&amp;rdquo;:
+Mein Firmenlaptop ist ein Lenovo X61 Tablet. Hier kurz die Hardware-Specs:
+ Intel Core 2 Duo L7500 processor (1.60GHz, 4MB L2 cache, 800MHz front-side bus) 4 GB RAM 200GB 7.200 rpm Hitatchi HDD Graphics Intel Graphics Media Accelerator X3100 Intel Wireless WiFi Link 4965AGN (n-Disabled) Network Connection Bluetooth wireless technology Sierra Wireless MC8775 PCI Express MiniCard (nachgerustet)  Vor den Zeiten von Windows 7 hat mich Vista Enterprise 64 bit (English) durch den Alltag begleitet.</description>
+    </item>
+    
+    <item>
+      <title>Lenovo X61 Tablet und Windows 7 RC – Video und FingerPrint aktualisiert :-)</title>
+      <link>/2009/05/03/lenovo-x61-tablet-und-windows-7-rc-video-und-fingerprint-aktualisiert/</link>
+      <pubDate>Sun, 03 May 2009 17:42:32 +0000</pubDate>
+      
+      <guid>/2009/05/03/lenovo-x61-tablet-und-windows-7-rc-video-und-fingerprint-aktualisiert/</guid>
+      <description>Ein Bilick in Windows Update lohnt sich doch immer wieder:-) Ich bin mal gespannt was es bringt. Den FingerPrint Reader habe ich ja noch mit einem Tweak von UPEK selbst zum Laufen bekommen. Mit dem Video Driver erhoffe ich mir etwas mehr Speed, damit ich mal wieder meinen DisplayLink Adapter ausprobieren kann :-) Und wieder auf 3 Screens komme, die ich von der Performance unter Win7 auch nutzen kann.
+
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Office 2007 und Office Server 2007 (SharePoint) SP2 ist da und wie und was ich installieren muss…</title>
+      <link>/2009/04/28/office-2007-und-office-server-2007-sharepoint-sp2-ist-da-und-wie-und-was-ich-installieren-muss/</link>
+      <pubDate>Tue, 28 Apr 2009 18:56:00 +0000</pubDate>
+      
+      <guid>/2009/04/28/office-2007-und-office-server-2007-sharepoint-sp2-ist-da-und-wie-und-was-ich-installieren-muss/</guid>
+      <description>SharePoint Joel hat ne ganze Menge toller Info’s da in den KB Artikel die X64 Language Packs von WSS und MOSS falsch verlinkt sind, kann man einfach von seinem Post aus starten:
+WSS &amp;amp; MOSS SP2 is Available - 5 No Brainer Reasons to Install
+oder hier:
+* Stefan Gossner: [MOSS 2007 and WSS 3.0 Service Pack 2 has been released](http://blogs.technet.com/stefan_gossner/archive/2009/04/28/moss-2007-and-wss-3-0-service-pack-2-has-been-released.aspx) * Michael Greth: [SharePoint 2007 SP2 und WSS SP2](http://weblogs.mysharepoint.de/mgreth/archive/2009/04/28/sharepoint-2007-sp2-und-wss-sp2.aspx)  Irgendwann auch auf dem Team Blog der Produktes ;-)
+Und was nun? Als SharePoint Developer und Architekt gilt es erst mal alle Kombinationen herunter zu laden, da unsere Kunden alle möglichen Kombinationen installiert haben:</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Office Server 2007 SP2 is coming</title>
+      <link>/2009/04/28/microsoft-office-server-2007-sp2-is-coming/</link>
+      <pubDate>Tue, 28 Apr 2009 14:21:00 +0000</pubDate>
+      
+      <guid>/2009/04/28/microsoft-office-server-2007-sp2-is-coming/</guid>
+      <description>Dauert wohl nicht mehr lange:
+http://support.microsoft.com/default.aspx?scid=kb;EN-US;953334
+Die Downloads gehen im Moment des Posts noch nicht… aber das dauert sicher nicht mehr lange.
+Quelle:
+http://blogs.msdn.com/spfargo/archive/2009/04/28/microsoft-office-sharepoint-server-service-pack-2-is-now-available.aspx
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>PowerShell mit C# generieren und scheitern? Unicode anstatt UTF-8!</title>
+      <link>/2009/04/20/powershell-mit-c-generieren-und-scheitern-unicode-anstatt-utf-8/</link>
+      <pubDate>Mon, 20 Apr 2009 16:11:01 +0000</pubDate>
+      
+      <guid>/2009/04/20/powershell-mit-c-generieren-und-scheitern-unicode-anstatt-utf-8/</guid>
+      <description>Ich hatte die Gelegenheit, meinem Kollegen Jan bei einem Projekt zu helfen. Es geht darum, aus einer C# Applikation PowerShell Scripte zu erzeugen. Diese Scripte werden dann später auf einem Server ausgeführt. Klingt erst mal nicht wirklich spannend. Spannend wurde es dann, als der Code für die Erzeugung abgeschlossen wurde und das erste mal die Scripte ausgeführt wurden. Die PowerShell meldete eine kryptische Exception:
+
+   Unexpected token in expression or statement.    Beim Editieren des PowerShells mit dem neuen Windows 7 PowerShell Editor kommt beim Speichern folgende Meldung:
+
+Und schon hatten wir den fehlenden Hinweis.</description>
+    </item>
+    
+    <item>
+      <title>Improving Entity Framework Performance – und was ist mit dem REST?</title>
+      <link>/2009/04/08/improving-entity-framework-performance-und-was-ist-mit-dem-rest/</link>
+      <pubDate>Tue, 07 Apr 2009 22:49:15 +0000</pubDate>
+      
+      <guid>/2009/04/08/improving-entity-framework-performance-und-was-ist-mit-dem-rest/</guid>
+      <description>Genau… was passiert mit den ADO.NET Data Services (also dem REST Layer aus dem Hause Microsoft) in dem von Dariusz beschriebenen Szenario:
+Dariusz Parys: Improving Entity Framework Performance
+Wir nutzen die ADO.NET Data Services aktuell in einem Projekt und ich werde morgen nochmal den Code checken, ob wir auch von so einer Lösung profitieren können. Einen vielversprechenden Ansatz zeigt der Post von Kollegen Shawn Wildermuth auf:
+Shawn Wildermuth: ADO.NET Data Services for Multiple Databases?
+Das Überschreiben des GetDataSource könnt hier ein Lösung bringen, allerdings muss man schauen, ob sich der Ansatz überhaupt auf eine Web-Anwendung anwenden läßt.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>ADO.NET Data Services – C# Extension Method to the rescue – SaveChangesWithRetry</title>
+      <link>/2009/03/28/ado-net-data-services-c-extension-method-to-the-rescue-savechangeswithretry/</link>
+      <pubDate>Sat, 28 Mar 2009 21:24:55 +0000</pubDate>
+      
+      <guid>/2009/03/28/ado-net-data-services-c-extension-method-to-the-rescue-savechangeswithretry/</guid>
+      <description>Ich habe mich diese Woche wieder mit den Core Funktionen der ADO.NET Data Services beschäftigt. Wir nutzen aktuell das Microsoft Ex-Astoria Projekt, um eine SQL 2008 Datenbank (läuft mit SQL Mirroring) über das Internet an eine Applikation zu binden. An sich eine tolle Sache, aber immer wieder gibt es “neue” Situationen auf die man reagieren muss. In der klassischen Programmierung (C#, SQL über TCP 1433, …) kommt es recht selten vor, dass die Verbindung zur Datenschicht (SqlNativeClient, OLEDB, ODBC, …) unterbrochen wird. In unserem Szenario steckt viel “Cloud” in der Lösung und somit müssen wir mit dem “nicht immer” funktionierenden Internet rechnen.</description>
+    </item>
+    
+    <item>
+      <title>Microsoft is doodling?</title>
+      <link>/2009/03/18/microsoft-is-doodling/</link>
+      <pubDate>Wed, 18 Mar 2009 08:28:36 +0000</pubDate>
+      
+      <guid>/2009/03/18/microsoft-is-doodling/</guid>
+      <description>Wer regelmäßig Google als Suchdienst nutzt (Was nutzt man sonst?) wird an speziellen Tagen feststellen, dass sich das Google Logo ändert, wenn spezielle Ereignisse die “Welt” bewegen. Google spricht dann von einem Doodle. Microsoft hat sich das wohl abgeguckt und hat für die aktuelle MSDN Site das Layout geändert/gedoodlet. Grund ist die aktuelle MIX09. Sehr nette Idee:
+
+Selber mal anschauen: http://msdn.microsoft.com/en-us/default.aspx
+Mehr Informationen zum Thema Google Doodle: http://www.google.com/support/websearch/bin/answer.py?hl=en&amp;amp;answer=17509 http://googleblog.blogspot.com/2004/06/oodles-of-doodles.html http://www.google.com/holidaylogos.html
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>SnailMail aus Internet mit Microsoft Tag und 01</title>
+      <link>/2009/03/09/snailmail-aus-internet-mit-microsoft-tag-und-01/</link>
+      <pubDate>Mon, 09 Mar 2009 20:05:00 +0000</pubDate>
+      
+      <guid>/2009/03/09/snailmail-aus-internet-mit-microsoft-tag-und-01/</guid>
+      <description>Heute habe auch ich Post im Briefkasten. Das .NET Logo (seit der PDC 08) stand gleich neben meinem Name. Der Inhalt war etwas ratselhaft:
+Naturlich hab ich gleich die Microsoft Tag Software fur mein Windows Mobile installiert (was bestimmt Ziel der Aktion war):
+GetTag.mobi
+Microsoft - Tag
+Mein Kollege Jan hat es auch schon erwischt:
+Jan Geisbauer - Stille Post
+Und weitere .NET Devs:
+ Der Albert.com sein Blog - Langeweile und dass Microsoft-Tag .NET virales Marketing - mehr Enthullungen Michael Schwarz - Microsoft Tag und Virales Marketing  Es gibt aber auch negatives Reaktionen:
+Kay Giza - Bin sauer: Virales Marketing, es nervt!</description>
+    </item>
+    
+    <item>
+      <title>ADO.NET Data Services V 1.5 sind im CTP1 Status</title>
+      <link>/2009/03/03/ado-net-data-services-v-1-5-sind-im-ctp1-status/</link>
+      <pubDate>Tue, 03 Mar 2009 07:13:46 +0000</pubDate>
+      
+      <guid>/2009/03/03/ado-net-data-services-v-1-5-sind-im-ctp1-status/</guid>
+      <description>Seit letztem Jahr arbeiten wir an einem Projekt, welches die ADO.NET Data Services (aka Astoria) einsetzt, um auf die Daten einer Microsoft SQL 2008 Datenbank zuzugreifen. Der Einsatz der Technologie hat gezeigt, das die Theorie zu REST + SQL Server DB ganz toll klingt, man sich die Features aber teils teuer erkauft. Ich möchte irgendwann man ein eigene Post zum Thema schreiben. Heute möchte ich einfach mal zeigen, über was man sich plötzlich alles freuen kann (aus dem Blog von des Astoria Teams):
+   Row Count: One scenario we heard a ton of feedback on after shipping V1 of ADO.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint Feb CU 2009 – Bitte warten?!</title>
+      <link>/2009/02/28/sharepoint-feb-cu-2009-bitte-warten/</link>
+      <pubDate>Sat, 28 Feb 2009 20:55:56 +0000</pubDate>
+      
+      <guid>/2009/02/28/sharepoint-feb-cu-2009-bitte-warten/</guid>
+      <description>Ich hatte bereits auf das aktuelle Update hingewiesen. Am Donnerstag kam dann auch auf dem “offiziellen” Blog die Nachricht zum Februar Update:
+Is it time to apply Feburary Cumulative Update?
+Was soll man also davon halten? Ihr habt bereits den Dec CU drauf? Dann könnt ihr eigentlichen auch den aktuellen Patchstand für Februar einspielen. Wichtig! Im Blogpost wird auch die Reihenfolge der Patches genannt und an die sollte man sich in der Regel auch halten:
+   For customers who already have Dec CU installed, they can apply these update packages in the following sequence: 961750, 967703, 961749, 961754.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint Feb 2009 Cumulative Update – BLOB Caching fixed</title>
+      <link>/2009/02/25/sharepoint-feb-2009-cumulative-update-blob-caching-fixed/</link>
+      <pubDate>Wed, 25 Feb 2009 07:03:53 +0000</pubDate>
+      
+      <guid>/2009/02/25/sharepoint-feb-2009-cumulative-update-blob-caching-fixed/</guid>
+      <description>Heute habe ich eine Mail mit der Info des aktuellen CU für einen der offenen SharePoint PSS Cases bei einem Kunden bekommen. Es wurde auf das Release des aktuellsten Updates für SharePoint hingewiesen. Es gibt noch kein “Rundum-Sorglos” Paket, aber für den dringenden Fall kann man wie in dem Blogpost genannt vorgehen und “traditionell” installieren.
+Joerg Sinemu - February Cumulative Update for WSS V3 and MOSS 2007
+Wir hatten vor einigen Monaten ein Case zum Thema BLOB Caching eingestellt. Es ging darum für ein Intranet Videos (Flash – FLV) zu cachen, damit die Datenbank entlastet wird. An sich funktionierte das auch super, allerdings wurde auf allen System des Kunden ab einer Größe von 40-50 MB die Datei nicht ausgeliefert und man bekam eine Anmeldemaske (HTTP Error 401).</description>
+    </item>
+    
+    <item>
+      <title>Windows 7 Fieber – Second Level</title>
+      <link>/2009/01/14/windows-7-fieber-second-level/</link>
+      <pubDate>Wed, 14 Jan 2009 07:57:22 +0000</pubDate>
+      
+      <guid>/2009/01/14/windows-7-fieber-second-level/</guid>
+      <description>Es ist so weit… die Welt hat nur darauf gewartet :-) Ich hatte direkt am Donnerstag Abend den MSDN Download angeworfen und auf Freitag als ersten Windows 7 Tag gehofft… leider kam es anders. Der Download ist mehrfach abgebrochen. Der Download Speed ist trotz VDSL nicht über 25 KB/S gekommen. Am Montag morgen war es dann so weit… allerdings hatte ich in den letzten 30 Minuten die x86 und die x64 Version über den Public Download bei Akami fertig… was schon eher VDSL Speed entspricht :-)
+Wer nun die erste Runde gedreht hat (ich kenne das meiste schon aus dem PDC Alpha Build) und in den zweiten Level will, der kann mal hier nach ein paar echt tollen Tips schauen.</description>
+    </item>
+    
+    <item>
+      <title>Von Microsoft zu Apple von VPA zu iPhone</title>
+      <link>/2008/12/12/von-microsoft-zu-apple-von-vpa-zu-iphone/</link>
+      <pubDate>Fri, 12 Dec 2008 20:22:37 +0000</pubDate>
+      
+      <guid>/2008/12/12/von-microsoft-zu-apple-von-vpa-zu-iphone/</guid>
+      <description>Alle Jahre wieder beginnt der Poker um die Mobilfunkverträge und diesmal gab es neben dem Geld auch noch ein Hardwaregrund für die Überlegungen. Apple unterstützt seit dem iPhone 3G “Exchange Active Sync” und ist somit einfach ein weitere mobiler Outlook Client an einer gut funktionierenden Schnittstelle. Ich nutzt schon seit Anbeginn der Zeit Outlook als PIM. Seit meinem ersten mobilen Windows Begleiter (dem Ur-HTC schlecht hin) bin ich von der reibungslosen Synchronisation begeistert. Ich will nicht sagen, das der Erfinden von Active Sync uns einen Gefallen getan hat :-) Aber besser als mein Siemens S45 oder Sony Ericsson T610 hat das ganze auf jeden Fall funktioniert.</description>
+    </item>
+    
+    <item>
+      <title>Google Reader updated</title>
+      <link>/2008/12/09/google-reader-updated/</link>
+      <pubDate>Tue, 09 Dec 2008 20:50:39 +0000</pubDate>
+      
+      <guid>/2008/12/09/google-reader-updated/</guid>
+      <description>Wer bisher noch nichts vom Google Reader gehört hat oder nicht warm geworden ist, der kann es ja jetzt nochmal mit dem “besten” RSS Reader versuchen :-) Mir gefällts.
+Google Reader
+Google Reader Blog: Square is the new round
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Web 2.0 gelebt – MSDN/Technet verbessern</title>
+      <link>/2008/12/09/web-2-0-gelebt-msdntechnet-verbessern/</link>
+      <pubDate>Tue, 09 Dec 2008 20:34:34 +0000</pubDate>
+      
+      <guid>/2008/12/09/web-2-0-gelebt-msdntechnet-verbessern/</guid>
+      <description>Immer mal wieder passiert es meinen Kollegen und mir das Technet oder MSDN Artikel unklar oder falsch sind. Bisher war es immer besonders ärgerlich, wenn man eine Lösung hatte und maximal auf seinem Blog darüber berichten konnte. Die aktuellen Versionen der MSDN und Technet können “Community Content” anzeigen. Ich habe eben ein Fehler in der Performance Point Kerberos Konfig-Anleitung gefunden und kommentiert… das nenne ich mal Web 2.0:
+PPS: Configure Monitoring Server for Kerberos delegation
+
+Vielleicht hilft mein Kommentar, dem einen oder anderen weiter und es sorgt für ein paar schlaflose Nächte weniger. Gerade im Kerberos Umfeld ist so ein Fehler, ohne das richtige Know-How kaum zu finden.</description>
+    </item>
+    
+    <item>
+      <title>PDC – Tag 3 – Keynote und Session</title>
+      <link>/2008/11/08/pdc-tag-3-keynote-und-session/</link>
+      <pubDate>Sat, 08 Nov 2008 19:48:47 +0000</pubDate>
+      
+      <guid>/2008/11/08/pdc-tag-3-keynote-und-session/</guid>
+      <description>**Keynote **Die Keynote heute geht an die Research Abteilung von Microsoft. Es wurde kurz über die Geschichte von MSR gesprochen und welche “Größe” die Einrichtung hat. Es arbeiten eine ganze Menge hoch dekorierter Leute da. Die Statistiken (naja was sagt das schon aus) haben gezeigt, dass die smartesten Leute bei MS arbeiten :-) Für mich interessant war der Beitrag über ein Projekt, in dem Microsoft versucht Kindern die Logik des Programmieren bei zu bringen. Es handelt sich quasi um eine programmierbare Welt die über einen Xbox 360 Controller gesteuert wird. Es war wirklich spannend zu sehen, wie man mit viel Spaß logisches Denken lernt und “komplexe Zusammenhänge” erkennt.</description>
+    </item>
+    
+    <item>
+      <title>Microsoft SQL Server 2008 – Interated Fulltext Service ist cool</title>
+      <link>/2008/11/08/microsoft-sql-server-2008-interated-fulltext-service-ist-cool/</link>
+      <pubDate>Sat, 08 Nov 2008 19:31:44 +0000</pubDate>
+      
+      <guid>/2008/11/08/microsoft-sql-server-2008-interated-fulltext-service-ist-cool/</guid>
+      <description>In vielen unserer Projekte ist ein SQL Server Teil der Lösung. In einigen Projekten muss über die Daten in den Tabellen gesucht werden. Für kleinere Projekte mit kleinen Datenbeständen kommt man meist mit dem T-SQL Bordmittel LIKE aus. Ein Projekt hat jedoch so “viele” Daten und zu speziellen Zeiten so viel Traffic, das eine Suche mit Hilfe von LIKE nicht mehr vertretbar ist. LIKE an sich ist nichts schlimmes, wenn es nicht am Anfang ebenfalls ein Wildcard enthält. Die Anforderungen sind aber meist “irgendwo soll das Suchwort vorkommen”. In solchen Situationen bietet es sich an auf den Volltext-Dienst des SQL Server zurückzugreifen.</description>
+    </item>
+    
+    <item>
+      <title>PDC – Tag 2 – Universal Studios Party</title>
+      <link>/2008/11/02/pdc-tag-2-universal-studios-party/</link>
+      <pubDate>Sun, 02 Nov 2008 04:25:22 +0000</pubDate>
+      
+      <guid>/2008/11/02/pdc-tag-2-universal-studios-party/</guid>
+      <description>Nach einem interessanten Tag ging es mit dem Bus erst zurück ins Hotel und dann zu den Universal Studios. Der Freizeitpark war ausschließlich für PDC Teilnehmer (und Anhang) geöffnet. Bei dem Datum hat es sich angeboten ein Halloween Special zu veranstalten. Hab ich schon mal gesagt, dass ich Horror hasse? An jeder Ecke ist aus dem Dunkeln eine Gestalt hervorgesprungen. Zombies schlurfen langsam über den Weg nur um dann hinter einem kehrt zu machen und mich zu erschrecken. Den größten Schrecken haben mir aber diese Irren mit den Kettensägen eingejagt. Die Jungs haben den Motor aufgedreht, es hat gestunken und dann sind sie mit der Klinge auf dem Boden funkensprühend in die nächste Menschraube gestürmt.</description>
+    </item>
+    
+    <item>
+      <title>PDC – Tag 2 – Session</title>
+      <link>/2008/11/02/pdc-tag-2-session/</link>
+      <pubDate>Sun, 02 Nov 2008 04:06:17 +0000</pubDate>
+      
+      <guid>/2008/11/02/pdc-tag-2-session/</guid>
+      <description>**Keynote – Don und Chris **Nach der Hauptkeynote ging es ohne PowerPoint weiter. Don Box und Chris Anderson haben in der Vergangenheit immer für viel Unterhaltung gesorgt. Don Box ist quasi eine Legende auf der Bühne. Einer redet, einer codet. Einfacher und überzeugendes Konzept. Es wurde gezeigt, wie ein Beispiel von der letzten PDC (2005 über WCF) umgebaut wurde, um in der Cloud zu leben und gegen .NET Services zu authentifizieren.
+Bilder:      
+SQL Services: Tips and Tricks for High-Throughput Data-Driven Applications Die Session war schrecklich. Es war eine Lunch Session und durch die beiden Keynotes war es schon knapp, überhaupt was zu essen.</description>
+    </item>
+    
+    <item>
+      <title>Photosynth aus Los Angeles</title>
+      <link>/2008/11/01/photosynth-aus-los-angeles/</link>
+      <pubDate>Sat, 01 Nov 2008 20:09:50 +0000</pubDate>
+      
+      <guid>/2008/11/01/photosynth-aus-los-angeles/</guid>
+      <description>Ich habe schon eine Weile einen Account für die Microsoft Photosynth Software. Mit Hilfe des Tools kann man quasi ein 3D Panorama-Photo erstellen. Nachdem ich mein ein Kaffee geholt hatte, dachte ich mir es wäre ein toller Moment mal ein paar Bilder zu machen und sie gleich in die Photosynth Software zu werfen. Ich habe einfach ein paar (35) Bilder gemacht, ohne irgendwelche Einstellungen an der Kamera vorzunehmen (Canon IXUS 70). Die Software fragt eigentlich nur nach wenigen Metadaten und nach den Bildlern. Per Drag &amp;amp; Drop aus dem Live Photo Ablum eingefügt arbeitet die Software ein wenig und nach wenigen Minuten ist es fertig.</description>
+    </item>
+    
+    <item>
+      <title>Windows Live Mesh nun auch in Deutschland</title>
+      <link>/2008/10/30/windows-live-mesh-nun-auch-in-deutschland/</link>
+      <pubDate>Thu, 30 Oct 2008 19:49:44 +0000</pubDate>
+      
+      <guid>/2008/10/30/windows-live-mesh-nun-auch-in-deutschland/</guid>
+      <description>Die Mesh Beta ist nun auch für User mit nicht englischen ReginalSettings geöffnet:
+http://www.mesh.com/
+Bin mal gespannt, ob meine Erwartungen an den SyncDienst in Mesh erfüllt werden.
+Ciao Marco
+Update: Hier gibt es detailierte Informationen LiveSide</description>
+    </item>
+    
+    <item>
+      <title>PDC2008 – Tag 2 – Keynote I</title>
+      <link>/2008/10/28/pdc2008-tag-2-keynote-i/</link>
+      <pubDate>Tue, 28 Oct 2008 17:44:13 +0000</pubDate>
+      
+      <guid>/2008/10/28/pdc2008-tag-2-keynote-i/</guid>
+      <description>Eben ist die erste Keynote fertig. Windows 7 ist sicher toll, aber die Features die gerade im Touch gehyped werden sind bis auf MultiTouch schon heute auf dem Tablet existent. Das Ah und Oh des Publikum konnte ich nicht nachvollziehen.
+ Interessant fand ich die Funktionen von Office Online. Web Editoren für die großen Microsoft Applikationen. Excel, Word, PowerPoint, etc. Die Demourl auf dem alles lief war: http://liteware/_layouts/… also gehe ich mal davon aus, dass auch SharePoint die Funktionen bekommen wird. Die Zeit wird es zeigen. Es nichts was ich zwingen benötige, aber es kann ab und an nützlich sein.</description>
+    </item>
+    
+    <item>
+      <title>PDC 2008 – Day 1</title>
+      <link>/2008/10/28/pdc-2008-day-1/</link>
+      <pubDate>Tue, 28 Oct 2008 05:58:00 +0000</pubDate>
+      
+      <guid>/2008/10/28/pdc-2008-day-1/</guid>
+      <description>Keynote
+Die Keynote hat wirklich Spaß gemacht. Es hatte nicht den Unterhaltungswert wie die Apple-Shows mit Steve Jobs, aber wer hatte schon mit einem “Developers, Developers, …” 2.0 gerechnet :-) Ich dachte der Schwerpunkt würde auf “Windows 7” liegen, aber ich hatte mich geirrt. Ray Ozzie hat das Cloud Operation System “Windows Azure” vorgestellt. Für meinen Interessensschwerpunkt auch viel interessanter als ein neues Desktop OS. Azure bringt endlich Farbe ins Spiel. Bisher ging es im Bereich Cloud Computing nur bei Anbietern wie Amazon (EC2, SimpleDB, …) oder Google (Google Apps, GData, …) voran. Mit dem Service von Microsoft ändert sich das.</description>
+    </item>
+    
+    <item>
+      <title>PDC 2008 starten in wenigen Minutes</title>
+      <link>/2008/10/27/pdc-2008-starten-in-wenigen-minutes/</link>
+      <pubDate>Mon, 27 Oct 2008 14:02:33 +0000</pubDate>
+      
+      <guid>/2008/10/27/pdc-2008-starten-in-wenigen-minutes/</guid>
+      <description>Ich sitze in der HALL A und warte auf die Keynote. Ich habe Internet und mein Status den ich über Twitter abgegeben hat ist eben über einen der reisen Screens geflogen. Das nenne ich Interaktion :-)
+Nach meinem Flug gestern war ich echt platt. Ich bin nicht 100% gesund und hab deshalb die Zeit genutzt um mich auszuruhe und die Party at Palermo einfach sausen lassen :-S Dafür hat der JetLag mir geholfen heute morgen pünktlich um 5:30 aufzustehen. Meine Halsschmerzen bringen mich nicht um, aber ich hoffe das es bald noch etwas besser wird. Genießen werde ich es so oder so.</description>
+    </item>
+    
+    <item>
+      <title>Lenovo X61 Tablet mit UMTS Modul (43R18219 nachrüsten</title>
+      <link>/2008/10/27/lenovo-x61-tablet-mit-umts-modul-43r18219-nachrsten/</link>
+      <pubDate>Mon, 27 Oct 2008 13:39:22 +0000</pubDate>
+      
+      <guid>/2008/10/27/lenovo-x61-tablet-mit-umts-modul-43r18219-nachrsten/</guid>
+      <description>Ich bin seit einiger Zeit glücklicher Besitzer eines IBM Lenovo X61 Tablet PC. Meine Einsätze beim Kunden und meine Zeit ohne echten Internetzugang haben sich verstärkt. Im ICE oder aber im Starbucks im Bahnhof oder einfach nur in Standort der Kunden ganz ohne “echtes” Internet (also mit mehr als nur Port 80 und 443) zu sein, hat irgendwann genervt und einfach nur Zeit gekostet. Mein Windows Mobile Handy ist in der Lage meinem Tablet ins Internet zu helfen, allerdings funktioniert das nicht immer und die Variante kosten Handy und Laptop extrem viel Saft… also wieder weniger Zeit dinge zu erledigen. Die Lösung ist UMTS.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint suche bringt “OfficeServerProductToProvision”-Fehler nach Infrastructure Update</title>
+      <link>/2008/10/27/sharepoint-suche-bringt-officeserverproducttoprovision-fehler-nach-infrastructure-update/</link>
+      <pubDate>Mon, 27 Oct 2008 13:39:00 +0000</pubDate>
+      
+      <guid>/2008/10/27/sharepoint-suche-bringt-officeserverproducttoprovision-fehler-nach-infrastructure-update/</guid>
+      <description>Nach der letzten Installation IU und CU August 2008 hatte ich einen kurzen Schocker, da die Suche nicht mehr wollte. Wir setzen die “Facetted Search” in Version 2.0 ein, um die Suche aufzuwerten. Ich wurde allerdings mit folgenden Fehlern in den Webparts beglückt:
+The type initializer for &amp;lsquo;Microsoft.Office.Server.EvaluatorModeProvisioning.OfficeServerProductToProvision&amp;rsquo; threw an exception.
+Eine kurze Google-Recherche hat mich auf die simple Lösung durch IISRESET gebracht :-) Wow. War das einfach. Bei der Installation und der anschließenden Deinstallation der Facetted Search 2.5 kam der Fehler allerdings wieder und die Lösung brachte diesmal nicht IISRESET, sondern der Trust Level in der Web.Config der betroffenen WebApplication.</description>
+    </item>
+    
+    <item>
+      <title>PDC 2008 es geht los… bald</title>
+      <link>/2008/10/25/pdc-2008-es-geht-los-bald/</link>
+      <pubDate>Sat, 25 Oct 2008 19:03:51 +0000</pubDate>
+      
+      <guid>/2008/10/25/pdc-2008-es-geht-los-bald/</guid>
+      <description>Ich lade gerade alles was ich an elektronischem Equipment besitze. Die 11 Stunden Flug wollen genutzt werden. Morgen um 9:30 geht es mit der Lufthansa von FRA nach LAX.
+Wenn alles klappt und ich fit genug bin, dann hoffe ich noch folgendes Event am Sonntag mit zu nehmen:  Ich kannte das irgendwie noch von den Berichten der letzten PDC, allerdings kann ich mir noch nicht vorstellen, warum das so IN sein soll. Ich lasse mich überraschen.
+Als ich mich ans Buchen des Hotel gemacht habe, war eigentlich schon alles Gute weg. Zumindest das, was so ganz in der Nähe war.</description>
+    </item>
+    
+    <item>
+      <title>Microsoft PDC 2008 – Endlich</title>
+      <link>/2008/10/23/microsoft-pdc-2008-endlich/</link>
+      <pubDate>Thu, 23 Oct 2008 06:11:00 +0000</pubDate>
+      
+      <guid>/2008/10/23/microsoft-pdc-2008-endlich/</guid>
+      <description>Ein Traum wird wahr. Seit dem ich mich mit Microsoft Technologie beschäftige und auch Zugriff auf Betasoftware habe, war einer meiner Träume, einmal auf die Primary Professional Developer Conference zu gehen. Letztes Jahr ist es ausgefallen… oder verschoben worden ;-) Aber diese Jahr ist es so weit. Ich fliege nach Los Angeles, CA.
+Wir machen gerade ein Projekt in dem es um Cloud Computing geht. Ich hoffe auf viele Infos aus der Basis und einen regen Austausch mit Leidensgenossen ;-) Zumindest auf der Microsoft Seite stehen wir was die Integration in die Cloud angeht noch ganz am Anfang. Das Framework 3.</description>
+    </item>
+    
+    <item>
+      <title>ItemStyle.xsl, CommonViewFields und die Lookup Column</title>
+      <link>/2008/10/23/itemstyle-xsl-commonviewfields-und-die-lookup-column/</link>
+      <pubDate>Thu, 23 Oct 2008 05:59:00 +0000</pubDate>
+      
+      <guid>/2008/10/23/itemstyle-xsl-commonviewfields-und-die-lookup-column/</guid>
+      <description>Lektion gelernt! Ich habe bei einem Kunden gestern der “Infrastructure Update” (IU) und die “Cumulative Updates August 2008” (CU) installiert. Auf der Startseite des Unternehmensintranet werden Nachrichten aus allen Bereichen abgebildet. Zur optischen Auffrischung und zur Kategorisierung wird ein Bild für das zugehörige Unternehmen (Unternehmens- oder Markenlogo) abgebildet. Der verwendete ContentType hat ein Feld “Unternehmen” vom Typ “Lookup”. uIm Content Query WebPart (CQWP) lese ich dann die ID des Lookup aus und nutze diese, um auf ein Bild als Source zu verweisen. Für solche Aktionen muss ja wie bei Heather Solomon beschrieben der WebPart mit den entsprechenden CommonViewFields “bestückt” werde.</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2008 Firewall, IIS7 und FTP mit SSL</title>
+      <link>/2008/09/22/windows-server-2008-firewall-iis7-und-ftp-mit-ssl/</link>
+      <pubDate>Mon, 22 Sep 2008 20:56:22 +0000</pubDate>
+      
+      <guid>/2008/09/22/windows-server-2008-firewall-iis7-und-ftp-mit-ssl/</guid>
+      <description>Heute ist der Tag der Windows Firewall und NETSH. Nachdem ich unserem Cloud SQL Flügel gemacht hatte, musste ich mich kurz dem FTP des IIS7 annehmen. Wichtig: Der FTP Server, der unter Features hinzugefügt werden kann ist der IIS6 FTP und kann auch auf dem Windows Server 2008 nicht überzeugen. Erst der Download von IIS.NET bringt den “echten” FTP Server auf die neuste MS Serverplattform. Es geht noch immer um den selben und nun geht es darum sicher FTP Daten auszutauschen. FTP im Standard macht da wenig Spaß. Die heruntergeladene Komponente des IIS kann aber mit SSL (TLS) umgehen. Mit Hilfe diese Funktion kann ich mein Login und den Transfer vor Mithörern schützen.</description>
+    </item>
+    
+    <item>
+      <title>PowerShell, NETSH, Windows Server 2008 Advanced Firewall und Dynamische IP Adresse</title>
+      <link>/2008/09/22/powershell-netsh-windows-server-2008-advanced-firewall-und-dynamische-ip-adresse/</link>
+      <pubDate>Mon, 22 Sep 2008 20:00:54 +0000</pubDate>
+      
+      <guid>/2008/09/22/powershell-netsh-windows-server-2008-advanced-firewall-und-dynamische-ip-adresse/</guid>
+      <description>Wir entwickeln gerade an einer Anwendung mit Cloud Komponenten. Wichtig… wir sind HIP… oder heißt das heute anders? In der Cloud hat den Vorteil, fast alles über HTTP(S) machen zu können. Das Arbeiten in der Cloud hat aber auch Nachteile… zum Beispiel, das es fast nur HTTP(S) gibt :-) Mir geht es hier nicht um Probleme anderer Leute, alternative Ansätze stehe nicht zur Diskussion… ich erzähle, das hier, weil ich damit gerade ein Problem hatte. Also zu den Details.
+Wir haben ein Server im Internet (sucht euch ein Hoster aus und stellt euch da ein Server vor). Dieser Server wird auch zu Entwicklungszwecken genutzt, da wir die Probleme des Web 2.</description>
+    </item>
+    
+    <item>
+      <title>YACP – Yet Another Chrome Post</title>
+      <link>/2008/09/03/yacp-yet-another-chrome-post/</link>
+      <pubDate>Wed, 03 Sep 2008 15:59:00 +0000</pubDate>
+      
+      <guid>/2008/09/03/yacp-yet-another-chrome-post/</guid>
+      <description>Ich als Google Reader User komme nicht drum herum, den neuen Stern am Browser Himmel auszuprobieren. Ich gehe nicht davon aus, dass ich meine Standardbrowser (IE7 bald IE8) wechseln werde. Ein Teil meiner Meinung hat Guy Barrette bereits ausgedruckt:
+Guy Barrette - Google Chrome - Random Thoughts
+Google braucht eine bessere Browserplattform fur seine WEB 2.0 Applikationen. Generell gibt es die Chance, auch einen großeren Happen am Browsermarkt zu bekommen. Einen neuen Browserkrieg wird es aber denke ich nicht geben. Dem Web Entwickler wird es immer mehr egal unter welchem Browser seine Site lauft. Eine Konkurrenzsituation wie zu Zeiten von Netscape 4.</description>
+    </item>
+    
+    <item>
+      <title>Kein SQL 2008 Filestream Support für SharePoint – noch nicht?</title>
+      <link>/2008/09/01/kein-sql-2008-filestream-support-fr-sharepoint-noch-nicht/</link>
+      <pubDate>Mon, 01 Sep 2008 12:59:35 +0000</pubDate>
+      
+      <guid>/2008/09/01/kein-sql-2008-filestream-support-fr-sharepoint-noch-nicht/</guid>
+      <description>Meine Einschätzung hat sich bestätigt: Der Namics SharePoint Blog hat jetzt wohl Feedback von Microsoft zum Thema &amp;ldquo;SQL 2008 BLOB Support&amp;rdquo; in SharePoint bekommen. Den vollen Artikel findet iher hier.
+Es wird allerdings Hoffnung gemacht, das daran gearbeitet wird. Ich für meinen Teil würde lieber andere Features in den neuen Versionen sehen, als so eine Funktion. Ich würde mich auch einfach über noch mehr und schnellere Bugfixes freuen. Zum Beispiel: Der AAM Bug des &amp;ldquo;Infrastructure Updates&amp;rdquo; scheint zumindest behoben, wenn er auch nocht nicht offiziell zum Download steht. Über einen PSS Call zu einem anderen Thema kam der mit rein, sobald ich das gestetet habe gibt es Feedback und bestimmt den offiziellen Download :-)</description>
+    </item>
+    
+    <item>
+      <title>Microsoft SQL Server 2008 und was es SharePoint bringt</title>
+      <link>/2008/08/26/microsoft-sql-server-2008-und-was-es-sharepoint-bringt/</link>
+      <pubDate>Tue, 26 Aug 2008 17:22:28 +0000</pubDate>
+      
+      <guid>/2008/08/26/microsoft-sql-server-2008-und-was-es-sharepoint-bringt/</guid>
+      <description>In meinem RSS Reader bin ich über einen Post von Namic gestolpert:
+http://sharepoint.namics.com/2008/08/moss_2007_auf_sql_2008_install.html
+Es werden Spekulationen geäußert, dass man mit Hilfe des SQL2K8 die BLOB&amp;rsquo;s also die Dateien in SharePoint auf die Platte auslagern könnte. Ich selber kann mit kein Out-Of-The-Box Funktionalität vorstellen. Es ist sicher wünschenswert, aber da es kein Transparentes Feature für die anwendenede Software (in diesem Fall SharePoint) ist, wären hierfür Codechanges notwendig. Microsoft bietet ja bereits eine Möglichkeit über die External BLOB Storage Funktion. Größtes Problem aus meiner Sichta: Es gibt keine Migration von einem Szenario (BLOB in DB und BLOB on DIsk) ins andere. Mehr Infos auch hier im Blog von Todd Carter.</description>
+    </item>
+    
+    <item>
+      <title>Microsoft SQL Server 2008 Feature Pack, August 2008 verfügbar</title>
+      <link>/2008/08/26/microsoft-sql-server-2008-feature-pack-august-2008-verfgbar/</link>
+      <pubDate>Tue, 26 Aug 2008 17:01:47 +0000</pubDate>
+      
+      <guid>/2008/08/26/microsoft-sql-server-2008-feature-pack-august-2008-verfgbar/</guid>
+      <description>Für die Installation verschiedener Komponenten im SharePoint Umfeld sind spezielle SQL Komponenten notwendig. Für den Project Server zum Beispiel werden folgende Features benötigt: * Microsoft SQL Server 2008 Native Client * Microsoft SQL Server 2005 Backward Compatibility Components * Microsoft SQL Server 2008 Analysis Services 10.0 OLE DB Provider
+Wer die Reporting Services in SharePoint integrieren will, benötigt folgendes: * Microsoft SQL Server 2008 Reporting Services Add-in for Microsoft SharePoint Technologies
+Für den SQL Server 2005 gab es dazu ein Feature Pack. Für den SQL Server 2008 gibt es das Ganze nun ebenfalls zum Download:
+http://www.microsoft.com/downloads/details.aspx?FamilyId=C6C3E9EF-BA29-4A43-8D69-A2BED18FE73C&amp;amp;displaylang=en
+
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Hilfe mein SQL Management Studio ist langsam</title>
+      <link>/2008/08/26/hilfe-mein-sql-management-studio-ist-langsam/</link>
+      <pubDate>Tue, 26 Aug 2008 16:18:03 +0000</pubDate>
+      
+      <guid>/2008/08/26/hilfe-mein-sql-management-studio-ist-langsam/</guid>
+      <description>Immer wieder habe ich Situationen, in denen ich beim Kunden sitze und zum Beispiel die SharePoint Datenbanken konfigurieren muss. Es kommt ab und an vor, dass ich 5 Minuten (mal mehr, mal weniger) auf das Öffnen des Management Studios warten muss. Der Grund war mir lange unbekannt&amp;hellip; bis eine Google Suche das Ergebnis brachte. Signierte Applikationen basieren wie sollte es anders sein auf Zertifikaten. Ob ein Zertifikat gültig ist oder nicht basiert auf verschieden Dingen. In unserem Fall der Microsoft Applikationen mit dem Start-Problem ist es aber meist der Check der &amp;ldquo;Certificate Revocation List&amp;rdquo;, ob das Zertifikat zurückgerufen wurde. Sollte der Server nicht über eine Internetverbindung zu der Microsoft CRL URL verfügen, dann kommt pro Check ein HTTP Request Timeout (default 30 Sekunden) zum Tragen.</description>
+    </item>
+    
+    <item>
+      <title>Visual Studio 2008 SP1 verfügbar – SQL 2008 ich komme</title>
+      <link>/2008/08/11/visual-studio-2008-sp1-verfgbar-sql-2008-ich-komme/</link>
+      <pubDate>Mon, 11 Aug 2008 19:07:00 +0000</pubDate>
+      
+      <guid>/2008/08/11/visual-studio-2008-sp1-verfgbar-sql-2008-ich-komme/</guid>
+      <description>Es ist soweit. Am Wochenende bin ich noch daran gescheitert meine SQL 2008 Client Tool zu installieren, weil das VS2008 eben noch nicht den SP1 Stand hat. Es gab es ja auch noch nicht final.
+
+Für heute angekündigt und tatsächlich über die MSDN Abo&amp;rsquo;s ausgeliefert, das fertige SP1 ist da.
+
+Endlich kann es los gehen.Wir haben gerade ein Projekt in der Pipeline, das einige Features aus dem SP1 nutzen soll und zusätzlich auf SQL2008 basiert (zumindest solange nichts besseres auf dem Markt exitiert).
+http://msdn.microsoft.com/en-us/subscriptions/default.aspx
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Microsoft SQL Server 2008 RTM/RTW</title>
+      <link>/2008/08/06/microsoft-sql-server-2008-rtmrtw/</link>
+      <pubDate>Wed, 06 Aug 2008 20:40:56 +0000</pubDate>
+      
+      <guid>/2008/08/06/microsoft-sql-server-2008-rtmrtw/</guid>
+      <description>Es ist so weit. Der Microsoft SQL Server 2008 (SQL2K8) ist raus. Die Jungs von IT Service sind mal wieder super fix unterwegs und ich kann mir morgen mein x64 SQL Packet abholen :-)
+Ankundigungen auf:
+1. [http://www.microsoft.com/presspass/press/2008/aug08/08-06SQLServer2008PR.mspx](http://www.microsoft.com/presspass/press/2008/aug08/08-06SQLServer2008PR.mspx) 2. [http://bink.nu/news/microsoft-releases-sql-server-2008.aspx](http://bink.nu/news/microsoft-releases-sql-server-2008.aspx)  Folgende Seite sollte man gesehen haben:
+1. [Features Supported by the Editions of SQL Server 2008](http://msdn.microsoft.com/en-us/library/cc645993(SQL.100).aspx) 2. [How to buy](http://www.microsoft.com/sqlserver/2008/en/us/how-to-buy.aspx) &amp;lt;strike&amp;gt;(Fehlt noch) :-(&amp;lt;/strike&amp;gt; 3. NEW: [Pricing](http://www.microsoft.com/sqlserver/2008/en/us/pricing.aspx)  Es zeigt sich schnell, dass einige interessante Features nur in der Enterprise Edition vorhanden sind.
+Cooles Logo, wenn ich das mal anmerken darf :-)
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>64-bit? Ist die &#34;Developer-Welt&#34; schon so weit?</title>
+      <link>/2008/08/06/64-bit-ist-die-developer-welt-schon-so-weit/</link>
+      <pubDate>Wed, 06 Aug 2008 12:57:15 +0000</pubDate>
+      
+      <guid>/2008/08/06/64-bit-ist-die-developer-welt-schon-so-weit/</guid>
+      <description>Eure Meinung ist gefragt!
+ Ich bin kurz davor meinen Lenovo X61 Tablet PC neu zu installieren. Ich hatte einen 64-Bit Verusch vor einem Jahr direkt abgebrochen, weil einfach noch nichts da war&amp;hellip; zum Beispiel der Live Writer mit dem ich das hier schreibe. Gestern kam nun ein Softwareupdate fur mein USB2DVI Adapter von DisplayLink. Er ist erstmals auch als 64-bit fur Vista verfugbar. Was nun? Es gibt zwei favorisierte Losungen:
+1. Einfach bei 32-bit bleiben und die paar MB RAM der 4 GB einfach ungenutzt lassen. 2. Auf 64-bit wechseln und den vollen RAM nutzen, dafur aber einige Applikationen nur in VMWare oder Virtual PC betreiben  Jetzt zum Betreff meines Posts.</description>
+    </item>
+    
+    <item>
+      <title>WOW – delicious Updated</title>
+      <link>/2008/08/03/wow-delicious-updated/</link>
+      <pubDate>Sun, 03 Aug 2008 19:26:26 +0000</pubDate>
+      
+      <guid>/2008/08/03/wow-delicious-updated/</guid>
+      <description>Zuruck aus dem Urlaub (hab also noch nicht mit dem Bloggen aufgehort) offne ich den IE und einer meiner Default-Tabs ist neben Google Reader meine Site bei delicious. Es gab ein Layout Update. Die Seite hat bisher durch ihrer Einfachheit geglanzt. Mit dem Update wurde die Optik aufgebessert und ich bin hin und weg :-) Auf Wikipedia finde ich eine passende Umschreibung:
+   _**Delicious**_ is a term meaning &#34;highly pleasing or delightful&#34;, normally in the context of [flavour](http://en.wikipedia.org/wiki/Flavour).    Quelle: Wikipedia
+
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>OCS Presence Screensaver</title>
+      <link>/2008/07/23/ocs-presence-screensaver/</link>
+      <pubDate>Wed, 23 Jul 2008 19:52:00 +0000</pubDate>
+      
+      <guid>/2008/07/23/ocs-presence-screensaver/</guid>
+      <description>e-office - Home
+via Ton Stegeman
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>GraffitiCMS – Comment Reply Notifier aktiviert</title>
+      <link>/2008/07/14/graffiticms-comment-reply-notifier-aktiviert/</link>
+      <pubDate>Mon, 14 Jul 2008 19:02:07 +0000</pubDate>
+      
+      <guid>/2008/07/14/graffiticms-comment-reply-notifier-aktiviert/</guid>
+      <description>Nachdem ich tatsachlich einige Comments fur mein &amp;ldquo;Unit-Testing&amp;quot;-Beitrag bekommen habe, habe ich eine Funktion aktiviert, die ich besonders schon finde:
+
+Bei einem Reply auf ein Comment gibt es eine Mail an den ursprunglichen Autor des Comments solange dieser seine Mailadresse (die nicht dargestellt wird) angegeben hat. Download der GraffitiExtras gibt es auf diesem CodePlex Projekt: GraffitiExtras.
+
+Ciao marco</description>
+    </item>
+    
+    <item>
+      <title>Unit-Testing und die Projektanforderungen</title>
+      <link>/2008/07/13/unit-testing-und-die-projektanforderungen/</link>
+      <pubDate>Sun, 13 Jul 2008 21:32:58 +0000</pubDate>
+      
+      <guid>/2008/07/13/unit-testing-und-die-projektanforderungen/</guid>
+      <description>Eben in dem Blog von Keyvan Nayyeri gelesen:
+   ##### **Unit Testing is Not Always Good**     You may be interested to know that how much of unit testing is done for Waegis. Actually I started the development with heavy unit tests for almost everything. Waegis has a core platform that I tried to develop with the best quality and accuracy so I unit tested it carefully. After 1-1.5 months of development I abruptly believed that this project is going to take much longer than my initial estimation. Normally taking longer wasn&#39;t bad but for a self-managed project this could cause to failures so I had to make a new decision.</description>
+    </item>
+    
+    <item>
+      <title>Nochmal: Default Zustand der Windows Server 2008 Firewall</title>
+      <link>/2008/07/06/nochmal-default-zustand-der-windows-server-2008-firewall/</link>
+      <pubDate>Sun, 06 Jul 2008 21:23:05 +0000</pubDate>
+      
+      <guid>/2008/07/06/nochmal-default-zustand-der-windows-server-2008-firewall/</guid>
+      <description>Ich hatte meine Erfahrungen bereits geschildert: Windows Server 2008 und der Default Zustand der Firewall
+Lese eben meine Feeds und habe folgenden Artikel gefunden: SQL Server Security: SQL Server and the Windows Server 2008 Firewall
+via Michael Howard&amp;rsquo;s
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>KB950439: Problem bei SharePoint Suche mit zusammengesetzten deutschen Worten</title>
+      <link>/2008/07/04/kb950439-problem-bei-sharepoint-suche-mit-zusammengesetzten-deutschen-worten/</link>
+      <pubDate>Fri, 04 Jul 2008 08:25:31 +0000</pubDate>
+      
+      <guid>/2008/07/04/kb950439-problem-bei-sharepoint-suche-mit-zusammengesetzten-deutschen-worten/</guid>
+      <description>Eben in dem Blog von Benjamin Wegner gefunden:
+Onlineblog - Sharepoint und Riesentorte
+Leider alles nicht so witzig, wie es sich anhort. Die Installation alleine hilft nicht, die Webparts mussen entsprechend angepaßt werden. Was nicht richtig durch kommt, die Personensuche ist ebenfalls betroffen. Namen wie &amp;ldquo;Mustermann&amp;rdquo; wurden ebenfalls nicht als Treffer auftauchen.
+ Ich hab einen der großeren Kunden betreut, der noch immer von dem Problem betroffen ist. Den Hotfix, den wir damals getestet haben (der hier nun offentlich ist), hat zwar das Problem gelost, an sich handelt es sich aber lediglich um einen Workaround. Die Losung ware, den Wordbreakter entsprechend zu korrigieren.</description>
+    </item>
+    
+    <item>
+      <title>A reliability and performance update is available for Windows Vista SP1-based computers</title>
+      <link>/2008/07/04/a-reliability-and-performance-update-is-available-for-windows-vista-sp1-based-computers/</link>
+      <pubDate>Fri, 04 Jul 2008 08:09:02 +0000</pubDate>
+      
+      <guid>/2008/07/04/a-reliability-and-performance-update-is-available-for-windows-vista-sp1-based-computers/</guid>
+      <description>Heute auf Bink.neu gelesen und schon wieder ein Problem weniger. Ich war von folgendem Bug betroffen:
+This update improves the reliability of Windows Vista SP1-based computers that experience issues in which large applications cannot run after the computer is turned on for extended periods of time. For example, when you try to start Excel 2007 after the computer is turned on for extended periods of time, a user may receive an error message that resembles the following:
+EXCEL.EXE is not a valid Win32 application
+Installiert udn los gehts.
+
+Quelle: A reliability and performance update is available for Windows Vista SP1-based computers</description>
+    </item>
+    
+    <item>
+      <title>Fehler beim Deploy mit Hilfe der VSeWSS V.1.2 – CVTRES.EXE</title>
+      <link>/2008/06/30/fehler-beim-deploy-mit-hilfe-der-vsewss-v-1-2-cvtres-exe/</link>
+      <pubDate>Mon, 30 Jun 2008 05:32:00 +0000</pubDate>
+      
+      <guid>/2008/06/30/fehler-beim-deploy-mit-hilfe-der-vsewss-v-1-2-cvtres-exe/</guid>
+      <description>Ich habe eben versucht, auf dem Microsoft Demo Virtual PC (WSSv3 + SP1) eine SiteDefinition zu deployen. Es gab leider nur folgende Fehlermeldung:
+&amp;lt;span class=&amp;quot;lnum&amp;quot;&amp;gt; 1:&amp;lt;/span&amp;gt; Error 1 Unable to generate a temporary class (result=1). &amp;lt;span class=&amp;quot;lnum&amp;quot;&amp;gt; 2:&amp;lt;/span&amp;gt; error CS0016: Could not write to output file &#39;c:Documents and SettingsAdministratorLocal SettingsTempxyqxz-fg.dll&#39; -- &#39;Could not execute CVTRES.EXE.&#39; &amp;lt;span class=&amp;quot;lnum&amp;quot;&amp;gt; 3:&amp;lt;/span&amp;gt; 0 0  Kurze Suche in Google brachte folgendes:
+http://forums.msdn.microsoft.com/en-US/msbuild/thread/b93ea3ff-8aa1-4893-a6bf-c4c064633528/
+Die folgenden Commands haben dann tatsachlich die LKosung gebracht:
+devenv -resetsettings
+devenv -resetskippkgs
+devenv -safemode
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Deploy Report Model (Microsoft SQL 2008) im SharePoint Integration Mode</title>
+      <link>/2008/06/24/deploy-report-model-microsoft-sql-2008-im-sharepoint-integration-mode/</link>
+      <pubDate>Tue, 24 Jun 2008 13:00:00 +0000</pubDate>
+      
+      <guid>/2008/06/24/deploy-report-model-microsoft-sql-2008-im-sharepoint-integration-mode/</guid>
+      <description>Ich hatte ja schon etwas uber die Zusammenarbeit von beiden Produkten geschrieben. Der grosse Installationspost der beiden Tools ist noch in der Mache :-) Vorab folgende Info, die mich wieder etwas Zeit gekostet hat.
+Ich wollte eine Report Model aus dem Visual Studio 2008 in den SharePoint deployen. Visual Studio hat den Deploy aber ur mit folgender Meldung quitiert: 
+Die Losung liegt in der Konfiguration der Deployment Pfade: 
+Nachzulesen ist das ganze hier in der MSDN: http://msdn.microsoft.com/en-us/library/bb283155(SQL.100).aspx
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Project Server – Datenanalyse ActiveX zeigt OLAP Fehler</title>
+      <link>/2008/06/24/project-server-datenanalyse-activex-zeigt-olap-fehler/</link>
+      <pubDate>Tue, 24 Jun 2008 12:59:30 +0000</pubDate>
+      
+      <guid>/2008/06/24/project-server-datenanalyse-activex-zeigt-olap-fehler/</guid>
+      <description>In einer der Kundenumgebungen lauft neben der SharePoint Farm auch ein Microsoft Office Project Server 2007 (MOPS). Wir hatten in der Vergangenheit schon Proleme mit dem Einrichten der OLAP Cubes. Es fuhrte bis zu einem MS Support Case, der anschließend dafur sorgte, dass die MSDN Dokumentation entsprechend aktualisiert wurde. Leider ist es nicht der letzte Fehler in diesem Umfeld. Ich habe jetzt eine Anfrage bekommen, weil die Datenanalyse nicht funktioniert. Das ActiveX Control hinter dem Navigationspunkt ist ein Office Web Components (OWC) Element. Dieses Element baut im Hintergrund eine OLEDB Verbindung zum Microsoft SQL 2005 - Analaysis Sever (SSAS) auf. Der Kunde hatte nun das klassisch IT Probelm.</description>
+    </item>
+    
+    <item>
+      <title>Install Microsoft SQL Server 2008 Reporting Services in SharePoint Integration Mode on Windows Server 2008</title>
+      <link>/2008/06/24/install-microsoft-sql-server-2008-reporting-services-in-sharepoint-integration-mode-on-windows-server-2008/</link>
+      <pubDate>Tue, 24 Jun 2008 12:51:37 +0000</pubDate>
+      
+      <guid>/2008/06/24/install-microsoft-sql-server-2008-reporting-services-in-sharepoint-integration-mode-on-windows-server-2008/</guid>
+      <description>In meinem Vorgangerpost habe ich ja kurz beschrieben, was fur Hurden das Add-In des Report Servers (MS SQL 2008) aufstellt und wie man druber kommt. Grundsatzlich bleibt anzumerken, dass der Microsoft SQL Server 2008 ohne echten IIS auskommt. Seit 2005 konnte er so schon WebServices direkt ohne WebServer anbieten. Allerdings wurde fur die Reporting Services (SSRS) in der Version 2005 noch ein echter IIS benotigt. Mit dem aktuellen SQL 2008 CTP Feb ist dies nicht mehr notig. Der SSRS lauft komplett im SQL uber HTTP.SYS.
+Dieser Post widmet sich kurz der Installation der Serverseite des SSRS. Es gibt namlich ein paar Änderungen&amp;hellip; sehr grundsatzliche Änderungen:</description>
+    </item>
+    
+    <item>
+      <title>Wie installiere ICH SharePoint in einer Farm?</title>
+      <link>/2008/06/24/wie-installiere-ich-sharepoint-in-einer-farm/</link>
+      <pubDate>Tue, 24 Jun 2008 07:28:27 +0000</pubDate>
+      
+      <guid>/2008/06/24/wie-installiere-ich-sharepoint-in-einer-farm/</guid>
+      <description>Version 0.1 - 2008-05-07 Version 0.2 - 2008-06-24 Version 0.3 - 2009-06-24 (SP2, CU, IIS7, SQL2K8)
+Vorbedingungen:
+* Betriebssystem und alles weitere Software ist in der Hauptsprache Englisch * OS und Software ist 64-Bit * Alle Server haben min. 4 GB RAM * Der Datenbankserver hat 8 GB RAM und min. 2 CPU&#39;s mit 2 Cores * Min. 2 Partitionen mit zwei getrennten Plattensystemen * PowerShell auf allen Sharepoint Servern für Scripting  Über die Punkte oben kann man streiten, aber das Sizing ist für mich min. wenn ein Kunde ein Farm mit zwei SharePoint und einem DB Server aufbaut. Die Hardware ist so oder so 64-bit fähig und 8 GB RAM sind heute günstig zu erwerben.</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2008 – IIS7 – Kerberos Kernel Mode Authentication</title>
+      <link>/2008/06/24/windows-server-2008-iis7-kerberos-kernel-mode-authentication/</link>
+      <pubDate>Tue, 24 Jun 2008 07:20:30 +0000</pubDate>
+      
+      <guid>/2008/06/24/windows-server-2008-iis7-kerberos-kernel-mode-authentication/</guid>
+      <description>Auf einer internen Fortbildung hatte ich mir den IIS7 angesehen. Eine der unscheinbarsten Änderungen trifft alle, die sich mit Kerberos auf einem IIS auseinander setzen mussen. Meine SharePoint Installationen sind also in Zukunft davon betroffen. Der Internet Information Server 7 (IIS7) kommt in der Default Konfiguration mit der Einstellung &amp;ldquo;Enable Kernel-mode authentication&amp;rdquo; gleich ON daher. Damit unterscheidet sich das Auflosen der Service Principlal Names (SPN) drastisch von der Art, die der IIS6 durchfuhrt. Normalerweise wurde der SPN auf dem Application Pool (AppPool) Acount gesucht. Also auf einem Domain Acount oder auf dem Machine Account, wenn es der &amp;ldquo;Network Service&amp;rdquo; oder das &amp;ldquo;Local System&amp;rdquo; ist.</description>
+    </item>
+    
+    <item>
+      <title>Content Query Webpart bringt W3P zum Absturz</title>
+      <link>/2008/06/24/content-query-webpart-bringt-w3p-zum-absturz/</link>
+      <pubDate>Tue, 24 Jun 2008 06:04:36 +0000</pubDate>
+      
+      <guid>/2008/06/24/content-query-webpart-bringt-w3p-zum-absturz/</guid>
+      <description>Ich hatte jetzt bei einer SharePoint Intranet Installation ein Problem bei der Darstellung eines Content Query WebParts (CQWP). Auf der Startseite und einigen SubSites wurden uber ein CQWP alle Artikel (CMS Elemente) eines ContentTyps dargestellt. Ich habe mich an das Standardverfahren gehalten.
+1. Content Query WebPart in eine WebPartzone ziehen 2. Den WebPart exportieren 3. CommonViewField um die notigen Felder erweitern 4. WebPart importieren 5. Neuen XSLT Style anlegen fur die Darstellung (ItemStyle.xsl)   6. XSLT Funktion fur das entfernen der HTML Tags einsetzen und anwenden 7. WebPart auf den Startseiten plazieren
+Wie nicht anders zu erwarten hat alles super funktioniert.</description>
+    </item>
+    
+    <item>
+      <title>Doppelte SPN’s finden</title>
+      <link>/2008/06/19/doppelte-spns-finden/</link>
+      <pubDate>Thu, 19 Jun 2008 13:45:32 +0000</pubDate>
+      
+      <guid>/2008/06/19/doppelte-spns-finden/</guid>
+      <description>Meine SharePoint Installationen sind in der Regel Intranet Installationen. Je nach Szenario ist Kerberos uber NTLM als Authentifizierung zu beorzugen. Es ist schwer mit Pauschalen zu arbeiten, aber in der Regel empfehle ich den EInsatz von Kerberos. Die Intrastruktur laßt sich so schnell an wachsende Aufgaben (Reporting, OTP, etc) anpassen. Beim Setzen der Service Principal Names (SPN) ist es wichtig, das der Service nur auf einm einzigen Objekt im Active Directory (AD) liegt. Zum Setzen und Auslesen der SPN&amp;rsquo;s gibt es SETSPN.exe aus dem Ressource Kit (oder in Windows Server 2008 bereits enthalten). In der W2K8 Version von SETSPN kann ich beim Hinzufugen gleich auf doppelte Eintrage prufen lassen.</description>
+    </item>
+    
+    <item>
+      <title>Ein Schritt weiter in die Web 2.0 Welt</title>
+      <link>/2008/06/16/ein-schritt-weiter-in-die-web-2-0-welt/</link>
+      <pubDate>Mon, 16 Jun 2008 06:50:00 +0000</pubDate>
+      
+      <guid>/2008/06/16/ein-schritt-weiter-in-die-web-2-0-welt/</guid>
+      <description>Ich versuche gerade mein Leben im WEB neu zu ordnen. Die Ausrichtung auf Web 2.0 Dienste (wenn es so was überhaupt gibt) geht heute ein Schritt weiter. Kurz die Historie: * Ich nutzt Google Reader für RSS und Share dort interessante Posts anderer Blogger * Ich habe einen Blog, den ich mit Windows Live Writer mit Posts und Tags füllen kann * Ich analysiere mein WebSite-Traffic mit Google Analytics * Ich geschäftlich bei Xing registriert * Ich nutze privat Wer-kennt-wen * Ich habe ein Flickr Account (ohne ihn bisher zu nutzen) für Bilder, die ich über die Windows Live Photo Gallery Software online stellen kann * Ich speichere meine Bookmarks bei del.</description>
+    </item>
+    
+    <item>
+      <title>Angekommen: Neues Zuhause für meinen Blog</title>
+      <link>/2008/06/15/angekommen-neues-zuhause-fr-meinen-blog/</link>
+      <pubDate>Sun, 15 Jun 2008 19:25:00 +0000</pubDate>
+      
+      <guid>/2008/06/15/angekommen-neues-zuhause-fr-meinen-blog/</guid>
+      <description>Ab heute will ich es mit einem neuen Zuhause mit meinem Blog versuchen. Ein paar Posts werde ich nich auf beiden aktiv werden, aber ich will möglichst schnell den Live Space Blog schließen.
+Neues Heim: http://marcoscheel.de
+Ich habe auf Basis von GraffitiCMS meinen Blog neu aufgezogen. Schaut doch auch mal auf die Seite. Das Layout ist ein angepaßtes Theme. Mehr zum Thema GraffitiCMS vielleicht in den nächsten Posts.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>SharePoint Disk Based Blob Cache</title>
+      <link>/2008/06/13/sharepoint-disk-based-blob-cache/</link>
+      <pubDate>Fri, 13 Jun 2008 09:40:00 +0000</pubDate>
+      
+      <guid>/2008/06/13/sharepoint-disk-based-blob-cache/</guid>
+      <description>Wir implementieren gerade eine SiteCollection in einem Portal in dem es darum geht Video&amp;rsquo;s die aus einer Document Library kommen in einem Flash Movie darzustellen. Um die Performance und die Wartbarkeit zu halten haben wir folgende Dinge eingerichtet:
+ Eigene ContentDB  Wir haben die SiteCollection uber STSADM angelegt und einer leeren ContentDB auf dem SQL Server zugewiesen. Anschließend haben wir die ContentDB im Central Admin &amp;ldquo;Offline&amp;rdquo; genommen, so das die Datenbank nur fur Video Content genutzt wird. Fur den Backup Prozess kann man so einen anderen Schedule hinterlegen, da hier nicht so viel &amp;ldquo;Bewegung&amp;rdquo; existiert und es primar um grosse Dateien geht.</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2008 und der Default Zustand der Firewall</title>
+      <link>/2008/06/13/windows-server-2008-und-der-default-zustand-der-firewall/</link>
+      <pubDate>Fri, 13 Jun 2008 08:24:00 +0000</pubDate>
+      
+      <guid>/2008/06/13/windows-server-2008-und-der-default-zustand-der-firewall/</guid>
+      <description>Aus der Woche in der ich mich intensiver mit dem Windows Server 2008 und dem IIS7 beschäftigt habe, hat sich ein Detail eingebrannnt:
+Achtung: Firewall ist by default eingeschaltet!
+Total sicher, aber auch total ungewohnt. Ich bin gleich drei mal in den Fehler gelaufen: 1. IIS7 FTP Server von einem Vista Client aus testen 2. SharePoint Server in die Farm joinen 3. Reporting Services Integration auf dem Shareoiint aktivieren
+
+Ich habe die Firewall nicht abgeschaltet, sondern einfach die Ports, die ich jetzt benötigte, eingetragen als Exception. Es ist einfach Gewohnheitssache. Ich habe nicht ganz so viel Zeit verloren, da ich nicht so viele Ports benötige, aber Kollegen in deutlich komplexeren Szenarien, hat es einiges mehr an Zeit gekostet.</description>
+    </item>
+    
+    <item>
+      <title>2:1 für die Türkei</title>
+      <link>/2008/06/11/21-fr-die-trkei/</link>
+      <pubDate>Wed, 11 Jun 2008 20:40:00 +0000</pubDate>
+      
+      <guid>/2008/06/11/21-fr-die-trkei/</guid>
+      <description>Das wird einen lange Nacht in Offenbach.
+
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Mein RSS Feed ändert sich/soll sich ändern</title>
+      <link>/2008/06/10/mein-rss-feed-ndert-sichsoll-sich-ndern/</link>
+      <pubDate>Tue, 10 Jun 2008 17:08:00 +0000</pubDate>
+      
+      <guid>/2008/06/10/mein-rss-feed-ndert-sichsoll-sich-ndern/</guid>
+      <description>Ich bin jetzt ein Mitglied der FeedBurner Familie. Ab sofort ist mein RSS Feed über folgende URL zu erreichen:
+http://feeds.feedburner.com/marcoscheel
+Die Idee dahinter ist den Mehrwert, den so ein Dienst bringt, auszunutzen. Ich bin mir nicht sicher, ob ich der Microsoft Windows Live Space Plattform für Blogging treu bleibe. Ich bin sehr begeistert über die Funktionen und die Integration in den Windows Live Writer. Allerdings fehlen doch viele Dinge: 1. Statistiken
+Sie sind schlicht nicht vorhanden:
+ 2. Kommentare
+Das Handling ist mehr als suboptimal. 3. Integration von weiteren Diensten
+Solange ich meinen Feed bei Feedburner Manage, bin ich in der Lage meinen Blog so oft umzuziehen wie ich möchte!</description>
+    </item>
+    
+    <item>
+      <title>Windows SharePoint Services 3.0 Tools: Visual Studio 2008 Extensions, Version 1.2</title>
+      <link>/2008/06/05/windows-sharepoint-services-3-0-tools-visual-studio-2008-extensions-version-1-2/</link>
+      <pubDate>Thu, 05 Jun 2008 17:24:00 +0000</pubDate>
+      
+      <guid>/2008/06/05/windows-sharepoint-services-3-0-tools-visual-studio-2008-extensions-version-1-2/</guid>
+      <description>Auf dem Microsoft SharePoint Team Blog gab es eben die Ankündigung, dass es nun die SharePoint Extenions für Visual Studio 2008 zum Download gibt.
+http://blogs.msdn.com/sharepoint/archive/2008/06/04/announcing-the-vsewss-version-1-2.aspx
+Die fehlende Verfügbarkeit hat mich schon oft genervt. Endlich ist es vorbei. Es gibt keine neuen Features. Aber das beste Feature ist folgendes:
+
+Es läßt sich unter Vista installieren. Allerdings&amp;hellip; eben in den Comments gelesen&amp;hellip; es gibt kein 64-Support :-S Naja man kann nicht alles haben.
+
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>SharePoint Links zum Bookmarken</title>
+      <link>/2008/06/04/sharepoint-links-zum-bookmarken/</link>
+      <pubDate>Wed, 04 Jun 2008 11:48:00 +0000</pubDate>
+      
+      <guid>/2008/06/04/sharepoint-links-zum-bookmarken/</guid>
+      <description>Ich habe gestern beim Babysitten etwas Zeit gehabt und mal wieder meine Feeds gelesen. Dabei bin ich über zwei meiner Meinung nach wichtigen Artikel gestoplert: 1. Kerberos, SharePoint und Windows Server 2008
+Ich wollte ja selber was zum Thema schreiben, aber dieser Blog nimmt mir die Arbeit ab. Alle die SharePoint auf W2K8 installieren wollen und ernsthaft kerberos betreiben wollen, müssen diesen Artikel lesen
+Using Kerberos with SharePoint on Windows Server 2008 2. Sharepoint Post SP1 Hotfixes
+Es ist nicht einfach da den Überblick zu behalten. der Kollege Spencer Harbar (ist eine RSS Subscripion mehr als Wert) macht im Moment zumindest den Versuch den Überblick zu behalten:</description>
+    </item>
+    
+    <item>
+      <title>ContentTypes und was passiert bei Änderungen</title>
+      <link>/2008/06/02/contenttypes-und-was-passiert-bei-nderungen/</link>
+      <pubDate>Mon, 02 Jun 2008 11:43:00 +0000</pubDate>
+      
+      <guid>/2008/06/02/contenttypes-und-was-passiert-bei-nderungen/</guid>
+      <description>Ich wollte jetzt einmal kurz (auch für mich als reminder) runter schreiben, was passiert, wenn ich verschiedene Dinge an einem ContentType ändere: 1. **Vorbedingung
+**
+Alle folgenden Aktionen haben eine Einstellung für die Aktualisierungsweitergabe )&amp;ldquo;Update List and Site Content Types&amp;rdquo;). Ob bestehende Listen aktualisiert, werden hängt von der Wahl der entsprecheden Option ab. Alle folgenden Aktionen werden auf dem ContentType gemacht! 2. Hinzufügen einer Spalte
+Beim Einfügen werden alle Listen, die den ContentType verwendet, entsprechend der Einstellung aktualisiert. Der Liste wird eine neue Spalte hinzugefügt. Der Wert der Spalte für bestehende Einträge wird **nicht **auf den definierten Default-Wert gesetzt! Die neue Spalte ist also ungefüllt.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint und Microsoft SQL Server 2008 Reporting Add-in Installation</title>
+      <link>/2008/05/30/sharepoint-und-microsoft-sql-server-2008-reporting-add-in-installation/</link>
+      <pubDate>Fri, 30 May 2008 10:12:00 +0000</pubDate>
+      
+      <guid>/2008/05/30/sharepoint-und-microsoft-sql-server-2008-reporting-add-in-installation/</guid>
+      <description>Ich habe eben versucht die Reporting Integration für den SQL2008 auf dem MOSS Server zu aktivieren. Die Installation ist ohne Fehler abgebrochen. Die Lösung gibt es in der Readme von MS zum Add-In:
+Readme:
+http://download.microsoft.com/download/0/9/4/09438108-4f1d-4734-8100-4ff73d549082/Readme_rsaddin.htm
+Download aus dem February CTP Feature Pack des SQL 2008:
+http://www.microsoft.com/downloads/details.aspx?FamilyId=D68DE3C9-60A9-49C9-A28C-5C46BBC3356F&amp;amp;displaylang=en
+Die Installation läuft anders als das Add-In aus dem SQL 2005 SP2 Feature Pack. Es muss kein Cab per STSADM registriert werden, sondern das MSI erledigt die ganze Arbeit. Mein Testenviroment hat wenig RAM, da alles auf meinem Lenovo x61T mit 4 GB unter Vista läuft. Das Setup schlägt fehl und die Readme hat mir dann weiter geholfen.</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2008 und fehlender POP Service</title>
+      <link>/2008/05/30/windows-server-2008-und-fehlender-pop-service/</link>
+      <pubDate>Fri, 30 May 2008 06:45:00 +0000</pubDate>
+      
+      <guid>/2008/05/30/windows-server-2008-und-fehlender-pop-service/</guid>
+      <description>Ich beschäftige mich gerade mit dem Windows Server 2008 (wird ja auch Zeit) und schaue mir speziell den IIS an. Einen Post dazu wird es sicher in Zukunft geben. Meinem Interesse am W2K8 Server gilt natürlich auch speziell der SharePoint-Fähigkeit. Erstes Fazit ist toll, aber auch dazu später mehr. Negativ aufgefallen ist nun der fehlende POP3 Service. Ob die Mehrheit ihn benötigt, ist jetzt nicht die Frage. Für ein (schlanke) SharePoint Testumgebung war es allerdings die einfachste Möglichkeit, eine Szenario samt Mail zu realisieren.
+Ich bin natürlich nicht der einzige, der ihn vermißt:
+http://patrickyong.net/2008/05/15/pop3-server-for-windows-server-2008/
+Die Lösung habe ich nicht getestet, da ich überlege, ob ich nicht den hMailServer für so was nehme.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint (MOSS) und Kerberos</title>
+      <link>/2008/05/16/sharepoint-moss-und-kerberos/</link>
+      <pubDate>Fri, 16 May 2008 11:27:00 +0000</pubDate>
+      
+      <guid>/2008/05/16/sharepoint-moss-und-kerberos/</guid>
+      <description>Ich mache viele reine Intranet-Konfigurationen/Installationen. Einen grossen Teil davon versuche ich, mit Kerberos Authentifizierung zu realisieren. Es ist etwas an Vorarbeit nötigt, aber der Mehrwert, wenn es um mehr als reinen CMS Content geht, ist doch recht gross. Szenarien sind folgende: * Zugreifen auf die Mailbox der Users (Unread-Items, Kalenderabfragen, &amp;hellip;) * Zugreifen auf Datenbanken (der Loginname steht für personalisierte Abfragen zur Verfügung, etablierte Security auf dem SQL Server kann genutzt werden, &amp;hellip;) * Zugreifen auf KPI&amp;rsquo;s aus dem Analysis Server (MS SQL 2005) * Zugreifen auf dem Fileserver aus SharePoint Code * RSA Authentifizierung ohne Passwort (nur mit Contrained Kerberos Delegation) * &amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Move SQL Server Database Files</title>
+      <link>/2008/05/13/move-sql-server-database-files/</link>
+      <pubDate>Tue, 13 May 2008 21:04:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/move-sql-server-database-files/</guid>
+      <description>Ich komme immer wieder in die Situation, dass ich die System oder zumindest die tempdb einer MS SQL Server Installation umlegen muss. Anweisungen für das Vorgehen findet man hier:
+http://support.microsoft.com/kb/224071/en-us
+Am einfachsten und wichtigsten ist das Umkonfigurieren der tempb.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Interessante Links</title>
+      <link>/2008/05/13/interessante-links/</link>
+      <pubDate>Tue, 13 May 2008 21:00:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/interessante-links/</guid>
+      <description>Einfach mal so in den Raum gestellt: * Chris O&amp;rsquo;Brien&amp;rsquo;s blog: Using CustomAction to modify system pages * Free SQL Server tools that might make your life a little easier
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Eigene Style Informationen im WYSIWYG-Editor von SharePoint</title>
+      <link>/2008/05/13/eigene-style-informationen-im-wysiwyg-editor-von-sharepoint/</link>
+      <pubDate>Mon, 12 May 2008 22:45:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/eigene-style-informationen-im-wysiwyg-editor-von-sharepoint/</guid>
+      <description>Das Tool der Wahl heißt SharePoint Designer und wie es geht erklärt MS selbst:
+Create HTML Editor styles - SharePoint Designer - Microsoft Office Online
+
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Fehler beim Erstellen eines Zeitplans im SSP</title>
+      <link>/2008/05/13/fehler-beim-erstellen-eines-zeitplans-im-ssp/</link>
+      <pubDate>Mon, 12 May 2008 22:45:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/fehler-beim-erstellen-eines-zeitplans-im-ssp/</guid>
+      <description>Ich habe jetzt schon einige Installation mit dem Microsoft Office SharePoint Server 2007 (MOSS) gemacht. In der Regel sind es komplexere Installationen. Es sind also neben dem SQL Server noch zwei weitere Server in der SharePoint Farm.
+Bei der Konfiguration gehe ich immer Schritt für Schritt vor. Installation der Software, Konfiguration auf dem Server &amp;ldquo;Application Server&amp;rdquo; für Central Admin Host, den Rest der Farm joinen, SSP anlegen (SSP Application und MySite Application anlegen), alle Optionen unter &amp;ldquo;Operations&amp;rdquo;, alle Optionen unter &amp;ldquo;Application Management&amp;rdquo; und zum Schluss alle Optionen des SSP. So weit hat sich Routine eingestellt und es ist mit keiner Komplikation zu rechnen.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint (Coding) und Speicherverwaltung</title>
+      <link>/2008/05/13/sharepoint-coding-und-speicherverwaltung/</link>
+      <pubDate>Mon, 12 May 2008 22:45:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/sharepoint-coding-und-speicherverwaltung/</guid>
+      <description>Folgende Artikel behandeln das Thema oder die Auswirkung: * Best Practices: Using Disposable Windows SharePoint Services Objects
+http://msdn2.microsoft.com/en-us/library/aa973248.aspx * Best Practices: Common Coding Issues When Using the SharePoint Object Model
+http://msdn2.microsoft.com/en-us/library/bb687949.aspx * Stefan Gossner: Troubleshooting SPSite/SPWeb leaks in WSS v3 and MOSS 2007
+http://blogs.technet.com/stefan_gossner/archive/2008/05/07/troubleshooting-spsite-spweb-leaks-in-wss-v3-and-moss-2007.aspx
+ Es ist leider noch immer so, dass hinter den .NET Schichten eine Menge (D)COM(+) liegt. In der .NET Welt ist man &amp;ldquo;leider&amp;rdquo; ja nicht mehr gezwungen, sich gezielt um speicher zu kümmern. Leider wird das unerfahrenen aber auch erfahrenen Entwicklern immer wieder zum Stolperstein. Genau wie beim Zugriff auf Datenbanken (Thema: Connection Pool Limit) und beim Lesen und Schreiben von Dateien, kommt es immer wieder zu Problemen.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint und Permissions</title>
+      <link>/2008/05/13/sharepoint-und-permissions/</link>
+      <pubDate>Mon, 12 May 2008 22:42:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/sharepoint-und-permissions/</guid>
+      <description>Zum Nachschlagen für die Rechte, die ein User haben kann, die für Filterung von Elementen (z.B. Navigationspunkten in Systemmenüs) zuständig sind (Audience Targeting):
+http://office.microsoft.com/en-us/sharepointtechnology/HA101001491033.aspx
+Hintergrund ist das Ein- und Ausblenden von Controls, wenn der User zum Beispiel Listen erstellen kann. Ein Beispiel in dem MS das selber macht ist die MasterPage des Intranet Collaboration Portals. Hier wird der Punkt &amp;ldquo;View all site content&amp;rdquo; für User ohne entsprechende Rechte versteckt. Somit ist es für eigene Solutions und Menüeinträge ebenfalls relevant.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Arbeiten mit dem Sharepoint &#34;Site Directory&#34;</title>
+      <link>/2008/05/13/arbeiten-mit-dem-sharepoint-site-directory/</link>
+      <pubDate>Mon, 12 May 2008 22:41:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/arbeiten-mit-dem-sharepoint-site-directory/</guid>
+      <description>Ich habe mich vor kurzem etwas intensiver mit dem MS SiteDirectory Template beschäftigt. Es ging darum, hier automatisch MetaDaten zu aktualisieren. Die &amp;ldquo;Kindsite&amp;rdquo;, die im SiteDirectory einen Eintrag in der &amp;ldquo;Sites&amp;rdquo; Liste hat, sollte unter speziellen Bedingungen aktualisiert werden. Nun ist die Frage wie kommt man ran? Die URL irgendwie speichern? Aber wer macht das? Wann macht man das? Ein Griff zur PowerShell hat schnell zu Tage gefördert, dass alle Anstrengungen überflüssig sind. Zumindest für Sites, die über das SiteDirectory erstellt wurden, findet man in den Properties des SPWeb Objektes die nötigen Informationen: * SPWeb.AllProperties[&amp;ldquo;DefaultSiteDirectorySiteId&amp;rdquo;]
+Damit kann ich mir die SiteCollection öffen * SPWeb.</description>
+    </item>
+    
+    <item>
+      <title>MySite Creation Fehler</title>
+      <link>/2008/05/13/mysite-creation-fehler/</link>
+      <pubDate>Mon, 12 May 2008 22:40:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/mysite-creation-fehler/</guid>
+      <description>In zwei Installationen hatte ich jetzt schon einen Fehler beim Erzeugen von MySites, obwohl das bisher ohne Problem funktioniert hat. Es wird wohl an SP1 oder einem anderen MS OS Update liegen, da auch bisher Farmen, die über 1 Jahr ohne Probleme liefen, betroffen sind. Bei der bereits laufenden Farm hat mir der System Center Operations Manager (SCOM oder OpsMgr) den Gefallen getan, mich darüber zu informieren, da nicht unbeingt jeder User sich darüber beschwert, wenn etwas nicht funktioniert, was er bisher noch nciht kennt :-)
+Die Lösung:
+http://forums.microsoft.com/TechNet/ShowPost.aspx?PostID=1196717&amp;amp;SiteID=17&amp;amp;pageid=0
+Bei mir hat auch das Aufnehmen in die locale Admingruppe geholfen, irgendwie unschön, aber solange ich nicht mehr Zeit habe, das bei MS zu verifizieren und ein Hotfix anzufordern (wenn er denn existiert), wird es erstmal so bleiben.</description>
+    </item>
+    
+    <item>
+      <title>AD Properties für Profile Import</title>
+      <link>/2008/05/13/ad-properties-fr-profile-import/</link>
+      <pubDate>Mon, 12 May 2008 22:38:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/ad-properties-fr-profile-import/</guid>
+      <description>Es kommt immer mal wieder vor, dass man mit den Standard Properties des Profile Imports (im Shared Service Provider zu finden) nicht auskommt. Zum Beispiel ist das AD Feld für das Unternehmen (Company) nicht gemapped. Eine schnelle Suche hat mich hier her geführt:
+http://www.computerperformance.co.uk/Logon/LDAP_attributes_active_directory.htm
+Vielleicht hilft es euch ja auch weiter. Mir hat es geholfen, mein Property aus dem AD zu fischen.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>OneNote als Kalender darstellen</title>
+      <link>/2007/12/04/onenote-als-kalender-darstellen/</link>
+      <pubDate>Tue, 04 Dec 2007 15:00:00 +0000</pubDate>
+      
+      <guid>/2007/12/04/onenote-als-kalender-darstellen/</guid>
+      <description>Ich als alter Tablet PC user bin ein totaler Microsoft Office OneNote 2007 Fan. In Kombination mit meiner MySite (als Ablageort meiner OneNote Files) ist es das Produktivitätstool schlecht hin. Ich zeichne beim Kunden oft die Start und Endzeiten meines Aufenthalts auf. Somit eignet sich das ganze auch als gedächnisstütze für die Zeiterfassung die ich zu erledigen habe. Bei der zeitlichen Darstellung hilft ein Tool von Josh Einstein (Freeware):
+
+Das Tools heißt &amp;ldquo;OneNote Calendar&amp;rdquo; gibt es hier zum Download.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Citrix und Sharepoint</title>
+      <link>/2007/12/04/citrix-und-sharepoint/</link>
+      <pubDate>Tue, 04 Dec 2007 07:35:00 +0000</pubDate>
+      
+      <guid>/2007/12/04/citrix-und-sharepoint/</guid>
+      <description>Ich habe fur einen Kunden vor einiger zeit auf der testumgebung die damalige Beta fur die Citrix Integration installiert. Es geht hautsachlich darum, den AppDelivery Webpart zu nutzen. In der Beta hat das auf einer Maschine auch wunderbar funktioniert. In der Produktion haben wir aber 2 WFE Server und einen APP Server. Die Administration hat immer einen Fehler geworfen:
+
+Ich liebe es: Unknown Error. Da wir in der Produktion sind, kann ich kein erweitertes Fehlerhandling einschalten.
+Losung:
+Ess fehlte folgender Eintrag in der WebConfig (system.web/compilation/expressionBuilders):
+Alternative:
+Die Farm ist so aufgebaut, dass vom APP Server deployed wird. Der AppServer selber aber nicht die die WebApplication Rolle hat.</description>
+    </item>
+    
+    <item>
+      <title>Genuine Validation failed</title>
+      <link>/2007/11/28/genuine-validation-failed/</link>
+      <pubDate>Wed, 28 Nov 2007 11:46:00 +0000</pubDate>
+      
+      <guid>/2007/11/28/genuine-validation-failed/</guid>
+      <description>Unglaublich. Da ich gerade noch nicht sicher bin, ob mein aktuelle Installtion auf dem Lenovo lange lebt, habe ich mir nicht die Mühe gemacht und einige Office 2007 Tools erstmal ohne Key, also als Trial (25x kann man alles öffnen) installiert. Bisher habe ich Sie auch nicht gebraucht&amp;hellip; und nun das! Beim Download Versuch des PDF/XPS Add-Ins werde ich abgewiesen&amp;hellip;
+
+Naja, dann doch über den internen Fileserver :-S Einfach nur ärgerlich, ob das wirklich MS oder dem Kunden weiter hilft.
+Ciao Marco</description>
+    </item>
+    
+    <item>
+      <title>Vista, VS2008 Download, Akamai und wo sind meine Dateien?</title>
+      <link>/2007/11/20/vista-vs2008-download-akamai-und-wo-sind-meine-dateien/</link>
+      <pubDate>Mon, 19 Nov 2007 23:42:00 +0000</pubDate>
+      
+      <guid>/2007/11/20/vista-vs2008-download-akamai-und-wo-sind-meine-dateien/</guid>
+      <description>Endlich ist man am &amp;ldquo;Ende&amp;rdquo; des Tags angekommen und möchte zumindest noch das fertig heruntergeladene VS2008 installieren&amp;hellip; und dann so was&amp;hellip; keine Files da? Irgendwie hat der Download Manager was von &amp;ldquo;Virtualized&amp;rdquo; oder ähnlichem gesagt&amp;hellip;. hätte ich den Folder doch nicht zu gemacht :-(
+Ein kurzer Weg zu Google hat folgenden Link hervorgebracht:
+http://kb.adobe.com/selfservice/viewContent.do?externalId=kb400534&amp;amp;sliceId=1#FindVFolder
+Ich würde sagen es macht es im ersten Schritt nicht &amp;ldquo;sicher&amp;rdquo;, sondern es verunsichert.
+Danke Google und Danke Adobe</description>
+    </item>
+    
+    <item>
+      <title>VS 2008 und VS 2005 Side-By-Side</title>
+      <link>/2007/11/19/vs-2008-und-vs-2005-side-by-side/</link>
+      <pubDate>Mon, 19 Nov 2007 21:11:00 +0000</pubDate>
+      
+      <guid>/2007/11/19/vs-2008-und-vs-2005-side-by-side/</guid>
+      <description>Wie bei jedem Release einer neuen Visual Studio Version stellt sich erneut die Frage, ob die neue und die alte Version zusammen leben können. Der Mann der es wissen muss, hat dazu eine klare Aussage:
+Note that VS 2008 runs side-by-side with VS 2005 - so it is totally fine to have both on the same machine (you will not have any problems with them on the same box). Source: [ScottGu](http://weblogs.asp.net/scottgu/archive/2007/11/19/visual-studio-2008-and-net-3-5-released.aspx)    Neben dem Kommentar gibt es noch andere Interessante Info&amp;rsquo;s im Überblick. Durch das neue Multi-Targeting Feature hoffe ich, nach der nächsten Neu-Installation nur noch ein Microsoft Visual Studio installieren zu müssen.</description>
+    </item>
+    
+    <item>
+      <title>Die nächste Generation ist da – Visual Studio 2008</title>
+      <link>/2007/11/19/die-nchste-generation-ist-da-visual-studio-2008/</link>
+      <pubDate>Mon, 19 Nov 2007 20:25:00 +0000</pubDate>
+      
+      <guid>/2007/11/19/die-nchste-generation-ist-da-visual-studio-2008/</guid>
+      <description>Eben wollte ich eigentlich nur einen Download aus dem MSDN Subscriber Bereich machen, da ich heute Nachmittag Probleme hatte auf die Seiten zu kommen. Ich wurde mit folgender Fehlermeldung begrüßt:
+
+Und eben hatt es dann geklappt, als über bink.nu dann die Nachricht kam, dass das .NET Framework 3.5 Released wurde, was eigentlich nur bedeuten kann, dass auch das zugehörige Visual Studio online sein muss. Siehe da&amp;hellip; heute ist Release Day :-) Und die Fehler waren eventuell Vorboten des Go-Live.
+
+Für den Download benötigt man den Downloadmanager von Akamai&amp;hellip; die wohl dafür sorge tragen, dass selbst an so einem Tag ich es schaffe meine 6MBit voll auszulasten :-) Und man sollte seinen Popup-Blocker (IE7) mal eben ausschalten.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint/MOSS Statistiken &#43; Securityüberblick</title>
+      <link>/2007/11/18/sharepointmoss-statistiken-securityberblick/</link>
+      <pubDate>Sat, 17 Nov 2007 22:54:00 +0000</pubDate>
+      
+      <guid>/2007/11/18/sharepointmoss-statistiken-securityberblick/</guid>
+      <description>Für das Abrufen der Zugriffzaheln auf einen SharePoint Farm gibt es erstmal zwei Möglichkeiten: 1. Die eingebauten &amp;ldquo;Usage Statistics&amp;rdquo;: Diese sind allerdings immer auf die SiteCollection (SPSite) oder die Site (SPWeb) bezogen. Eine Farm übergreifendes Reporting ist so nicht möglich. 2. Die IIS Logfiles: Die IIS Logfiles können über klassische Tools ausgwertet werden. Sobald die Farm aus mehr als einer Application und mehr als einem Server besteht, muß man die Daten aggregieren.
+Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, daß es für die SiteCollection (SPSite) übergreifenden Situationen meist um Intranet Konfigurationen geht sind die klassischen Webreportings selten ausrechend.</description>
+    </item>
+    
+  </channel>
+</rss>

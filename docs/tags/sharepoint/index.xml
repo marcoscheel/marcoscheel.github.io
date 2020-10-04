@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SharePoint on Marco Scheel aka GeekDotNet</title>
+    <link>/tags/sharepoint/</link>
+    <description>Recent content in SharePoint on Marco Scheel aka GeekDotNet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 17 Sep 2017 21:11:09 +0000</lastBuildDate><atom:link href="/tags/sharepoint/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</title>
+      <link>/post/165449521992-sharepoint-online-device-access-option-fehlt/</link>
+      <pubDate>Sun, 17 Sep 2017 21:11:09 +0000</pubDate>
+      
+      <guid>/post/165449521992-sharepoint-online-device-access-option-fehlt/</guid>
+      <description>&lt;p&gt;In meinen Projekten (&lt;a href=&#34;https://www.glueckkanja.com/technologien/office-365/&#34; target=&#34;_blank&#34;&gt;Office 365&lt;/a&gt; / &lt;a href=&#34;https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/&#34; target=&#34;_blank&#34;&gt;100% Cloud&lt;/a&gt;) ist &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference&#34; target=&#34;_blank&#34;&gt;Conditional Access&lt;/a&gt; (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912&#34; target=&#34;_blank&#34;&gt;Blogpost&lt;/a&gt; beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827&#34; target=&#34;_blank&#34;&gt;einzelne Site Collections &lt;/a&gt;adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&amp;hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Eigentlich sollte der Dialog so aussehen:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The Future of SharePoint (Online)</title>
+      <link>/post/144716486707-the-future-of-sharepoint-online/</link>
+      <pubDate>Sat, 21 May 2016 20:33:42 +0000</pubDate>
+      
+      <guid>/post/144716486707-the-future-of-sharepoint-online/</guid>
+      <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;Die Roadmap schließt somit eine Lücke, die überwiegend Hardcore
+SharePoint User (Publishing, echte Listen und Metadaten) betroffen hat und
+begeistern wird. Für den Rest wird es einfach einfacher und schöner.&lt;/p&gt;
+&lt;p&gt;Alle die Office 365 noch nicht verwenden können die Zeit bis Ende 2016 nutzen,
+um eine solide Basis aufzubauen. Alle mit einer guten Office 365 Basis können
+die Zeit nutzen in ersten Gehversuchen mit Office 365 Groups eigene Erfahrungen
+zu sammeln. In nächsten Jahr (2017) können dann hoffentlich alle das volle
+Potential von SharePoint Online nutzen und über den Datei-Tellerrand schauen
+und den nächsten Level der modernen Teamräume ausnutzen.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

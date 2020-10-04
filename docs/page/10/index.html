@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.75.1" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+<title>Marco Scheel aka GeekDotNet - Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</title>
+
+
+<meta name="author" content="Marco Scheel" />
+
+
+<meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud " />
+
+
+<meta property="og:title" content="Marco Scheel aka GeekDotNet" />
+<meta property="og:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud " />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/" />
+<meta property="og:image" content="/img/og.png"/>
+<meta property="og:updated_time" content="2020-08-17T08:31:05+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/img/og.png"/>
+
+<meta name="twitter:title" content="Marco Scheel aka GeekDotNet"/>
+<meta name="twitter:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud "/>
+
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+<link rel="stylesheet" href="/assets/css/fuji.min.css" />
+
+
+
+
+
+</head>
+
+<body data-theme="auto">
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="/">Marco Scheel aka GeekDotNet</a>
+            
+            <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+
+
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/24/wie-installiere-ich-sharepoint-in-einer-farm/">Wie installiere ICH SharePoint in einer Farm?</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1164 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Version 0.1 - 2008-05-07 Version 0.2 - 2008-06-24 Version 0.3 - 2009-06-24 (SP2, CU, IIS7, SQL2K8)
+Vorbedingungen:
+* Betriebssystem und alles weitere Software ist in der Hauptsprache Englisch * OS und Software ist 64-Bit * Alle Server haben min. 4 GB RAM * Der Datenbankserver hat 8 GB RAM und min. 2 CPU's mit 2 Cores * Min. 2 Partitionen mit zwei getrennten Plattensystemen * PowerShell auf allen Sharepoint Servern für Scripting  Über die Punkte oben kann man streiten, aber das Sizing ist für mich min. wenn ein Kunde ein Farm mit zwei SharePoint und einem DB Server aufbaut. Die Hardware ist so oder so 64-bit fähig und 8 GB RAM sind heute günstig zu erwerben.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/24/windows-server-2008-iis7-kerberos-kernel-mode-authentication/">Windows Server 2008 – IIS7 – Kerberos Kernel Mode Authentication</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;217 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Auf einer internen Fortbildung hatte ich mir den IIS7 angesehen. Eine der unscheinbarsten Änderungen trifft alle, die sich mit Kerberos auf einem IIS auseinander setzen mussen. Meine SharePoint Installationen sind also in Zukunft davon betroffen. Der Internet Information Server 7 (IIS7) kommt in der Default Konfiguration mit der Einstellung &ldquo;Enable Kernel-mode authentication&rdquo; gleich ON daher. Damit unterscheidet sich das Auflosen der Service Principlal Names (SPN) drastisch von der Art, die der IIS6 durchfuhrt. Normalerweise wurde der SPN auf dem Application Pool (AppPool) Acount gesucht. Also auf einem Domain Acount oder auf dem Machine Account, wenn es der &ldquo;Network Service&rdquo; oder das &ldquo;Local System&rdquo; ist.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/24/content-query-webpart-bringt-w3p-zum-absturz/">Content Query Webpart bringt W3P zum Absturz</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;547 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Ich hatte jetzt bei einer SharePoint Intranet Installation ein Problem bei der Darstellung eines Content Query WebParts (CQWP). Auf der Startseite und einigen SubSites wurden uber ein CQWP alle Artikel (CMS Elemente) eines ContentTyps dargestellt. Ich habe mich an das Standardverfahren gehalten.
+1. Content Query WebPart in eine WebPartzone ziehen 2. Den WebPart exportieren 3. CommonViewField um die notigen Felder erweitern 4. WebPart importieren 5. Neuen XSLT Style anlegen fur die Darstellung (ItemStyle.xsl)   6. XSLT Funktion fur das entfernen der HTML Tags einsetzen und anwenden 7. WebPart auf den Startseiten plazieren
+Wie nicht anders zu erwarten hat alles super funktioniert.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/19/doppelte-spns-finden/">Doppelte SPN’s finden</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-19</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;257 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Meine SharePoint Installationen sind in der Regel Intranet Installationen. Je nach Szenario ist Kerberos uber NTLM als Authentifizierung zu beorzugen. Es ist schwer mit Pauschalen zu arbeiten, aber in der Regel empfehle ich den EInsatz von Kerberos. Die Intrastruktur laßt sich so schnell an wachsende Aufgaben (Reporting, OTP, etc) anpassen. Beim Setzen der Service Principal Names (SPN) ist es wichtig, das der Service nur auf einm einzigen Objekt im Active Directory (AD) liegt. Zum Setzen und Auslesen der SPN&rsquo;s gibt es SETSPN.exe aus dem Ressource Kit (oder in Windows Server 2008 bereits enthalten). In der W2K8 Version von SETSPN kann ich beim Hinzufugen gleich auf doppelte Eintrage prufen lassen.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/16/ein-schritt-weiter-in-die-web-2-0-welt/">Ein Schritt weiter in die Web 2.0 Welt</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-16</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;402 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Ich versuche gerade mein Leben im WEB neu zu ordnen. Die Ausrichtung auf Web 2.0 Dienste (wenn es so was überhaupt gibt) geht heute ein Schritt weiter. Kurz die Historie: * Ich nutzt Google Reader für RSS und Share dort interessante Posts anderer Blogger * Ich habe einen Blog, den ich mit Windows Live Writer mit Posts und Tags füllen kann * Ich analysiere mein WebSite-Traffic mit Google Analytics * Ich geschäftlich bei Xing registriert * Ich nutze privat Wer-kennt-wen * Ich habe ein Flickr Account (ohne ihn bisher zu nutzen) für Bilder, die ich über die Windows Live Photo Gallery Software online stellen kann * Ich speichere meine Bookmarks bei del.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/15/angekommen-neues-zuhause-fr-meinen-blog/">Angekommen: Neues Zuhause für meinen Blog</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-15</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;70 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Ab heute will ich es mit einem neuen Zuhause mit meinem Blog versuchen. Ein paar Posts werde ich nich auf beiden aktiv werden, aber ich will möglichst schnell den Live Space Blog schließen.
+Neues Heim: http://marcoscheel.de
+Ich habe auf Basis von GraffitiCMS meinen Blog neu aufgezogen. Schaut doch auch mal auf die Seite. Das Layout ist ein angepaßtes Theme. Mehr zum Thema GraffitiCMS vielleicht in den nächsten Posts.
+Ciao Marco
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/13/sharepoint-disk-based-blob-cache/">SharePoint Disk Based Blob Cache</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;424 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Wir implementieren gerade eine SiteCollection in einem Portal in dem es darum geht Video&rsquo;s die aus einer Document Library kommen in einem Flash Movie darzustellen. Um die Performance und die Wartbarkeit zu halten haben wir folgende Dinge eingerichtet:
+ Eigene ContentDB  Wir haben die SiteCollection uber STSADM angelegt und einer leeren ContentDB auf dem SQL Server zugewiesen. Anschließend haben wir die ContentDB im Central Admin &ldquo;Offline&rdquo; genommen, so das die Datenbank nur fur Video Content genutzt wird. Fur den Backup Prozess kann man so einen anderen Schedule hinterlegen, da hier nicht so viel &ldquo;Bewegung&rdquo; existiert und es primar um grosse Dateien geht.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/13/windows-server-2008-und-der-default-zustand-der-firewall/">Windows Server 2008 und der Default Zustand der Firewall</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;120 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Aus der Woche in der ich mich intensiver mit dem Windows Server 2008 und dem IIS7 beschäftigt habe, hat sich ein Detail eingebrannnt:
+Achtung: Firewall ist by default eingeschaltet!
+Total sicher, aber auch total ungewohnt. Ich bin gleich drei mal in den Fehler gelaufen: 1. IIS7 FTP Server von einem Vista Client aus testen 2. SharePoint Server in die Farm joinen 3. Reporting Services Integration auf dem Shareoiint aktivieren
+
+Ich habe die Firewall nicht abgeschaltet, sondern einfach die Ports, die ich jetzt benötigte, eingetragen als Exception. Es ist einfach Gewohnheitssache. Ich habe nicht ganz so viel Zeit verloren, da ich nicht so viele Ports benötige, aber Kollegen in deutlich komplexeren Szenarien, hat es einiges mehr an Zeit gekostet.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/11/21-fr-die-trkei/">2:1 für die Türkei</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-11</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;9 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Das wird einen lange Nacht in Offenbach.
+
+Ciao Marco
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/10/mein-rss-feed-ndert-sichsoll-sich-ndern/">Mein RSS Feed ändert sich/soll sich ändern</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-10</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;205 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Ich bin jetzt ein Mitglied der FeedBurner Familie. Ab sofort ist mein RSS Feed über folgende URL zu erreichen:
+http://feeds.feedburner.com/marcoscheel
+Die Idee dahinter ist den Mehrwert, den so ein Dienst bringt, auszunutzen. Ich bin mir nicht sicher, ob ich der Microsoft Windows Live Space Plattform für Blogging treu bleibe. Ich bin sehr begeistert über die Funktionen und die Integration in den Windows Live Writer. Allerdings fehlen doch viele Dinge: 1. Statistiken
+Sie sind schlicht nicht vorhanden:
+ 2. Kommentare
+Das Handling ist mehr als suboptimal. 3. Integration von weiteren Diensten
+Solange ich meinen Feed bei Feedburner Manage, bin ich in der Lage meinen Blog so oft umzuziehen wie ich möchte!
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="pagination">
+    
+    <div class="pag-first">
+        <a href="/"><i class="iconfont icon-caret-back-circle-sharp"></i></a>
+    </div>
+    
+    
+    <div class="pag-previous">
+        <a href="/page/9/"><i class="iconfont icon-chevron-back-circle-sharp"></i></a>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item">
+        <a href="/page/8/">8</a>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item">
+        <a href="/page/9/">9</a>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item pag-current">
+        <a href="/page/10/">10</a>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item">
+        <a href="/page/11/">11</a>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item">
+        <a href="/page/12/">12</a>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-next">
+        <a href="/page/11/"><i class="iconfont icon-chevron-forward-circle-sharp"></i></i></a>
+    </div>
+    
+    
+    <div class="pag-last">
+        <a href="/page/13/"><i class="iconfont icon-caret-forward-circle-sharp"></i></a>
+    </div>
+    
+</div>
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/azuread/">AzureAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/development/">Development</a>
+            </span>
+            
+            <span>
+                <a href="/tags/equipment/">Equipment</a>
+            </span>
+            
+            <span>
+                <a href="/tags/groups/">Groups</a>
+            </span>
+            
+            <span>
+                <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft365/">Microsoft365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mip/">MIP</a>
+            </span>
+            
+            <span>
+                <a href="/tags/office365/">Office365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sharepoint/">SharePoint</a>
+            </span>
+            
+            <span>
+                <a href="/tags/teams/">Teams</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">Tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/work/">Work</a>
+            </span>
+            
+            <span>
+                <a href="/tags/xarchived/">xArchived</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+</aside>
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/azuread/">AzureAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/development/">Development</a>
+            </span>
+            
+            <span>
+                <a href="/tags/equipment/">Equipment</a>
+            </span>
+            
+            <span>
+                <a href="/tags/groups/">Groups</a>
+            </span>
+            
+            <span>
+                <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft365/">Microsoft365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mip/">MIP</a>
+            </span>
+            
+            <span>
+                <a href="/tags/office365/">Office365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sharepoint/">SharePoint</a>
+            </span>
+            
+            <span>
+                <a href="/tags/teams/">Teams</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">Tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/work/">Work</a>
+            </span>
+            
+            <span>
+                <a href="/tags/xarchived/">xArchived</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            <span>&copy; 2020 <a href="/">Marco Scheel</a> |
+                Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> & <a href="https://gohugo.io/"
+                   target="_blank">Hugo</a> </span>
+        </div>
+    </div>
+</footer>
+    
+<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+</body>
+
+</html>

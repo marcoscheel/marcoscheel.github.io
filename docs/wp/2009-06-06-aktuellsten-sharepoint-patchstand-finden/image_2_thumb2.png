@@ -1,0 +1,699 @@
+<!DOCTYPE html><script>var __pbpa = true;</script><script>var translated_warning_string = 'Warnung: Gib dein Tumblr-Passwort nur dann ein, wenn du \u201chttps://www.tumblr.com/login\u201d\x0ain der Adresszeile deines Browsers siehst.\x0a\x0aAu\u00dferdem sollte dort ein gr\u00fcnes \u201cTumblr, Inc.\u201d-Logo zu sehen sein.\x0a\x0aSpammer und andere Strolche benutzen gef\u00e4lschte Formulare, um an Passw\u00f6rter zu kommen.\x0a\x0aTumblr wird dich niemals bitten, dich vom Blog eines Users aus einzuloggen.\x0a\x0aWillst du ganz sicher fortfahren?';</script><script type="text/javascript" language="javascript" src="https://assets.tumblr.com/assets/scripts/pre_tumblelog.js?_v=b9f848c06fcba7eaf305d4a7cb7a1b98"></script><!doctype html>
+
+<html class="no-js" lang="en">
+
+<head>
+
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+	Hipster Premium Tumblr Theme by PRECRAFTED
+
+	Visit http://precrafted.com for information, support, and more themes!
+
+	Version 2.4
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+
+
+	<!-- Basic Page Settings -->
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Marco Scheel aka GeekDotNet</title>
+
+	<meta name="author" content="Marco Scheel aka GeekDotNet">
+	
+	<meta name="tumblr-theme" content="39445" />
+	
+	
+	<meta name="description" content="Nicht gefunden - Die angeforderte URL konnte auf dem Server nicht gefunden werden." />
+	
+
+	<style>figure{margin:0}.tmblr-iframe{position:absolute}.tmblr-iframe.hide{display:none}.tmblr-iframe--amp-cta-button{visibility:hidden;position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:100}.tmblr-iframe--amp-cta-button.tmblr-iframe--loaded{visibility:visible;animation:iframe-app-cta-transition .2s ease-out}</style><link rel="stylesheet" media="screen" href="https://assets.tumblr.com/client/prod/standalone/blog-network-npf/index.build.css?_v=46a7a9e1e08f1b33790dea4bb521d1c8"><link rel="shortcut icon" href="https://64.media.tumblr.com/avatar_6ae7d8b89d39_128.pnj">
+	<link rel="apple-touch-icon" href="https://64.media.tumblr.com/avatar_6ae7d8b89d39_128.pnj">
+	<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel">
+
+
+
+
+	<!-- Main Style Settings -->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+	
+	
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	
+
+	<link rel="stylesheet" href="https://static.tumblr.com/e6lc7yi/z3pnekdqv/precrafted-social.css">
+	<link rel="stylesheet" href="https://static.tumblr.com/e6lc7yi/rRno6no4n/hipster-styles.css">
+
+
+
+
+	<!-- Custom Options -->
+
+
+	<!-- Custom Colors -->
+
+	<meta name="color:Description Text" content="#30363c"/>
+	<meta name="color:Menu Text" content="#30363c"/>
+
+	<meta name="color:Social Background" content="#529ECC"/>
+	<meta name="color:Social Icon" content="#ffffff"/>
+
+	<meta name="color:Post Background" content="#ffffff"/>
+	<meta name="color:Borders" content="#ecf0f1"/>
+
+	<meta name="color:Post Titles" content="#444444"/>
+	<meta name="color:Text" content="#64707A"/>
+	<meta name="color:Link" content="#529ECC"/>
+	<meta name="color:Link Hover" content="#30363c"/>
+
+
+	<!-- Custom Images -->
+	<meta name="image:Logo" content=""/>
+
+	<meta name="image:Header 2" content=""/>
+	<meta name="image:Header 3" content=""/>
+	<meta name="image:Header 4" content=""/>
+	<meta name="image:Header 5" content=""/>
+
+
+	<!-- Custom Text -->
+
+	<meta name="text:Title Font Size" content="40"/>
+	<meta name="text:Title Letter Spacing" content="1"/>
+
+	<meta name="text:Photoset Spacing" content="5"/>
+
+	<meta name="text:Load More" content="Load More Posts"/>
+	<meta name="text:Load More Loading" content="Loading..."/>
+	<meta name="text:Load More End" content="No More Posts"/>
+	<meta name="text:Footer Text" content="Your custom footer message"/>
+
+	<meta name="text:Instagram Token" content=""/>
+	<meta name="text:Instagram Order" content="1"/>
+	<meta name="text:Instagram Follow Me" content="Follow Me"/>
+
+	<meta name="text:Google Analytics Code" content=""/>
+	<meta name="text:Disqus Shortname" content=""/>
+
+	<meta name="text:Sticky Tag" content="featured"/>
+
+	<meta name="text:Font Embed Code" content=""/>
+	<meta name="text:Font Family Logo" content=""/>
+	<meta name="text:Font Family Titles" content=""/>
+	<meta name="text:Font Family Body" content=""/>
+
+	<meta name="text:URL Twitter" content=""/>
+	<meta name="text:URL Facebook" content=""/>
+	<meta name="text:URL Tumblr" content=""/>
+	<meta name="text:URL Website" content=""/>
+	<meta name="text:URL Google" content=""/>
+	<meta name="text:URL Linkedin" content=""/>
+	<meta name="text:URL Foursquare" content=""/>
+	<meta name="text:URL Skype" content=""/>
+	<meta name="text:URL Email" content=""/>
+	<meta name="text:URL Instagram" content=""/>
+	<meta name="text:URL Flickr" content=""/>
+	<meta name="text:URL 500px" content=""/>
+	<meta name="text:URL VSCO Grid" content=""/>
+	<meta name="text:URL Camera" content=""/>
+	<meta name="text:URL Eye" content=""/>
+	<meta name="text:URL Pinterest" content=""/>
+	<meta name="text:URL Heart" content=""/>
+	<meta name="text:URL Youtube" content=""/>
+	<meta name="text:URL Vimeo" content=""/>
+	<meta name="text:URL Vine" content=""/>
+	<meta name="text:URL Ebay" content=""/>
+	<meta name="text:URL Store" content=""/>
+	<meta name="text:URL Apple" content=""/>
+	<meta name="text:URL Googleplay" content=""/>
+	<meta name="text:URL Etsy" content=""/>
+	<meta name="text:URL Dribbble" content=""/>
+	<meta name="text:URL Behance" content=""/>
+	<meta name="text:URL deviantART" content=""/>
+	<meta name="text:URL Github" content=""/>
+	<meta name="text:URL Medium" content=""/>
+	<meta name="text:URL Quora" content=""/>
+	<meta name="text:URL Weibo" content=""/>
+	<meta name="text:URL Travel" content=""/>
+	<meta name="text:URL Lastfm" content=""/>
+	<meta name="text:URL Rdio" content=""/>
+	<meta name="text:URL Spotify" content=""/>
+	<meta name="text:URL Soundcloud" content=""/>
+	<meta name="text:URL RSS" content=""/>
+
+
+	<!-- Custom Choices -->
+	<meta name="select:Pagination" content="pagination_load-more" title="Load More">
+	<meta name="select:Pagination" content="pagination_standard" title="Standard">
+	<meta name="select:Pagination" content="pagination_infinite-scroll" title="Infinite Scroll">
+
+	<meta name="select:Photo Link" content="post" title="Post">
+	<meta name="select:Photo Link" content="image" title="Image">
+	<meta name="select:Photo Link" content="lightbox" title="Lightbox">
+	<meta name="select:Photo Link" content="none" title="None">
+	<meta name="select:Photo Link Permalink" content="image" title="Image">
+	<meta name="select:Photo Link Permalink" content="lightbox" title="Lightbox">
+	<meta name="select:Photo Link Permalink" content="none" title="None">
+
+	<meta name="select:Panorama Link" content="image" title="Lightbox">
+	<meta name="select:Panorama Link" content="post" title="Post">
+	<meta name="select:Panorama Link" content="none" title="None">
+	<meta name="select:Panorama Link Permalink" content="image" title="Lightbox">
+	<meta name="select:Panorama Link Permalink" content="none" title="None">
+
+	<meta name="select:Photoset Link" content="lightbox" title="Lightbox">
+	<meta name="select:Photoset Link" content="post" title="Post">
+	<meta name="select:Photoset Link" content="none" title="None">
+	<meta name="select:Photoset Link Permalink" content="lightbox" title="Lightbox">
+	<meta name="select:Photoset Link Permalink" content="none" title="None">
+
+	<meta name="if:Photoset Cover" content="0">
+
+	<meta name="if:Sticky Posts" content="0">
+
+	<meta name="if:Show Archive Link" content="1"/>
+	<meta name="if:Show Search" content="1"/>
+
+	<meta name="if:White Icons" content="0"/>
+	<meta name="if:Show Group Author" content="0">
+
+	<meta name="if:Sharer" content="1">
+	<meta name="if:Sharer Twitter" content="1">
+	<meta name="if:Sharer Facebook" content="1">
+	<meta name="if:Sharer Google" content="1">
+	<meta name="if:Sharer Pinterest" content="1">
+
+	<meta name="if:Show Timestamp" content="1">
+	<meta name="if:Show Meta On Home" content="0">
+
+
+
+
+	<!-- Custom CSS -->
+
+	<style type="text/css">
+
+		body {
+			background: #FAFAFA;
+			color: #64707A;
+		}
+		h1, h2, h3, h4, h5,
+		h1 a, h2 a, h3 a, h4 a, h5 a {
+			color: #444444;
+		}
+		h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
+			color: #529ECC;
+		}
+		a {
+			color: #529ECC;
+		}
+		a:hover {
+			color: #30363c;
+		}
+
+		.header-image-wrap {
+			background-color: #444444;
+		}
+
+		.sidebar-wrap .blog-title h1 {
+			font-family: 'Gibson', sans-serif;
+			font-weight: bold;
+			color: #444444;
+
+			
+			font-size: 40px;
+			
+
+			
+			letter-spacing: 1px;
+			
+		}
+
+		.description {
+			color: #30363c;
+		}
+
+		.social-menu li a {
+			background: #529ECC;
+			color: #ffffff;
+		}
+
+		.scroll-top,
+		.post-nav {
+			background: #529ECC;
+			color: #ffffff;
+		}
+		.scroll-top:hover,
+		.post-nav:hover {
+			color: #ffffff;
+		}
+
+		.main-menu li a {
+			color: #30363c;
+		}
+		.main-menu li a:hover {
+			border-color: #30363c;
+		}
+
+		.menu .search input {
+			color: #30363c;
+		}
+		.menu .search ::-webkit-input-placeholder {
+			color: #30363c;
+		}
+		.menu .search :-moz-placeholder {
+			color: #30363c;
+		}
+		.menu .search ::-moz-placeholder {
+			color: #30363c;
+		}
+		.menu .search :-ms-input-placeholder {
+			color: #30363c;
+		}
+
+		.footer span,
+		.footer .credit a {
+			color: #30363c;
+		}
+
+		.type_pagination.pagination_load-more .article-content,
+		.type_pagination.pagination_infinite-scroll .article-content {
+			color: #529ECC;
+		}
+		.type_pagination.pagination_load-more .article-content:hover,
+		.type_pagination.pagination_load-more.loading .article-content {
+			background: #529ECC;
+			color: #ffffff;
+		}
+		.type_pagination.pagination a {
+			background: #ffffff;
+		}
+
+		.instagram-feed .instagram-overlay {
+			background: rgba(82,158,204, 0.8);
+		}
+		.instagram-feed .instagram-overlay .social-instagram {
+			color: #ffffff;
+		}
+		.instagram-feed .instagram-link {
+			margin-top: 5px;
+			background: #529ECC;
+			color: #ffffff;
+		}
+		.instagram-feed .instagram-link:hover {
+			background: #30363c;
+		}
+
+		article .article-content {
+			background: #ffffff;
+		}
+
+		article.type_chat .line,
+		article blockquote {
+			border-color: #ecf0f1;
+		}
+		article.type_audio .audio-post-wrap p,
+		article.type_answer .answer-person {
+			color: #444444;
+		}
+
+		article.type_quote .quote {
+			color: #444444;
+		}
+
+		article hr {
+			background: #ecf0f1;
+		}
+
+		article.type_link .the-link {
+			background: #529ECC;
+			color: #ffffff;
+		}
+		article.type_link .the-link:hover {
+			background: #30363c;
+		}
+
+		.icons li.sharer ul {
+			background: #ffffff;
+			border-color: #ecf0f1;
+		}
+		.icons li.sharer ul:before {
+			border-top-color: #ecf0f1;
+		}
+		.icons li.sharer ul:after {
+			border-top-color: #ffffff;
+		}
+
+		.post-footer a.timestamp {
+			color: #64707A;
+		}
+
+		::-moz-selection { background: #529ECC; color: #ffffff; text-shadow: none; }
+		::selection { background: #529ECC; color: #ffffff; text-shadow: none; }
+
+		
+
+		
+
+	</style>
+
+	<style type="text/css">
+
+		
+
+	</style>
+
+
+
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-391088-7']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	
+
+
+	<!-- Sharing meta tags -->
+	<meta property="og:site_name" content="Marco Scheel aka GeekDotNet"/><meta property="og:url" content=""/><meta property="og:type" content="article"/><meta property="og:title" content="Nicht gefunden"/><meta property="og:description" content="Die angeforderte URL konnte auf dem Server nicht gefunden werden."/><meta property="og:image" content="https://64.media.tumblr.com/avatar_6ae7d8b89d39_128.pnj"/>
+
+	<meta name="twitter:url" content=""/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Nicht gefunden"/><meta name="twitter:description" content="Die angeforderte URL konnte auf dem Server nicht gefunden werden."/><meta name="twitter:image" content="https://64.media.tumblr.com/avatar_6ae7d8b89d39_128.pnj"/>
+
+
+<link rel="alternate" href="android-app://com.tumblr/tumblr/x-callback-url/blog?blogName=marcoscheel%26postID=" /><link rel="alternate" href="ios-app://305343404/tumblr/x-callback-url/blog?blogName=marcoscheel&postID=" /><script src="https://assets.tumblr.com/assets/scripts/tumblelog_post_message_queue.js?_v=a8fadfa499d8cb7c3f8eefdf0b1adfdd"></script><link rel="stylesheet" type="text/css" href="https://assets.tumblr.com/fonts/gibson/stylesheet.css?v=3"></head>
+
+
+<body
+
+ class="permalink"
+>
+
+<!-- Tumblr Theme #39445 -->
+
+
+
+<header class="header-image-wrap">
+	<div class="header-image">
+		<img src="">
+	</div>
+</header>
+
+
+
+<div class="page-wrap">
+
+	<div class="scroll-top-wrap">
+		<a href="#top" class="scroll-top off"><i class="social-up"></i></a>
+	</div>
+
+	
+
+	<aside class="sidebar-wrap fixed">
+
+		<div class="sidebar">
+
+			
+			
+			
+			<a href="/" class="title" title="Marco Scheel aka GeekDotNet">
+				
+				<span class="avatar-image square"><img src="https://64.media.tumblr.com/avatar_6ae7d8b89d39_128.pnj" alt="Marco Scheel aka GeekDotNet"/></span>
+				
+				
+				<span class="blog-title"><h1>Marco Scheel aka GeekDotNet</h1></span>
+				
+			</a>
+			
+
+			
+			<div class="description">
+				Ein Leben als Microsoft Anhänger oder Tschüss SharePoint... Hallo Microsoft 365 Collaboration | "Hairless in the cloud" Podcast Host
+			</article>
+			
+
+			<nav class="menu">
+
+				<ul class="social-menu square">
+					
+						<li><a href="https://twitter.com/marcoscheel" target="_blank" title="Twitter"><i class="social-tweets"></i></a></li>
+					
+					
+						<li><a href="https://www.facebook.com/Qmarco.scheel" target="_blank" title="Facebook"><i class="social-facebook"></i></a></li>
+					
+					
+					
+					
+					
+						<li><a href="https://www.linkedin.com/in/marcoscheel" target="_blank" title="Linkedin"><i class="social-linkedin"></i></a></li>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+						<li><a href="https://github.com/marcoscheel" target="_blank" title="Github"><i class="social-github"></i></a></li>
+					
+					
+					
+					
+					
+					
+					
+					
+						<li><a href="https://open.spotify.com/show/0OPPqxlAZzLixAnO5IukfW" target="_blank" title="Spotify"><i class="social-spotify"></i></a></li>
+					
+					
+					
+						<li><a href="http://feeds.marcoscheel.de/marcoscheel" target="_blank" title="RSS"><i class="social-rss"></i></a></li>
+					
+				</ul>
+
+				<ul class="main-menu">
+					
+					
+					
+					
+					<li><a href="/archive" title="Archiv">Archiv</a></li>
+					
+				</ul>
+
+				
+				<form action="/search" method="get" class="search">
+					<i class="social-search"></i>
+					<input type="text" name="q" value="" placeholder="Suchen..."/>
+				</form>
+				
+
+			</nav>
+
+		</div>
+
+	</aside>
+
+
+	<section class="the-posts">
+
+
+		
+
+
+		<div class="posts-holder">
+
+			
+
+			
+
+			<article id="" class="type_text  scrollable" rel="https://www.tumblr.com/reblog//TmN3ujDJ">
+
+				<div class="article-content">
+
+				 
+				
+
+				<!-- Text Post -->
+
+				<div class="text-post-wrap">
+					
+					
+					<h2>Nicht gefunden</h2>
+					
+					<p>Die angeforderte URL konnte auf dem Server nicht gefunden werden.</p>
+				</div>
+
+				
+
+				 
+				
+
+
+				
+
+
+				
+
+
+				
+
+
+				
+
+
+				
+
+
+				
+
+
+				
+
+
+				
+
+
+				
+
+
+				</div>
+
+			</article>
+
+			
+
+		</div>
+
+
+		
+
+
+		<footer class="footer">
+
+			
+			<span>&copy; Marco Scheel aka GeekDotNet 2010–2020</span>
+
+			<div class="credit">
+				<a href="http://precrafted.com?ref=hipster-f" title="Precrafted Tumblr Themes" target="_blank">Hipster Tumblr Theme by Precrafted</a>
+			</div>
+
+		</footer>
+
+
+	</section>
+
+</div>
+
+
+
+
+<!-- Javascript Assets -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+
+<script src="https://static.tumblr.com/e6lc7yi/qjbo6no5w/hipster-plugins.js"></script>
+
+<script type="text/javascript">
+
+	var images = [ 'https://static.tumblr.com/262e8cb4dffe1eb64088c1fb80de8ccc/earre09/bW1p6q6xg/tumblr_static_tumblr_static_wd60derb46scwskgosgwc4kk_focused_v3.jpg'
+		
+		
+		
+		
+	];
+
+	var chosenImage = images[Math.floor(Math.random() * images.length)];
+
+	$('.header-image').css({
+		'background-image': 'url(' + chosenImage + ')'
+	});
+
+	$('.header-image > img').attr("src", chosenImage);
+
+</script>
+
+<script src="https://static.tumblr.com/e6lc7yi/xD1o6no66/hipster-app.js"></script>
+
+
+
+
+<iframe scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0; z-index:9999;" id="ga_target"></iframe><script type="text/javascript">
+    (function(){
+        var analytics_frame = document.getElementById('ga_target');
+        var analytics_iframe_loaded;
+        var user_logged_in;
+        var blog_is_nsfw = 'No';
+
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent,function(e) {
+            var message = (e.data && e.data.split) ? e.data.split(';') : '';
+            switch (message[0]) {
+                case 'analytics_iframe_loaded':
+                    analytics_iframe_loaded = true;
+                    postCSMessage();
+                    postGAMessage();
+                    break;
+                case 'user_logged_in':
+                    user_logged_in = message[1];
+                    postGAMessage();
+                    break;
+            }
+        }, false);
+
+        analytics_frame.src = "https://assets.tumblr.com/analytics.html?_v=9f5febfd57a8a649c598d888f2d9e062#" +
+                              "https://marcoscheel.de";
+        function postGAMessage() {
+            if (analytics_iframe_loaded && user_logged_in) {
+                var is_ajax = false;
+                analytics_frame.contentWindow.postMessage(['tick_google_analytics', is_ajax, user_logged_in, blog_is_nsfw, '/files/2010/09/image_2_thumb2.png?route=404_page'].join(';'), analytics_frame.src.split('/analytics.html')[0]);
+            }
+        }
+        function postCSMessage() {
+            COMSCORE = true;
+            analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
+        }
+    })();
+</script><noscript id="bootloader" data-bootstrap="{&quot;Components&quot;:{&quot;PostActivity&quot;:[],&quot;NotificationPoller&quot;:{&quot;messaging_keys&quot;:[],&quot;token&quot;:&quot;c86f8a500596474a7ef5034081f694bd&quot;,&quot;inbox_unread&quot;:0},&quot;DesktopDashboardLogo&quot;:{&quot;animations&quot;:[[&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1.png?_v=161861acded461bb6e995593a3bae835&quot;,&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1@2x.png?_v=496a774637302a598c851381d00009b0&quot;]]},&quot;TumblelogIframe&quot;:{&quot;unified&quot;:true,&quot;variant&quot;:null,&quot;isCompact&quot;:true,&quot;tumblelogBundleSrc&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/standalone\/tumblelog\/index.build.js?_v=de04ebc7a4a63db35081cfb75e016ba6&quot;,&quot;tumblelogName&quot;:&quot;marcoscheel&quot;,&quot;isLoggedIn&quot;:false,&quot;isFriend&quot;:false,&quot;formKey&quot;:&quot;&quot;,&quot;canSubscribe&quot;:false,&quot;isSubscribed&quot;:false,&quot;tumblelogTitle&quot;:&quot;Marco Scheel aka GeekDotNet&quot;,&quot;tumblelogAvatar&quot;:&quot;https:\/\/64.media.tumblr.com\/avatar_6ae7d8b89d39_64.pnj&quot;,&quot;tumblelogHost&quot;:&quot;https:\/\/marcoscheel.de&quot;,&quot;isOptica&quot;:false,&quot;isCustomTheme&quot;:true,&quot;themeHeaderImage&quot;:&quot;https:\/\/static.tumblr.com\/262e8cb4dffe1eb64088c1fb80de8ccc\/earre09\/bW1p6q6xg\/tumblr_static_tumblr_static_wd60derb46scwskgosgwc4kk_focused_v3.jpg&quot;,&quot;themeBackgroundColor&quot;:&quot;#FAFAFA&quot;,&quot;themeTitleColor&quot;:&quot;#444444&quot;,&quot;themeAccentColor&quot;:&quot;#529ECC&quot;,&quot;brag&quot;:false,&quot;adsEnabled&quot;:false,&quot;canShowAd&quot;:true,&quot;isPremium&quot;:false,&quot;showLrecAds&quot;:false,&quot;showStickyLrecBackfill&quot;:false,&quot;showGeminiAds&quot;:false,&quot;geminiSectionCodeDesktop&quot;:&quot;a10bca9c-0c5d-4a02-ab13-14ab8513d81d&quot;,&quot;geminiSectionCodeMobile&quot;:&quot;ced63809-b609-4aca-96a0-abc099acba6b&quot;,&quot;currentPageType&quot;:null,&quot;currentPage&quot;:false,&quot;searchQuery&quot;:&quot;&quot;,&quot;tag&quot;:&quot;&quot;,&quot;query&quot;:&quot;&quot;,&quot;chrono&quot;:false,&quot;postId&quot;:&quot;&quot;,&quot;src&quot;:&quot;https:\/\/marcoscheel.de\/files\/2010\/09\/image_2_thumb2.png#_=_&quot;,&quot;postUrl&quot;:&quot;&quot;,&quot;isBlocked&quot;:null,&quot;isAdmin&quot;:false,&quot;lookupButtonUrl&quot;:&quot;&quot;,&quot;showSpamButton&quot;:false,&quot;showRootPostButton&quot;:false,&quot;rootPostUrl&quot;:&quot;&quot;,&quot;showRadarPostButton&quot;:false,&quot;radarKeys&quot;:&quot;&quot;,&quot;isUniblocked&quot;:false,&quot;isNsfw&quot;:false,&quot;isAdult&quot;:false,&quot;isSpam&quot;:false,&quot;isPrimaryBlog&quot;:false,&quot;canEdit&quot;:false,&quot;canReblogSelf&quot;:false,&quot;showLikeButton&quot;:false,&quot;showReblogButton&quot;:false,&quot;reblogUrl&quot;:&quot;&quot;,&quot;showFanMailButton&quot;:false,&quot;showMessagingButton&quot;:false,&quot;loginCheckIframeSrc&quot;:&quot;https:\/\/assets.tumblr.com\/assets\/html\/iframe\/login_check.html?_v=3de94a184d600617102ddd5b48fb36e9&quot;,&quot;appInstallUrls&quot;:{&quot;android&quot;:&quot;https:\/\/play.google.com\/store\/apps\/details?id=com.tumblr\u0026referrer=utm_source%3Dtumblr%26utm_medium%3Diframe%26utm_campaign%3Dtumblr_new_iframe&quot;,&quot;ios&quot;:&quot;https:\/\/apps.apple.com\/app\/apple-store\/id305343404?pt=212308\u0026ct=tumblr_new_iframe\u0026mt=8&quot;},&quot;appOpenReferrer&quot;:&quot;tumblr_new_iframe&quot;,&quot;isShowSearch&quot;:true,&quot;supplyLogging&quot;:[],&quot;secondsSinceLastActivity&quot;:3599}},&quot;Flags&quot;:{&quot;features&quot;:&quot;eyJmaWx0ZXJfbnNmdyI6dHJ1ZSwibW9iaWxlX3dlYl9nYXRlIjp0cnVlLCJzYWZlX21vZGUiOnRydWUsInNhZmVfbW9kZV9lbmFibGVkIjp0cnVlLCJrZXljb21tYW5kX2F1dG9fcGFnaW5hdGUiOnRydWUsImxvZ2dlZF9vdXRfc2VhcmNoIjp0cnVlLCJrcmFrZW5fd2ViX2xvZ2dpbmdfbGlicmFyeSI6dHJ1ZSwibGl2ZXBob3Rvc193ZWIiOnRydWUsInVzZXJfdGFnX2ZpbHRlcmluZyI6dHJ1ZSwicHJvamVjdF94X2FwcGVhbCI6dHJ1ZSwicHJvamVjdF94X3dlYl9zZW5zaXRpdmVfY292ZXJzIjp0cnVlLCJzYWZlX21vZGVfb3duX3Bvc3QiOnRydWUsIm1vYmlsZV93ZWJfcGhvdG9zZXRzIjp0cnVlLCJoaWRlX2RlZmF1bHRfaGVhZGVyc19ibG9nX2NhcmRzIjp0cnVlLCJub3RpZmljYXRpb25fcmVwbHlfbGlua190b19ub3RlcyI6dHJ1ZSwidHlwaW5nX2luZGljYXRvcl93cml0ZSI6dHJ1ZSwiZ2Rwcl9ndWNlX2lzX3JlcXVpcmVkIjp0cnVlLCJ0dW1ibHJfdmlkZW9fc3BvbnNvcmVkX2RheSI6dHJ1ZSwiY2FwdGNoYTp1c2VfcmVjYXB0Y2hhMiI6dHJ1ZSwibGl0dGxlX3Npc3RlciI6dHJ1ZSwiZW5hYmxlX2pzX2Vycm9yc19sb2ciOnRydWUsImxvZ19sYWR5Ijp0cnVlLCJyZWRwb3BfcG9zdF9mb3JtX21vYmlsZV9jcmVhdGUiOnRydWUsImdkcHJfcXVhbnRjYXN0X2NtcCI6dHJ1ZSwiZGFybGFfYWRfZmVlZGJhY2siOnRydWUsInN0YXR1c19pbmRpY2F0b3IiOnRydWUsImNvbnZlcnNhdGlvbmFsX25vdGlmaWNhdGlvbnMiOnRydWUsImRpc2FibGVfeWFob29fYl9jb29raWUiOnRydWUsImxpdmVwaG90b3MiOnRydWV9&quot;},&quot;Context&quot;:{&quot;name&quot;:&quot;default&quot;,&quot;time&quot;:1601752489000,&quot;userinfo&quot;:{&quot;primary&quot;:&quot;&quot;,&quot;name&quot;:&quot;&quot;,&quot;channels&quot;:[]},&quot;hosts&quot;:{&quot;assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;secure_assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;secure_www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;embed_host&quot;:&quot;https:\/\/embed.tumblr.com&quot;,&quot;safe_host&quot;:&quot;https:\/\/safe.txmblr.com&quot;,&quot;platform_host&quot;:&quot;https:\/\/platform.tumblr.com&quot;},&quot;language&quot;:&quot;en_US&quot;,&quot;language_simple&quot;:&quot;en&quot;,&quot;assets&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/&quot;},&quot;Translations&quot;:{&quot;%1$sReport %2$s&#039;s post?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;,&quot;%1$sReport %2$s&#039;s reply?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;,&quot;Search&quot;:&quot;Suchen&quot;,&quot;Search %s&quot;:&quot;%s durchsuchen&quot;,&quot;Fan mail&quot;:&quot;Fanpost&quot;,&quot;Message&quot;:&quot;Nachricht&quot;,&quot;Like&quot;:&quot;Liken&quot;,&quot;Unlike&quot;:&quot;Entliken&quot;,&quot;Reblog&quot;:&quot;Rebloggen&quot;,&quot;Embed&quot;:&quot;Einbetten&quot;,&quot;Edit&quot;:&quot;Bearbeiten&quot;,&quot;Delete&quot;:&quot;L\u00f6schen&quot;,&quot;Edit appearance&quot;:&quot;Erscheinungsbild&quot;,&quot;Settings&quot;:&quot;Einstellungen&quot;,&quot;Get notifications&quot;:&quot;Meldungen aktivieren&quot;,&quot;Stop notifications&quot;:&quot;Meldungen deaktivieren&quot;,&quot;Flag this blog&quot;:&quot;Diesen Blog melden&quot;,&quot;Block&quot;:&quot;Sperren&quot;,&quot;Follow&quot;:&quot;Folgen&quot;,&quot;Follow %1$s&quot;:&quot;%1$s folgen&quot;,&quot;Unfollow&quot;:&quot;Entfolgen&quot;,&quot;Sign up&quot;:&quot;Registrieren&quot;,&quot;Install the app&quot;:&quot;App installieren&quot;,&quot;Open in app&quot;:&quot;In App \u00f6ffnen&quot;,&quot;Report&quot;:&quot;Melden&quot;,&quot;Get the Tumblr app&quot;:&quot;Hol dir die Tumblr-App&quot;,&quot;Are you sure you want to delete this post?&quot;:&quot;Bist du sicher, dass du diesen Eintrag l\u00f6schen willst?&quot;,&quot;Never miss a post&quot;:&quot;Verpasse niemals einen Eintrag&quot;,&quot;Accept&quot;:&quot;Akzeptieren&quot;,&quot;Privacy \u0026 Cookies&quot;:&quot;Privatsph\u00e4re und Cookies&quot;,&quot;By using this site, you&#039;re agreeing to the use of analytics and other types of cookies. Click accept here, and cookies will also show you personalized ads from across the Automattic\/Wordpress.com network.&quot;:&quot;Durch die Nutzung dieser Website stimmst du der Verwendung von Analyse-Tools und anderen Arten von Cookies zu. Klicke hier auf \&quot;Akzeptieren\&quot;, dann werden dir Cookies auch personalisierte Werbung aus dem gesamten Automattic\/Wordpress.com-Netzwerk zeigen.&quot;}}"></noscript><script src="https://assets.tumblr.com/client/prod/standalone/tumblelog/index.build.js?_v=de04ebc7a4a63db35081cfb75e016ba6"></script></body>
+<!--
+    This Tumblr Theme and all of its CSS, Javascript,
+    and media assets are subject to Tumblr's Terms of Service:
+
+    https://www.tumblr.com/terms_of_service
+-->
+</html>

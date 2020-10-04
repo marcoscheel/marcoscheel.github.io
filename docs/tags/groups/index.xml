@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Groups on Marco Scheel aka GeekDotNet</title>
+    <link>/tags/groups/</link>
+    <description>Recent content in Groups on Marco Scheel aka GeekDotNet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 21 Jul 2020 16:13:19 +0000</lastBuildDate><atom:link href="/tags/groups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beware of the Teams Admin center to create new teams (and assign owners)</title>
+      <link>/post/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</link>
+      <pubDate>Tue, 21 Jul 2020 16:13:19 +0000</pubDate>
+      
+      <guid>/post/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://admin.teams.microsoft.com/teams/manage&#34; target=&#34;_blank&#34;&gt;Microsoft Teams Admin Center&lt;/a&gt; can be used to create a new Team. The initial dialog allows you to set multiple owners for the Team. This feature was added over time and is a welcome addition to make the life of an administrator easier. But the implementation has a big shortcoming: The specified owners in this dialog will not become a member of the underlying Microsoft 365 Group in Azure Active Directory. As a result all Microsoft 365 group services checking for members will not behave as expected. For example: These owners will not be able to access Planner. Other services like Teams and SharePoint work by accident.
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/2a/8a/ee93247423d6326e5e728bed8116.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

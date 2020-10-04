@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft365 on Marco Scheel aka GeekDotNet</title>
+    <link>/tags/microsoft365/</link>
+    <description>Recent content in Microsoft365 on Marco Scheel aka GeekDotNet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 17 Aug 2020 08:31:05 +0000</lastBuildDate><atom:link href="/tags/microsoft365/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enable Unified Labeling for Microsoft 365 Groups (and Teams) in your tenant via PowerShell script</title>
+      <link>/post/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</link>
+      <pubDate>Mon, 17 Aug 2020 08:31:05 +0000</pubDate>
+      
+      <guid>/post/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</guid>
+      <description>&lt;p&gt;Microsoft announced end of June 2020 the “General Availability” of the Microsoft Information Protection integration for Group labeling. Unified labeling is now available für all Microsoft 365 Groups (Teams, SharePoint, &amp;hellip;).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Microsoft Information Protection is a built-in, intelligent, unified, and extensible solution to protect sensitive data across your enterprise – in Microsoft 365 cloud services, on-premises, third-party SaaS applications, and more. Microsoft Information Protection provides a unified set of capabilities to know your data, protect your data, and prevent data loss across Microsoft 365 apps (e.g. Word, PowerPoint, Excel, Outlook) and services (e.g. Teams, SharePoint, and Exchange).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Source: &lt;a href=&#34;https://techcommunity.microsoft.com/t5/microsoft-security-and/general-availability-microsoft-information-protection/ba-p/1497769&#34; target=&#34;_blank&#34;&gt;https://techcommunity.microsoft.com/t5/microsoft-security-and/general-availability-microsoft-information-protection/ba-p/1497769&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Beware of the Teams Admin center to create new teams (and assign owners)</title>
+      <link>/post/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</link>
+      <pubDate>Tue, 21 Jul 2020 16:13:19 +0000</pubDate>
+      
+      <guid>/post/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://admin.teams.microsoft.com/teams/manage&#34; target=&#34;_blank&#34;&gt;Microsoft Teams Admin Center&lt;/a&gt; can be used to create a new Team. The initial dialog allows you to set multiple owners for the Team. This feature was added over time and is a welcome addition to make the life of an administrator easier. But the implementation has a big shortcoming: The specified owners in this dialog will not become a member of the underlying Microsoft 365 Group in Azure Active Directory. As a result all Microsoft 365 group services checking for members will not behave as expected. For example: These owners will not be able to access Planner. Other services like Teams and SharePoint work by accident.
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/2a/8a/ee93247423d6326e5e728bed8116.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Teams Live Events für (Krisen-)Vorträge</title>
+      <link>/post/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/</link>
+      <pubDate>Mon, 30 Mar 2020 12:20:42 +0000</pubDate>
+      
+      <guid>/post/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/</guid>
+      <description>&lt;p&gt;Online Meetings sind aus den heutigen Unternehmen nicht mehr wegzudenken. Microsoft Teams ist die Meeting-Lösung im Microsoft 365 Service. Ein &lt;strong&gt;Teams Meeting&lt;/strong&gt; ermöglicht es allen Teilnehmern, &lt;strong&gt;aktiv&lt;/strong&gt; an der Besprechung teilzunehmen. Es gibt nur wenig Kontrolle für den Besprechungsleiter. Die Teilnehmer müssen die Disziplin aufbringen und sich im Meeting “korrekt” verhalten. Durch die aktuelle Corona-Krise wird aber deutlich, dass sich viele Teilnehmer schwerer damit tun als gedacht. &lt;strong&gt;Besonders für Neulinge sind die verschiedenen Optionen in der Software ungewohnt und Grundregeln für ein gutes Meeting eventuell unbekannt&lt;/strong&gt;. Es wäre toll, wenn die Software hier besser unterstützt, aber der aktuelle Stand (”Mute all”, &amp;hellip;) wird sich kurzfristig nicht ändern.&lt;/p&gt;
+&lt;p&gt;Ich möchte euch heute eine &lt;strong&gt;Alternative zum klassischen Meeting&lt;/strong&gt; zeigen. Es wird nicht für jede Situation passen, aber ihr solltet es kennenlernen und selbst entscheiden. Ich wurde von einer Schule angesprochen, welche Optionen es gibt, die Schüler Online zu unterrichten. Die Zielgruppe ist nicht besonders gut ausgebildet, wenn es um eine gute Meeting-Kultur geht :) Die Eltern und die Schüler dürften oft Anfänger sein und da passieren automatisch Fehler. In dieser Situation kann es sin machen auf ein &lt;strong&gt;Microsoft Teams Live Event&lt;/strong&gt; auszuweichen.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Is Microsoft Teams a remote support tool?</title>
+      <link>/post/613300443898068992-is-microsoft-teams-a-remote-support-tool/</link>
+      <pubDate>Sun, 22 Mar 2020 14:54:41 +0000</pubDate>
+      
+      <guid>/post/613300443898068992-is-microsoft-teams-a-remote-support-tool/</guid>
+      <description>&lt;p&gt;My buddy &lt;a href=&#34;https://twitter.com/okieselb&#34; target=&#34;_blank&#34;&gt;Oliver Kieselbach&lt;/a&gt; did a &lt;a href=&#34;https://oliverkieselbach.com/2020/03/03/quick-assist-the-built-in-remote-control-in-windows-10/&#34; target=&#34;_blank&#34;&gt;blog post about the capabilities of Microsoft Quick Assist&lt;/a&gt; (as part of the current operation system). In his post he raised the question if Microsoft Teams is not enough for this kind of IT support scenarios. Check out his blog to see it live in action and what the biggest shortcoming is. Microsoft Teams is not a good option for anything &lt;a href=&#34;https://en.wikipedia.org/wiki/User_Account_Control&#34; target=&#34;_blank&#34;&gt;UAC&lt;/a&gt; related. Even without the so called &lt;a href=&#34;https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/user-account-control-switch-to-the-secure-desktop-when-prompting-for-elevation&#34; target=&#34;_blank&#34;&gt;secure desktop&lt;/a&gt; feature Microsoft Teams will not allow the support staff to enter admin credentials if needed. I also would suggest (for the most customers) to pick a proper IT support tool for these scenarios.&lt;/p&gt;
+&lt;p&gt;Microsoft Teams is the hub for teamwork, but that doesn’t mean you could not support your colleagues, if they are experiencing non admin related issues. But first things first, we should check, if your tenant settings are ready to allow remote control during a desktop sharing session. In quite a few customer environments I’ve noticed that remote sharing is restricted or completely disabled.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Teams - Known issues... no more!?</title>
+      <link>/post/189806058922-microsoft-teams-known-issues-no-more/</link>
+      <pubDate>Sun, 22 Dec 2019 08:06:03 +0000</pubDate>
+      
+      <guid>/post/189806058922-microsoft-teams-known-issues-no-more/</guid>
+      <description>&lt;p&gt;Microsoft is documenting a list of things (about Microsoft Teams) that are not working as expected by Microsoft or customers. The list has been around for quite some time. New things are added, but I noticed things on the list that are clearly working as of this writing are not removed. So let’s have a look together and maybe you support my pull request.&lt;/p&gt;
+&lt;p&gt;The article: &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/known-issues&#34; target=&#34;_blank&#34;&gt;Known issues for Microsoft Teams&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;My pull request:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/MicrosoftDocs/OfficeDocs-SkypeForBusiness/pull/3686&#34; target=&#34;_blank&#34;&gt;Known issues that are no longer known issues&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Manage Microsoft Teams membership with Azure AD Access Review</title>
+      <link>/post/186728523052-manage-microsoft-teams-membership-with-azure-ad/</link>
+      <pubDate>Fri, 02 Aug 2019 19:41:30 +0000</pubDate>
+      
+      <guid>/post/186728523052-manage-microsoft-teams-membership-with-azure-ad/</guid>
+      <description>&lt;p&gt;This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).&lt;/p&gt;
+&lt;p&gt;&amp;lt;DE&amp;gt;Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&amp;lt;/DE&amp;gt;&lt;/p&gt;
+&lt;p&gt;Microsoft has great &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview&#34; target=&#34;_blank&#34;&gt;resources&lt;/a&gt; to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview&#34; target=&#34;_blank&#34;&gt;Identity Governance)&lt;/a&gt; on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.&lt;/p&gt;
+&lt;p&gt;Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>App Permissions für Microsoft Graph Calls automatisiert einrichten</title>
+      <link>/post/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</link>
+      <pubDate>Mon, 08 Jul 2019 11:47:21 +0000</pubDate>
+      
+      <guid>/post/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</guid>
+      <description>&lt;p&gt;Für unser Glück &amp;amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0&#34; target=&#34;_blank&#34;&gt;PowerShell AZ&lt;/a&gt; und die &lt;a href=&#34;https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest&#34; target=&#34;_blank&#34;&gt;Azure CLI&lt;/a&gt;. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.&lt;/p&gt;
+&lt;p&gt;Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview&#34; target=&#34;_blank&#34;&gt;Access Reviews&lt;/a&gt; Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 62a82d76-70ea-41e2-9197-370581804d09=Role #msgraph Group.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions ef5f7d5c-338f-44b0-86c3-351f46c8bb5f=Role #msgraph AccessReview.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 60a901ed-09f7-4aa5-a16e-7dd3d6f9de36=Role #msgraph ProgramControl.ReadWrite.All
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</title>
+      <link>/post/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</link>
+      <pubDate>Mon, 01 Jul 2019 15:06:23 +0000</pubDate>
+      
+      <guid>/post/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</guid>
+      <description>&lt;p&gt;Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im &lt;a href=&#34;https://hairlessinthecloud.com&#34; target=&#34;_blank&#34;&gt;Hairless in the Cloud&lt;/a&gt; Podcast Nummer &lt;a href=&#34;https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff&#34; target=&#34;_blank&#34;&gt;18&lt;/a&gt; habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.&lt;/p&gt;
+&lt;p&gt;Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem &lt;a href=&#34;https://developer.microsoft.com/en-us/graph/blogs/postman-collections/&#34; target=&#34;_blank&#34;&gt;Graph Explorer in einer Collection für Postman&lt;/a&gt; zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.&lt;/p&gt;
+&lt;p&gt;In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/cd/ef/cad14ee0d8e93c6d3b12f08d7601.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
