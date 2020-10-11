@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MIP on Marco Scheel aka GeekDotNet</title>
-    <link>/tags/mip/</link>
+    <link>https://marcoscheel.de/tags/mip/</link>
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 17 Aug 2020 08:31:05 +0000</lastBuildDate><atom:link href="/tags/mip/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Aug 2020 08:31:05 +0000</lastBuildDate><atom:link href="https://marcoscheel.de/tags/mip/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enable Unified Labeling for Microsoft 365 Groups (and Teams) in your tenant via PowerShell script</title>
-      <link>/post/2020/08/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</link>
+      <link>https://marcoscheel.de/post/2020/08/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</link>
       <pubDate>Mon, 17 Aug 2020 08:31:05 +0000</pubDate>
       
-      <guid>/post/2020/08/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</guid>
+      <guid>https://marcoscheel.de/post/2020/08/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</guid>
       <description>&lt;p&gt;Microsoft announced end of June 2020 the “General Availability” of the Microsoft Information Protection integration for Group labeling. Unified labeling is now available für all Microsoft 365 Groups (Teams, SharePoint, &amp;hellip;).&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Microsoft Information Protection is a built-in, intelligent, unified, and extensible solution to protect sensitive data across your enterprise – in Microsoft 365 cloud services, on-premises, third-party SaaS applications, and more. Microsoft Information Protection provides a unified set of capabilities to know your data, protect your data, and prevent data loss across Microsoft 365 apps (e.g. Word, PowerPoint, Excel, Outlook) and services (e.g. Teams, SharePoint, and Exchange).&lt;/p&gt;

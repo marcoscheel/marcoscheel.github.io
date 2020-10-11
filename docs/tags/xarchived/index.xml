@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>xArchived on Marco Scheel aka GeekDotNet</title>
-    <link>/tags/xarchived/</link>
+    <link>https://marcoscheel.de/tags/xarchived/</link>
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 13 Jun 2012 16:05:08 +0000</lastBuildDate><atom:link href="/tags/xarchived/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jun 2012 16:05:08 +0000</lastBuildDate><atom:link href="https://marcoscheel.de/tags/xarchived/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Minor update &#34;Sign In As A Different User&#34; für OWA und HTML Redirection</title>
-      <link>/2012/06/13/minor-sign-in-as-a-different-user-fur-owa-und-html-redirection/</link>
+      <link>https://marcoscheel.de/2012/06/13/minor-sign-in-as-a-different-user-fur-owa-und-html-redirection/</link>
       <pubDate>Wed, 13 Jun 2012 16:05:08 +0000</pubDate>
       
-      <guid>/2012/06/13/minor-sign-in-as-a-different-user-fur-owa-und-html-redirection/</guid>
+      <guid>https://marcoscheel.de/2012/06/13/minor-sign-in-as-a-different-user-fur-owa-und-html-redirection/</guid>
       <description>&lt;p&gt;Ich hatte heute auf unserem Bootcamp eine Anfrage von einem unserer Consultants bezüglich meines &lt;a href=&#34;http://signinas.codeplex.com&#34; target=&#34;_blank&#34;&gt;Projektes zum Wechseln von Benutzern auf dem IIS&lt;/a&gt; bekommen. Ich hatte das vor kurzem in einem &lt;a href=&#34;http://marcoscheel.de/sharepoint/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites&#34; target=&#34;_blank&#34;&gt;Post gebloggt&lt;/a&gt;. Es ging um eine Konfiguration im Bereich Publishing TMG und genauer um Forms Authentication vs. Integrated Authentication. Wir haben kurz die Anwendung im Lab OWA erfolgreich getestet. Je nachdem wie der Kunde sich entscheidet gehen wir damit auch Live.&lt;/p&gt;
 &lt;p&gt;Bei der Konfiguration sind uns allerdings ein paar Dinge aufgefallen:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;  * Die Konfiguration im OWA Ordner war nicht erfolgreich. Alle Aufrufe für den Handler wurden ignoriert und es wurde OWA angezeigt.
@@ -26,10 +26,10 @@
     
     <item>
       <title>ASP.NET 4.5, SQLMembership und (keine) Roles</title>
-      <link>/2012/06/11/asp-net-4-5-sqlmembership-und-keine-roles-2/</link>
+      <link>https://marcoscheel.de/2012/06/11/asp-net-4-5-sqlmembership-und-keine-roles-2/</link>
       <pubDate>Mon, 11 Jun 2012 15:37:11 +0000</pubDate>
       
-      <guid>/2012/06/11/asp-net-4-5-sqlmembership-und-keine-roles-2/</guid>
+      <guid>https://marcoscheel.de/2012/06/11/asp-net-4-5-sqlmembership-und-keine-roles-2/</guid>
       <description>&lt;p&gt;Wir sind aktuell auf Bootcamp und ich habe Claims und alles drum herum zum Thema. Natürlich ist auch die Migration aus &amp;ldquo;alten&amp;rdquo; Systemen ein Punkt auf der Agenda. Ich brauche also ein altes System&amp;hellip; Also habe ich schnell eine ASP.NET 4.5 WebForms Site angelegt und konnte auch schnell die Logins aus dem SQL Membership Provider zum Fliegen bekommen. Allerdings konnte ich keine Seiten vor Zugriff über eine spezielle Role schützen. Hier meine Web.Config:&lt;/p&gt;
 &lt;location path=&#34;Admin.aspx&#34;&gt;
 &lt;p&gt;&amp;lt;system.web&amp;gt;&lt;/p&gt;
@@ -59,10 +59,10 @@
     
     <item>
       <title>SharePoint 2010 Diagnostics Log Files werden nicht komprimiert</title>
-      <link>/2012/05/29/sharepoint-2010-diagnostics-log-files-werden-nicht-komprimiert/</link>
+      <link>https://marcoscheel.de/2012/05/29/sharepoint-2010-diagnostics-log-files-werden-nicht-komprimiert/</link>
       <pubDate>Tue, 29 May 2012 16:44:11 +0000</pubDate>
       
-      <guid>/2012/05/29/sharepoint-2010-diagnostics-log-files-werden-nicht-komprimiert/</guid>
+      <guid>https://marcoscheel.de/2012/05/29/sharepoint-2010-diagnostics-log-files-werden-nicht-komprimiert/</guid>
       <description>&lt;p&gt;Ich hatte vor einiger Zeit bei einem Kunden das Problem, dass die Diagnostic Logs von Microsoft SharePoint 2010 nicht automatisch komprimieren ließen. SharePoint kümmert sich ja selber um die &lt;a href=&#34;http://technet.microsoft.com/en-us/library/ee748656.aspx&#34; target=&#34;_blank&#34;&gt;Verwaltung&lt;/a&gt; des Speicherplatzes. Eines der neuen Features ist, dass auf die Files in dem LOGS Ordner automatisch die NTFS Kompression aktiviert wird.&lt;/p&gt;
 &lt;p&gt;Der Kunde betreibt mehrere Farmen (Production, Staging, Testing und Dev), um den ganzen Lifecyle des Deployments korrekt abzudecken. Bis auf die Produktion laufen alle Farmen als Guest in geshared virtuellen Umgebungen. Die Produktion hat eigene Virtualisierungshosts und wurde extra für SharePoint neu aufgebaut. Ich konfiguriere (abweichend vom Standard) das Verzeichnis der LOGS nicht in den 14er Hive sondern auf &amp;ldquo;D:SP2010-DiagLogs&amp;rdquo;. Auf einigen der Maschinen im Staging ist mir dann aufgefallen, dass der Ordner für das SharePoint Diagnostics Logging keine NTFS Kompression verwendet. Im ersten Moment dachte ich, dass hier hat einer der Kollegen was &amp;ldquo;konfiguriert&amp;rdquo; und ich wollte es manuell gerade ziehen. Ich stellte allerdings fest, dass die Option für die Kompression des Dateisystems nicht existiert.&lt;/p&gt;
 &lt;p&gt;Eine kurze Recherche brachte zum Thema SharePoint Diagnostic Logs wenig, um nicht zu sagen gar nichts. Die Suche wurde nun erweitert auf OS-Ebene, da die Funktion der &amp;ldquo;File Compression&amp;rdquo; nicht durch SharePoint bereitgestellt wird. Es stellte sich dann langsam heraus, dass die Funktion nur für Platten bereitsteht, die mit einer Cluster-Größe von 4kb formatiert wurden. Hier ein Auszug von Microsoft Support:&lt;/p&gt;
@@ -75,10 +75,10 @@
     
     <item>
       <title>Sign In As A Different User - Benutzer wechseln für IIS basierte Sites</title>
-      <link>/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/</link>
+      <link>https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/</link>
       <pubDate>Sun, 27 May 2012 20:23:06 +0000</pubDate>
       
-      <guid>/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/</guid>
+      <guid>https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/</guid>
       <description>&lt;p&gt;Meine Kollege &lt;a href=&#34;http://blog.karstenkleinschmidt.de/&#34; target=&#34;_blank&#34;&gt;Karten Kleinschmidt&lt;/a&gt; und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.&lt;/p&gt;
 &lt;p&gt;In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie &lt;a href=&#34;http://sharepoint.microsoft.com/en-us/&#34; target=&#34;_blank&#34;&gt;SharePoint&lt;/a&gt;, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &amp;ldquo;richtige&amp;rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms). Ist man am PC mit dem normalen Account angemeldet und möchte nun den administrativen Account verwenden, dann muss man den ganzen Brower mit anderen Credentials starten, sich am PC ummelden oder per Terminal Services auf einem anderen Rechner anmelden. Anwendungen wie &lt;a href=&#34;http://sharepoint.microsoft.com/en-us/&#34; target=&#34;_blank&#34;&gt;SharePoint&lt;/a&gt; bieten solche Funktionen Out-Of-The-Box bereits an. Für Anwendungen, welche das nicht können, ist es für den normalen Mitarbeiter im Unternehmen kein leichtes Unterfangen, diese Aufgabe zu lösen.
 &lt;a href=&#34;http://marcoscheel.files.wordpress.com/2012/05/sharepoint.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.files.wordpress.com/2012/05/sharepoint.png&#34; alt=&#34;&#34; /&gt;
@@ -96,10 +96,10 @@
     
     <item>
       <title>Windows Phone 7 test</title>
-      <link>/2010/12/20/windows-phone-7-test/</link>
+      <link>https://marcoscheel.de/2010/12/20/windows-phone-7-test/</link>
       <pubDate>Sun, 19 Dec 2010 22:45:16 +0000</pubDate>
       
-      <guid>/2010/12/20/windows-phone-7-test/</guid>
+      <guid>https://marcoscheel.de/2010/12/20/windows-phone-7-test/</guid>
       <description>&lt;pre&gt;&lt;code&gt;            Coole Sache
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Posted from WordPress for Windows Phone&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/12/20101219234245.jpg&#34; alt=&#34;&#34; /&gt;
@@ -109,10 +109,10 @@
     
     <item>
       <title>SharePoint Blob Cache Corrupt</title>
-      <link>/2010/10/03/sharepoint-blob-cache-corrupt/</link>
+      <link>https://marcoscheel.de/2010/10/03/sharepoint-blob-cache-corrupt/</link>
       <pubDate>Sun, 03 Oct 2010 10:45:18 +0000</pubDate>
       
-      <guid>/2010/10/03/sharepoint-blob-cache-corrupt/</guid>
+      <guid>https://marcoscheel.de/2010/10/03/sharepoint-blob-cache-corrupt/</guid>
       <description>&lt;p&gt;In einer der SharePoint 2007 Farmen, die ich betreue, nutzen wir die &lt;a href=&#34;http://marcoscheel.de/sharepoint/sharepoint-disk-based-blob-cache&#34; target=&#34;_blank&#34;&gt;Blobcache&lt;/a&gt; &lt;a href=&#34;http://office.microsoft.com/en-us/sharepoint-server-help/configure-disk-based-cache-settings-HA010176284.aspx&#34; target=&#34;_blank&#34;&gt;Funktion&lt;/a&gt;, um Video’s, Flash und Bilder zu cachen. Wir haben zwei Web Front End Server (WFE) und die Funktion leistet eigentlich gute Dienste. Es kommt allerdings immer mal wieder vor, dass Bilder (das Verhältnis ist viel höher zum restlichen Content im Cache) nicht mehr angezeigt werden und es ein ASP.NET Error gibt. Genau es gibt folgendes Fehler:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Server Error in &#39;/&#39; Application. 
 -------------------------------------------------------------------------------- 
@@ -172,10 +172,10 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
     
     <item>
       <title>Call 2 Action: ASP.NET Security Update Now Available</title>
-      <link>/2010/09/29/call-2-action-asp-net-security-update-now-available/</link>
+      <link>https://marcoscheel.de/2010/09/29/call-2-action-asp-net-security-update-now-available/</link>
       <pubDate>Wed, 29 Sep 2010 07:30:06 +0000</pubDate>
       
-      <guid>/2010/09/29/call-2-action-asp-net-security-update-now-available/</guid>
+      <guid>https://marcoscheel.de/2010/09/29/call-2-action-asp-net-security-update-now-available/</guid>
       <description>&lt;p&gt;Eigentlich nicht mein Dinge auf irgendwelche Blogposts hinzuweisen, aber denke hier ist mal eine Ausnahme angesagt. Es geht um eine Lücke in ASP.NET, die seit einigen Tagen die Runde macht. Hier das Security Bulitin von MS:  &lt;br&gt;
 &lt;a href=&#34;http://www.microsoft.com/technet/security/bulletin/ms10-sep.mspx&#34; target=&#34;_blank&#34;&gt;http://www.microsoft.com/technet/security/bulletin/ms10-sep.mspx&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;ScottGu beschreibt sehr schön, was zu tun ist und welche Auswirkungen es hat, wenn man das ASP.NET Security Update anwendet.  &lt;br&gt;
@@ -193,10 +193,10 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
     
     <item>
       <title>Zune Software 4.2 ist da</title>
-      <link>/2010/09/24/zune-software-4-2-ist-da/</link>
+      <link>https://marcoscheel.de/2010/09/24/zune-software-4-2-ist-da/</link>
       <pubDate>Fri, 24 Sep 2010 07:22:14 +0000</pubDate>
       
-      <guid>/2010/09/24/zune-software-4-2-ist-da/</guid>
+      <guid>https://marcoscheel.de/2010/09/24/zune-software-4-2-ist-da/</guid>
       <description>&lt;p&gt;Jetzt fehlt nur noch das passende Telefon. Windows Phone 7 ich komme.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/image.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/image_thumb.png&#34; alt=&#34;image&#34; /&gt;
 
@@ -207,10 +207,10 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
     
     <item>
       <title>Umzug - Phase Zwei</title>
-      <link>/2010/09/21/umzug-phase-zwei/</link>
+      <link>https://marcoscheel.de/2010/09/21/umzug-phase-zwei/</link>
       <pubDate>Tue, 21 Sep 2010 20:00:47 +0000</pubDate>
       
-      <guid>/2010/09/21/umzug-phase-zwei/</guid>
+      <guid>https://marcoscheel.de/2010/09/21/umzug-phase-zwei/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/CloudBerry.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/CloudBerry_thumb.png&#34; alt=&#34;CloudBerry&#34; /&gt;
 
 &lt;/a&gt;Heute bin ich wieder ein Schritt weiter. Die fehlenden Bilder aus meinem GraffitiCMS wurden dank S3 und dem &lt;a href=&#34;http://wordpress.org/extend/plugins/search-and-replace/&#34; target=&#34;_blank&#34;&gt;Search &amp;amp; Replace&lt;/a&gt; Plugin gerade gezogen.&lt;/p&gt;
@@ -221,10 +221,10 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
     
     <item>
       <title>Website ist umgezogen</title>
-      <link>/2010/09/19/website-ist-umgezogen/</link>
+      <link>https://marcoscheel.de/2010/09/19/website-ist-umgezogen/</link>
       <pubDate>Sun, 19 Sep 2010 19:30:47 +0000</pubDate>
       
-      <guid>/2010/09/19/website-ist-umgezogen/</guid>
+      <guid>https://marcoscheel.de/2010/09/19/website-ist-umgezogen/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/neu.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/neu_thumb.png&#34; alt=&#34;neu&#34; /&gt;
 
 &lt;/a&gt;Lange ist es her und dann so was langweiliges. Der Blog läuft jetzt auf Wordpress. Mein vServer wird in den nächsten Tagen geplättet. Ich hoffe auf einen reibungslosen Umzug. Dank der eingesetzten Tools sollte keiner was merken. Das Theme update ich irgendwann nochmal, allerdings halte ich nicht viel davon Arbeit in die Oberfläche zu stecken. Der wahre Blick auf ein Blog geht sowieso durch Google Reader. Danke Feedburner muss NIEMAND sein RSS Reader anfassen.&lt;/p&gt;
@@ -235,10 +235,10 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
     
     <item>
       <title>Windows Server 2008 R2, Sharepoint 2007 und WebDav Probleme</title>
-      <link>/2010/01/17/windows-server-2008-r2-sharepoint-2007-und-webdav-probleme/</link>
+      <link>https://marcoscheel.de/2010/01/17/windows-server-2008-r2-sharepoint-2007-und-webdav-probleme/</link>
       <pubDate>Sun, 17 Jan 2010 14:25:33 +0000</pubDate>
       
-      <guid>/2010/01/17/windows-server-2008-r2-sharepoint-2007-und-webdav-probleme/</guid>
+      <guid>https://marcoscheel.de/2010/01/17/windows-server-2008-r2-sharepoint-2007-und-webdav-probleme/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/webdavproblem1.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/webdavproblem_thumb.png&#34; alt=&#34;webdavproblem&#34; /&gt;
 
 &lt;/a&gt;Die letzten SharePoint 2007 Installationen werden immer häufiger auf Windows Server 2008 R2 (W2K8R2) ausgeführt. Der Unterschied (für SharePoint relevant) zum “alten” Windows Server 2008 (W2K8) liegt zum Beispiel in einigen IIS7 Änderungen. Eine dieser Änderungen hat mich in einer der letzten Installationen “eingeholt”. &lt;a href=&#34;http://marcoscheel.de/sharepoint/wie-installiere-ich-sharepoint-in-einer-farm/&#34; target=&#34;_blank&#34;&gt;Wie ich SharePoint installiere&lt;/a&gt;, habe ich bereits dokumentiert. Bei der Auswahl der Internet Information Server 7 (IIS7) Konfiguration sind nun die ersten Out-Of-Band Komponenten direkt anwählbar. Hier habe ich, ohne mir weiter Gedanken zu machen, auch WebDav ausgewählt, da nun die &lt;a href=&#34;http://www.microsoft.com/downloads/details.aspx?familyid=13E97AAA-FB1B-4CF8-B95F-19AE02321385&amp;amp;displaylang=en&#34; target=&#34;_blank&#34;&gt;downloadbare Variante&lt;/a&gt; von W2K8 direkt integriert ist.&lt;/p&gt;
@@ -253,10 +253,10 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
     
     <item>
       <title>Office und SharePoint 2010 Beta für MSDN Subscriber verfügbar</title>
-      <link>/2009/11/16/office-und-sharepoint-2010-beta-fr-msdn-subscriber-verfgbar/</link>
+      <link>https://marcoscheel.de/2009/11/16/office-und-sharepoint-2010-beta-fr-msdn-subscriber-verfgbar/</link>
       <pubDate>Mon, 16 Nov 2009 16:47:18 +0000</pubDate>
       
-      <guid>/2009/11/16/office-und-sharepoint-2010-beta-fr-msdn-subscriber-verfgbar/</guid>
+      <guid>https://marcoscheel.de/2009/11/16/office-und-sharepoint-2010-beta-fr-msdn-subscriber-verfgbar/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/officebeta.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/officebeta_thumb.png&#34; alt=&#34;officebeta&#34; /&gt;
 
 &lt;/a&gt;Twitter ist schon cool… Ich dachte ich checke mal, ob sich in der Beta Welt von Office was tut und siehe da… alles voll. In der MSDN war zuerst nur über den RSS Feed was zu sehen… und seit 5 Minuten kann ich auch die gewohnte Struktur der MSDN nutzen.&lt;/p&gt;
@@ -269,10 +269,10 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
     
     <item>
       <title>ITPros.de schon abonniert?</title>
-      <link>/2009/08/13/itpros-de-schon-abonniert/</link>
+      <link>https://marcoscheel.de/2009/08/13/itpros-de-schon-abonniert/</link>
       <pubDate>Thu, 13 Aug 2009 11:55:29 +0000</pubDate>
       
-      <guid>/2009/08/13/itpros-de-schon-abonniert/</guid>
+      <guid>https://marcoscheel.de/2009/08/13/itpros-de-schon-abonniert/</guid>
       <description>&lt;p&gt;Wieder ein Kollege mehr, der sich dem &amp;ldquo;harten” Wettbewerb des Blogging stellt. Seit ein paar Tagen gibt’s Content unter &lt;a href=&#34;http://www.itpros.de&#34; target=&#34;_blank&#34;&gt;http://www.itpros.de&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/itpros.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/itpros_thumb.png&#34; alt=&#34;itpros&#34; /&gt;
 
@@ -284,10 +284,10 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
     
     <item>
       <title>Last.fm, Larissa Ness und Amazon MP3</title>
-      <link>/2009/08/04/last-fm-larissa-ness-und-amazon-mp3/</link>
+      <link>https://marcoscheel.de/2009/08/04/last-fm-larissa-ness-und-amazon-mp3/</link>
       <pubDate>Tue, 04 Aug 2009 11:30:29 +0000</pubDate>
       
-      <guid>/2009/08/04/last-fm-larissa-ness-und-amazon-mp3/</guid>
+      <guid>https://marcoscheel.de/2009/08/04/last-fm-larissa-ness-und-amazon-mp3/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/larissa1.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/larissa_thumb1.png&#34; alt=&#34;larissa&#34; /&gt;
 
 &lt;/a&gt;Ich bin seit einiger Zeit ein echter &lt;a href=&#34;http://www.lastfm.de/user/GeekDotNet&#34; target=&#34;_blank&#34;&gt;Last.fm&lt;/a&gt; Fan. Über den Service habe ich schon ein Paar echt interessante Künstler gefunden. &lt;a href=&#34;http://www.lastfm.de/music/Larissa&amp;#43;Ness&#34; target=&#34;_blank&#34;&gt;Larissa Ness&lt;/a&gt; ist eine von diesen Entdeckungen. Am Anfang gab es das Album nur über iTunes zu kaufen oder bei Amazon als CD für 26 Euro!!! Heute habe ich mal wieder bei Amazon MP3 vorbei gesehen und siehe da… Larissa Ness für 8,99 Euro. Die Entscheidung war einfach und schon habe ich den Amazon MP3 Downloader angeworfen:&lt;/p&gt;
@@ -302,10 +302,10 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
     
     <item>
       <title>SharePoint, FQDN, ServiceAccounts und SSP Provisioning failed</title>
-      <link>/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/</link>
+      <link>https://marcoscheel.de/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/</link>
       <pubDate>Thu, 25 Jun 2009 06:26:00 +0000</pubDate>
       
-      <guid>/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/</guid>
+      <guid>https://marcoscheel.de/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/</guid>
       <description>&lt;p&gt;In meiner letzten SharePoint Installation wurde ich mit einem Active Directory mit Windows NT 4.0 Wurzeln begrüßt. Die Domäne wurde von “kunde.de” auf “neu.kunde.de” upgegraded. Der NETBIOS Name der Domain ist somit “kunde.de” und der Full Qualified Domain Name (FQDN) ist “neu.kunde.de”. In der Vergangenheit hatte ich keine gute Erfahrung mit FQDN’s im Bezug auf den SQL Server gemacht. Mein Versuch den Server über den vollen Namen anzusprechend, ist gescheitert (Pre SP1 Erfahrung).&lt;/p&gt;
 &lt;p&gt;Im aktuellen Fall haben wir versucht, den FQDN für die Angabe der Domain Accounts in der Form “neu.kunde.deaccountname” zu verwenden. Bis zur Provisionierung des Shared Service Provider hat das auch super funktioniert. Das Erstellen des SSP endete mit folgender Seite:   &lt;br&gt;
 &lt;a href=&#34;http://marcoscheel.de/files/2010/09/image_21.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/image_2_thumb1.png&#34; alt=&#34;image_2&#34; /&gt;
@@ -392,10 +392,10 @@ at Microsoft.Office.Server.Administration.ApplicationServerJob.ProvisionLocalSha
     
     <item>
       <title>OCS, e-Book und ein weiterer Kollege bloggt</title>
-      <link>/2009/06/24/ocs-e-book-und-ein-weiterer-kollege-bloggt/</link>
+      <link>https://marcoscheel.de/2009/06/24/ocs-e-book-und-ein-weiterer-kollege-bloggt/</link>
       <pubDate>Wed, 24 Jun 2009 14:41:01 +0000</pubDate>
       
-      <guid>/2009/06/24/ocs-e-book-und-ein-weiterer-kollege-bloggt/</guid>
+      <guid>https://marcoscheel.de/2009/06/24/ocs-e-book-und-ein-weiterer-kollege-bloggt/</guid>
       <description>&lt;p&gt;Ein weitere Kollege von &lt;a href=&#34;http://www.glueckkanja.com&#34; target=&#34;_blank&#34;&gt;Glück &amp;amp; Kanja&lt;/a&gt; versucht sich in der Blogosphäre ;-) Nach dem erfolgreichen Exchange-Pro-Expert-Guru und &lt;a href=&#34;http://blog.geisbauer.de/2009/05/move-mailbox-manager.html&#34; target=&#34;_blank&#34;&gt;“Junior” C# Coder&lt;/a&gt; &lt;a href=&#34;http://blog.geisbauer.de/&#34; target=&#34;_blank&#34;&gt;Jan Geisbauer&lt;/a&gt; ist nun auch &lt;a href=&#34;http://blog.karstenkleinschmidt.de/&#34; target=&#34;_blank&#34;&gt;Karsten Kleinschmidt&lt;/a&gt; mit von der Partie :-) Er betätigt sich zumindest in seinem Blog aktuell mit OCS (Office Communication Server). &lt;a href=&#34;http://blog.karstenkleinschmidt.de/2009/06/ms-press-verschenkt-e-book.html&#34; target=&#34;_blank&#34;&gt;Sein aktueller Blogeintrag über das freie e-Book zum Thema OCS Programmierung&lt;/a&gt; war für mich ein Volltreffer :-)&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/karstenit.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/karstenit_thumb.png&#34; alt=&#34;karstenit&#34; /&gt;
 
@@ -408,10 +408,10 @@ at Microsoft.Office.Server.Administration.ApplicationServerJob.ProvisionLocalSha
     
     <item>
       <title>Fresh SharePoint Install mit SP2 und Language Pack DE</title>
-      <link>/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/</link>
+      <link>https://marcoscheel.de/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/</link>
       <pubDate>Wed, 24 Jun 2009 14:07:41 +0000</pubDate>
       
-      <guid>/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/</guid>
+      <guid>https://marcoscheel.de/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/</guid>
       <description>&lt;p&gt;Nachdem in letzter Zeit viel Maintenance an bestehenden Systemen betrieben wurde, gab es auch mal wieder eine Initialinstallation bei einem Kunden. Es wurde sich für ein Single Box Deployment entschieden. Folgende Details (sehr übliche Konfiguration und von mir empfohlene Konfiguration):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;1. Windows Server 2008 Standard – X64 – SP2 – EN       2. Microsoft SQL Server 2008 Standard – X64 – SP1 – EN       3. Microsoft SharePoint Server 2007 Standard – X64 – SP2 – EN – Language Pack German   
 &lt;/code&gt;&lt;/pre&gt;
@@ -438,10 +438,10 @@ at Microsoft.Office.Server.Administration.ApplicationServerJob.ProvisionLocalSha
     
     <item>
       <title>Windows Server 2008 DNS Snap-In – Copy &amp; Paste</title>
-      <link>/2009/06/24/windows-server-2008-dns-snap-in-copy-paste/</link>
+      <link>https://marcoscheel.de/2009/06/24/windows-server-2008-dns-snap-in-copy-paste/</link>
       <pubDate>Wed, 24 Jun 2009 08:29:39 +0000</pubDate>
       
-      <guid>/2009/06/24/windows-server-2008-dns-snap-in-copy-paste/</guid>
+      <guid>https://marcoscheel.de/2009/06/24/windows-server-2008-dns-snap-in-copy-paste/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/dns.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/dns_thumb.png&#34; alt=&#34;dns&#34; /&gt;
 
 &lt;/a&gt;Manchmal sind es Kleinigkeiten, die mich erfreuen :-) Beim Eintragen eines A-Record über ein W2K8 Server ist mir eben aufgefallen, dass man hier endlich mit Copy &amp;amp; Paste arbeiten kann. Gerade im DNS kann ein Tippfehler echt tödlich sein :-) In den Vorgängerversionen waren die einzelnen Quads abgebildet und der Versuch, etwas in das geteilte Eingabefeld zu kopieren, scheitert. Manchmal in weniger mehr.&lt;/p&gt;
@@ -451,10 +451,10 @@ at Microsoft.Office.Server.Administration.ApplicationServerJob.ProvisionLocalSha
     
     <item>
       <title>ADO.NET Data Services, Entity Framework und SQL/HTTP Timeouts</title>
-      <link>/2009/06/13/ado-net-data-services-entity-framework-und-sqlhttp-timeouts/</link>
+      <link>https://marcoscheel.de/2009/06/13/ado-net-data-services-entity-framework-und-sqlhttp-timeouts/</link>
       <pubDate>Sat, 13 Jun 2009 19:12:00 +0000</pubDate>
       
-      <guid>/2009/06/13/ado-net-data-services-entity-framework-und-sqlhttp-timeouts/</guid>
+      <guid>https://marcoscheel.de/2009/06/13/ado-net-data-services-entity-framework-und-sqlhttp-timeouts/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/timeouts.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/timeouts_thumb.png&#34; alt=&#34;timeouts&#34; /&gt;
 
 &lt;/a&gt; Beim Arbeiten mit den &lt;a href=&#34;http://msdn.microsoft.com/en-us/data/bb931106.aspx&#34; target=&#34;_blank&#34;&gt;ADO.NET Data Services&lt;/a&gt; (aka Astoria) kommt man irgendwann an den Punkt, dass die Aufgaben komplizierter werden oder die Last auf die Server steigt. In solchen Situationen ist man mit potentiellen Timeouts in allen Ebenen konfrontiert. In diesem Post zeige ich welche Timeouts es gibt, aber speziell will ich zeigen wie ich das Timeout des Entity Frameworks (SQL) in Kombination mit der MS REST Schicht ADO.NET Data Services anpassen kann.&lt;/p&gt;
@@ -514,10 +514,10 @@ return dbcon;
     
     <item>
       <title>Aktuellsten SharePoint Patchstand finden</title>
-      <link>/2009/06/06/aktuellsten-sharepoint-patchstand-finden/</link>
+      <link>https://marcoscheel.de/2009/06/06/aktuellsten-sharepoint-patchstand-finden/</link>
       <pubDate>Sat, 06 Jun 2009 20:38:46 +0000</pubDate>
       
-      <guid>/2009/06/06/aktuellsten-sharepoint-patchstand-finden/</guid>
+      <guid>https://marcoscheel.de/2009/06/06/aktuellsten-sharepoint-patchstand-finden/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/image_22.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/image_2_thumb2.png&#34; alt=&#34;image_2&#34; /&gt;
 
 &lt;/a&gt; Microsoft bietet unter folgender URL immer die letzte verfügbare PatchVersion für SharePoint 2007 an:    &lt;br&gt;
@@ -528,10 +528,10 @@ return dbcon;
     
     <item>
       <title>Trusted Location in Office 2007</title>
-      <link>/2009/06/06/trusted-location-in-office-2007/</link>
+      <link>https://marcoscheel.de/2009/06/06/trusted-location-in-office-2007/</link>
       <pubDate>Sat, 06 Jun 2009 20:13:42 +0000</pubDate>
       
-      <guid>/2009/06/06/trusted-location-in-office-2007/</guid>
+      <guid>https://marcoscheel.de/2009/06/06/trusted-location-in-office-2007/</guid>
       <description>&lt;p&gt;Wer mit SharePoint arbeitet und darin die üblichen verdächtigen Dateitypen der Office Familie verwendet, kennt vielleicht die Securityhinweise, wenn zum Beispiel Excel aus einer SharePoint Lib geladen wird. SharePoint gilt in solchen Situationen eigentlich als Vertrauenswürdig ;-) Also sollten wir es auch so behandeln. Hier ein paar Info’s wie man das machen kann.&lt;/p&gt;
 &lt;p&gt;Genereller Artikel:  &lt;br&gt;
 &lt;a href=&#34;http://technet.microsoft.com/en-us/library/cc178946.aspx#trustedsettings&#34; target=&#34;_blank&#34;&gt;http://technet.microsoft.com/en-us/library/cc178946.aspx#trustedsettings&lt;/a&gt;&lt;/p&gt;
@@ -549,10 +549,10 @@ return dbcon;
     
     <item>
       <title>C# FTP gegen OpenVMS FTP Server</title>
-      <link>/2009/06/06/c-ftp-gegen-openvms-ftp-server/</link>
+      <link>https://marcoscheel.de/2009/06/06/c-ftp-gegen-openvms-ftp-server/</link>
       <pubDate>Sat, 06 Jun 2009 19:45:39 +0000</pubDate>
       
-      <guid>/2009/06/06/c-ftp-gegen-openvms-ftp-server/</guid>
+      <guid>https://marcoscheel.de/2009/06/06/c-ftp-gegen-openvms-ftp-server/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/9d90089c833f_14CF8/image_2.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/9d90089c833f_14CF8/image_thumb.png&#34; alt=&#34;image&#34; /&gt;
 
 &lt;/a&gt; In einem meiner letzten Projekte bin ich in die “glückliche” Lage gekommen, mit einer &lt;a href=&#34;http://en.wikipedia.org/wiki/VAX&#34; target=&#34;_blank&#34;&gt;VAX&lt;/a&gt; über FTP zu kommunizieren. Gegen unser IIS7 FTP hatten alle Tests super funktioniert. Ich verbinde mich gegen den Server und mache dann einen Upload mit der Angabe der vollen URI:&lt;/p&gt;
@@ -578,10 +578,10 @@ at ConsoleApplication1.Program.Main(String[] args)&lt;/p&gt;
     
     <item>
       <title>SharePoint – Send To – Could not find the destination item or folder on this server.</title>
-      <link>/2009/06/06/sharepoint-send-to-could-not-find-the-destination-item-or-folder-on-this-server/</link>
+      <link>https://marcoscheel.de/2009/06/06/sharepoint-send-to-could-not-find-the-destination-item-or-folder-on-this-server/</link>
       <pubDate>Sat, 06 Jun 2009 19:23:10 +0000</pubDate>
       
-      <guid>/2009/06/06/sharepoint-send-to-could-not-find-the-destination-item-or-folder-on-this-server/</guid>
+      <guid>https://marcoscheel.de/2009/06/06/sharepoint-send-to-could-not-find-the-destination-item-or-folder-on-this-server/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/SendToCouldnotfindthedestinationitemorf_C5EF/image_2.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/SendToCouldnotfindthedestinationitemorf_C5EF/image_thumb.png&#34; alt=&#34;image&#34; /&gt;
 
 &lt;/a&gt; SharePoint und WSS können Dokumente von einer Bibliothek in eine andere, über ein DropDown Menü am Item selber, kopieren. Jetzt hatten wir bei einem Kunden ein echt komisches Problem. Auf einigen Rechnern gab es ein Problem beim Kopieren. Es ist auch aufgefallen, das bei einem Test auf einem Windows Server 2003, die Oberfläche für den Dialog ganz anders aussieht, also auf einer Standard Workstation. Mit Office 2007 auf der Maschine nutzt der Client ein ActiveX Control. Ohne ActiveX nutzt SharePoint eine ASPX Page und die kann zwar über SiteCollections hinweg kopieren, aber nicht über Application, also von &lt;a href=&#34;http://portal.ms.local&#34; target=&#34;_blank&#34;&gt;http://portal.ms.local&lt;/a&gt; auf &lt;a href=&#34;http://mysite.ms.local&#34; target=&#34;_blank&#34;&gt;http://mysite.ms.local&lt;/a&gt;&lt;/p&gt;
@@ -598,10 +598,10 @@ at ConsoleApplication1.Program.Main(String[] args)&lt;/p&gt;
     
     <item>
       <title>Tolles Trio – Eventlog, Task Scheduler und Eventcreate.exe – Attach task to this event</title>
-      <link>/2009/06/06/tolles-trio-eventlog-task-scheduler-und-eventcreate-exe-attach-task-to-this-event/</link>
+      <link>https://marcoscheel.de/2009/06/06/tolles-trio-eventlog-task-scheduler-und-eventcreate-exe-attach-task-to-this-event/</link>
       <pubDate>Sat, 06 Jun 2009 19:16:21 +0000</pubDate>
       
-      <guid>/2009/06/06/tolles-trio-eventlog-task-scheduler-und-eventcreate-exe-attach-task-to-this-event/</guid>
+      <guid>https://marcoscheel.de/2009/06/06/tolles-trio-eventlog-task-scheduler-und-eventcreate-exe-attach-task-to-this-event/</guid>
       <description>&lt;p&gt;Seit Vista und Windows Server 2008 kann man den Task Scheduler sehr vielfältig einsetzen. Eine sehr praktische Funktion ist das Auslösen von Aktionen (Email, Run Program, etc), wenn ein spezielles Event eintritt. Entweder man erstellt den Task direkt im Task Scheduler oder man kann auf das entsprechende Event klicken und ein Task anhängen.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/WindowsServer2008EventlogActionsendmailh_BF46/image_2.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/WindowsServer2008EventlogActionsendmailh_BF46/image_thumb.png&#34; alt=&#34;image&#34; /&gt;
 
@@ -615,10 +615,10 @@ at ConsoleApplication1.Program.Main(String[] args)&lt;/p&gt;
     
     <item>
       <title>Unblock aller Dateien in einem Verzeichnis</title>
-      <link>/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/</link>
+      <link>https://marcoscheel.de/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/</link>
       <pubDate>Sat, 06 Jun 2009 18:55:58 +0000</pubDate>
       
-      <guid>/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/</guid>
+      <guid>https://marcoscheel.de/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/UnblockallerDateienineinemVerzeichnis_118F5/image_2.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/UnblockallerDateienineinemVerzeichnis_118F5/image_thumb.png&#34; alt=&#34;image&#34; /&gt;
 
 &lt;/a&gt;Ich habe immer mal wieder in der Vergangenheit Probleme beim Ansehen von CHM Dateien, die ich aus dem Internet oder von einem Fileshare kopiert habe. Das Inhaltsverzeichnis wird angezeigt, aber egal was angeklickt wird, es kommt einer Fehlerdarstellung. Microsoft hat dazu eine KB Artikel:   &lt;br&gt;

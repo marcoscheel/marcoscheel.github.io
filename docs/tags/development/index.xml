@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on Marco Scheel aka GeekDotNet</title>
-    <link>/tags/development/</link>
+    <link>https://marcoscheel.de/tags/development/</link>
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Jul 2019 11:47:21 +0000</lastBuildDate><atom:link href="/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Jul 2019 11:47:21 +0000</lastBuildDate><atom:link href="https://marcoscheel.de/tags/development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>App Permissions für Microsoft Graph Calls automatisiert einrichten</title>
-      <link>/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</link>
+      <link>https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</link>
       <pubDate>Mon, 08 Jul 2019 11:47:21 +0000</pubDate>
       
-      <guid>/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</guid>
+      <guid>https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</guid>
       <description>&lt;p&gt;Für unser Glück &amp;amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0&#34; target=&#34;_blank&#34;&gt;PowerShell AZ&lt;/a&gt; und die &lt;a href=&#34;https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest&#34; target=&#34;_blank&#34;&gt;Azure CLI&lt;/a&gt;. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.&lt;/p&gt;
 &lt;p&gt;Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview&#34; target=&#34;_blank&#34;&gt;Access Reviews&lt;/a&gt; Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
@@ -24,7 +24,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
 &lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission admin-consent --id $adapp.ApplicationId
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Hier ein Beispiel, wie das Ergebnis dann im Azure AD Portal aussieht:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;/tmblr/94/b8/3d8dde919b99d6647aa15d89d175.png&#34; alt=&#34;image&#34; /&gt;
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/94/b8/3d8dde919b99d6647aa15d89d175.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;p&gt;Wer nun die Guid für seine Berechtigung sucht, kann ganz einfach mit diesem Befehlt (&lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0&#34; target=&#34;_blank&#34;&gt;Azure Active Directory PowerShell 2.0&lt;/a&gt;) auf das ständig wachsende Set an App Permissions zugreifen:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;(Get-AzureADServicePrincipal -filter &amp;quot;DisplayName eq &#39;Microsoft Graph&#39;&amp;quot;).AppRoles | Select Id, Value | Sort Value

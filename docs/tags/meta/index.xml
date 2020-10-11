@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Meta on Marco Scheel aka GeekDotNet</title>
-    <link>/tags/meta/</link>
+    <link>https://marcoscheel.de/tags/meta/</link>
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 11 Oct 2020 19:53:06 +0200</lastBuildDate><atom:link href="/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Oct 2020 19:53:06 +0200</lastBuildDate><atom:link href="https://marcoscheel.de/tags/meta/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My blog has moved - From Tumblr to Hugo on GitHub Pages</title>
-      <link>/post/2020/10/20201011-my-blog-has-moved/</link>
+      <link>https://marcoscheel.de/post/2020/10/20201011-my-blog-has-moved/</link>
       <pubDate>Sun, 11 Oct 2020 19:53:06 +0200</pubDate>
       
-      <guid>/post/2020/10/20201011-my-blog-has-moved/</guid>
+      <guid>https://marcoscheel.de/post/2020/10/20201011-my-blog-has-moved/</guid>
       <description>&lt;p&gt;My blog now has a new home. It is no longer hosted on Tumblr.com and it is now hosted on GitHub Pages. The main reason to get of Tumblr is the poor image handling. The overall experience was OK. I liked the editor and best of all it is all free including running on your own domain! Having my own name was a key driver. I was running my blog on my own v-server back in the days. I tried a lot of platforms (blogger.com, wordpress.com and prior Tumblr I ran on a &amp;ldquo;self&amp;rdquo; hosted wordpress instance). The only constant was and will be my RSS hosting. Believe it our not I&amp;rsquo;m still running Feedburner from Google. One service that is still not (yet?) killed by search giant (RIP Google Reader). With all the previous choises there was also on driving factor: &lt;strong&gt;I&amp;rsquo;m cheap, can I get it for free? Yes and it will stay 100% free for you and me!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Today is the day I switched to a static website! It is 2020 and the hipster way to go. So what does it take to run a blog on a static stite generator?&lt;/p&gt;
 &lt;ul&gt;
@@ -33,7 +33,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;/img/20201011-my-blog-has-moved-hugo--logo-wide.svg&#34; alt=&#34;image&#34; /&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201011-my-blog-has-moved-hugo--logo-wide.svg&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;p&gt;Why &lt;a href=&#34;https://gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; and not &lt;a href=&#34;https://jekyllrb.com/&#34; target=&#34;_blank&#34;&gt;Jekyll&lt;/a&gt;? Because there are blogs out there that I&amp;rsquo;m reading and I liked the idea of being one of them :) Who?&lt;/p&gt;
 &lt;ul&gt;
@@ -50,7 +50,7 @@
 hugo server -D
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Open localhost:1313 in your browser of choice and check the result.&lt;/p&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;/img/20201011-my-blog-has-moved-hugo--hugo-server.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201011-my-blog-has-moved-hugo--hugo-server.jpg&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;h3 id=&#34;my-tweeks&#34;&gt;My tweeks&lt;/h3&gt;
 &lt;p&gt;To get result in the picture above I needed some tweeks. Also some other settings are notable if you are like me :)&lt;/p&gt;
@@ -146,15 +146,15 @@ cd exitwp-for-hugo
 ./exitwp.py
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;At the end my &amp;ldquo;content/post&amp;rdquo; folder looks like to following.&lt;/p&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;/img/20201011-my-blog-has-moved-hugo--hugo-content-posts.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201011-my-blog-has-moved-hugo--hugo-content-posts.jpg&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
 &lt;p&gt;Now that the content is available on my local drive and I&amp;rsquo;m able to generate the static files. It is already a git repo so where to host the primary authority? So the hugo site with all config and logic will go to Github. There are only two choices for me. Github or Azure DevOps. Microsoft is owning both services. Private repos are free in both services. It looks like in the future Azure DevOps will not get all the love and thazt is why my website source code is hosted on Github: &lt;a href=&#34;https://github.com/marcoscheel/marcoscheel-de&#34;&gt;https://github.com/marcoscheel/marcoscheel-de&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;/img/20201011-my-blog-has-moved-hugo--github-private.png&#34; alt=&#34;image&#34; /&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201011-my-blog-has-moved-hugo--github-private.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;h2 id=&#34;github-pages&#34;&gt;Github Pages&lt;/h2&gt;
 &lt;p&gt;Next up is to generate the final HTML and put it out there in the internet. Generating the content is as easy as running this command.&lt;/p&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;/img/20201011-my-blog-has-moved-hugo--githubpages-hugo.png&#34; alt=&#34;image&#34; /&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201011-my-blog-has-moved-hugo--githubpages-hugo.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;p&gt;Now we need to make a decision how to host the content. My first try was to setup a new Azure Pay-As-You-Go subscription with a 200$ starting budget for the first month and my personal credit card from here. Based on &lt;a href=&#34;https://www.andrewconnell.com/blog/hosting-hugo-on-azure/&#34; target=&#34;_blank&#34;&gt;Andrew Connell blog&lt;/a&gt; I setup a storage account and enabled the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website&#34; target=&#34;_blank&#34;&gt;static website&lt;/a&gt;. I could setup a &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/storage/blobs/storage-custom-domain-name?tabs=azure-portal&#34; target=&#34;_blank&#34;&gt;custom domain&lt;/a&gt; for the blob store, but I created a &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/cdn/cdn-create-new-endpoint&#34; target=&#34;_blank&#34;&gt;Azure CDN (MS Standard)&lt;/a&gt; to optimize traffic and reduce potential cost. I also checked for &lt;a href=&#34;https://www.cloudflare.com/plans/&#34; target=&#34;_blank&#34;&gt;CloudFlare CDN&lt;/a&gt;. All options allowed to have a custom domain and easy HTTPS with build in certificates. At the end it was my credit card and if something went really wrong (to much traffic due to non paid internt fame?) I would be paying a life lesson with real money. I took the easy route instead. Github Pages to the rescue.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -162,7 +162,7 @@ cd exitwp-for-hugo
 &lt;/blockquote&gt;
 &lt;p&gt;For every account Github is offering &lt;strong&gt;one&lt;/strong&gt; &lt;a href=&#34;https://pages.github.com/&#34; target=&#34;_blank&#34;&gt;Github Pages&lt;/a&gt; repository. I created the repository at: &lt;a href=&#34;https://github.com/marcoscheel/marcoscheel.github.io&#34;&gt;https://github.com/marcoscheel/marcoscheel.github.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Normal the content will be server on the github.io domain, but through the settings we can add a CNAME to the site. To achive this we need to put a file called &amp;ldquo;CNAME&amp;rdquo; into the root directory. For my hugo site and the publish process I placed the file into the &amp;ldquo;static&amp;rdquo; folder so everytime the site is generated the file will be copied to the root of the site. Once the CNAME is in place we configure the HTTPS redirect.&lt;/p&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;/img/20201011-my-blog-has-moved-hugo--githubpages-https.png&#34; alt=&#34;image&#34; /&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201011-my-blog-has-moved-hugo--githubpages-https.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;p&gt;Custom domain. HTTPS. No credit card. Everything is good.&lt;/p&gt;
 &lt;h2 id=&#34;publishing&#34;&gt;Publishing&lt;/h2&gt;
@@ -179,10 +179,10 @@ git push
     
     <item>
       <title>Zeit für einen Neustart</title>
-      <link>/post/2016/05/143746644752-zeit-f%C3%BCr-einen-neustart/</link>
+      <link>https://marcoscheel.de/post/2016/05/143746644752-zeit-f%C3%BCr-einen-neustart/</link>
       <pubDate>Mon, 02 May 2016 17:30:19 +0000</pubDate>
       
-      <guid>/post/2016/05/143746644752-zeit-f%C3%BCr-einen-neustart/</guid>
+      <guid>https://marcoscheel.de/post/2016/05/143746644752-zeit-f%C3%BCr-einen-neustart/</guid>
       <description>&lt;p&gt;Marco Scheel nach seinem Umzug von Wordpress zu Tumblr&lt;/p&gt;
 &lt;p&gt;Das alte Zeug gibt es hier: &lt;a href=&#34;https://marcoscheel.wordpress.com/&#34; target=&#34;_blank&#34;&gt;https://marcoscheel.wordpress.com/&lt;/a&gt;&lt;/p&gt;</description>
     </item>
