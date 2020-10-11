@@ -74,7 +74,7 @@ body .markdown-body strong{
     color: #000000;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To integrate this into your theme we use partials. To not mess with my theme (it is a submodule and controlled by the original author) I had to copy the &amp;ldquo;head.html&amp;rdquo; from my theme into &amp;ldquo;layouts/_partials&amp;rdquo; and I added the link to my CSS at the end of the file.&lt;/p&gt;
+&lt;p&gt;To integrate this into your theme we use partials. To not mess with my theme (it is a submodule and controlled by the original author) I had to copy the &amp;ldquo;head.html&amp;rdquo; from my theme into &amp;ldquo;layouts/_partials&amp;rdquo; and I added the link to my CSS at the end of the file. While I&amp;rsquo;m in here I will also add the RSS tag to my feedburner account.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-CSS&#34;&gt;...
 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css&amp;quot; /&amp;gt;
 {{ end }}
@@ -82,6 +82,7 @@ body .markdown-body strong{
 {{ partial &amp;quot;analytic-cfga.html&amp;quot; . }}
 
 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/css/custom.css&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;alternate&amp;quot; type=&amp;quot;application/rss+xml&amp;quot; href=&amp;quot;http://feeds.marcoscheel.de/marcoscheel&amp;quot;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I also modified the Google Analytics integration in the same way. I copied the &amp;ldquo;analytic-gtag.html&amp;rdquo; file to my partials folder and added the attribute &amp;ldquo;anonymize_ip&amp;rdquo; to anonymize the IP address.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-HTML&#34;&gt;...
@@ -168,7 +169,12 @@ cd exitwp-for-hugo
 &lt;p&gt;In the future I&amp;rsquo;m lokking forward to enable GitHub Actions to publish my site. For the moment I rely on my local environment pushing content from my hugo site to the GitHub Pages repository. I integrated the GitHub Pages repo as a submodule and with the publish process I put the files into &amp;ldquo;public/docs&amp;rdquo;.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-INI&#34;&gt;publishDir = &amp;quot;public/docs&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;A quick &amp;ldquo;hugo&amp;rdquo; on the Windows Terminal and a fresh version is ready to be pushed into the right repo.&lt;/p&gt;</description>
+&lt;p&gt;A quick &amp;ldquo;hugo&amp;rdquo; on the Windows Terminal and a fresh version is ready to be pushed into the right repo.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;hugo
+cd public
+git add -A &amp;amp;&amp;amp; git commit -m &amp;quot;Ready for go live&amp;quot;
+git push
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>

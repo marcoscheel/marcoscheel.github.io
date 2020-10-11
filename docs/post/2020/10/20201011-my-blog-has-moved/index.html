@@ -111,6 +111,8 @@ Learning new stuff
 
 
 <link rel="stylesheet" href="/css/custom.css">
+<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel">
+
 </head>
 
 <body data-theme="auto">
@@ -150,7 +152,7 @@ Learning new stuff
         <a href="/post/2020/10/20201011-my-blog-has-moved/">My blog has moved - From Tumblr to Hugo on GitHub Pages</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-11</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1635 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/meta">Meta</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-11</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1670 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/meta">Meta</a>&nbsp;</span>
 
     </div>
     
@@ -217,7 +219,7 @@ body .markdown-body strong{
     color: #000000;
 }
 </code></pre>
-<p>To integrate this into your theme we use partials. To not mess with my theme (it is a submodule and controlled by the original author) I had to copy the &ldquo;head.html&rdquo; from my theme into &ldquo;layouts/_partials&rdquo; and I added the link to my CSS at the end of the file.</p>
+<p>To integrate this into your theme we use partials. To not mess with my theme (it is a submodule and controlled by the original author) I had to copy the &ldquo;head.html&rdquo; from my theme into &ldquo;layouts/_partials&rdquo; and I added the link to my CSS at the end of the file. While I&rsquo;m in here I will also add the RSS tag to my feedburner account.</p>
 <pre><code class="language-CSS">...
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css&quot; /&gt;
 {{ end }}
@@ -225,6 +227,7 @@ body .markdown-body strong{
 {{ partial &quot;analytic-cfga.html&quot; . }}
 
 &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/custom.css&quot;&gt;
+&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; href=&quot;http://feeds.marcoscheel.de/marcoscheel&quot;&gt;
 </code></pre>
 <p>I also modified the Google Analytics integration in the same way. I copied the &ldquo;analytic-gtag.html&rdquo; file to my partials folder and added the attribute &ldquo;anonymize_ip&rdquo; to anonymize the IP address.</p>
 <pre><code class="language-HTML">...
@@ -312,6 +315,11 @@ cd exitwp-for-hugo
 <pre><code class="language-INI">publishDir = &quot;public/docs&quot;
 </code></pre>
 <p>A quick &ldquo;hugo&rdquo; on the Windows Terminal and a fresh version is ready to be pushed into the right repo.</p>
+<pre><code class="language-Bash">hugo
+cd public
+git add -A &amp;&amp; git commit -m &quot;Ready for go live&quot;
+git push
+</code></pre>
     </div>
 </article>
 
@@ -375,7 +383,7 @@ cd exitwp-for-hugo
             </li>
             
             <li>
-                <a href="/index.xml">RSS</a>
+                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
             </li>
             
         </ul>
@@ -524,7 +532,7 @@ cd exitwp-for-hugo
             </li>
             
             <li>
-                <a href="/index.xml">RSS</a>
+                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
             </li>
             
         </ul>
