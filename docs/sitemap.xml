@@ -3,12 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</loc>
-    <lastmod>2020-08-17T08:31:05+00:00</lastmod>
+    <loc>/</loc>
+    <lastmod>2020-10-11T19:53:06+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/tags/meta/</loc>
+    <lastmod>2020-10-11T19:53:06+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020/10/20201011-my-blog-has-moved/</loc>
+    <lastmod>2020-10-11T19:53:06+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-10-11T19:53:06+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020/08/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</loc>
     <lastmod>2020-08-17T08:31:05+00:00</lastmod>
   </url>
   
@@ -23,12 +38,7 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2020-08-17T08:31:05+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</loc>
+    <loc>/post/2020/07/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</loc>
     <lastmod>2020-07-21T16:13:19+00:00</lastmod>
   </url>
   
@@ -48,17 +58,22 @@
   </url>
   
   <url>
-    <loc>/post/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/</loc>
+    <loc>/impressum/</loc>
+    <lastmod>2020-04-11T19:15:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020/03/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/</loc>
     <lastmod>2020-03-30T12:20:42+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/613300443898068992-is-microsoft-teams-a-remote-support-tool/</loc>
+    <loc>/post/2020/03/613300443898068992-is-microsoft-teams-a-remote-support-tool/</loc>
     <lastmod>2020-03-22T14:54:41+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/189806058922-microsoft-teams-known-issues-no-more/</loc>
+    <loc>/post/2019/12/189806058922-microsoft-teams-known-issues-no-more/</loc>
     <lastmod>2019-12-22T08:06:03+00:00</lastmod>
   </url>
   
@@ -68,12 +83,12 @@
   </url>
   
   <url>
-    <loc>/post/186728523052-manage-microsoft-teams-membership-with-azure-ad/</loc>
+    <loc>/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/</loc>
     <lastmod>2019-08-02T19:41:30+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</loc>
+    <loc>/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</loc>
     <lastmod>2019-07-08T11:47:21+00:00</lastmod>
   </url>
   
@@ -88,7 +103,7 @@
   </url>
   
   <url>
-    <loc>/post/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</loc>
+    <loc>/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</loc>
     <lastmod>2019-07-01T15:06:23+00:00</lastmod>
   </url>
   
@@ -103,7 +118,7 @@
   </url>
   
   <url>
-    <loc>/post/170223335212-whats-in-your-bag-marco/</loc>
+    <loc>/post/2018/01/170223335212-whats-in-your-bag-marco/</loc>
     <lastmod>2018-01-28T12:20:40+00:00</lastmod>
   </url>
   
@@ -123,22 +138,17 @@
   </url>
   
   <url>
-    <loc>/post/165449521992-sharepoint-online-device-access-option-fehlt/</loc>
+    <loc>/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</loc>
     <lastmod>2017-09-17T21:11:09+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/144716486707-the-future-of-sharepoint-online/</loc>
+    <loc>/post/2016/05/144716486707-the-future-of-sharepoint-online/</loc>
     <lastmod>2016-05-21T20:33:42+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/meta/</loc>
-    <lastmod>2016-05-02T17:30:19+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/143746644752-zeit-f%C3%BCr-einen-neustart/</loc>
+    <loc>/post/2016/05/143746644752-zeit-f%C3%BCr-einen-neustart/</loc>
     <lastmod>2016-05-02T17:30:19+00:00</lastmod>
   </url>
   

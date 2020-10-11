@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.75.1" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+<title>Beware of the Teams Admin center to create new teams (and assign owners) - Marco Scheel aka GeekDotNet</title>
+
+
+<meta name="author" content="Marco Scheel" />
+
+
+<meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud " />
+
+
+<meta name="keywords" content="Microsoft365, Teams, Groups" />
+
+<meta property="og:title" content="Beware of the Teams Admin center to create new teams (and assign owners)" />
+<meta property="og:description" content="The Microsoft Teams Admin Center can be used to create a new Team. The initial dialog allows you to set multiple owners for the Team. This feature was added over time and is a welcome addition to make the life of an administrator easier. But the implementation has a big shortcoming: The specified owners in this dialog will not become a member of the underlying Microsoft 365 Group in Azure Active Directory. As a result all Microsoft 365 group services checking for members will not behave as expected. For example: These owners will not be able to access Planner. Other services like Teams and SharePoint work by accident.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2020/07/624267623460454400-beware-of-the-teams-admin-center-to-create-new/" />
+<meta property="og:image" content="/og.png"/>
+<meta property="article:published_time" content="2020-07-21T16:13:19+00:00" />
+<meta property="article:modified_time" content="2020-07-21T16:13:19+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/og.png"/>
+
+<meta name="twitter:title" content="Beware of the Teams Admin center to create new teams (and assign owners)"/>
+<meta name="twitter:description" content="The Microsoft Teams Admin Center can be used to create a new Team. The initial dialog allows you to set multiple owners for the Team. This feature was added over time and is a welcome addition to make the life of an administrator easier. But the implementation has a big shortcoming: The specified owners in this dialog will not become a member of the underlying Microsoft 365 Group in Azure Active Directory. As a result all Microsoft 365 group services checking for members will not behave as expected. For example: These owners will not be able to access Planner. Other services like Teams and SharePoint work by accident.
+
+"/>
+
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+<link rel="stylesheet" href="/assets/css/fuji.min.css" />
+
+
+
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-391088-7', {'anonymize_ip': true});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+</head>
+
+<body data-theme="auto">
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="/">Marco Scheel aka GeekDotNet</a>
+            
+            <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="/post/2020/07/624267623460454400-beware-of-the-teams-admin-center-to-create-new/">Beware of the Teams Admin center to create new teams (and assign owners)</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-07-21</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;759 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft365">Microsoft365</a>&nbsp;<a href="/tags/teams">Teams</a>&nbsp;<a href="/tags/groups">Groups</a>&nbsp;</span>
+
+    </div>
+    
+    
+    <div class="post-content markdown-body">
+        <p>The <a href="https://admin.teams.microsoft.com/teams/manage" target="_blank">Microsoft Teams Admin Center</a> can be used to create a new Team. The initial dialog allows you to set multiple owners for the Team. This feature was added over time and is a welcome addition to make the life of an administrator easier. But the implementation has a big shortcoming: The specified owners in this dialog will not become a member of the underlying Microsoft 365 Group in Azure Active Directory. As a result all Microsoft 365 group services checking for members will not behave as expected. For example: These owners will not be able to access Planner. Other services like Teams and SharePoint work by accident.
+<img class="img-zoomable" src="/tmblr/2a/8a/ee93247423d6326e5e728bed8116.png" alt="image" />
+</p>
+<p>Let’s start with some basic information. <strike>Office </strike><a href="https://docs.microsoft.com/en-us/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide" target="_blank">Microsoft 365 Groups</a> use a special AAD group type. But it is still a group in Azure Active Directory. A group in <a href="https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal" target="_blank">AAD</a> is very similar to the <a href="https://docs.microsoft.com/en-us/windows/security/identity-protection/access-control/active-directory-security-groups" target="_blank">old-school AD</a> group in our on-premises directories. The group is made of members. In most on-premises cases these groups are managed by your directory admins. But also in AD you can specify owners of a group that will then be able to manage these groups&hellip; if they have the right tool (dsa.msc, &hellip;). In the cloud Microsoft (and myself) is pushing towards self-service for group management. This “self-service-first approach” is obvious since the introduction of now <strike>Office</strike> Microsoft 365 Groups. Teams being one of the most famous M365 Group services is also pushing to the owner/member model where end users are owners of a Team (therefor an AAD group). All end user facing UX from Microsoft is abstracting away how the underlying AAD group is managed. Teams for example will group owners and members in two sections:
+<img class="img-zoomable" src="/tmblr/91/0e/616b767aa86b3b6963ac6a5582c6.png" alt="image" />
+</p>
+<p>But if you look at the underlying AAD group you will find, that every owner is also a member:</p>
+<p><img class="img-zoomable" src="/tmblr/37/d7/447064c0fbe9e64a2dff09972fb4.png" alt="image" />
+</p>
+<p>And the Azure AD portal shows a dedicated section to manage owners of the group:
+<img class="img-zoomable" src="/tmblr/01/2e/048040cbe43ce2d0a828c47629ef.png" alt="image" />
+</p>
+<p>The Microsoft Admin portal also has dedicated sections for members and owners:
+<img class="img-zoomable" src="/tmblr/9c/25/5cace9e88c2498b9ea0189259af0.png" alt="image" />
+</p>
+<p>In general it is important that your administrative staff is aware how group membership (including ownership) is working. The problem with the Teams Admin portal as mentioned in the beginning is the result of this initial dialog leaving the group in an inconsistent state without making that admin aware of this misalignment. Lets check the group created in the initial screenshot using the Teams admin center. We specified 5 admin users and one member after the initial dialog. Non of the admin users was added as a member in AAD (Microsoft 365 Admin portal screenshot):
+<img class="img-zoomable" src="/tmblr/f5/da/ce8a12184ab61762d188d83a1098.png" alt="image" />
+</p>
+<p>But looking at the teams Admin center won’t show this “misconfiguration”:
+<img class="img-zoomable" src="/tmblr/28/05/d1b21d2dbbaa8b5afb97780cb423.png" alt="image" />
+</p>
+<p>If Leia wants to access the associated Planner service for this Team/Group the following error will show:
+<img class="img-zoomable" src="/tmblr/5e/9f/bd402486dfaa834994758b729245.png" alt="image" />
+</p>
+<p>Planner is checking against group membership. Only is the user is a member Planner (and other services) will check if the user is also an owner and then show administrative controls. Teams itself looks ok. In SharePoint implemented a hack and the owners of the AAD group are granted Site Collection Admin permission so every item is accessible, because that is what Site Collection Admins are for. If your users are reporting problem like this and based on the Teams Admin center everything looks ok, go check “a better” portal like AAD.</p>
+<p>To fix the problem in the Teams Admin center the owner has to be demoted to member state and then promoted to being a owner again.</p>
+<p>A quick test with the SharePoint admin center shows that the system is managing membership as intended and every owner will also be a member. SharePoint requires one owner (Leia) in the first dialog and the second dialog allows additional owners and members:
+<img class="img-zoomable" src="/tmblr/c9/a7/42afe4c28f1853faaf2e59d921a0.png" alt="image" />
+</p>
+<p>The result for members in AAD is correct as all owners are also added as members:
+<img class="img-zoomable" src="/tmblr/74/16/01df708d5a5c8dc340788cefe576.png" alt="image" />
+</p>
+<p>Until this <strike>bug</strike> design flaw is fixed we recommend to not add more owners in the initial dialog. The currently logged-in admin user will be added as the only owner of the created group. In the next step remove your admin and add the requested users as members and promote them to owners. If you rely on self-service this should is not a problem. If you have a custom creation process automated hopefully you add all owner as member, but you should be good most of the time. We at glueckkanja-gab are supporting many customers with our custom lifecycle solution. We are adding a option to report this problem and a optional config switch to fix any detected misalignments.</p>
+<p>I’ve created a UserVoice “idea” for this “bug”. So please lets go: vote!</p>
+<p><a href="https://microsoftteams.uservoice.com/forums/555103-public/suggestions/40951714-add-owners-also-as-members-aad-group-in-the-init" target="_blank">https://microsoftteams.uservoice.com/forums/555103-public/suggestions/40951714-add-owners-also-as-members-aad-group-in-the-init</a></p>
+    </div>
+</article>
+
+
+<div class="license markdown-body">
+    <blockquote>
+        <p>Unless otherwise noted, the content of this site is licensed under <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
+               target="_blank">CC BY 4.0</a>.</p>
+    </blockquote>
+</div>
+
+
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = '\/post\/2020\/07\/624267623460454400-beware-of-the-teams-admin-center-to-create-new\/';
+                this.page.identifier = '624267623460454400-beware-of-the-teams-admin-center-to-create-new';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'marcoscheelof' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/impressum/">Impressum</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/azuread/">AzureAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/development/">Development</a>
+            </span>
+            
+            <span>
+                <a href="/tags/equipment/">Equipment</a>
+            </span>
+            
+            <span>
+                <a href="/tags/groups/">Groups</a>
+            </span>
+            
+            <span>
+                <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft365/">Microsoft365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mip/">MIP</a>
+            </span>
+            
+            <span>
+                <a href="/tags/office365/">Office365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sharepoint/">SharePoint</a>
+            </span>
+            
+            <span>
+                <a href="/tags/teams/">Teams</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">Tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/work/">Work</a>
+            </span>
+            
+            <span>
+                <a href="/tags/xarchived/">xArchived</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <h3>TOC</h3>
+        <nav id="TableOfContents"></nav>
+    </div>
+    
+    
+</aside>
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/impressum/">Impressum</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/azuread/">AzureAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/development/">Development</a>
+            </span>
+            
+            <span>
+                <a href="/tags/equipment/">Equipment</a>
+            </span>
+            
+            <span>
+                <a href="/tags/groups/">Groups</a>
+            </span>
+            
+            <span>
+                <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft365/">Microsoft365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mip/">MIP</a>
+            </span>
+            
+            <span>
+                <a href="/tags/office365/">Office365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sharepoint/">SharePoint</a>
+            </span>
+            
+            <span>
+                <a href="/tags/teams/">Teams</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">Tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/work/">Work</a>
+            </span>
+            
+            <span>
+                <a href="/tags/xarchived/">xArchived</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <h3>TOC</h3>
+        <nav id="TableOfContents"></nav>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            <span>&copy; 2020 <a href="/">Marco Scheel</a> |
+                Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> & <a href="https://gohugo.io/"
+                   target="_blank">Hugo</a> </span>
+        </div>
+    </div>
+</footer>
+    
+<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+</body>
+
+</html>

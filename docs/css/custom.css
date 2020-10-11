@@ -1,0 +1,18 @@
+header {
+    background-image: url(/bg-skate-2020.jpg);
+    background-size: cover;
+}
+
+body header a {
+    color: #ffffff;
+    white-space: normal;
+}
+
+body header .title-sub{
+    color: #ffffff;
+    white-space: normal;
+}
+
+body .markdown-body strong{
+    color: #000000;
+}

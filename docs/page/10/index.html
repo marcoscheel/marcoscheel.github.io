@@ -33,11 +33,11 @@
 <meta property="og:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud " />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
-<meta property="og:image" content="/img/og.png"/>
-<meta property="og:updated_time" content="2020-08-17T08:31:05+00:00" />
+<meta property="og:image" content="/og.png"/>
+<meta property="og:updated_time" content="2020-10-11T19:53:06+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="/img/og.png"/>
+<meta name="twitter:image" content="/og.png"/>
 
 <meta name="twitter:title" content="Marco Scheel aka GeekDotNet"/>
 <meta name="twitter:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud "/>
@@ -64,6 +64,20 @@
 
 
 
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-391088-7', {'anonymize_ip': true});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
 </head>
 
 <body data-theme="auto">
@@ -99,6 +113,20 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="/2008/06/24/install-microsoft-sql-server-2008-reporting-services-in-sharepoint-integration-mode-on-windows-server-2008/">Install Microsoft SQL Server 2008 Reporting Services in SharePoint Integration Mode on Windows Server 2008</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;595 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        In meinem Vorgangerpost habe ich ja kurz beschrieben, was fur Hurden das Add-In des Report Servers (MS SQL 2008) aufstellt und wie man druber kommt. Grundsatzlich bleibt anzumerken, dass der Microsoft SQL Server 2008 ohne echten IIS auskommt. Seit 2005 konnte er so schon WebServices direkt ohne WebServer anbieten. Allerdings wurde fur die Reporting Services (SSRS) in der Version 2005 noch ein echter IIS benotigt. Mit dem aktuellen SQL 2008 CTP Feb ist dies nicht mehr notig. Der SSRS lauft komplett im SQL uber HTTP.SYS.
+Dieser Post widmet sich kurz der Installation der Serverseite des SSRS. Es gibt namlich ein paar Änderungen&hellip; sehr grundsatzliche Änderungen:
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -228,25 +256,6 @@ Ich habe die Firewall nicht abgeschaltet, sondern einfach die Ports, die ich jet
         Das wird einen lange Nacht in Offenbach.
 
 Ciao Marco
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="/2008/06/10/mein-rss-feed-ndert-sichsoll-sich-ndern/">Mein RSS Feed ändert sich/soll sich ändern</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-10</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;205 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Ich bin jetzt ein Mitglied der FeedBurner Familie. Ab sofort ist mein RSS Feed über folgende URL zu erreichen:
-http://feeds.feedburner.com/marcoscheel
-Die Idee dahinter ist den Mehrwert, den so ein Dienst bringt, auszunutzen. Ich bin mir nicht sicher, ob ich der Microsoft Windows Live Space Plattform für Blogging treu bleibe. Ich bin sehr begeistert über die Funktionen und die Integration in den Windows Live Writer. Allerdings fehlen doch viele Dinge: 1. Statistiken
-Sie sind schlicht nicht vorhanden:
- 2. Kommentare
-Das Handling ist mehr als suboptimal. 3. Integration von weiteren Diensten
-Solange ich meinen Feed bei Feedburner Manage, bin ich in der Lage meinen Blog so oft umzuziehen wie ich möchte!
     </div>
 </div>
 
@@ -441,6 +450,10 @@ Solange ich meinen Feed bei Feedburner Manage, bin ich in der Lage meinen Blog s
             </li>
             
             <li>
+                <a href="/impressum/">Impressum</a>
+            </li>
+            
+            <li>
                 <a href="/index.xml">RSS</a>
             </li>
             
@@ -566,6 +579,10 @@ Solange ich meinen Feed bei Feedburner Manage, bin ich in der Lage meinen Blog s
             
             <li>
                 <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/impressum/">Impressum</a>
             </li>
             
             <li>
