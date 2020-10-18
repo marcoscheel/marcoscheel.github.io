@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft Teams on Marco Scheel aka GeekDotNet</title>
+    <link>https://marcoscheel.de/tags/microsoft-teams/</link>
+    <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 17 Oct 2020 17:33:05 +0200</lastBuildDate><atom:link href="https://marcoscheel.de/tags/microsoft-teams/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Teilnehmer in Microsoft Teams für immer stumm schalten</title>
+      <link>https://marcoscheel.de/post/2020/10/20201017-unmute-attendee/</link>
+      <pubDate>Sat, 17 Oct 2020 17:33:05 +0200</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2020/10/20201017-unmute-attendee/</guid>
+      <description>&lt;p&gt;Wer kennt es nicht: Das Meeting startet und plötzlich &amp;ldquo;piiiiiiiiep-piiiiiep-piiep-piep&amp;rdquo; &amp;hellip; der Projektleiter parkt rückwärts ein. Die Flexibilität in der Teilnahme an einem Teams Meeting ist &amp;ldquo;nahezu&amp;rdquo; unbegrenzt. Die Freiheitsgrade sind aber für viele neu und ungeübt. Der geübte Umgang mit dem Meeting Equipment ist noch in weiter Ferne. Im optimalen Fall setzen wir alle nur Microsoft Teams zertifizierte Geräte ein und Hardware + Software arbeiten in Harmonie. Wenn ich zu spät in ein Meeting komme, dann hoffentlich &amp;ldquo;on mute&amp;rdquo;. Die Realität sieht noch immer anders aus. Besonders in großen Meetings war es ein Problem, dass Teilnehmer jederzeit das Mikrofon öffnen konnten. Ein &lt;a href=&#34;https://marcoscheel.de/post/2020/03/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/&#34; target=&#34;_blank&#34;&gt;Microsoft Teams Live-Events&lt;/a&gt; waren oft keine Lösung, da die Interaktivität in einem späteren Moment fehlte. Durch die Einführung des &lt;a href=&#34;https://www.microsoft.com/en-us/microsoft-365/roadmap?rtc=1&amp;amp;market=en&amp;amp;filters=&amp;amp;searchterms=66575&#34; target=&#34;_blank&#34;&gt;Roadmap Item 66575&lt;/a&gt; ist das Problem lösbar:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Prevent attendees from unmuting in Teams Meetings&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Gives meeting organizers the ability to mute one to many meeting participants while removing the muted participants&#39; ability to unmute themselves.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Hier der Screenshot zum Feature:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201017-unmute-attendee--demo.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;teilnehmer-attendee-vs-moderatorpresenter&#34;&gt;Teilnehmer (Attendee) vs Moderator(Presenter)&lt;/h2&gt;
+&lt;p&gt;Microsoft Teams kennt in einem Meeting &lt;a href=&#34;https://support.microsoft.com/de-de/office/rollen-in-einer-teams-besprechung-c16fa7d0-1666-4dde-8686-0a0bfe16e019?ui=de-de&amp;amp;rs=de-de&amp;amp;ad=de&#34; target=&#34;_blank&#34;&gt;drei wesentliche Rollen&lt;/a&gt;. Für unser Szenario sind nur zwei Rollen interessant. Das Unternehmen kann vorgeben, wie strikt die &lt;strong&gt;Moderator&lt;/strong&gt;-Rolle (Presenter) gehandhabt wird. Im Standard ist jeder Benutzer dieser Rolle zugeordnet und kann damit das Meeting unterstützen oder empfindlich stören. Im Meeting selbst kann jeder Moderator andere Benutzer zum &lt;strong&gt;Teilnehmer&lt;/strong&gt; herabstufen. Teilnehmer können nicht präsentieren und keine Benutzer aus der Konferenz werfen. Für die genau Übersicht checkt diesen &lt;a href=&#34;https://support.microsoft.com/de-de/office/rollen-in-einer-teams-besprechung-c16fa7d0-1666-4dde-8686-0a0bfe16e019?ui=de-de&amp;amp;rs=de-de&amp;amp;ad=de&#34; target=&#34;_blank&#34;&gt;Link&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Welche Optionen das Unternehmen zur Vorgabe hat, findet ihr mit &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/meeting-policies-in-teams#meeting-policy-settings---designated-presenter-role-mode&#34; target=&#34;_blank&#34;&gt;allen Details hier&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Jeder&lt;/li&gt;
+&lt;li&gt;Jeder aus dem Unternehmen&lt;/li&gt;
+&lt;li&gt;Nur der Organisator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;meeting-planen&#34;&gt;Meeting planen&lt;/h2&gt;
+&lt;p&gt;Wenn ihr ein Meeting &lt;strong&gt;fertig geplant&lt;/strong&gt; habt, könnt ihr nachträglich in die Meeting Optionen schauen. In Skype for Business konnte man das schon direkt beim Planen, aber Microsoft hat es sich hier &amp;ldquo;einfach&amp;rdquo; gemacht und springt einfach im Browser auf diese Optionen. Im Beschreibungstext des Termins neben dem Teilnahme-Link, kann der Organisator auch aus allen anderen Programmen auf diese Optionen zugreifen:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201017-unmute-attendee--teams-meetinginvite.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Hier die Meeting Optionen im Browser:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201017-unmute-attendee--teams-meetingoptions.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Wer kann präsentieren? Hier ist der Unternhemnsstandard vorgegeben und ihr könnt den Wert nach euren Vorlieben anpassen.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201017-unmute-attendee--teams-meetingoptions-presenter.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Solltet ihr die Option &amp;ldquo;Specific people&amp;rdquo; auswählen, konnte ich in meinem Test nur eingeladenen Personen aus dem Unternehmen selbst auswählen. Je nachdem wer den Termin tatsächlich steuert, müsst ihr hier aufpassen, wenn ihr zum Beispiel durch einen externen Projektleiter unterstützt werden, der normalerweise das Meeting leitet.&lt;/p&gt;
+&lt;p&gt;Jetzt kommen wir zum eigentlichen Feature, wenn ihr schon zur Planung die Entscheidung treffen könnt, dann stellt ihr hier die Option &amp;ldquo;Allow attendees to unmute&amp;rdquo; aus.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201017-unmute-attendee--teams-meetingoptions-unmute.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;im-meeting&#34;&gt;Im Meeting&lt;/h2&gt;
+&lt;p&gt;Während des Teams Meetings kann ein Moderator die Option zum &amp;ldquo;Stumm-schalten&amp;rdquo; der Teilnehmer direkt im Client bedienen. In der Teilnehmerliste kann man über das &amp;ldquo;&amp;hellip;&amp;quot;-Menü die Benutzergruppe stumm schalten.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201017-unmute-attendee--meeting-unmute.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Für den Teilnehmer wird es im Client kurz signalisiert, dass Sie aktuell stumm sind. Ein &amp;ldquo;Unmute&amp;rdquo; über zum Beispiel zertifizierte Hardware-Button wird sofort wieder zurückgesetzt und das Headset (Dongle) zeigt weiterhin Mute (Rot) an.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201017-unmute-attendee--meeting-me-unmute.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Für mich als Teilnehmer ist das Symbol zum &amp;ldquo;Unmuten&amp;rdquo; ausgegraut und nicht bedienbar. Der Rest der Teilnehmer wird ebenfalls als deaktiviert angezeigt.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201017-unmute-attendee--meeting-me-unmute-disabled.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;In meinem Test kann man übrigens sehen, dass noch nicht alles rund läuft. Für ein kurzen Moment war mein Mikrofon noch offen (wie beim berühmten Double-Mute) aber Teams hatte mich im Client schon stumm geschaltet. In dem Moment hat mich der Client dann drauf hingewiesen, dass ich noch mute bin, obwohl ich es ja nicht ändern kann :) Wird schon noch werden.&lt;/p&gt;
+&lt;p&gt;Ein Moderator kann jederzeit die Option wieder für alle entfernen oder einzelne Teilnehmer zum Moderator befördern.&lt;/p&gt;
+&lt;h2 id=&#34;abschluss&#34;&gt;Abschluss&lt;/h2&gt;
+&lt;p&gt;Ich kannte die Funktion bisher nur von WebEx und wurde schon das eine oder andere Mal darauf angesprochen. Bisher war meine Antwort eine Kombination aus Live-Event und Teams Meeting im Anschluss. Durch diese neue Funktion wird es für alle viel einfacher. Ich würde trotzdem sparsam mit dem Setting umgehen, da die Tücke im Detail liegt. Aktuell können zum Beispiel nur die Web- und Desktop-Versionen damit umgehen. Auf einem &lt;a href=&#34;https://docs.microsoft.com/de-de/microsoftteams/rooms/&#34; target=&#34;_blank&#34;&gt;Microsoft Teams Room System&lt;/a&gt; oder dem Mobile Clients (Android/iOS) gibt es die Funktion Stand Oktober 2020 noch nicht. Es kann also passieren, dass ein Meeting nicht stattfinden kann, weil die Teilnehmer nicht zu Wort kommen können. Wie so oft kann man durch gute User-Erziehung mehr erreichen als durch harte Regulation.&lt;/p&gt;
+&lt;p&gt;Microsoft hat wie so oft in letzter Zeit hervorragen Dokumentation zum Feature Online. Schaut also selbst nochmal rein.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.microsoft.com/de-de/office/verwalten-von-audioberechtigungen-f%c3%bcr-teilnehmer-in-teams-besprechungen-f9db15e1-f46f-46da-95c6-34f9f39e671a?ui=de-de&amp;amp;rs=de-de&amp;amp;ad=de&#34; target=&#34;_blank&#34;&gt;Verwalten von audioberechtigungen für Teilnehmer in Teams-Besprechungen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.microsoft.com/en-us/office/manage-attendee-audio-permissions-in-teams-meetings-f9db15e1-f46f-46da-95c6-34f9f39e671a&#34; target=&#34;_blank&#34;&gt;Manage attendee audio permissions in Teams meetings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

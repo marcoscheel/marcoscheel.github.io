@@ -3,7 +3,7 @@ header {
     background-size: cover;
 }
 
-body header a {
+body header a.title-main {
     color: #ffffff;
     white-space: normal;
 }

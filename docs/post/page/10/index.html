@@ -26,21 +26,21 @@
 <meta name="author" content="Marco Scheel" />
 
 
-<meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud " />
+<meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 
 
 <meta property="og:title" content="Posts" />
-<meta property="og:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud " />
+<meta property="og:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/post/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-11T19:53:06+02:00" />
+<meta property="og:updated_time" content="2020-10-17T17:33:05+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
 
 <meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud "/>
+<meta name="twitter:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud"/>
 
 
 
@@ -118,6 +118,20 @@
 
 <div class="post">
     <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2008/06/24/project-server-datenanalyse-activex-zeigt-olap-fehler/">Project Server – Datenanalyse ActiveX zeigt OLAP Fehler</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;271 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        In einer der Kundenumgebungen lauft neben der SharePoint Farm auch ein Microsoft Office Project Server 2007 (MOPS). Wir hatten in der Vergangenheit schon Proleme mit dem Einrichten der OLAP Cubes. Es fuhrte bis zu einem MS Support Case, der anschließend dafur sorgte, dass die MSDN Dokumentation entsprechend aktualisiert wurde. Leider ist es nicht der letzte Fehler in diesem Umfeld. Ich habe jetzt eine Anfrage bekommen, weil die Datenanalyse nicht funktioniert. Das ActiveX Control hinter dem Navigationspunkt ist ein Office Web Components (OWC) Element. Dieses Element baut im Hintergrund eine OLEDB Verbindung zum Microsoft SQL 2005 - Analaysis Sever (SSAS) auf. Der Kunde hatte nun das klassisch IT Probelm.
+        <a href="https://marcoscheel.de/2008/06/24/project-server-datenanalyse-activex-zeigt-olap-fehler/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
         <a href="https://marcoscheel.de/2008/06/24/install-microsoft-sql-server-2008-reporting-services-in-sharepoint-integration-mode-on-windows-server-2008/">Install Microsoft SQL Server 2008 Reporting Services in SharePoint Integration Mode on Windows Server 2008</a>
     </h2>
     <div class="post-item post-meta">
@@ -127,6 +141,7 @@
     <div class="post-item post-summary markdown-body">
         In meinem Vorgangerpost habe ich ja kurz beschrieben, was fur Hurden das Add-In des Report Servers (MS SQL 2008) aufstellt und wie man druber kommt. Grundsatzlich bleibt anzumerken, dass der Microsoft SQL Server 2008 ohne echten IIS auskommt. Seit 2005 konnte er so schon WebServices direkt ohne WebServer anbieten. Allerdings wurde fur die Reporting Services (SSRS) in der Version 2005 noch ein echter IIS benotigt. Mit dem aktuellen SQL 2008 CTP Feb ist dies nicht mehr notig. Der SSRS lauft komplett im SQL uber HTTP.SYS.
 Dieser Post widmet sich kurz der Installation der Serverseite des SSRS. Es gibt namlich ein paar Änderungen&hellip; sehr grundsatzliche Änderungen:
+        <a href="https://marcoscheel.de/2008/06/24/install-microsoft-sql-server-2008-reporting-services-in-sharepoint-integration-mode-on-windows-server-2008/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -142,6 +157,7 @@ Dieser Post widmet sich kurz der Installation der Serverseite des SSRS. Es gibt 
         Version 0.1 - 2008-05-07 Version 0.2 - 2008-06-24 Version 0.3 - 2009-06-24 (SP2, CU, IIS7, SQL2K8)
 Vorbedingungen:
 * Betriebssystem und alles weitere Software ist in der Hauptsprache Englisch * OS und Software ist 64-Bit * Alle Server haben min. 4 GB RAM * Der Datenbankserver hat 8 GB RAM und min. 2 CPU's mit 2 Cores * Min. 2 Partitionen mit zwei getrennten Plattensystemen * PowerShell auf allen Sharepoint Servern für Scripting  Über die Punkte oben kann man streiten, aber das Sizing ist für mich min. wenn ein Kunde ein Farm mit zwei SharePoint und einem DB Server aufbaut. Die Hardware ist so oder so 64-bit fähig und 8 GB RAM sind heute günstig zu erwerben.
+        <a href="https://marcoscheel.de/2008/06/24/wie-installiere-ich-sharepoint-in-einer-farm/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -155,6 +171,7 @@ Vorbedingungen:
     </div>
     <div class="post-item post-summary markdown-body">
         Auf einer internen Fortbildung hatte ich mir den IIS7 angesehen. Eine der unscheinbarsten Änderungen trifft alle, die sich mit Kerberos auf einem IIS auseinander setzen mussen. Meine SharePoint Installationen sind also in Zukunft davon betroffen. Der Internet Information Server 7 (IIS7) kommt in der Default Konfiguration mit der Einstellung &ldquo;Enable Kernel-mode authentication&rdquo; gleich ON daher. Damit unterscheidet sich das Auflosen der Service Principlal Names (SPN) drastisch von der Art, die der IIS6 durchfuhrt. Normalerweise wurde der SPN auf dem Application Pool (AppPool) Acount gesucht. Also auf einem Domain Acount oder auf dem Machine Account, wenn es der &ldquo;Network Service&rdquo; oder das &ldquo;Local System&rdquo; ist.
+        <a href="https://marcoscheel.de/2008/06/24/windows-server-2008-iis7-kerberos-kernel-mode-authentication/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -170,6 +187,7 @@ Vorbedingungen:
         Ich hatte jetzt bei einer SharePoint Intranet Installation ein Problem bei der Darstellung eines Content Query WebParts (CQWP). Auf der Startseite und einigen SubSites wurden uber ein CQWP alle Artikel (CMS Elemente) eines ContentTyps dargestellt. Ich habe mich an das Standardverfahren gehalten.
 1. Content Query WebPart in eine WebPartzone ziehen 2. Den WebPart exportieren 3. CommonViewField um die notigen Felder erweitern 4. WebPart importieren 5. Neuen XSLT Style anlegen fur die Darstellung (ItemStyle.xsl)   6. XSLT Funktion fur das entfernen der HTML Tags einsetzen und anwenden 7. WebPart auf den Startseiten plazieren
 Wie nicht anders zu erwarten hat alles super funktioniert.
+        <a href="https://marcoscheel.de/2008/06/24/content-query-webpart-bringt-w3p-zum-absturz/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -183,6 +201,7 @@ Wie nicht anders zu erwarten hat alles super funktioniert.
     </div>
     <div class="post-item post-summary markdown-body">
         Meine SharePoint Installationen sind in der Regel Intranet Installationen. Je nach Szenario ist Kerberos uber NTLM als Authentifizierung zu beorzugen. Es ist schwer mit Pauschalen zu arbeiten, aber in der Regel empfehle ich den EInsatz von Kerberos. Die Intrastruktur laßt sich so schnell an wachsende Aufgaben (Reporting, OTP, etc) anpassen. Beim Setzen der Service Principal Names (SPN) ist es wichtig, das der Service nur auf einm einzigen Objekt im Active Directory (AD) liegt. Zum Setzen und Auslesen der SPN&rsquo;s gibt es SETSPN.exe aus dem Ressource Kit (oder in Windows Server 2008 bereits enthalten). In der W2K8 Version von SETSPN kann ich beim Hinzufugen gleich auf doppelte Eintrage prufen lassen.
+        <a href="https://marcoscheel.de/2008/06/19/doppelte-spns-finden/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -196,6 +215,7 @@ Wie nicht anders zu erwarten hat alles super funktioniert.
     </div>
     <div class="post-item post-summary markdown-body">
         Ich versuche gerade mein Leben im WEB neu zu ordnen. Die Ausrichtung auf Web 2.0 Dienste (wenn es so was überhaupt gibt) geht heute ein Schritt weiter. Kurz die Historie: * Ich nutzt Google Reader für RSS und Share dort interessante Posts anderer Blogger * Ich habe einen Blog, den ich mit Windows Live Writer mit Posts und Tags füllen kann * Ich analysiere mein WebSite-Traffic mit Google Analytics * Ich geschäftlich bei Xing registriert * Ich nutze privat Wer-kennt-wen * Ich habe ein Flickr Account (ohne ihn bisher zu nutzen) für Bilder, die ich über die Windows Live Photo Gallery Software online stellen kann * Ich speichere meine Bookmarks bei del.
+        <a href="https://marcoscheel.de/2008/06/16/ein-schritt-weiter-in-die-web-2-0-welt/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -212,6 +232,7 @@ Wie nicht anders zu erwarten hat alles super funktioniert.
 Neues Heim: http://marcoscheel.de
 Ich habe auf Basis von GraffitiCMS meinen Blog neu aufgezogen. Schaut doch auch mal auf die Seite. Das Layout ist ein angepaßtes Theme. Mehr zum Thema GraffitiCMS vielleicht in den nächsten Posts.
 Ciao Marco
+        <a href="https://marcoscheel.de/2008/06/15/angekommen-neues-zuhause-fr-meinen-blog/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -226,6 +247,7 @@ Ciao Marco
     <div class="post-item post-summary markdown-body">
         Wir implementieren gerade eine SiteCollection in einem Portal in dem es darum geht Video&rsquo;s die aus einer Document Library kommen in einem Flash Movie darzustellen. Um die Performance und die Wartbarkeit zu halten haben wir folgende Dinge eingerichtet:
  Eigene ContentDB  Wir haben die SiteCollection uber STSADM angelegt und einer leeren ContentDB auf dem SQL Server zugewiesen. Anschließend haben wir die ContentDB im Central Admin &ldquo;Offline&rdquo; genommen, so das die Datenbank nur fur Video Content genutzt wird. Fur den Backup Prozess kann man so einen anderen Schedule hinterlegen, da hier nicht so viel &ldquo;Bewegung&rdquo; existiert und es primar um grosse Dateien geht.
+        <a href="https://marcoscheel.de/2008/06/13/sharepoint-disk-based-blob-cache/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -243,21 +265,7 @@ Achtung: Firewall ist by default eingeschaltet!
 Total sicher, aber auch total ungewohnt. Ich bin gleich drei mal in den Fehler gelaufen: 1. IIS7 FTP Server von einem Vista Client aus testen 2. SharePoint Server in die Farm joinen 3. Reporting Services Integration auf dem Shareoiint aktivieren
 
 Ich habe die Firewall nicht abgeschaltet, sondern einfach die Ports, die ich jetzt benötigte, eingetragen als Exception. Es ist einfach Gewohnheitssache. Ich habe nicht ganz so viel Zeit verloren, da ich nicht so viele Ports benötige, aber Kollegen in deutlich komplexeren Szenarien, hat es einiges mehr an Zeit gekostet.
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/06/11/21-fr-die-trkei/">2:1 für die Türkei</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-11</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;9 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Das wird einen lange Nacht in Offenbach.
-
-Ciao Marco
+        <a href="https://marcoscheel.de/2008/06/13/windows-server-2008-und-der-default-zustand-der-firewall/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -478,6 +486,10 @@ Ciao Marco
                 <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
             </li>
             
+            <li>
+                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
+            </li>
+            
         </ul>
     </div>
     
@@ -503,6 +515,14 @@ Ciao Marco
             
             <span>
                 <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-365/">Microsoft 365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
             </span>
             
             <span>
@@ -542,6 +562,9 @@ Ciao Marco
             </span>
             
         </div>
+    </div>
+    <div class="sidebar-item sidebar">
+        <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
     
     
@@ -615,6 +638,10 @@ Ciao Marco
                 <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
             </li>
             
+            <li>
+                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
+            </li>
+            
         </ul>
     </div>
     
@@ -640,6 +667,14 @@ Ciao Marco
             
             <span>
                 <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-365/">Microsoft 365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
             </span>
             
             <span>
