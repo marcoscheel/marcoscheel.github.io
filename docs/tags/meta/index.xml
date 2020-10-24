@@ -122,7 +122,7 @@ title = &amp;quot;Manage Microsoft Teams membership with Azure AD Access Review&
 slug = &amp;quot;manage-microsoft-teams-membership-with-azure-ad&amp;quot;
 id = &amp;quot;186728523052&amp;quot;
 aliases = [ &amp;quot;/post/186728523052/manage-microsoft-teams-membership-with-azure-ad&amp;quot; ]
-tags = [ &amp;quot;Microsoft365&amp;quot;, &amp;quot;AzureAD&amp;quot;, &amp;quot;Teams&amp;quot;]
+tags = [ &amp;quot;Microsoft 365&amp;quot;, &amp;quot;Azure AD&amp;quot;, &amp;quot;Microsoft Teams&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The Tumblr export generated an image mapping JSON. I used the JSON (converted to a CSV) to rewrite my images to the downloaded (still to small) version.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-CSV&#34;&gt;&amp;quot;OldURI&amp;quot;:&amp;quot;NewURI&amp;quot;

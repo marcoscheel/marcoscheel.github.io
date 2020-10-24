@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/tags/microsoft-teams/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-17T17:33:05+02:00" />
+<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -122,6 +122,31 @@
 
 <div class="post">
     <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/">Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1495 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream <del>einstellen</del> neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:</p>
+<blockquote class="twitter-tweet"><p lang="de" dir="ltr">Migration vom <a href="https://twitter.com/SharePoint?ref_src=twsrc%5Etfw">@SharePoint</a> Video Portal schon begonnen? Alle Videos in <a href="https://twitter.com/MicrosoftStream?ref_src=twsrc%5Etfw">@MicrosoftStream</a> angekommen?  Jetzt geht&#39;s wieder zurück 🤣 Aber ich finde das super. Endlich eine Video API natürlich mit <a href="https://twitter.com/microsoftgraph?ref_src=twsrc%5Etfw">@microsoftgraph</a>! Und Meetingrecording von <a href="https://twitter.com/MicrosoftTeams?ref_src=twsrc%5Etfw">@MicrosoftTeams</a>!  <a href="https://t.co/ZKZsjWaDhP">https://t.co/ZKZsjWaDhP</a></p>&mdash; Marco Scheel (@marcoscheel) <a href="https://twitter.com/marcoscheel/status/1308496002761056259?ref_src=twsrc%5Etfw">September 22, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Den Microsoft Blogpost mit allen Details <a href="https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304" target="_blank">findet ihr hier</a>. Heute wollen wir uns die Auswirkungen auf die Meeting Recordings in Microsoft Teams anschauen. In der &ldquo;Vergangenheit&rdquo; hatten wir folgende Probleme mit der Ablage in Microsoft Stream:</p>
+<ul>
+<li>Externe Teilnehmer konnte nie auf die Aufnahmen zugreifen, da Microsoft Steam (<a href="https://docs.microsoft.com/en-us/stream/" target="_blank">Classic</a>) keinen <a href="https://docs.microsoft.com/en-us/stream/portal-share-video#external-sharing" target="_blank">Zugang für externe ermöglicht</a> und es immer ein Konto aus dem Unternehmen für den Zugriff brauchte.</li>
+<li>Wer die Aufnahme starten wollte, brauchte nicht nur die <a href="https://docs.microsoft.com/en-us/microsoftteams/meeting-policies-in-teams#allow-cloud-recording" target="_blank">Teams Meeting Policy</a> dazu, sondern auch das <a href="https://docs.microsoft.com/en-us/stream/restrict-uploaders" target="_blank">Recht Videos in Stream hochzuladen</a>.</li>
+<li>Es gibt keine offizielle API</li>
+</ul>
+<p>Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und es werden noch viele Funktionen in der nahen Zukunft ergänzt. Zum Start bekommen wir aber eine sehr rudimentäre Implementierung mit ihren eigenen Problemen. Wir schauen einmal auf die entsprechende Implementierung Stand Oktober 2020. Microsoft hat zur Ignite eine <a href="https://myignite.microsoft.com/sessions/087d135a-64ae-41ab-8b15-f0a965223d5b" target="_blank">dedizierte Session zum Thema Besprechungsaufzeichnung</a> erstellt in der ihr viele Details findet.</p>
+<p><img class="img-zoomable" src="/img/20201020-microsoftteams-recording-onedrive--title.jpg" alt="image" />
+</p>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
         <a href="https://marcoscheel.de/post/2020/10/20201017-unmute-attendee/">Teilnehmer in Microsoft Teams für immer stumm schalten</a>
     </h2>
     <div class="post-item post-meta">
@@ -136,6 +161,83 @@
 </blockquote>
 <p>Hier der Screenshot zum Feature:</p>
 <p><img class="img-zoomable" src="/img/20201017-unmute-attendee--demo.jpg" alt="image" />
+</p>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2020/07/624267623460454400-beware-of-the-teams-admin-center-to-create-new/">Beware of the Teams Admin center to create new teams (and assign owners)</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-07-21</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;759 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/groups">Groups</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>The <a href="https://admin.teams.microsoft.com/teams/manage" target="_blank">Microsoft Teams Admin Center</a> can be used to create a new Team. The initial dialog allows you to set multiple owners for the Team. This feature was added over time and is a welcome addition to make the life of an administrator easier. But the implementation has a big shortcoming: The specified owners in this dialog will not become a member of the underlying Microsoft 365 Group in Azure Active Directory. As a result all Microsoft 365 group services checking for members will not behave as expected. For example: These owners will not be able to access Planner. Other services like Teams and SharePoint work by accident.
+<img class="img-zoomable" src="/tmblr/2a/8a/ee93247423d6326e5e728bed8116.png" alt="image" />
+</p>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2020/03/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/">Microsoft Teams Live Events für (Krisen-)Vorträge</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-03-30</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1881 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>Online Meetings sind aus den heutigen Unternehmen nicht mehr wegzudenken. Microsoft Teams ist die Meeting-Lösung im Microsoft 365 Service. Ein <strong>Teams Meeting</strong> ermöglicht es allen Teilnehmern, <strong>aktiv</strong> an der Besprechung teilzunehmen. Es gibt nur wenig Kontrolle für den Besprechungsleiter. Die Teilnehmer müssen die Disziplin aufbringen und sich im Meeting “korrekt” verhalten. Durch die aktuelle Corona-Krise wird aber deutlich, dass sich viele Teilnehmer schwerer damit tun als gedacht. <strong>Besonders für Neulinge sind die verschiedenen Optionen in der Software ungewohnt und Grundregeln für ein gutes Meeting eventuell unbekannt</strong>. Es wäre toll, wenn die Software hier besser unterstützt, aber der aktuelle Stand (”Mute all”, &hellip;) wird sich kurzfristig nicht ändern.</p>
+<p>Ich möchte euch heute eine <strong>Alternative zum klassischen Meeting</strong> zeigen. Es wird nicht für jede Situation passen, aber ihr solltet es kennenlernen und selbst entscheiden. Ich wurde von einer Schule angesprochen, welche Optionen es gibt, die Schüler Online zu unterrichten. Die Zielgruppe ist nicht besonders gut ausgebildet, wenn es um eine gute Meeting-Kultur geht :) Die Eltern und die Schüler dürften oft Anfänger sein und da passieren automatisch Fehler. In dieser Situation kann es sin machen auf ein <strong>Microsoft Teams Live Event</strong> auszuweichen.</p>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2020/03/613300443898068992-is-microsoft-teams-a-remote-support-tool/">Is Microsoft Teams a remote support tool?</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-03-22</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1117 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>My buddy <a href="https://twitter.com/okieselb" target="_blank">Oliver Kieselbach</a> did a <a href="https://oliverkieselbach.com/2020/03/03/quick-assist-the-built-in-remote-control-in-windows-10/" target="_blank">blog post about the capabilities of Microsoft Quick Assist</a> (as part of the current operation system). In his post he raised the question if Microsoft Teams is not enough for this kind of IT support scenarios. Check out his blog to see it live in action and what the biggest shortcoming is. Microsoft Teams is not a good option for anything <a href="https://en.wikipedia.org/wiki/User_Account_Control" target="_blank">UAC</a> related. Even without the so called <a href="https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/user-account-control-switch-to-the-secure-desktop-when-prompting-for-elevation" target="_blank">secure desktop</a> feature Microsoft Teams will not allow the support staff to enter admin credentials if needed. I also would suggest (for the most customers) to pick a proper IT support tool for these scenarios.</p>
+<p>Microsoft Teams is the hub for teamwork, but that doesn’t mean you could not support your colleagues, if they are experiencing non admin related issues. But first things first, we should check, if your tenant settings are ready to allow remote control during a desktop sharing session. In quite a few customer environments I’ve noticed that remote sharing is restricted or completely disabled.</p>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2019/12/189806058922-microsoft-teams-known-issues-no-more/">Microsoft Teams - Known issues... no more!?</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-12-22</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;817 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>Microsoft is documenting a list of things (about Microsoft Teams) that are not working as expected by Microsoft or customers. The list has been around for quite some time. New things are added, but I noticed things on the list that are clearly working as of this writing are not removed. So let’s have a look together and maybe you support my pull request.</p>
+<p>The article: <a href="https://docs.microsoft.com/en-us/microsoftteams/known-issues" target="_blank">Known issues for Microsoft Teams</a></p>
+<p>My pull request:</p>
+<p><a href="https://github.com/MicrosoftDocs/OfficeDocs-SkypeForBusiness/pull/3686" target="_blank">Known issues that are no longer known issues</a></p>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/">Manage Microsoft Teams membership with Azure AD Access Review</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-08-02</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1764 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).</p>
+<p>&lt;DE&gt;Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&lt;/DE&gt;</p>
+<p>Microsoft has great <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">resources</a> to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview" target="_blank">Identity Governance)</a> on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.</p>
+<p>Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
+<img class="img-zoomable" src="/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png" alt="image" />
 </p>
     </div>
 </div>
@@ -211,7 +313,7 @@
         <div>
             
             <span>
-                <a href="/tags/azuread/">AzureAD</a>
+                <a href="/tags/azure-ad/">Azure AD</a>
             </span>
             
             <span>
@@ -235,15 +337,11 @@
             </span>
             
             <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
                 <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft365/">Microsoft365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
             </span>
             
             <span>
@@ -256,10 +354,6 @@
             
             <span>
                 <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/teams/">Teams</a>
             </span>
             
             <span>
@@ -358,7 +452,7 @@
         <div>
             
             <span>
-                <a href="/tags/azuread/">AzureAD</a>
+                <a href="/tags/azure-ad/">Azure AD</a>
             </span>
             
             <span>
@@ -382,15 +476,11 @@
             </span>
             
             <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
                 <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft365/">Microsoft365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
             </span>
             
             <span>
@@ -403,10 +493,6 @@
             
             <span>
                 <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/teams/">Teams</a>
             </span>
             
             <span>
@@ -432,13 +518,18 @@
     <footer>
     <div class="container-lg clearfix">
         <div class="col-12 footer">
-            <span>&copy; 2020 <a href="https://marcoscheel.de">Marco Scheel</a> |
-                Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
-                   target="_blank">Fuji-v2</a> & <a href="https://gohugo.io/"
-                   target="_blank">Hugo</a> </span>
+            
+            <span>&copy; 2020
+                <a href="https://marcoscheel.de">Marco Scheel</a>
+                
+                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
         </div>
     </div>
 </footer>
+
     
 <script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>

@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/post/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-17T17:33:05+02:00" />
+<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -118,6 +118,24 @@
 
 <div class="post">
     <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/">Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-01</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;424 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/tools">Tools</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im <a href="https://hairlessinthecloud.com" target="_blank">Hairless in the Cloud</a> Podcast Nummer <a href="https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff" target="_blank">18</a> habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.</p>
+<p>Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem <a href="https://developer.microsoft.com/en-us/graph/blogs/postman-collections/" target="_blank">Graph Explorer in einer Collection für Postman</a> zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.</p>
+<p>In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
+<img class="img-zoomable" src="/tmblr/cd/ef/cad14ee0d8e93c6d3b12f08d7601.png" alt="image" />
+</p>
+        <a href="https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
         <a href="https://marcoscheel.de/post/2018/01/170223335212-whats-in-your-bag-marco/">What’s in your bag, Marco?</a>
     </h2>
     <div class="post-item post-meta">
@@ -146,7 +164,7 @@ Warum.</p>
         <a href="https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/">SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2017-09-17</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;257 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/office365">Office365</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;<a href="/tags/azuread">AzureAD</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2017-09-17</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;257 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/office365">Office365</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
 
     </div>
     <div class="post-item post-summary markdown-body">
@@ -272,21 +290,6 @@ In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der 
     <div class="post-item post-summary markdown-body">
          Coole Sache  Posted from WordPress for Windows Phone
         <a href="https://marcoscheel.de/2010/12/20/windows-phone-7-test/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2010/10/03/sharepoint-blob-cache-corrupt/">SharePoint Blob Cache Corrupt</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2010-10-03</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;309 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        In einer der SharePoint 2007 Farmen, die ich betreue, nutzen wir die Blobcache Funktion, um Video’s, Flash und Bilder zu cachen. Wir haben zwei Web Front End Server (WFE) und die Funktion leistet eigentlich gute Dienste. Es kommt allerdings immer mal wieder vor, dass Bilder (das Verhältnis ist viel höher zum restlichen Content im Cache) nicht mehr angezeigt werden und es ein ASP.NET Error gibt. Genau es gibt folgendes Fehler:
-Server Error in '/' Application. -------------------------------------------------------------------------------- Cannot complete this action. Please try again. Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
-        <a href="https://marcoscheel.de/2010/10/03/sharepoint-blob-cache-corrupt/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -519,7 +522,7 @@ Server Error in '/' Application. -----------------------------------------------
         <div>
             
             <span>
-                <a href="/tags/azuread/">AzureAD</a>
+                <a href="/tags/azure-ad/">Azure AD</a>
             </span>
             
             <span>
@@ -543,15 +546,11 @@ Server Error in '/' Application. -----------------------------------------------
             </span>
             
             <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
                 <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft365/">Microsoft365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
             </span>
             
             <span>
@@ -564,10 +563,6 @@ Server Error in '/' Application. -----------------------------------------------
             
             <span>
                 <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/teams/">Teams</a>
             </span>
             
             <span>
@@ -671,7 +666,7 @@ Server Error in '/' Application. -----------------------------------------------
         <div>
             
             <span>
-                <a href="/tags/azuread/">AzureAD</a>
+                <a href="/tags/azure-ad/">Azure AD</a>
             </span>
             
             <span>
@@ -695,15 +690,11 @@ Server Error in '/' Application. -----------------------------------------------
             </span>
             
             <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
                 <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft365/">Microsoft365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
             </span>
             
             <span>
@@ -716,10 +707,6 @@ Server Error in '/' Application. -----------------------------------------------
             
             <span>
                 <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/teams/">Teams</a>
             </span>
             
             <span>
@@ -752,13 +739,18 @@ Server Error in '/' Application. -----------------------------------------------
     <footer>
     <div class="container-lg clearfix">
         <div class="col-12 footer">
-            <span>&copy; 2020 <a href="https://marcoscheel.de">Marco Scheel</a> |
-                Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
-                   target="_blank">Fuji-v2</a> & <a href="https://gohugo.io/"
-                   target="_blank">Hugo</a> </span>
+            
+            <span>&copy; 2020
+                <a href="https://marcoscheel.de">Marco Scheel</a>
+                
+                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
         </div>
     </div>
 </footer>
+
     
 <script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>

@@ -4,22 +4,32 @@
   
   <url>
     <loc>https://marcoscheel.de/</loc>
-    <lastmod>2020-10-17T17:33:05+02:00</lastmod>
+    <lastmod>2020-10-24T12:35:35+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://marcoscheel.de/tags/microsoft-365/</loc>
-    <lastmod>2020-10-17T17:33:05+02:00</lastmod>
+    <lastmod>2020-10-24T12:35:35+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://marcoscheel.de/tags/microsoft-teams/</loc>
-    <lastmod>2020-10-17T17:33:05+02:00</lastmod>
+    <lastmod>2020-10-24T12:35:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/</loc>
+    <lastmod>2020-10-24T12:35:35+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://marcoscheel.de/post/</loc>
-    <lastmod>2020-10-17T17:33:05+02:00</lastmod>
+    <lastmod>2020-10-24T12:35:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/tags/sharepoint/</loc>
+    <lastmod>2020-10-24T12:35:35+02:00</lastmod>
   </url>
   
   <url>
@@ -43,11 +53,6 @@
   </url>
   
   <url>
-    <loc>https://marcoscheel.de/tags/microsoft365/</loc>
-    <lastmod>2020-08-17T08:31:05+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://marcoscheel.de/tags/mip/</loc>
     <lastmod>2020-08-17T08:31:05+00:00</lastmod>
   </url>
@@ -59,11 +64,6 @@
   
   <url>
     <loc>https://marcoscheel.de/tags/groups/</loc>
-    <lastmod>2020-07-21T16:13:19+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marcoscheel.de/tags/teams/</loc>
     <lastmod>2020-07-21T16:13:19+00:00</lastmod>
   </url>
   
@@ -93,7 +93,7 @@
   </url>
   
   <url>
-    <loc>https://marcoscheel.de/tags/azuread/</loc>
+    <loc>https://marcoscheel.de/tags/azure-ad/</loc>
     <lastmod>2019-08-02T19:41:30+00:00</lastmod>
   </url>
   
@@ -113,7 +113,7 @@
   </url>
   
   <url>
-    <loc>https://marcoscheel.de/tags/microsoftgraph/</loc>
+    <loc>https://marcoscheel.de/tags/microsoft-graph/</loc>
     <lastmod>2019-07-08T11:47:21+00:00</lastmod>
   </url>
   
@@ -144,11 +144,6 @@
   
   <url>
     <loc>https://marcoscheel.de/tags/office365/</loc>
-    <lastmod>2017-09-17T21:11:09+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marcoscheel.de/tags/sharepoint/</loc>
     <lastmod>2017-09-17T21:11:09+00:00</lastmod>
   </url>
   

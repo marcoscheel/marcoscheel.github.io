@@ -6,7 +6,121 @@
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 17 Oct 2020 17:33:05 +0200</lastBuildDate><atom:link href="https://marcoscheel.de/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Oct 2020 12:35:35 +0200</lastBuildDate><atom:link href="https://marcoscheel.de/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream</title>
+      <link>https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/</link>
+      <pubDate>Sat, 24 Oct 2020 12:35:35 +0200</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/</guid>
+      <description>&lt;p&gt;Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream &lt;del&gt;einstellen&lt;/del&gt; neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:&lt;/p&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;de&#34; dir=&#34;ltr&#34;&gt;Migration vom &lt;a href=&#34;https://twitter.com/SharePoint?ref_src=twsrc%5Etfw&#34;&gt;@SharePoint&lt;/a&gt; Video Portal schon begonnen? Alle Videos in &lt;a href=&#34;https://twitter.com/MicrosoftStream?ref_src=twsrc%5Etfw&#34;&gt;@MicrosoftStream&lt;/a&gt; angekommen?  Jetzt geht&amp;#39;s wieder zurück 🤣 Aber ich finde das super. Endlich eine Video API natürlich mit &lt;a href=&#34;https://twitter.com/microsoftgraph?ref_src=twsrc%5Etfw&#34;&gt;@microsoftgraph&lt;/a&gt;! Und Meetingrecording von &lt;a href=&#34;https://twitter.com/MicrosoftTeams?ref_src=twsrc%5Etfw&#34;&gt;@MicrosoftTeams&lt;/a&gt;!  &lt;a href=&#34;https://t.co/ZKZsjWaDhP&#34;&gt;https://t.co/ZKZsjWaDhP&lt;/a&gt;&lt;/p&gt;&amp;mdash; Marco Scheel (@marcoscheel) &lt;a href=&#34;https://twitter.com/marcoscheel/status/1308496002761056259?ref_src=twsrc%5Etfw&#34;&gt;September 22, 2020&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Den Microsoft Blogpost mit allen Details &lt;a href=&#34;https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304&#34; target=&#34;_blank&#34;&gt;findet ihr hier&lt;/a&gt;. Heute wollen wir uns die Auswirkungen auf die Meeting Recordings in Microsoft Teams anschauen. In der &amp;ldquo;Vergangenheit&amp;rdquo; hatten wir folgende Probleme mit der Ablage in Microsoft Stream:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Externe Teilnehmer konnte nie auf die Aufnahmen zugreifen, da Microsoft Steam (&lt;a href=&#34;https://docs.microsoft.com/en-us/stream/&#34; target=&#34;_blank&#34;&gt;Classic&lt;/a&gt;) keinen &lt;a href=&#34;https://docs.microsoft.com/en-us/stream/portal-share-video#external-sharing&#34; target=&#34;_blank&#34;&gt;Zugang für externe ermöglicht&lt;/a&gt; und es immer ein Konto aus dem Unternehmen für den Zugriff brauchte.&lt;/li&gt;
+&lt;li&gt;Wer die Aufnahme starten wollte, brauchte nicht nur die &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/meeting-policies-in-teams#allow-cloud-recording&#34; target=&#34;_blank&#34;&gt;Teams Meeting Policy&lt;/a&gt; dazu, sondern auch das &lt;a href=&#34;https://docs.microsoft.com/en-us/stream/restrict-uploaders&#34; target=&#34;_blank&#34;&gt;Recht Videos in Stream hochzuladen&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Es gibt keine offizielle API&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und es werden noch viele Funktionen in der nahen Zukunft ergänzt. Zum Start bekommen wir aber eine sehr rudimentäre Implementierung mit ihren eigenen Problemen. Wir schauen einmal auf die entsprechende Implementierung Stand Oktober 2020. Microsoft hat zur Ignite eine &lt;a href=&#34;https://myignite.microsoft.com/sessions/087d135a-64ae-41ab-8b15-f0a965223d5b&#34; target=&#34;_blank&#34;&gt;dedizierte Session zum Thema Besprechungsaufzeichnung&lt;/a&gt; erstellt in der ihr viele Details findet.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--title.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;im-meeting&#34;&gt;Im Meeting&lt;/h2&gt;
+&lt;p&gt;Ich habe für euch ein Meeting dokumentiert und zeige wo die Unterschiede liegen. Im Microsoft Teams Client bleibt während der Besprechung alles beim Alten. Über die erweiterten Funktionen (&amp;hellip;) kann jeder Moderator aus dem einladenden Unternehmen das Recording starten &amp;ldquo;Start recording&amp;rdquo;:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-start-recording.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Im Meeting sehen wir:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Luke (Meeting Organizer) - luke ät gkmm.org&lt;/li&gt;
+&lt;li&gt;Leia - leia ät gkmm.org&lt;/li&gt;
+&lt;li&gt;Rey - rey ät gkmm.org&lt;/li&gt;
+&lt;li&gt;Kylo - kylo ät gkmm.org&lt;/li&gt;
+&lt;li&gt;Marco (Gast) - marco.scheel ät glueckkanja.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Die Benutzer werden wie üblich mit einem Banner über den Start der Aufnahme informiert:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--meeting-recording-started.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Wird die Aufzeichnung während des Meetings beendet, dann werden die Benutzer über das Speichern informiert:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--meeting-recording-saved.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Die Aufzeichnung wird im Meeting Chat verlinkt.
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--meeting-recording-completed.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;recording-ansehen&#34;&gt;Recording ansehen&lt;/h2&gt;
+&lt;p&gt;Hier kommt die erste Neuerung! Das Video ist deutlich schneller verfügbar. Microsoft Teams erzeugt das Video als MP4 in der Cloud und hat es in der Vergangenheit an Microsoft Steam übergeben. Stream hat dann die &lt;a href=&#34;https://azure.microsoft.com/de-de/services/media-services/&#34; target=&#34;_blank&#34;&gt;Azure Media Services&lt;/a&gt; bemüht, um das Video aufzubereiten und für ein &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-portal-vod-get-started&#34; target=&#34;_blank&#34;&gt;adaptives Streaming&lt;/a&gt; auszuliefern. Simple gesagt: Stream hat das Video in verschiedenen Auflösungen gerechnet und kann nahtlos zwischen den Bitraten hin und her wechseln. Das neue Stream wirft einfach das MP4 in SharePoint (oder OneDrive for Business) und stellt es dann über einen einfachen HTML Player zur Verfügung. Es sollte klar werden, dass ohne die Integration der Azure Media Services in dieser ersten Version einige Funktionen entfallen:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wiedergabegeschwindigkeit. Nicht jeder redet so schnell wie ich und dann kann man schon ein 60 Minuten Video auf 45 Minuten reduzieren, wenn man es in 1,5x wiedergibt.&lt;/li&gt;
+&lt;li&gt;Transkription (Sprache zu Text). Für ein Meeting Recording ziemlich relevant, um zum Beispiel im 2 Stunden Meeting den Moment zu finden, als es um Produkt X ging.&lt;/li&gt;
+&lt;li&gt;Bandbreiten- und Performanceabhängiges Adaptives Streaming (wechseln von 1.1 Mbps bis 58Kbps). Für ein Meeting Recording nicht besonders relevant.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Anfang 2020 hatten unsere Video Recordings in Stream noch alle Bitraten. Aktuell sind auch alle Stream Videos (Meeting Recording) nur in der Original 1.1 Mbps (1080p) Auflösung verfügbar und macht somit kein adaptives Streaming. Corona lässt grüßen?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Der folgende Screenshot zeigt Lukes Browser bei der Wiedergabe, nachdem er im Chat auf &amp;ldquo;Open in OneDrive&amp;rdquo; klickt.
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-recording-access.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Genau so wird heute bereits jedes andere Video in SharePoint und OneDrive dargestellt. In der Zukunft wird der Content Typ für Video im SharePoint aufgewertet und die Darstellung, die Metadaten und der Lifecycle werden optimiert.&lt;/p&gt;
+&lt;p&gt;Für alle Meeting Teilnehmer aus der einladenden Organisation wird das Sharing der Datei automatisch eingerichtet:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-recording-manage-access.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Teams vergibt immer zwei Berechtigungen für die Video Datei. Es wird unterschieden in &lt;a href=&#34;https://support.microsoft.com/de-de/office/rollen-in-einer-teams-besprechung-c16fa7d0-1666-4dde-8686-0a0bfe16e019&#34; target=&#34;_blank&#34;&gt;Moderator und Teilnehmer&lt;/a&gt;. Moderatoren erhalten Edit Berechtigungen. Teilnehmer des Meetings erhalten nur View Berechtigungen.&lt;/p&gt;
+&lt;p&gt;Gäste werden nicht berücksichtig. Für mich als Gast endet der Versuch das Recording anzusehen so:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--guest-noaccess.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;In einem weiteren Blogpost gehe ich auf den richtig Umgang mit Gästen und dem Recording ein.&lt;/p&gt;
+&lt;h2 id=&#34;die-videodatei&#34;&gt;Die Videodatei&lt;/h2&gt;
+&lt;p&gt;Es bleibt zu beantworten, wo die Datei dann eigentlich liegt! Wenn man im Chat ein Video angeklickt, dann öffnet sich in Teams die Video Datei und wird abgespielt. Keine gute Idee, denn jede Interaktion mit Teams führt zum Abbruch der Wiedergabe und man muss von vorne anfangen. Also am besten gleich die &amp;ldquo;&amp;hellip;&amp;rdquo; anklicken und &amp;ldquo;Open in OneDrive&amp;rdquo; auswählen:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-access-file.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Die Datei liegt also im OneDrive und wird in einem Ordner mit dem Namen &amp;ldquo;Recordings&amp;rdquo; (bestimmt auch irgendwo &amp;ldquo;Aufzeichungen&amp;rdquo; oder &amp;ldquo;grabación&amp;rdquo;). OneDrive ist immer eine persönliche Ablage. Sie gehört einem Benutzer! Keine schöne Lösung. Also ein &amp;ldquo;Meet now&amp;rdquo; oder ein geplanter Termin landen im OneDrive eines Benutzers. Welcher Benutzer? Meeting Organizer oder der Benutzer der &amp;ldquo;Start recording&amp;rdquo; klickt. Es ist tatsächlich das OneDrive des Benutzers, der am schnellsten Klicken kann. Ich hätte den Meeting Organizer bevorzugt, da er auch der Besitzer des Termins ist. Hier hatte Stream mit seiner &amp;ldquo;neutralen&amp;rdquo; Ablageplattform klare Vorteile. Verlässt ein Benutzer das Unternehmen und sein OneDrive wird gelöscht, verschwinden alle Meeting Recordings mit seinem OneDrive! Microsoft hat angekündigt, dass es Mechanismen geben wird, welche automatisch &amp;ldquo;alte&amp;rdquo; Aufzeichnungen löschen wird. Der Speicherverbrauch auf SharePoint soll so reduziert werden. Eventuell kommen hier Retention Policies zum Einsatz. Diese Policies können nicht nur Dateien löschen, sondern auch für einen bestimmten Zeitraum garantiert Vorhalten. Es kann also sein, dass es hier auch eine Lösung für das Löschen eines OneDrives geben wird.&lt;/p&gt;
+&lt;p&gt;Meetings können aber auch alternativ in einem &lt;a href=&#34;https://support.microsoft.com/en-us/office/tip-meet-in-a-channel-519ad2a0-9b74-49bb-97ee-0d4c4494a7c5&#34; target=&#34;_blank&#34;&gt;Teams Kanal geplant&lt;/a&gt; werden. Diese Channel-Meetings speichern ihr Recording in dem entsprechenden Ordner im Kanal. Wenn ich also im &amp;ldquo;General&amp;rdquo; Kanal aufzeichne, dann liegt die Datei hier &amp;ldquo;/sites/YOURTEAMSITE/Shared Documents/General/Recordings&amp;rdquo;. Ich bin semi-zufrieden. Die Ablage im Team löst die Probleme beim Zugriff und die Frage wem die Datei gehört. Solltet ihr aber zum Beispiel den Ordner General per OneDrive Client auf eurem Rechner syncen und immer alles Offline wollen&amp;hellip; dann kommen jetzt auch größere Videodateien mit. Aber man kann nicht alles haben und ich hoffe, dass Microsoft in Zukunft diese Szenarien weiter optimiert.&lt;/p&gt;
+&lt;p&gt;Das Label der Schaltfläche im Meeting Chat heißt immer &amp;ldquo;Open in OneDrive&amp;rdquo; und ändert sich für ein Channel Meeting NICHT in &amp;ldquo;Open in SharePoint&amp;rdquo;. Auch hier gibt es die Chance auf Besserung in der Zukunft.&lt;/p&gt;
+&lt;p&gt;Schauen wir mal direkt auf die Datei. Hier ein Screenshot der erweiterten MP4 Eigenschaften:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--mp4-details.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Die Aufzeichnung ist etwas unter 5 Minuten lang und verbraucht ca. 25 MB. Das Video besitzt eine FullHD (1080p) Auflösung. Wenn ich mir den Dateinamen anschaue, dann bin ich super happy. In Stream waren besonders die Titel der Channel Meetings oft Nichtssagend z.B. &amp;ldquo;Meeting in General&amp;rdquo;. So baut sich der Dateiname im neuen Stream auf:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Demo Luke and Leia-20201024_152149-Meeting Recording.mp4
+&lt;ul&gt;
+&lt;li&gt;TitelDesMeeting-yyyyMMdd_HHmmss-Meeting Recording&lt;/li&gt;
+&lt;li&gt;TitelDesMeeting = Demo Luke and Leia&lt;/li&gt;
+&lt;li&gt;yyyyMMdd_HHmmss = Start der Aufnahme (Lokale Zeit und nicht UTC), also der Moment in dem &amp;ldquo;Start recording&amp;rdquo; geklickt wird&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Meeting in _Workplace_-20201023_100348-Meeting Recording.mp4
+&lt;ul&gt;
+&lt;li&gt;MeetingInKanal&amp;ndash;yyyyMMdd_HHmmss-Meeting Recording&lt;/li&gt;
+&lt;li&gt;MeetingInKanal = Der Kanal heißt Workplace und in dem Fall wurde leider der Titel des Meetings nicht übernommen.&lt;/li&gt;
+&lt;li&gt;yyyyMMdd_HHmmss = Start der Aufnahme (Lokale Zeit und nicht UTC), also der Moment in dem &amp;ldquo;Start recording&amp;rdquo; geklickt wird&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;einschalten-im-tenant&#34;&gt;Einschalten im Tenant&lt;/h2&gt;
+&lt;p&gt;Microsoft hat &lt;a href=&#34;https://docs.microsoft.com/en-us/MicrosoftTeams/tmr-meeting-recording-change&#34; target=&#34;_blank&#34;&gt;aktuelle Dokumentation&lt;/a&gt; wann es wie weiter geht. Aktuell kann ein Tenant Admin den Opt-In durchführen und in wenigen Stunden ist der Tenant bereit und alle neuen Meeting Recordings landen direkt im OneDrive/SharePoint. Wenn der Admin kein Opt-In oder Opt-Out macht, dann wird ab Mitte Q4 2020 die Funktion für den Tenant konfiguriert. Habt ihr für euren Tenant ein Opt-Out konfiguriert, dann ist trotzdem im Q1 2021 Schluss und das Recording auf OneDrive/SharePoint wird auch für euren Tenant umgestellt. Bedeutet, dass mit Start Q2 2021 alle Meeting Recordings nur noch im neuen Microsoft Stream (aka SharePoint) laden.&lt;/p&gt;
+&lt;p&gt;Für den &lt;a href=&#34;https://docs.microsoft.com/en-us/MicrosoftTeams/tmr-meeting-recording-change#set-up-the-meeting-recording-option-for-onedrive-for-business-and-sharepoint&#34; target=&#34;_blank&#34;&gt;Opt-In&lt;/a&gt; braucht ihr die Skype for Business PowerShell, um die entsprechende Meeting Policy zu setzen. Seit der Ignite 2020 sind die CommandLets aber auch in das Microsoft Teams PowerShell Modul integriert.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Import-Module SkypeOnlineConnector
+$sfbSession = New-CsOnlineSession
+Import-PSSession $sfbSession
+Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &amp;quot;OneDriveForBusiness&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Da es eine Meeting Policy ist, kann man das Feature auch erstmal nur für einzelne Benutzer freischalten.&lt;/p&gt;
+&lt;p&gt;Für den Op-Out setzt ihr den Wert einfach auf &amp;ldquo;Stream&amp;rdquo;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &amp;quot;Stream&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;zusammenfassung&#34;&gt;Zusammenfassung&lt;/h2&gt;
+&lt;p&gt;Microsoft Teams läutet eine neue Video Ära in Microsoft 365 ein. Die Meeting Recordings können ab sofort für all oder einzelne Benutzer nach SharePoint/OneDrive umgeleitet werden. Der Funktionsverlust ist angesichts der neuen Freiheit beim Teilen der Aufzeichnungen zu verschmerzen. Folgende Punkte sind also zu beachten:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Aufzeichnungen im Benutzer OneDrive können verloren gehen, wenn das OneDrive gelöscht wird (Mitarbeiter verlässt das Unternehmen)&lt;/li&gt;
+&lt;li&gt;Kein x-fache Wiedergabegeschwindigkeit&lt;/li&gt;
+&lt;li&gt;Keine adaptive Bandbreitenanpassung (aktuell auch in Stream nicht gegeben)&lt;/li&gt;
+&lt;li&gt;Keine Integration in die aktuelle Stream Mobile App&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Wird eine Datei umbenannt, verschoben oder gelöscht, dann geht der Link im Meeting Chat kaputt&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Das richtige Teilen mit Externen erfordert einige Klicks (Blogpost coming soon)&lt;/li&gt;
+&lt;li&gt;Keine Möglichkeit alle Meeting Recordings auf einen Blick zu sehen, man muss jedes Mal den Meeting Chat suchen&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>Teilnehmer in Microsoft Teams für immer stumm schalten</title>
       <link>https://marcoscheel.de/post/2020/10/20201017-unmute-attendee/</link>
@@ -179,7 +293,7 @@ title = &amp;quot;Manage Microsoft Teams membership with Azure AD Access Review&
 slug = &amp;quot;manage-microsoft-teams-membership-with-azure-ad&amp;quot;
 id = &amp;quot;186728523052&amp;quot;
 aliases = [ &amp;quot;/post/186728523052/manage-microsoft-teams-membership-with-azure-ad&amp;quot; ]
-tags = [ &amp;quot;Microsoft365&amp;quot;, &amp;quot;AzureAD&amp;quot;, &amp;quot;Teams&amp;quot;]
+tags = [ &amp;quot;Microsoft 365&amp;quot;, &amp;quot;Azure AD&amp;quot;, &amp;quot;Microsoft Teams&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The Tumblr export generated an image mapping JSON. I used the JSON (converted to a CSV) to rewrite my images to the downloaded (still to small) version.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-CSV&#34;&gt;&amp;quot;OldURI&amp;quot;:&amp;quot;NewURI&amp;quot;
@@ -1404,24 +1518,6 @@ Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Ve
 
 &lt;/a&gt;Lange ist es her und dann so was langweiliges. Der Blog läuft jetzt auf Wordpress. Mein vServer wird in den nächsten Tagen geplättet. Ich hoffe auf einen reibungslosen Umzug. Dank der eingesetzten Tools sollte keiner was merken. Das Theme update ich irgendwann nochmal, allerdings halte ich nicht viel davon Arbeit in die Oberfläche zu stecken. Der wahre Blick auf ein Blog geht sowieso durch Google Reader. Danke Feedburner muss NIEMAND sein RSS Reader anfassen.&lt;/p&gt;
 &lt;p&gt;Drückt mir die Daumen, dann gibt es hier bald auch wieder echten Content.&lt;/p&gt;
-&lt;p&gt;Ciao Marco&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Windows Server 2008 R2, Sharepoint 2007 und WebDav Probleme</title>
-      <link>https://marcoscheel.de/2010/01/17/windows-server-2008-r2-sharepoint-2007-und-webdav-probleme/</link>
-      <pubDate>Sun, 17 Jan 2010 14:25:33 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/2010/01/17/windows-server-2008-r2-sharepoint-2007-und-webdav-probleme/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/09/webdavproblem1.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/09/webdavproblem_thumb.png&#34; alt=&#34;webdavproblem&#34; /&gt;
-
-&lt;/a&gt;Die letzten SharePoint 2007 Installationen werden immer häufiger auf Windows Server 2008 R2 (W2K8R2) ausgeführt. Der Unterschied (für SharePoint relevant) zum “alten” Windows Server 2008 (W2K8) liegt zum Beispiel in einigen IIS7 Änderungen. Eine dieser Änderungen hat mich in einer der letzten Installationen “eingeholt”. &lt;a href=&#34;http://marcoscheel.de/sharepoint/wie-installiere-ich-sharepoint-in-einer-farm/&#34; target=&#34;_blank&#34;&gt;Wie ich SharePoint installiere&lt;/a&gt;, habe ich bereits dokumentiert. Bei der Auswahl der Internet Information Server 7 (IIS7) Konfiguration sind nun die ersten Out-Of-Band Komponenten direkt anwählbar. Hier habe ich, ohne mir weiter Gedanken zu machen, auch WebDav ausgewählt, da nun die &lt;a href=&#34;http://www.microsoft.com/downloads/details.aspx?familyid=13E97AAA-FB1B-4CF8-B95F-19AE02321385&amp;amp;displaylang=en&#34; target=&#34;_blank&#34;&gt;downloadbare Variante&lt;/a&gt; von W2K8 direkt integriert ist.&lt;/p&gt;
-&lt;p&gt;Nach einer Woche hatte ich dann die Kundenanfrage auf dem Tisch: WebDav geht nicht unter Vista und höher. Beim Klick auf “Open in Windows Explorer” dauert es einen kleinen Moment und es passiert… garnichts. Unter XP bekommt man in der Regel zwei Authentifizierungsanfragen bevor der Share sich dann doch öffnet. Der Server an sich ist aktuell nur unter HTTP und nicht unter HTTPS unterwegs. Wichtig bei XP Clients, da es hier noch die FrontPage Extensions genutzt werden können, weshalb auch der Zugriff unter XP klappte.&lt;/p&gt;
-&lt;p&gt;Erstes Troubleshooting habe ich mit folgenden Guide von MS gemacht:   &lt;br&gt;
-&lt;a href=&#34;http://www.microsoft.com/downloads/details.aspx?FamilyId=C523AC7A-5724-48BE-B973-641E805588F4&amp;amp;displaylang=en&#34; target=&#34;_blank&#34;&gt;Whitepaper - Understanding and Troubleshooting the SharePoint Explorer View&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Leider ohne Erfolg. Im HTTP Log des IIS fangen wir dann folgende Meldung: “405 Method not allowed”. Kurz mit Bing gegoogled und kein Treffer gefunden (googlen mit Google brachte ebenfalls kein Ergebnis). Irgendwann hatte ich zusammen mit dem Kunden die Idee, dass wir mal die IIS Features checken und einfach mal die WebDav Funktion wieder abwählten. Es brachte den nötigen Erfolg. Bleibt also anzumerken:&lt;/p&gt;
-&lt;p&gt;Die Option WebDav unter Windows Server 2008 (auch R2) kann SharePoint ins Stolpern bringen, da SharePoint eine eigene Implementierung hat, was oft übersehen wird.&lt;/p&gt;
 &lt;p&gt;Ciao Marco&lt;/p&gt;
 </description>
     </item>

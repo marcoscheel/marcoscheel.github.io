@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/post/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-17T17:33:05+02:00" />
+<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,24 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2008/06/13/windows-server-2008-und-der-default-zustand-der-firewall/">Windows Server 2008 und der Default Zustand der Firewall</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;120 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Aus der Woche in der ich mich intensiver mit dem Windows Server 2008 und dem IIS7 beschäftigt habe, hat sich ein Detail eingebrannnt:
+Achtung: Firewall ist by default eingeschaltet!
+Total sicher, aber auch total ungewohnt. Ich bin gleich drei mal in den Fehler gelaufen: 1. IIS7 FTP Server von einem Vista Client aus testen 2. SharePoint Server in die Farm joinen 3. Reporting Services Integration auf dem Shareoiint aktivieren
+
+Ich habe die Firewall nicht abgeschaltet, sondern einfach die Ports, die ich jetzt benötigte, eingetragen als Exception. Es ist einfach Gewohnheitssache. Ich habe nicht ganz so viel Zeit verloren, da ich nicht so viele Ports benötige, aber Kollegen in deutlich komplexeren Szenarien, hat es einiges mehr an Zeit gekostet.
+        <a href="https://marcoscheel.de/2008/06/13/windows-server-2008-und-der-default-zustand-der-firewall/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -270,21 +288,6 @@ http://support.microsoft.com/kb/224071/en-us
 Am einfachsten und wichtigsten ist das Umkonfigurieren der tempb.
 Ciao Marco
         <a href="https://marcoscheel.de/2008/05/13/move-sql-server-database-files/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/05/13/interessante-links/">Interessante Links</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;32 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Einfach mal so in den Raum gestellt: * Chris O&rsquo;Brien&rsquo;s blog: Using CustomAction to modify system pages * Free SQL Server tools that might make your life a little easier
-Ciao Marco
-        <a href="https://marcoscheel.de/2008/05/13/interessante-links/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -517,7 +520,7 @@ Ciao Marco
         <div>
             
             <span>
-                <a href="/tags/azuread/">AzureAD</a>
+                <a href="/tags/azure-ad/">Azure AD</a>
             </span>
             
             <span>
@@ -541,15 +544,11 @@ Ciao Marco
             </span>
             
             <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
                 <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft365/">Microsoft365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
             </span>
             
             <span>
@@ -562,10 +561,6 @@ Ciao Marco
             
             <span>
                 <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/teams/">Teams</a>
             </span>
             
             <span>
@@ -669,7 +664,7 @@ Ciao Marco
         <div>
             
             <span>
-                <a href="/tags/azuread/">AzureAD</a>
+                <a href="/tags/azure-ad/">Azure AD</a>
             </span>
             
             <span>
@@ -693,15 +688,11 @@ Ciao Marco
             </span>
             
             <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
                 <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft365/">Microsoft365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoftgraph/">MicrosoftGraph</a>
             </span>
             
             <span>
@@ -714,10 +705,6 @@ Ciao Marco
             
             <span>
                 <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/teams/">Teams</a>
             </span>
             
             <span>
@@ -750,13 +737,18 @@ Ciao Marco
     <footer>
     <div class="container-lg clearfix">
         <div class="col-12 footer">
-            <span>&copy; 2020 <a href="https://marcoscheel.de">Marco Scheel</a> |
-                Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
-                   target="_blank">Fuji-v2</a> & <a href="https://gohugo.io/"
-                   target="_blank">Hugo</a> </span>
+            
+            <span>&copy; 2020
+                <a href="https://marcoscheel.de">Marco Scheel</a>
+                
+                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
         </div>
     </div>
 </footer>
+
     
 <script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
