@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/tags/microsoft-365/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
+<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -122,10 +122,26 @@
 
 <div class="post">
     <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/">Microsoft Teams Recording mit Externen teilen</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-11-01</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;354 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>Microsoft arbeitet an einer <a href="https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304" target="_blank">neuen Version von Microsoft Stream</a>. Microsoft Teams nutzte bis vor kurzem genau dieses Video-Backend für die Ablage der Meeting Recordings. Seit heute (01.11.2020) beginnt der Rollout für alle Tenants, es sei denn ihr habt per Meeting Policy ein <a href="/post/2020/10/20201020-microsoftteams-recording-onedrive/#einschalten-im-tenant">Opt-Out</a> für eure Benutzer gesetzt. Was das Recording in OneDrive/Teams bedeutet habe ich euch in <a href="/post/2020/10/20201020-microsoftteams-recording-onedrive/">folgendem Blogpost</a> demonstriert.</p>
+<p>Das Meeting Recording liegt also im SharePoint (für Channel Meetings) oder im OneDrive (für alle anderen Meetings). Ist damit der Blog bereits zu Ende? Teilen auf SharePoint kann doch jeder, oder? Hier gibt es die <a href="https://support.microsoft.com/de-de/office/teilen-von-sharepoint-dateien-oder-ordnern-1fe37332-0f9a-4719-970e-d2578da4941c?ui=de-de&amp;rs=de-de" target="_blank">Doku von Microsoft</a>. Natürlich kann ich die Datei einfach über einen neuen Sharing Link teilen. Wenn der externe Benutzer aber im Meeting-Chat auf das Recording klickt, dann gibt es folgenden Fehler, den wir aber &ldquo;einfach&rdquo; Lösen können.</p>
+<p><img class="img-zoomable" src="/img/20201101-microsoftteams-recording-sharing--title.jpg" alt="image" />
+</p>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
         <a href="https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/">Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1495 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1494 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
 
     </div>
     <div class="post-item post-summary markdown-body">
@@ -278,29 +294,48 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     </div>
 </div>
 
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/">Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-01</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;424 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/tools">Tools</a>&nbsp;</span>
 
+
+
+
+
+
+
+<div class="pagination">
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item pag-current">
+        <a href="/tags/microsoft-365/">1</a>
     </div>
-    <div class="post-item post-summary markdown-body">
-        <p>Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im <a href="https://hairlessinthecloud.com" target="_blank">Hairless in the Cloud</a> Podcast Nummer <a href="https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff" target="_blank">18</a> habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.</p>
-<p>Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem <a href="https://developer.microsoft.com/en-us/graph/blogs/postman-collections/" target="_blank">Graph Explorer in einer Collection für Postman</a> zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.</p>
-<p>In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
-<img class="img-zoomable" src="/tmblr/cd/ef/cad14ee0d8e93c6d3b12f08d7601.png" alt="image" />
-</p>
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item">
+        <a href="/tags/microsoft-365/page/2/">2</a>
     </div>
+    
+    
+    
+    <div class="pag-next">
+        <a href="/tags/microsoft-365/page/2/"><i class="iconfont icon-chevron-forward-circle-sharp"></i></a>
+    </div>
+    
+    
+    <div class="pag-last">
+        <a href="/tags/microsoft-365/page/2/"><i class="iconfont icon-caret-forward-circle-sharp"></i></a>
+    </div>
+    
 </div>
-
-
-
-
-
-
-
 
 
 

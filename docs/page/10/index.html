@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
+<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,27 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2008/06/30/fehler-beim-deploy-mit-hilfe-der-vsewss-v-1-2-cvtres-exe/">Fehler beim Deploy mit Hilfe der VSeWSS V.1.2 – CVTRES.EXE</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-30</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;84 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Ich habe eben versucht, auf dem Microsoft Demo Virtual PC (WSSv3 + SP1) eine SiteDefinition zu deployen. Es gab leider nur folgende Fehlermeldung:
+&lt;span class=&quot;lnum&quot;&gt; 1:&lt;/span&gt; Error 1 Unable to generate a temporary class (result=1). &lt;span class=&quot;lnum&quot;&gt; 2:&lt;/span&gt; error CS0016: Could not write to output file 'c:Documents and SettingsAdministratorLocal SettingsTempxyqxz-fg.dll' -- 'Could not execute CVTRES.EXE.' &lt;span class=&quot;lnum&quot;&gt; 3:&lt;/span&gt; 0 0  Kurze Suche in Google brachte folgendes:
+http://forums.msdn.microsoft.com/en-US/msbuild/thread/b93ea3ff-8aa1-4893-a6bf-c4c064633528/
+Die folgenden Commands haben dann tatsachlich die LKosung gebracht:
+devenv -resetsettings
+devenv -resetskippkgs
+devenv -safemode
+Ciao Marco
+        <a href="https://marcoscheel.de/2008/06/30/fehler-beim-deploy-mit-hilfe-der-vsewss-v-1-2-cvtres-exe/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -251,21 +272,6 @@ Neues Heim: http://marcoscheel.de
 Ich habe auf Basis von GraffitiCMS meinen Blog neu aufgezogen. Schaut doch auch mal auf die Seite. Das Layout ist ein angepaßtes Theme. Mehr zum Thema GraffitiCMS vielleicht in den nächsten Posts.
 Ciao Marco
         <a href="https://marcoscheel.de/2008/06/15/angekommen-neues-zuhause-fr-meinen-blog/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/06/13/sharepoint-disk-based-blob-cache/">SharePoint Disk Based Blob Cache</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;424 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Wir implementieren gerade eine SiteCollection in einem Portal in dem es darum geht Video&rsquo;s die aus einer Document Library kommen in einem Flash Movie darzustellen. Um die Performance und die Wartbarkeit zu halten haben wir folgende Dinge eingerichtet:
- Eigene ContentDB  Wir haben die SiteCollection uber STSADM angelegt und einer leeren ContentDB auf dem SQL Server zugewiesen. Anschließend haben wir die ContentDB im Central Admin &ldquo;Offline&rdquo; genommen, so das die Datenbank nur fur Video Content genutzt wird. Fur den Backup Prozess kann man so einen anderen Schedule hinterlegen, da hier nicht so viel &ldquo;Bewegung&rdquo; existiert und es primar um grosse Dateien geht.
-        <a href="https://marcoscheel.de/2008/06/13/sharepoint-disk-based-blob-cache/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 

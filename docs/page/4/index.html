@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
+<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,21 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/">SharePoint, FQDN, ServiceAccounts und SSP Provisioning failed</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-06-25</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1005 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        In meiner letzten SharePoint Installation wurde ich mit einem Active Directory mit Windows NT 4.0 Wurzeln begrüßt. Die Domäne wurde von “kunde.de” auf “neu.kunde.de” upgegraded. Der NETBIOS Name der Domain ist somit “kunde.de” und der Full Qualified Domain Name (FQDN) ist “neu.kunde.de”. In der Vergangenheit hatte ich keine gute Erfahrung mit FQDN’s im Bezug auf den SQL Server gemacht. Mein Versuch den Server über den vollen Namen anzusprechend, ist gescheitert (Pre SP1 Erfahrung).
+Im aktuellen Fall haben wir versucht, den FQDN für die Angabe der Domain Accounts in der Form “neu.kunde.deaccountname” zu verwenden. Bis zur Provisionierung des Shared Service Provider hat das auch super funktioniert.
+        <a href="https://marcoscheel.de/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -258,23 +273,6 @@ Aspose.Network.Ftp.FtpException: Failed to upload file :500 %CLI-W-IVQUAL, unrec
 
 Jetzt stellt sich die Frage, wie man das ganze aber testen kann? Warten bis das Event ausgelöst wird? Die Situation erzwingen? Je nach Komplexität der Anwendung oder der Situation, die den Event erzeugt, kann das nicht ganz befriedigend sein. Den Task einfach über Run zu starten, ist eine Option, allerdings kann man dann nicht auf Eigenschaften des Events zugreifen, welches normalerweise das Ereignis auslöst.
         <a href="https://marcoscheel.de/2009/06/06/tolles-trio-eventlog-task-scheduler-und-eventcreate-exe-attach-task-to-this-event/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/">Unblock aller Dateien in einem Verzeichnis</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-06-06</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;101 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Ich habe immer mal wieder in der Vergangenheit Probleme beim Ansehen von CHM Dateien, die ich aus dem Internet oder von einem Fileshare kopiert habe. Das Inhaltsverzeichnis wird angezeigt, aber egal was angeklickt wird, es kommt einer Fehlerdarstellung. Microsoft hat dazu eine KB Artikel: http://support.microsoft.com/kb/902225/
-Wenn man das Unblocken jetzt nicht immer von Hand machen will, da es auch bei anderen Dateien potentiell störend sein kann, habe ich ein Tool von SysInternal (Microsoft) im Einsatz: Streams - http://technet.microsoft.com/en-us/sysinternals/bb897440.aspx
-Mit diesem Tool kann man sehr einfach den NTFS Stream löschen, der diesen “Schutz” auslöst.
-streams.exe -d -s *.chm  Fertig :-)
-        <a href="https://marcoscheel.de/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 

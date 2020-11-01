@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<title>SharePoint - Marco Scheel aka GeekDotNet</title>
+<title>Microsoft Teams Recording mit Externen teilen - Marco Scheel aka GeekDotNet</title>
 
 
 <meta name="author" content="Marco Scheel" />
@@ -29,18 +29,27 @@
 <meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 
 
-<meta property="og:title" content="SharePoint" />
-<meta property="og:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://marcoscheel.de/tags/sharepoint/" />
+<meta name="keywords" content="Microsoft 365, Microsoft Teams" />
+
+<meta property="og:title" content="Microsoft Teams Recording mit Externen teilen" />
+<meta property="og:description" content="Microsoft arbeitet an einer neuen Version von Microsoft Stream. Microsoft Teams nutzte bis vor kurzem genau dieses Video-Backend für die Ablage der Meeting Recordings. Seit heute (01.11.2020) beginnt der Rollout für alle Tenants, es sei denn ihr habt per Meeting Policy ein Opt-Out für eure Benutzer gesetzt. Was das Recording in OneDrive/Teams bedeutet habe ich euch in folgendem Blogpost demonstriert.
+Das Meeting Recording liegt also im SharePoint (für Channel Meetings) oder im OneDrive (für alle anderen Meetings). Ist damit der Blog bereits zu Ende? Teilen auf SharePoint kann doch jeder, oder? Hier gibt es die Doku von Microsoft. Natürlich kann ich die Datei einfach über einen neuen Sharing Link teilen. Wenn der externe Benutzer aber im Meeting-Chat auf das Recording klickt, dann gibt es folgenden Fehler, den wir aber &ldquo;einfach&rdquo; Lösen können.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
+<meta property="article:published_time" content="2020-11-01T10:06:51+01:00" />
+<meta property="article:modified_time" content="2020-11-01T10:06:51+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
 
-<meta name="twitter:title" content="SharePoint"/>
-<meta name="twitter:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud"/>
+<meta name="twitter:title" content="Microsoft Teams Recording mit Externen teilen"/>
+<meta name="twitter:description" content="Microsoft arbeitet an einer neuen Version von Microsoft Stream. Microsoft Teams nutzte bis vor kurzem genau dieses Video-Backend für die Ablage der Meeting Recordings. Seit heute (01.11.2020) beginnt der Rollout für alle Tenants, es sei denn ihr habt per Meeting Policy ein Opt-Out für eure Benutzer gesetzt. Was das Recording in OneDrive/Teams bedeutet habe ich euch in folgendem Blogpost demonstriert.
+Das Meeting Recording liegt also im SharePoint (für Channel Meetings) oder im OneDrive (für alle anderen Meetings). Ist damit der Blog bereits zu Ende? Teilen auf SharePoint kann doch jeder, oder? Hier gibt es die Doku von Microsoft. Natürlich kann ich die Datei einfach über einen neuen Sharing Link teilen. Wenn der externe Benutzer aber im Meeting-Chat auf das Recording klickt, dann gibt es folgenden Fehler, den wir aber &ldquo;einfach&rdquo; Lösen können.
+
+"/>
 
 
 
@@ -113,85 +122,76 @@
             
             <div class="col-12 col-md-9 float-left content">
                 
-
-<div class="page-info">
-    <span>Posts with the tag SharePoint: </span>
-</div>
-
-
-
-<div class="post">
+<article>
+    
     <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/">Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream</a>
+        <a href="https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/">Microsoft Teams Recording mit Externen teilen</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1494 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-11-01</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;354 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
 
     </div>
-    <div class="post-item post-summary markdown-body">
-        <p>Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream <del>einstellen</del> neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:</p>
-<blockquote class="twitter-tweet"><p lang="de" dir="ltr">Migration vom <a href="https://twitter.com/SharePoint?ref_src=twsrc%5Etfw">@SharePoint</a> Video Portal schon begonnen? Alle Videos in <a href="https://twitter.com/MicrosoftStream?ref_src=twsrc%5Etfw">@MicrosoftStream</a> angekommen?  Jetzt geht&#39;s wieder zurück 🤣 Aber ich finde das super. Endlich eine Video API natürlich mit <a href="https://twitter.com/microsoftgraph?ref_src=twsrc%5Etfw">@microsoftgraph</a>! Und Meetingrecording von <a href="https://twitter.com/MicrosoftTeams?ref_src=twsrc%5Etfw">@MicrosoftTeams</a>!  <a href="https://t.co/ZKZsjWaDhP">https://t.co/ZKZsjWaDhP</a></p>&mdash; Marco Scheel (@marcoscheel) <a href="https://twitter.com/marcoscheel/status/1308496002761056259?ref_src=twsrc%5Etfw">September 22, 2020</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>Den Microsoft Blogpost mit allen Details <a href="https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304" target="_blank">findet ihr hier</a>. Heute wollen wir uns die Auswirkungen auf die Meeting Recordings in Microsoft Teams anschauen. In der &ldquo;Vergangenheit&rdquo; hatten wir folgende Probleme mit der Ablage in Microsoft Stream:</p>
-<ul>
-<li>Externe Teilnehmer konnte nie auf die Aufnahmen zugreifen, da Microsoft Steam (<a href="https://docs.microsoft.com/en-us/stream/" target="_blank">Classic</a>) keinen <a href="https://docs.microsoft.com/en-us/stream/portal-share-video#external-sharing" target="_blank">Zugang für externe ermöglicht</a> und es immer ein Konto aus dem Unternehmen für den Zugriff brauchte.</li>
-<li>Wer die Aufnahme starten wollte, brauchte nicht nur die <a href="https://docs.microsoft.com/en-us/microsoftteams/meeting-policies-in-teams#allow-cloud-recording" target="_blank">Teams Meeting Policy</a> dazu, sondern auch das <a href="https://docs.microsoft.com/en-us/stream/restrict-uploaders" target="_blank">Recht Videos in Stream hochzuladen</a>.</li>
-<li>Es gibt keine offizielle API</li>
-</ul>
-<p>Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und es werden noch viele Funktionen in der nahen Zukunft ergänzt. Zum Start bekommen wir aber eine sehr rudimentäre Implementierung mit ihren eigenen Problemen. Wir schauen einmal auf die entsprechende Implementierung Stand Oktober 2020. Microsoft hat zur Ignite eine <a href="https://myignite.microsoft.com/sessions/087d135a-64ae-41ab-8b15-f0a965223d5b" target="_blank">dedizierte Session zum Thema Besprechungsaufzeichnung</a> erstellt in der ihr viele Details findet.</p>
-<p><img class="img-zoomable" src="/img/20201020-microsoftteams-recording-onedrive--title.jpg" alt="image" />
+    
+    
+    <div class="post-content markdown-body">
+        <p>Microsoft arbeitet an einer <a href="https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304" target="_blank">neuen Version von Microsoft Stream</a>. Microsoft Teams nutzte bis vor kurzem genau dieses Video-Backend für die Ablage der Meeting Recordings. Seit heute (01.11.2020) beginnt der Rollout für alle Tenants, es sei denn ihr habt per Meeting Policy ein <a href="/post/2020/10/20201020-microsoftteams-recording-onedrive/#einschalten-im-tenant">Opt-Out</a> für eure Benutzer gesetzt. Was das Recording in OneDrive/Teams bedeutet habe ich euch in <a href="/post/2020/10/20201020-microsoftteams-recording-onedrive/">folgendem Blogpost</a> demonstriert.</p>
+<p>Das Meeting Recording liegt also im SharePoint (für Channel Meetings) oder im OneDrive (für alle anderen Meetings). Ist damit der Blog bereits zu Ende? Teilen auf SharePoint kann doch jeder, oder? Hier gibt es die <a href="https://support.microsoft.com/de-de/office/teilen-von-sharepoint-dateien-oder-ordnern-1fe37332-0f9a-4719-970e-d2578da4941c?ui=de-de&amp;rs=de-de" target="_blank">Doku von Microsoft</a>. Natürlich kann ich die Datei einfach über einen neuen Sharing Link teilen. Wenn der externe Benutzer aber im Meeting-Chat auf das Recording klickt, dann gibt es folgenden Fehler, den wir aber &ldquo;einfach&rdquo; Lösen können.</p>
+<p><img class="img-zoomable" src="/img/20201101-microsoftteams-recording-sharing--title.jpg" alt="image" />
 </p>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/">SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2017-09-17</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;257 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/office365">Office365</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>In meinen Projekten (<a href="https://www.glueckkanja.com/technologien/office-365/" target="_blank">Office 365</a> / <a href="https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/" target="_blank">100% Cloud</a>) ist <a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference" target="_blank">Conditional Access</a> (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem <a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912" target="_blank">Blogpost</a> beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern <a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827" target="_blank">einzelne Site Collections </a>adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
-<img class="img-zoomable" src="/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png" alt="image" />
+<h2 id="meeting-recordings-richtig-berechtigen">Meeting Recordings richtig berechtigen</h2>
+<p>Microsoft nutzt die normalen Share-Features für das Teilen des Recordings für interne Benutzer. Wenn ihr jetzt einfach den Share-Dialog am Video nutzt, dann kann der externe über den Link aus diesem Sharing (wird normal per E-Mail verschickt) zugreifen. Versucht er aber vielleicht später über Teams und den Meeting-Chat zuzugreifen, dann kommt es wieder zum Fehler, da dort ein anderer Sharing-Link hinterlegt ist:</p>
+<p><img class="img-zoomable" src="/img/20201020-microsoftteams-recording-onedrive--host-sharing-wrongish.jpg" alt="image" />
 </p>
-<p>Eigentlich sollte der Dialog so aussehen:
-<img class="img-zoomable" src="/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png" alt="image" />
+<p>Jetzt zeige ich euch, wie man den Link im Meeting-Chat auch für Externe konfiguriert. Wenn ihr die Datei im SharePoint oder OneDrive geöffnet habt, dann könnt ihr über &ldquo;Manage access&rdquo; die aktuellen Sharing Links einsehen. Es gibt viele Möglichkeiten &ldquo;Manage access&rdquo; zu erreichen. In der Ordneransicht klickt ihr &ldquo;&hellip;&rdquo; auf der entsprechenden Videodatei und wählt dann &ldquo;Manage access&rdquo; aus:</p>
+<p><img class="img-zoomable" src="/img/20201101-microsoftteams-recording-sharing--manage-access.png" alt="image" />
 </p>
+<p>Ihr seht die aktuell konfigurierten Freigaben:</p>
+<p><img class="img-zoomable" src="/img/20201020-microsoftteams-recording-onedrive--host-recording-manage-access.jpg" alt="image" />
+</p>
+<p>Die Freigabe für die Anzeige der Datei (&ldquo;View&rdquo;-Berechtigung) könnt ihr über die &ldquo;&hellip;&rdquo; Option aufrufen:</p>
+<p><img class="img-zoomable" src="/img/20201020-microsoftteams-recording-onedrive--host-manage-access-add-guest.jpg" alt="image" />
+</p>
+<p>Gebt die E-Mail des Gasts ein und bestätigt mit &ldquo;Save&rdquo;:</p>
+<p><img class="img-zoomable" src="/img/20201020-microsoftteams-recording-onedrive--host-manage-access-guest-add.jpg" alt="image" />
+</p>
+<p>Wenn ich (als Gast der Besprechung) nun über den Meeting-Chat den Link aufrufe, dann bekomme ich keine Fehlermeldung beim Zugriff:</p>
+<p><img class="img-zoomable" src="/img/20201020-microsoftteams-recording-onedrive--guest-has-access.jpg" alt="image" />
+</p>
+<h2 id="zusammenfassung">Zusammenfassung</h2>
+<p>Die meisten Benutzer werden einfach im SharePoint auf &ldquo;Share&rdquo; klicken. Der Zugriff für externe Benutzer ist ein tolles Feature und ich will nicht meckern. Sollten eure Benutzer über das Verhalten meckern, dann könnt ihr sie nun über den richtigen Weg aufklären und das Nutzererlebnis verbessern.</p>
     </div>
-</div>
+</article>
 
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/">The Future of SharePoint (Online)</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2016-05-21</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;998 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/office365">Office365</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <h2 id="tldr">TL;DR</h2>
-<p>Die Roadmap schließt somit eine Lücke, die überwiegend Hardcore
-SharePoint User (Publishing, echte Listen und Metadaten) betroffen hat und
-begeistern wird. Für den Rest wird es einfach einfacher und schöner.</p>
-<p>Alle die Office 365 noch nicht verwenden können die Zeit bis Ende 2016 nutzen,
-um eine solide Basis aufzubauen. Alle mit einer guten Office 365 Basis können
-die Zeit nutzen in ersten Gehversuchen mit Office 365 Groups eigene Erfahrungen
-zu sammeln. In nächsten Jahr (2017) können dann hoffentlich alle das volle
-Potential von SharePoint Online nutzen und über den Datei-Tellerrand schauen
-und den nächsten Level der modernen Teamräume ausnutzen.</p>
-    </div>
+<div class="license markdown-body">
+    <blockquote>
+        <p>Unless otherwise noted, the content of this site is licensed under <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
+               target="_blank">CC BY 4.0</a>.</p>
+    </blockquote>
 </div>
 
 
-
-
-
-
-
-
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = 'https:\/\/marcoscheel.de\/post\/2020\/11\/20201101-microsoftteams-recording-sharing\/';
+                this.page.identifier = '20201101-microsoftteams-recording-sharing';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'marcoscheel' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
 
 
             </div>
@@ -318,6 +318,16 @@ und den nächsten Level der modernen Teamräume ausnutzen.</p>
     </div>
     
     
+    
+    <div class="sidebar-item sidebar-toc">
+        <h3>TOC</h3>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#meeting-recordings-richtig-berechtigen">Meeting Recordings richtig berechtigen</a></li>
+    <li><a href="#zusammenfassung">Zusammenfassung</a></li>
+  </ul>
+</nav>
+    </div>
     
     
 </aside>
@@ -451,6 +461,18 @@ und den nächsten Level der modernen Teamräume ausnutzen.</p>
             </span>
             
         </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <h3>TOC</h3>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#meeting-recordings-richtig-berechtigen">Meeting Recordings richtig berechtigen</a></li>
+    <li><a href="#zusammenfassung">Zusammenfassung</a></li>
+  </ul>
+</nav>
     </div>
     
     

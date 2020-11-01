@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
+<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,26 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/">App Permissions für Microsoft Graph Calls automatisiert einrichten</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-08</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;393 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>Für unser Glück &amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die <a href="https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0" target="_blank">PowerShell AZ</a> und die <a href="https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.</p>
+<p>Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">Access Reviews</a> Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:</p>
+<pre><code class="language-PowerShell">az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 62a82d76-70ea-41e2-9197-370581804d09=Role #msgraph Group.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions ef5f7d5c-338f-44b0-86c3-351f46c8bb5f=Role #msgraph AccessReview.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 60a901ed-09f7-4aa5-a16e-7dd3d6f9de36=Role #msgraph ProgramControl.ReadWrite.All
+</code></pre>
+        <a href="https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -276,20 +296,6 @@ Der Kunde betreibt mehrere Farmen (Production, Staging, Testing und Dev), um den
         Meine Kollege Karten Kleinschmidt und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.
 In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie SharePoint, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &ldquo;richtige&rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms).
         <a href="https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2010/12/20/windows-phone-7-test/">Windows Phone 7 test</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2010-12-19</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;8 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-         Coole Sache  Posted from WordPress for Windows Phone
-        <a href="https://marcoscheel.de/2010/12/20/windows-phone-7-test/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 

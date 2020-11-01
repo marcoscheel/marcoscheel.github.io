@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-<title>SharePoint - Marco Scheel aka GeekDotNet</title>
+<title>Microsoft 365 - Marco Scheel aka GeekDotNet</title>
 
 
 <meta name="author" content="Marco Scheel" />
@@ -29,17 +29,17 @@
 <meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 
 
-<meta property="og:title" content="SharePoint" />
+<meta property="og:title" content="Microsoft 365" />
 <meta property="og:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://marcoscheel.de/tags/sharepoint/" />
+<meta property="og:url" content="https://marcoscheel.de/tags/microsoft-365/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
+<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
 
-<meta name="twitter:title" content="SharePoint"/>
+<meta name="twitter:title" content="Microsoft 365"/>
 <meta name="twitter:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud"/>
 
 
@@ -115,82 +115,70 @@
                 
 
 <div class="page-info">
-    <span>Posts with the tag SharePoint: </span>
+    <span>Posts with the tag Microsoft 365: </span>
 </div>
 
 
 
 <div class="post">
     <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/">Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream</a>
+        <a href="https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/">Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1494 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-01</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;424 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/tools">Tools</a>&nbsp;</span>
 
     </div>
     <div class="post-item post-summary markdown-body">
-        <p>Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream <del>einstellen</del> neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:</p>
-<blockquote class="twitter-tweet"><p lang="de" dir="ltr">Migration vom <a href="https://twitter.com/SharePoint?ref_src=twsrc%5Etfw">@SharePoint</a> Video Portal schon begonnen? Alle Videos in <a href="https://twitter.com/MicrosoftStream?ref_src=twsrc%5Etfw">@MicrosoftStream</a> angekommen?  Jetzt geht&#39;s wieder zurück 🤣 Aber ich finde das super. Endlich eine Video API natürlich mit <a href="https://twitter.com/microsoftgraph?ref_src=twsrc%5Etfw">@microsoftgraph</a>! Und Meetingrecording von <a href="https://twitter.com/MicrosoftTeams?ref_src=twsrc%5Etfw">@MicrosoftTeams</a>!  <a href="https://t.co/ZKZsjWaDhP">https://t.co/ZKZsjWaDhP</a></p>&mdash; Marco Scheel (@marcoscheel) <a href="https://twitter.com/marcoscheel/status/1308496002761056259?ref_src=twsrc%5Etfw">September 22, 2020</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>Den Microsoft Blogpost mit allen Details <a href="https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304" target="_blank">findet ihr hier</a>. Heute wollen wir uns die Auswirkungen auf die Meeting Recordings in Microsoft Teams anschauen. In der &ldquo;Vergangenheit&rdquo; hatten wir folgende Probleme mit der Ablage in Microsoft Stream:</p>
-<ul>
-<li>Externe Teilnehmer konnte nie auf die Aufnahmen zugreifen, da Microsoft Steam (<a href="https://docs.microsoft.com/en-us/stream/" target="_blank">Classic</a>) keinen <a href="https://docs.microsoft.com/en-us/stream/portal-share-video#external-sharing" target="_blank">Zugang für externe ermöglicht</a> und es immer ein Konto aus dem Unternehmen für den Zugriff brauchte.</li>
-<li>Wer die Aufnahme starten wollte, brauchte nicht nur die <a href="https://docs.microsoft.com/en-us/microsoftteams/meeting-policies-in-teams#allow-cloud-recording" target="_blank">Teams Meeting Policy</a> dazu, sondern auch das <a href="https://docs.microsoft.com/en-us/stream/restrict-uploaders" target="_blank">Recht Videos in Stream hochzuladen</a>.</li>
-<li>Es gibt keine offizielle API</li>
-</ul>
-<p>Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und es werden noch viele Funktionen in der nahen Zukunft ergänzt. Zum Start bekommen wir aber eine sehr rudimentäre Implementierung mit ihren eigenen Problemen. Wir schauen einmal auf die entsprechende Implementierung Stand Oktober 2020. Microsoft hat zur Ignite eine <a href="https://myignite.microsoft.com/sessions/087d135a-64ae-41ab-8b15-f0a965223d5b" target="_blank">dedizierte Session zum Thema Besprechungsaufzeichnung</a> erstellt in der ihr viele Details findet.</p>
-<p><img class="img-zoomable" src="/img/20201020-microsoftteams-recording-onedrive--title.jpg" alt="image" />
+        <p>Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im <a href="https://hairlessinthecloud.com" target="_blank">Hairless in the Cloud</a> Podcast Nummer <a href="https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff" target="_blank">18</a> habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.</p>
+<p>Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem <a href="https://developer.microsoft.com/en-us/graph/blogs/postman-collections/" target="_blank">Graph Explorer in einer Collection für Postman</a> zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.</p>
+<p>In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
+<img class="img-zoomable" src="/tmblr/cd/ef/cad14ee0d8e93c6d3b12f08d7601.png" alt="image" />
 </p>
     </div>
 </div>
 
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/">SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2017-09-17</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;257 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/office365">Office365</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
 
+
+
+
+
+
+
+<div class="pagination">
+    
+    <div class="pag-first">
+        <a href="/tags/microsoft-365/"><i class="iconfont icon-caret-back-circle-sharp"></a>
     </div>
-    <div class="post-item post-summary markdown-body">
-        <p>In meinen Projekten (<a href="https://www.glueckkanja.com/technologien/office-365/" target="_blank">Office 365</a> / <a href="https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/" target="_blank">100% Cloud</a>) ist <a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference" target="_blank">Conditional Access</a> (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem <a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912" target="_blank">Blogpost</a> beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern <a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827" target="_blank">einzelne Site Collections </a>adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
-<img class="img-zoomable" src="/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png" alt="image" />
-</p>
-<p>Eigentlich sollte der Dialog so aussehen:
-<img class="img-zoomable" src="/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png" alt="image" />
-</p>
+    
+    
+    <div class="pag-previous">
+        <a href="/tags/microsoft-365/"><i class="iconfont icon-chevron-back-circle-sharp"></i></a>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item">
+        <a href="/tags/microsoft-365/">1</a>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item pag-current">
+        <a href="/tags/microsoft-365/page/2/">2</a>
+    </div>
+    
+    
+    
+    
 </div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/">The Future of SharePoint (Online)</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2016-05-21</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;998 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/office365">Office365</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <h2 id="tldr">TL;DR</h2>
-<p>Die Roadmap schließt somit eine Lücke, die überwiegend Hardcore
-SharePoint User (Publishing, echte Listen und Metadaten) betroffen hat und
-begeistern wird. Für den Rest wird es einfach einfacher und schöner.</p>
-<p>Alle die Office 365 noch nicht verwenden können die Zeit bis Ende 2016 nutzen,
-um eine solide Basis aufzubauen. Alle mit einer guten Office 365 Basis können
-die Zeit nutzen in ersten Gehversuchen mit Office 365 Groups eigene Erfahrungen
-zu sammeln. In nächsten Jahr (2017) können dann hoffentlich alle das volle
-Potential von SharePoint Online nutzen und über den Datei-Tellerrand schauen
-und den nächsten Level der modernen Teamräume ausnutzen.</p>
-    </div>
-</div>
-
-
-
-
-
-
-
 
 
 

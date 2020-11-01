@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
+<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -118,10 +118,27 @@
 
 <div class="post">
     <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/">Microsoft Teams Recording mit Externen teilen</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-11-01</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;354 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>Microsoft arbeitet an einer <a href="https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304" target="_blank">neuen Version von Microsoft Stream</a>. Microsoft Teams nutzte bis vor kurzem genau dieses Video-Backend für die Ablage der Meeting Recordings. Seit heute (01.11.2020) beginnt der Rollout für alle Tenants, es sei denn ihr habt per Meeting Policy ein <a href="/post/2020/10/20201020-microsoftteams-recording-onedrive/#einschalten-im-tenant">Opt-Out</a> für eure Benutzer gesetzt. Was das Recording in OneDrive/Teams bedeutet habe ich euch in <a href="/post/2020/10/20201020-microsoftteams-recording-onedrive/">folgendem Blogpost</a> demonstriert.</p>
+<p>Das Meeting Recording liegt also im SharePoint (für Channel Meetings) oder im OneDrive (für alle anderen Meetings). Ist damit der Blog bereits zu Ende? Teilen auf SharePoint kann doch jeder, oder? Hier gibt es die <a href="https://support.microsoft.com/de-de/office/teilen-von-sharepoint-dateien-oder-ordnern-1fe37332-0f9a-4719-970e-d2578da4941c?ui=de-de&amp;rs=de-de" target="_blank">Doku von Microsoft</a>. Natürlich kann ich die Datei einfach über einen neuen Sharing Link teilen. Wenn der externe Benutzer aber im Meeting-Chat auf das Recording klickt, dann gibt es folgenden Fehler, den wir aber &ldquo;einfach&rdquo; Lösen können.</p>
+<p><img class="img-zoomable" src="/img/20201101-microsoftteams-recording-sharing--title.jpg" alt="image" />
+</p>
+        <a href="https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
         <a href="https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/">Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1495 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1494 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
 
     </div>
     <div class="post-item post-summary markdown-body">
@@ -289,26 +306,6 @@
 <img class="img-zoomable" src="/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png" alt="image" />
 </p>
         <a href="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/">App Permissions für Microsoft Graph Calls automatisiert einrichten</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-08</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;393 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>Für unser Glück &amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die <a href="https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0" target="_blank">PowerShell AZ</a> und die <a href="https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.</p>
-<p>Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">Access Reviews</a> Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:</p>
-<pre><code class="language-PowerShell">az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
-az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 62a82d76-70ea-41e2-9197-370581804d09=Role #msgraph Group.ReadWrite.All
-az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions ef5f7d5c-338f-44b0-86c3-351f46c8bb5f=Role #msgraph AccessReview.ReadWrite.All
-az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 60a901ed-09f7-4aa5-a16e-7dd3d6f9de36=Role #msgraph ProgramControl.ReadWrite.All
-</code></pre>
-        <a href="https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 

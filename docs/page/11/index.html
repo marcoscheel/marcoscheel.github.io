@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
+<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,21 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2008/06/13/sharepoint-disk-based-blob-cache/">SharePoint Disk Based Blob Cache</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;424 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Wir implementieren gerade eine SiteCollection in einem Portal in dem es darum geht Video&rsquo;s die aus einer Document Library kommen in einem Flash Movie darzustellen. Um die Performance und die Wartbarkeit zu halten haben wir folgende Dinge eingerichtet:
+ Eigene ContentDB  Wir haben die SiteCollection uber STSADM angelegt und einer leeren ContentDB auf dem SQL Server zugewiesen. Anschließend haben wir die ContentDB im Central Admin &ldquo;Offline&rdquo; genommen, so das die Datenbank nur fur Video Content genutzt wird. Fur den Backup Prozess kann man so einen anderen Schedule hinterlegen, da hier nicht so viel &ldquo;Bewegung&rdquo; existiert und es primar um grosse Dateien geht.
+        <a href="https://marcoscheel.de/2008/06/13/sharepoint-disk-based-blob-cache/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -271,23 +286,6 @@ Die Lösung habe ich nicht getestet, da ich überlege, ob ich nicht den hMailSer
     <div class="post-item post-summary markdown-body">
         Ich mache viele reine Intranet-Konfigurationen/Installationen. Einen grossen Teil davon versuche ich, mit Kerberos Authentifizierung zu realisieren. Es ist etwas an Vorarbeit nötigt, aber der Mehrwert, wenn es um mehr als reinen CMS Content geht, ist doch recht gross. Szenarien sind folgende: * Zugreifen auf die Mailbox der Users (Unread-Items, Kalenderabfragen, &hellip;) * Zugreifen auf Datenbanken (der Loginname steht für personalisierte Abfragen zur Verfügung, etablierte Security auf dem SQL Server kann genutzt werden, &hellip;) * Zugreifen auf KPI&rsquo;s aus dem Analysis Server (MS SQL 2005) * Zugreifen auf dem Fileserver aus SharePoint Code * RSA Authentifizierung ohne Passwort (nur mit Contrained Kerberos Delegation) * &hellip;
         <a href="https://marcoscheel.de/2008/05/16/sharepoint-moss-und-kerberos/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/05/13/move-sql-server-database-files/">Move SQL Server Database Files</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;41 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Ich komme immer wieder in die Situation, dass ich die System oder zumindest die tempdb einer MS SQL Server Installation umlegen muss. Anweisungen für das Vorgehen findet man hier:
-http://support.microsoft.com/kb/224071/en-us
-Am einfachsten und wichtigsten ist das Umkonfigurieren der tempb.
-Ciao Marco
-        <a href="https://marcoscheel.de/2008/05/13/move-sql-server-database-files/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 

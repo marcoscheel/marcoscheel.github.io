@@ -68,7 +68,7 @@
 &lt;p&gt;Gäste werden nicht berücksichtig. Für mich als Gast endet der Versuch das Recording anzusehen so:
 &lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--guest-noaccess.jpg&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
-&lt;p&gt;In einem weiteren Blogpost gehe ich auf den richtig Umgang mit Gästen und dem Recording ein.&lt;/p&gt;
+&lt;p&gt;In diesem Blogpost gehe ich auf den &lt;a href=&#34;https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/&#34;&gt;richtig Umgang mit Gästen und dem Recording ein&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;die-videodatei&#34;&gt;Die Videodatei&lt;/h2&gt;
 &lt;p&gt;Es bleibt zu beantworten, wo die Datei dann eigentlich liegt! Wenn man im Chat ein Video angeklickt, dann öffnet sich in Teams die Video Datei und wird abgespielt. Keine gute Idee, denn jede Interaktion mit Teams führt zum Abbruch der Wiedergabe und man muss von vorne anfangen. Also am besten gleich die &amp;ldquo;&amp;hellip;&amp;rdquo; anklicken und &amp;ldquo;Open in OneDrive&amp;rdquo; auswählen:
 &lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-access-file.jpg&#34; alt=&#34;image&#34; /&gt;
@@ -116,7 +116,7 @@ Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &amp;quot;OneDri
 &lt;li&gt;Keine adaptive Bandbreitenanpassung (aktuell auch in Stream nicht gegeben)&lt;/li&gt;
 &lt;li&gt;Keine Integration in die aktuelle Stream Mobile App&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Wird eine Datei umbenannt, verschoben oder gelöscht, dann geht der Link im Meeting Chat kaputt&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Das richtige Teilen mit Externen erfordert einige Klicks (Blogpost coming soon)&lt;/li&gt;
+&lt;li&gt;Das richtige Teilen mit Externen erfordert einige Klicks (&lt;a href=&#34;https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/&#34;&gt;Blogpost&lt;/a&gt; &lt;del&gt;coming soon&lt;/del&gt;)&lt;/li&gt;
 &lt;li&gt;Keine Möglichkeit alle Meeting Recordings auf einen Blick zu sehen, man muss jedes Mal den Meeting Chat suchen&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>

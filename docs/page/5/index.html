@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-10-24T12:35:35+02:00" />
+<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,23 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/">Unblock aller Dateien in einem Verzeichnis</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-06-06</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;101 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Ich habe immer mal wieder in der Vergangenheit Probleme beim Ansehen von CHM Dateien, die ich aus dem Internet oder von einem Fileshare kopiert habe. Das Inhaltsverzeichnis wird angezeigt, aber egal was angeklickt wird, es kommt einer Fehlerdarstellung. Microsoft hat dazu eine KB Artikel: http://support.microsoft.com/kb/902225/
+Wenn man das Unblocken jetzt nicht immer von Hand machen will, da es auch bei anderen Dateien potentiell störend sein kann, habe ich ein Tool von SysInternal (Microsoft) im Einsatz: Streams - http://technet.microsoft.com/en-us/sysinternals/bb897440.aspx
+Mit diesem Tool kann man sehr einfach den NTFS Stream löschen, der diesen “Schutz” auslöst.
+streams.exe -d -s *.chm  Fertig :-)
+        <a href="https://marcoscheel.de/2009/06/06/unblock-aller-dateien-in-einem-verzeichnis/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -266,24 +283,6 @@ Ciao Marco
     <div class="post-item post-summary markdown-body">
         Ich habe mich diese Woche wieder mit den Core Funktionen der ADO.NET Data Services beschäftigt. Wir nutzen aktuell das Microsoft Ex-Astoria Projekt, um eine SQL 2008 Datenbank (läuft mit SQL Mirroring) über das Internet an eine Applikation zu binden. An sich eine tolle Sache, aber immer wieder gibt es “neue” Situationen auf die man reagieren muss. In der klassischen Programmierung (C#, SQL über TCP 1433, …) kommt es recht selten vor, dass die Verbindung zur Datenschicht (SqlNativeClient, OLEDB, ODBC, …) unterbrochen wird. In unserem Szenario steckt viel “Cloud” in der Lösung und somit müssen wir mit dem “nicht immer” funktionierenden Internet rechnen.
         <a href="https://marcoscheel.de/2009/03/28/ado-net-data-services-c-extension-method-to-the-rescue-savechangeswithretry/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2009/03/18/microsoft-is-doodling/">Microsoft is doodling?</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-03-18</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;72 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Wer regelmäßig Google als Suchdienst nutzt (Was nutzt man sonst?) wird an speziellen Tagen feststellen, dass sich das Google Logo ändert, wenn spezielle Ereignisse die “Welt” bewegen. Google spricht dann von einem Doodle. Microsoft hat sich das wohl abgeguckt und hat für die aktuelle MSDN Site das Layout geändert/gedoodlet. Grund ist die aktuelle MIX09. Sehr nette Idee:
-
-Selber mal anschauen: http://msdn.microsoft.com/en-us/default.aspx
-Mehr Informationen zum Thema Google Doodle: http://www.google.com/support/websearch/bin/answer.py?hl=en&amp;answer=17509 http://googleblog.blogspot.com/2004/06/oodles-of-doodles.html http://www.google.com/holidaylogos.html
-Ciao Marco
-        <a href="https://marcoscheel.de/2009/03/18/microsoft-is-doodling/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 

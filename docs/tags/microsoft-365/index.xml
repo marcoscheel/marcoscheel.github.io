@@ -6,7 +6,40 @@
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 24 Oct 2020 12:35:35 +0200</lastBuildDate><atom:link href="https://marcoscheel.de/tags/microsoft-365/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Nov 2020 10:06:51 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/microsoft-365/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microsoft Teams Recording mit Externen teilen</title>
+      <link>https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/</link>
+      <pubDate>Sun, 01 Nov 2020 10:06:51 +0100</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/</guid>
+      <description>&lt;p&gt;Microsoft arbeitet an einer &lt;a href=&#34;https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304&#34; target=&#34;_blank&#34;&gt;neuen Version von Microsoft Stream&lt;/a&gt;. Microsoft Teams nutzte bis vor kurzem genau dieses Video-Backend für die Ablage der Meeting Recordings. Seit heute (01.11.2020) beginnt der Rollout für alle Tenants, es sei denn ihr habt per Meeting Policy ein &lt;a href=&#34;https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/#einschalten-im-tenant&#34;&gt;Opt-Out&lt;/a&gt; für eure Benutzer gesetzt. Was das Recording in OneDrive/Teams bedeutet habe ich euch in &lt;a href=&#34;https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/&#34;&gt;folgendem Blogpost&lt;/a&gt; demonstriert.&lt;/p&gt;
+&lt;p&gt;Das Meeting Recording liegt also im SharePoint (für Channel Meetings) oder im OneDrive (für alle anderen Meetings). Ist damit der Blog bereits zu Ende? Teilen auf SharePoint kann doch jeder, oder? Hier gibt es die &lt;a href=&#34;https://support.microsoft.com/de-de/office/teilen-von-sharepoint-dateien-oder-ordnern-1fe37332-0f9a-4719-970e-d2578da4941c?ui=de-de&amp;amp;rs=de-de&#34; target=&#34;_blank&#34;&gt;Doku von Microsoft&lt;/a&gt;. Natürlich kann ich die Datei einfach über einen neuen Sharing Link teilen. Wenn der externe Benutzer aber im Meeting-Chat auf das Recording klickt, dann gibt es folgenden Fehler, den wir aber &amp;ldquo;einfach&amp;rdquo; Lösen können.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201101-microsoftteams-recording-sharing--title.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;meeting-recordings-richtig-berechtigen&#34;&gt;Meeting Recordings richtig berechtigen&lt;/h2&gt;
+&lt;p&gt;Microsoft nutzt die normalen Share-Features für das Teilen des Recordings für interne Benutzer. Wenn ihr jetzt einfach den Share-Dialog am Video nutzt, dann kann der externe über den Link aus diesem Sharing (wird normal per E-Mail verschickt) zugreifen. Versucht er aber vielleicht später über Teams und den Meeting-Chat zuzugreifen, dann kommt es wieder zum Fehler, da dort ein anderer Sharing-Link hinterlegt ist:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-sharing-wrongish.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Jetzt zeige ich euch, wie man den Link im Meeting-Chat auch für Externe konfiguriert. Wenn ihr die Datei im SharePoint oder OneDrive geöffnet habt, dann könnt ihr über &amp;ldquo;Manage access&amp;rdquo; die aktuellen Sharing Links einsehen. Es gibt viele Möglichkeiten &amp;ldquo;Manage access&amp;rdquo; zu erreichen. In der Ordneransicht klickt ihr &amp;ldquo;&amp;hellip;&amp;rdquo; auf der entsprechenden Videodatei und wählt dann &amp;ldquo;Manage access&amp;rdquo; aus:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201101-microsoftteams-recording-sharing--manage-access.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Ihr seht die aktuell konfigurierten Freigaben:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-recording-manage-access.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Die Freigabe für die Anzeige der Datei (&amp;ldquo;View&amp;rdquo;-Berechtigung) könnt ihr über die &amp;ldquo;&amp;hellip;&amp;rdquo; Option aufrufen:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-manage-access-add-guest.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Gebt die E-Mail des Gasts ein und bestätigt mit &amp;ldquo;Save&amp;rdquo;:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-manage-access-guest-add.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Wenn ich (als Gast der Besprechung) nun über den Meeting-Chat den Link aufrufe, dann bekomme ich keine Fehlermeldung beim Zugriff:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--guest-has-access.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;zusammenfassung&#34;&gt;Zusammenfassung&lt;/h2&gt;
+&lt;p&gt;Die meisten Benutzer werden einfach im SharePoint auf &amp;ldquo;Share&amp;rdquo; klicken. Der Zugriff für externe Benutzer ist ein tolles Feature und ich will nicht meckern. Sollten eure Benutzer über das Verhalten meckern, dann könnt ihr sie nun über den richtigen Weg aufklären und das Nutzererlebnis verbessern.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream</title>
       <link>https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/</link>
@@ -68,7 +101,7 @@
 &lt;p&gt;Gäste werden nicht berücksichtig. Für mich als Gast endet der Versuch das Recording anzusehen so:
 &lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--guest-noaccess.jpg&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
-&lt;p&gt;In einem weiteren Blogpost gehe ich auf den richtig Umgang mit Gästen und dem Recording ein.&lt;/p&gt;
+&lt;p&gt;In diesem Blogpost gehe ich auf den &lt;a href=&#34;https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/&#34;&gt;richtig Umgang mit Gästen und dem Recording ein&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;die-videodatei&#34;&gt;Die Videodatei&lt;/h2&gt;
 &lt;p&gt;Es bleibt zu beantworten, wo die Datei dann eigentlich liegt! Wenn man im Chat ein Video angeklickt, dann öffnet sich in Teams die Video Datei und wird abgespielt. Keine gute Idee, denn jede Interaktion mit Teams führt zum Abbruch der Wiedergabe und man muss von vorne anfangen. Also am besten gleich die &amp;ldquo;&amp;hellip;&amp;rdquo; anklicken und &amp;ldquo;Open in OneDrive&amp;rdquo; auswählen:
 &lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-access-file.jpg&#34; alt=&#34;image&#34; /&gt;
@@ -116,7 +149,7 @@ Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &amp;quot;OneDri
 &lt;li&gt;Keine adaptive Bandbreitenanpassung (aktuell auch in Stream nicht gegeben)&lt;/li&gt;
 &lt;li&gt;Keine Integration in die aktuelle Stream Mobile App&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Wird eine Datei umbenannt, verschoben oder gelöscht, dann geht der Link im Meeting Chat kaputt&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Das richtige Teilen mit Externen erfordert einige Klicks (Blogpost coming soon)&lt;/li&gt;
+&lt;li&gt;Das richtige Teilen mit Externen erfordert einige Klicks (&lt;a href=&#34;https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/&#34;&gt;Blogpost&lt;/a&gt; &lt;del&gt;coming soon&lt;/del&gt;)&lt;/li&gt;
 &lt;li&gt;Keine Möglichkeit alle Meeting Recordings auf einen Blick zu sehen, man muss jedes Mal den Meeting Chat suchen&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
