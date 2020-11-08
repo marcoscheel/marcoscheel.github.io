@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/post/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
+<meta property="og:updated_time" content="2020-11-08T10:00:00+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,25 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/">Manage Microsoft Teams membership with Azure AD Access Review</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-08-02</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1764 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).</p>
+<p>&lt;DE&gt;Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&lt;/DE&gt;</p>
+<p>Microsoft has great <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">resources</a> to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview" target="_blank">Identity Governance)</a> on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.</p>
+<p>Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
+<img class="img-zoomable" src="/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png" alt="image" />
+</p>
+        <a href="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -281,21 +300,6 @@ Bei der Konfiguration sind uns allerdings ein paar Dinge aufgefallen:
         Ich hatte vor einiger Zeit bei einem Kunden das Problem, dass die Diagnostic Logs von Microsoft SharePoint 2010 nicht automatisch komprimieren ließen. SharePoint kümmert sich ja selber um die Verwaltung des Speicherplatzes. Eines der neuen Features ist, dass auf die Files in dem LOGS Ordner automatisch die NTFS Kompression aktiviert wird.
 Der Kunde betreibt mehrere Farmen (Production, Staging, Testing und Dev), um den ganzen Lifecyle des Deployments korrekt abzudecken. Bis auf die Produktion laufen alle Farmen als Guest in geshared virtuellen Umgebungen. Die Produktion hat eigene Virtualisierungshosts und wurde extra für SharePoint neu aufgebaut. Ich konfiguriere (abweichend vom Standard) das Verzeichnis der LOGS nicht in den 14er Hive sondern auf &ldquo;D:SP2010-DiagLogs&rdquo;.
         <a href="https://marcoscheel.de/2012/05/29/sharepoint-2010-diagnostics-log-files-werden-nicht-komprimiert/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/">Sign In As A Different User - Benutzer wechseln für IIS basierte Sites</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2012-05-27</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;341 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Meine Kollege Karten Kleinschmidt und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.
-In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie SharePoint, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &ldquo;richtige&rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms).
-        <a href="https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 

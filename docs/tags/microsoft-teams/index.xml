@@ -6,7 +6,92 @@
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 01 Nov 2020 10:06:51 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/microsoft-teams/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Nov 2020 10:00:00 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/microsoft-teams/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eigene Vorlagen für Microsoft Teams</title>
+      <link>https://marcoscheel.de/post/2020/11/20201103-microsoftteams-customtemplates/</link>
+      <pubDate>Sun, 08 Nov 2020 10:00:00 +0100</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2020/11/20201103-microsoftteams-customtemplates/</guid>
+      <description>&lt;p&gt;Microsoft hat im &lt;a href=&#34;https://techcommunity.microsoft.com/t5/microsoft-teams-blog/create-teams-quickly-with-templates-in-microsoft-teams/ba-p/1394163&#34; target=&#34;_blank&#34;&gt;Mai angekündigt&lt;/a&gt;, dass man in Kürze auf Microsoft definierten Templates bei der Anlage zurückgreifen kann und in Zukunft auch eigene Templates im Admin-Center erstellen kann. In der Vergangenheit brauchte man eine Teams Provisioning Lösung und konnte nicht auf die eingebauten Dialoge zurückgreifen. &lt;a href=&#34;https://laurakokkarinen.com/provisioning-teams-with-a-site-design-flow-and-microsoft-graph/&#34; target=&#34;_blank&#34;&gt;Hier ein Beispiel&lt;/a&gt;, wie man über ein Site Design ein Microsoft Flow startet, um mit Teams zu interagieren.&lt;/p&gt;
+&lt;p&gt;In meinem Lab-Tenant ist nun endlich die Erstellung eigener Templates angekommen. Ich zeige euch, was es mit den Templates von Microsoft auf sich hat und was ihr mit den eigenen Templates erreichen könnt.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--title.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;microsoft-templates&#34;&gt;Microsoft Templates&lt;/h2&gt;
+&lt;p&gt;Microsoft bietet aktuell 13 Templates an, die man im Tenant auswählen kann. Die Templates werden mit einer &amp;ldquo;Industry&amp;rdquo; Information versehen. Auch wenn euer Unternehmen nicht aus dem Bereich stammt, sind die Templates trotzdem sinnvoll. Hier findet ihr die Dokumentation, was das einzelne Template ausmacht:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/get-started-with-teams-templates#what-are-base-template-types&#34; target=&#34;_blank&#34;&gt;Get started with Teams templates using Microsoft Graph - Teams template capabilities&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Aus der User-Sicht startet ihr über den normalen Dialog zum Erstellen eines Teams. Habt ihr die &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/enterprise-users/groups-settings-cmdlets#template-settings&#34; target=&#34;_blank&#34;&gt;Self-Service Creation&lt;/a&gt; abgeschaltet, dann sollten wir mal ein ernstes Wort &lt;a href=&#34;https://twitter.com/marcoscheel&#34; target=&#34;_blank&#34;&gt;reden&lt;/a&gt;. Wenn ihr alles &amp;ldquo;Richtig&amp;rdquo; gemacht habt, dann sieht der User folgendes:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--user-createteam.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Auf dieser Seite kann der Benutzer sich über eine kurze Beschreibung über das Template informieren. Ist die Entscheidung gefallen, dann kommen beim Klick weitere Details zum Template:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--user-createteam-templatedetails.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Ab hier geht es wie gewohnt weiter. Klassifizierung + Privacy auswählen und den Namen für das Team festlegen:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--user-createteam-templatename.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Jetzt kommen die ersten Unterschiede. Ohne Template ist das Team in Sekunden erstellt und ich kann weitere Benutzer auswählen. Bei der Verwendung einer Vorlage dauert das Erstellen deutlich länger. Es geht jetzt nicht um Stunden aber der Prozess ist ab jetzt asynchron. Der Benutzer sieht folgende Meldung, welche in meinem Test sich auch nach Minuten nicht verändert hat. Das Schließen des Dialoges ist also nicht optional, wie angedeutet.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--user-createteam-progress.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Das fertige Team sieht dann so aus:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--user-createteam-completed.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;In meinem Test hat das System am Ende immer &amp;ldquo;undefinded&amp;rdquo; an den gewählten Namen angehängt, aber als Owner kann man den Namen ja jederzeit ändern.&lt;/p&gt;
+&lt;p&gt;In der aktuellen Implementierung kann man keine der Microsoft Templates ausblenden. Es gibt auch keine Möglichkeit Templates an eine Zielgruppe zu verteilen. Alle Templates sind immer für alle Benutzer zu sehen. Ich bin gespannt, wie es hier weiter geht.&lt;/p&gt;
+&lt;h2 id=&#34;templates-administrieren&#34;&gt;Templates administrieren&lt;/h2&gt;
+&lt;p&gt;Als Microsoft Teams Administrator kann ich ab sofort eigene Templates erstellen und in den gezeigten Dialog integrieren. Die eigenen Templates werden immer vor den Microsoft Templates angezeigt. Hier könnt ihr die Microsoft Dokumentation einsehen:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/MicrosoftTeams/get-started-with-teams-templates-in-the-admin-console&#34; target=&#34;_blank&#34;&gt;Get started with Teams templates in the admin center&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In der aktuelle Implementierung ist der Funktionsumfang recht überschaubar. Ihr könnt Kanäle vordefinieren, Tabs in die Kanäle hängen und generell Apps in das Team einfügen.&lt;/p&gt;
+&lt;p&gt;Im Admin Center gibt es im Bereich &amp;ldquo;Teams&amp;rdquo; einen neuen Navigationspunkt:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--admin-navigation.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Hier kann man ein neues Template erstellen. Aktuell hat man drei Optionen:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/MicrosoftTeams/create-a-team-template&#34; target=&#34;_blank&#34;&gt;Create a custom team template&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/MicrosoftTeams/create-template-from-existing-template&#34; target=&#34;_blank&#34;&gt;Create a team template from an existing team template&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/MicrosoftTeams/create-template-from-existing-team&#34; target=&#34;_blank&#34;&gt;Create a template from an existing team&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--admin-createtemplate.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;eigene-template-definieren&#34;&gt;Eigene Template definieren&lt;/h3&gt;
+&lt;p&gt;Die erste Option &amp;ldquo;Create a custom team template&amp;rdquo; führt uns durch den folgenden Dialog. Name des Template, Beschreibung für den Endbenutzer und Hinweise für die Kollegen im Admin Team sind verpflichtend:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--admin-createtemplatedetails.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Auf der folgenden Seite kann ich jetzt einen Kanal anlegen und gleichzeitig auch Tabs (Apps) hinzufügen:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--admin-createtemplatechannel.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Sollte eine App nicht über einen Tab hinzugefügt werden, dann kann ich diese auch direkt in das Team einfügen:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--admin-createtemplateapp.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Ihr könnt den erstellten Kanälen (z.b. dem Standard-Kanal) nachträglich Apps hinzufügen:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--admin-createtemplateeditchannel.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Hier seht ihr die fertige Definition des Templates:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--admin-createtemplateoverview.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;eigenes-template-von-einem-bestehenden-template&#34;&gt;Eigenes Template von einem bestehenden Template&lt;/h3&gt;
+&lt;p&gt;Die zweite Option &amp;ldquo;Create a team template from an existing team template&amp;rdquo; schaltete vor die eigentliche Definition des Templates die Auswahl eines anderen (Microsoft oder eigenes) Template vor:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--admin-createtemplatefromtemplate.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Dann geht es weiter wie bei der Definition eins leeren Template.&lt;/p&gt;
+&lt;h3 id=&#34;eigenes-template-von-einem-bestehendem-team&#34;&gt;Eigenes Template von einem bestehendem Team&lt;/h3&gt;
+&lt;p&gt;Die dritte Option &amp;ldquo;Create a template from an existing team&amp;rdquo; erlaubt es ein bestehendes Team auszuwählen:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201103-microsoftteams-customtemplates--admin-createtemplatefromteam.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Dann geht es weiter wie bei der Definition eins leeren Template.&lt;/p&gt;
+&lt;p&gt;In dieser Auswahl werden aber auch nur die Channels, Tabs und die Apps übernommen. Inhalte wie Chat, Tab-Konfigurationen oder Dateien kommen nicht mit.&lt;/p&gt;
+&lt;h2 id=&#34;zusammenfassung&#34;&gt;Zusammenfassung&lt;/h2&gt;
+&lt;p&gt;Es ist eine willkommene Option mit viel Potential für die Zukunft. Wenn ihr kein eigenes Teams Provisioning machen wollt, ist das die erste Möglichkeit euren Usern vorgefertigte Strukturen an die Hand zu geben. Es fehlen aber ganz essenzielle Dinge. Ich kann keine Dateien vorprovisionieren und zum Beispiel als Tab integrieren. Tabs können nicht mit Inhalten gefüllt werden. Ein &amp;ldquo;Website&amp;rdquo; Tab bekommt einen Namen, aber man kann nicht die URL hinterlegen.&lt;/p&gt;
+&lt;p&gt;Es ist gut zu wissen, dass man hier „out-of-the-box“ Funktionen hat, aber solange Microsoft folgende Punkte nicht adressiert, wird es eine Nischenlösung bleiben:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Teams Eigenschaften verändern (Moderation, etc.)&lt;/li&gt;
+&lt;li&gt;Erstellungsdialog muss schneller werden&lt;/li&gt;
+&lt;li&gt;Kein User/Group Targeting für Templates -&amp;gt; Heute sehen alle User alle Templates&lt;/li&gt;
+&lt;li&gt;Die Verwendung eines Templates kann nicht erzwungen werden, der User kann immer noch &amp;ldquo;From scratch&amp;rdquo; wählen und sein eigenes Ding machen&lt;/li&gt;
+&lt;li&gt;Microsoft Templates können nicht ausgeblendet werden&lt;/li&gt;
+&lt;li&gt;Keine Inhalte (Tabs, Dateien, &amp;hellip;)&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>Microsoft Teams Recording mit Externen teilen</title>
       <link>https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/</link>

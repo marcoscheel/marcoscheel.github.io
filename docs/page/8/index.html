@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-11-01T10:06:51+01:00" />
+<meta property="og:updated_time" content="2020-11-08T10:00:00+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,22 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2008/10/27/sharepoint-suche-bringt-officeserverproducttoprovision-fehler-nach-infrastructure-update/">SharePoint suche bringt “OfficeServerProductToProvision”-Fehler nach Infrastructure Update</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-10-27</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;103 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Nach der letzten Installation IU und CU August 2008 hatte ich einen kurzen Schocker, da die Suche nicht mehr wollte. Wir setzen die “Facetted Search” in Version 2.0 ein, um die Suche aufzuwerten. Ich wurde allerdings mit folgenden Fehlern in den Webparts beglückt:
+The type initializer for &lsquo;Microsoft.Office.Server.EvaluatorModeProvisioning.OfficeServerProductToProvision&rsquo; threw an exception.
+Eine kurze Google-Recherche hat mich auf die simple Lösung durch IISRESET gebracht :-) Wow. War das einfach. Bei der Installation und der anschließenden Deinstallation der Facetted Search 2.5 kam der Fehler allerdings wieder und die Lösung brachte diesmal nicht IISRESET, sondern der Trust Level in der Web.Config der betroffenen WebApplication.
+        <a href="https://marcoscheel.de/2008/10/27/sharepoint-suche-bringt-officeserverproducttoprovision-fehler-nach-infrastructure-update/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -253,20 +269,6 @@ http://www.microsoft.com/downloads/details.aspx?FamilyId=C6C3E9EF-BA29-4A43-8D69
 
 Ciao Marco
         <a href="https://marcoscheel.de/2008/08/26/microsoft-sql-server-2008-feature-pack-august-2008-verfgbar/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/08/26/hilfe-mein-sql-management-studio-ist-langsam/">Hilfe mein SQL Management Studio ist langsam</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-08-26</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;202 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Immer wieder habe ich Situationen, in denen ich beim Kunden sitze und zum Beispiel die SharePoint Datenbanken konfigurieren muss. Es kommt ab und an vor, dass ich 5 Minuten (mal mehr, mal weniger) auf das Öffnen des Management Studios warten muss. Der Grund war mir lange unbekannt&hellip; bis eine Google Suche das Ergebnis brachte. Signierte Applikationen basieren wie sollte es anders sein auf Zertifikaten. Ob ein Zertifikat gültig ist oder nicht basiert auf verschieden Dingen. In unserem Fall der Microsoft Applikationen mit dem Start-Problem ist es aber meist der Check der &ldquo;Certificate Revocation List&rdquo;, ob das Zertifikat zurückgerufen wurde. Sollte der Server nicht über eine Internetverbindung zu der Microsoft CRL URL verfügen, dann kommt pro Check ein HTTP Request Timeout (default 30 Sekunden) zum Tragen.
-        <a href="https://marcoscheel.de/2008/08/26/hilfe-mein-sql-management-studio-ist-langsam/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
