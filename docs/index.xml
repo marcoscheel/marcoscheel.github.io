@@ -6,7 +6,81 @@
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Nov 2020 10:00:00 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Dec 2020 00:21:00 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microsoft Teams backup your channel messages with Microsoft Graph</title>
+      <link>https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/</link>
+      <pubDate>Sun, 13 Dec 2020 00:21:00 +0100</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/</guid>
+      <description>&lt;p&gt;I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I wanted to save all images from a beautiful Teams channel message. Teams is saving these inline images not to SharePoint. The only way to download is to click on each image.&lt;/li&gt;
+&lt;li&gt;We are doing a Tenant to Tenant migration at &lt;a href=&#34;https://glueckkanja-gab.com/en/&#34; target=&#34;_blank&#34;&gt;glueckkanja-gab&lt;/a&gt; after our merger. Most of the migration tools will support the migration of Teams chat, but not all tools are available, and some implementations are lacking features for a more flexible approach.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I started my career as a developer and my heart is still thinking Visual Basic. Do not be afraid, I migrated my dev skills to C# a long time ago and my array starts at 0 not 1.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--title.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;I really wanted to try a few things regarding Microsoft Graph, the Microsoft Graph SDK and Microsoft Teams. The Microsoft Teamwork part of the API has a solid starting point (if you look at the beta version). The API is getting &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-concept-overview&#34; target=&#34;_blank&#34;&gt;very mature set of capabilities&lt;/a&gt;. I&amp;rsquo;m a huge fan of &lt;a href=&#34;https://azure.microsoft.com/en-us/services/functions/&#34; target=&#34;_blank&#34;&gt;Azure Functions&lt;/a&gt; and I&amp;rsquo;ve done quite a few projects that are talking to the Microsoft Graph using &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions&#34; target=&#34;_blank&#34;&gt;Application Permissions&lt;/a&gt;. I&amp;rsquo;ve checked the documentation and if I wanted to go this route I would have to request &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-protected-apis&#34; target=&#34;_blank&#34;&gt;special permissions&lt;/a&gt; from Microsoft to access the content without a real user. For now I decided to go with a console application and a &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code&#34; target=&#34;_blank&#34;&gt;Azure AD Device Code flow&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &amp;hellip;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34;&gt;https://github.com/marcoscheel/M365.TeamsBackup&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself.&lt;/p&gt;
+&lt;h2 id=&#34;check-your-migration-vendor-of-choice-first&#34;&gt;Check your migration vendor of choice first!&lt;/h2&gt;
+&lt;p&gt;I have only limited experience with the following tools. But these vendors are the big players, and you can easily get in touch with them to get a demo or further information.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.avepoint.com/products/hybrid/office-365-migration/fly&#34; target=&#34;_blank&#34;&gt;AvePoint&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quest.com/solutions/teams/&#34; target=&#34;_blank&#34;&gt;Quest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sharegate.com/products/sharegate-desktop/teams-migration&#34; target=&#34;_blank&#34;&gt;ShareGate&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is ok if you stop here if your migration needs are satisfied by one of these vendors. If you are interested in my approach it might still be worth reading on ;)&lt;/p&gt;
+&lt;h2 id=&#34;my-goal&#34;&gt;My goal&lt;/h2&gt;
+&lt;p&gt;Since the beginning of the first lockdown in April we at Glück &amp;amp; Kanja did a cooking event for a social online gathering. We are still doing it and we created a lot of content since the first meeting. The event is hosted on Microsoft Teams Channel meeting every Monday. Check out our &lt;a href=&#34;https://www.glueckkanja.com/blog/gk/homeoffice/collaboration/2020/04/kochen-mit-zeba/&#34; target=&#34;_blank&#34;&gt;blog post (german)&lt;/a&gt;. The event created a ton of beautifully pictures but they were stuck inside a Teams thread without easy access like SharePoint (if you consider SharePoint an easy access method). The backup should save all the attachments to the file system. Sneak preview of the result:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--backupimages.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;For our migration to the new tenant, we are running a set of tools. The tooling we have at hand has some limits regarding channel message migration. We wanted to preserve that chat messages for a Team without polluting the new target team. In some cases, we also want to archive the Team to a central location (a single SharePoint site collection) for archiving purposes. For this case we would need to export the chat to some readable and searchable format preserving most of the content.&lt;/p&gt;
+&lt;p&gt;My goal is not to provide a ready to use backup solution. For some of your scenarios this could work. I wanted to also provide a code base to accommodate your more specific requirements. We don&amp;rsquo;t rely on extensive app integration in our teams, so handling the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/chatmessageattachment?view=graph-rest-1.0&#34; target=&#34;_blank&#34;&gt;adaptive cards in a chat message&lt;/a&gt; is not really a part of the HTML generation solution. But the JSON from the Microsoft Graph will have all or some information included. If you need to handle adaptive card content this solution could be a great kickstart so you don&amp;rsquo;t have to write a lot of boilerplate code to get to the message attachment properties.&lt;/p&gt;
+&lt;p&gt;The solution will try to preserve as much information as needed from the Microsoft Graph and dump it to disk. From this data you can run multiple HTML conversions to address the need for the content representation. The HTML generation is no longer interacting with the Microsoft Graph and could be reparsed month after the original content was deleted (decommissioning of the old tenant).&lt;/p&gt;
+&lt;p&gt;My current focus is on the following data:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic team metadata including members&lt;/li&gt;
+&lt;li&gt;Channel metadata including members for private channels&lt;/li&gt;
+&lt;li&gt;Messages and replies with author and dates&lt;/li&gt;
+&lt;li&gt;Message body and inline pictures (hosted content)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;my-approach&#34;&gt;My approach&lt;/h2&gt;
+&lt;p&gt;I mentioned it a few times. I split the solution in two parts. The first part is talking to the Microsoft Graph and storing the response to a JSON file. For every Team I create a folder with the ID of the group. The response of the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/team?view=graph-rest-beta&#34; target=&#34;_blank&#34;&gt;team request&lt;/a&gt; will be stored in the folder with the name &amp;ldquo;team.json&amp;rdquo;. For every channel I create a folder with the channel ID and the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/channel?view=graph-rest-beta&#34; target=&#34;_blank&#34;&gt;channel response&lt;/a&gt; will be stored as &amp;ldquo;channel.json&amp;rdquo;. For every message (entry point of a thread if replies are available) I create a folder with the message ID and the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/chatmessage?view=graph-rest-beta&#34; target=&#34;_blank&#34;&gt;message response&lt;/a&gt; will be stored as &amp;ldquo;message.json&amp;rdquo;. For every reply to a message I create another file with the pattern &amp;ldquo;message.{messageid}.json&amp;rdquo;. Every message will be checked if inline content is available. This is called &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/chatmessagehostedcontent?view=graph-rest-beta&#34; target=&#34;_blank&#34;&gt;hosted content&lt;/a&gt; and I treat every item as an inline image represented as an PNG-file. Because the ID for a hosted content item is very long, I decided to use an MD5 hash of the ID to use in the filename. For the root message the file is named &amp;ldquo;hostedcontent.{hostedcontenidMD5}.png&amp;rdquo; and for replies &amp;ldquo;hostedcontent.{messageid}.{hostedcontenidMD5}.png&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--jsonfiles.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Of cause all this needs to happen with some kind of authentication. As mentioned, I&amp;rsquo;m big fan of application permission because there is no user involved. But the current graph implementation only offers access to chat messages if you apply for an app with protected API access. Read more about this &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-protected-apis&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;. I tried to apply but 4 weeks later I still don&amp;rsquo;t have feedback for my request (single tenant app should be easy) and I implemented the access using delegate permission based on the device flow. Based on this approach I made this into a feature. The tool will backup (by default) all teams the account is a member of. This way you can add the account to a Team as an admin or even the owner of Team can do this to &amp;ldquo;request&amp;rdquo; chat backup.&lt;/p&gt;
+&lt;p&gt;The other console application is taking care of building the HTML from the JSON files. Because all the heavy lifting is already done in the first part, the generation of HTML is really fast. The application needs the source directory and the HTML template for the output. The HTML templates currently has some inline styles to make it easy to move around and keep the dependencies low. The application is creating a HTML file for each channel and optionally a HTML file for every thread. Based on the configuration the HTML file will contain all &lt;a href=&#34;https://www.w3docs.com/snippets/html/how-to-display-base64-images-in-html.html&#34; target=&#34;_blank&#34;&gt;images inline&lt;/a&gt; or as a separate file. If you go with the inline images you get a very portable version of the backup, but also a big file if you have many images or a long chat history. The combination of inline images and every thread as an HTML file will give you a great choice out of the box. If you would like to customize the HTML look and feel have a peak at the &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/template/template.html&#34; target=&#34;_blank&#34;&gt;template file&lt;/a&gt;. With a few tweaks in the CSS styles you can enhance readability and change it to your preferences. I hopefully selected some easy-to-understand selectors.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--htmltemplate.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;the-code&#34;&gt;The code&lt;/h2&gt;
+&lt;p&gt;Let’s have a quick look at the code and what it takes to get it compiled, if you pull it from GitHub. I am doing all my development in Visual Studio &amp;ldquo;proper&amp;rdquo;. The solution was created with &lt;a href=&#34;https://visualstudio.microsoft.com/vs/preview/&#34; target=&#34;_blank&#34;&gt;Visual Studio 2019 Enterprise (Preview)&lt;/a&gt; but the community non preview version should also be fine. I write most of my code in C# and so is this code. As &lt;a href=&#34;https://devblogs.microsoft.com/dotnet/announcing-net-5-0/&#34; target=&#34;_blank&#34;&gt;.NET 5 is now available&lt;/a&gt; this is my first solution using this version, but I think you can get it running on .NET Core 3.1 if you downgrade the solution and packages. The final solution is hosted on GitHub and you are welcome to open an issue or create a pull request. Just have a little bit of patience as this is just a side hustle for me.&lt;/p&gt;
+&lt;p&gt;Normally I write Azure Functions and dependency injection is not yet in my DNA. If you look at the code this might feel a little awkward. I spend way too much time to get the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/core/extensions/generic-host&#34; target=&#34;_blank&#34;&gt;console app make use of the DI concepts&lt;/a&gt;. For a start it feels OK and I had a lot of fun learning to code this, but I&amp;rsquo;m not sure this is 100% correct. Let’s put it this way: It works! Also, a thing I love about Azure Functions is the native Microsoft Extension Logging integration. So, it was natural to also rely on my normal code to write logs. In the cloud logging to a file on disk is not really a thing and that might be the reason why Microsoft does not have an out of the box solution for that. That’s my excuse why all of my logs are only on the console for the moment. I am looking into NLog or Serilog. The biggest benefit is to configure the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/core/extensions/logging&#34; target=&#34;_blank&#34;&gt;logs levels&lt;/a&gt; very easy. Check out the application.json for a sample. The configuration system is also based on Microsoft standards. The console is loading the application.json settings and during development an argument can be passed in to respected the correct JSON file. A Special thanks to &lt;a href=&#34;https://dfederm.com/building-a-console-app-with-.net-generic-host/&#34; target=&#34;_blank&#34;&gt;David Feldman for his blog post&lt;/a&gt; which got me started on the console DI thing.&lt;/p&gt;
+&lt;p&gt;As of now we didn&amp;rsquo;t write any business relevant code (developer love to write non relevant code 😁) so let’s get our hands dirty. Getting the data from Microsoft Teams is done via the Microsoft Graph. I&amp;rsquo;m using the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/sdks/use-beta?tabs=CS&#34; target=&#34;_blank&#34;&gt;beta SDK&lt;/a&gt; because for the Teams workload some feature are only available in the non-production endpoint. Also, I like to play with fire. The authentication (as mentioned: I had to go with the device code) is provided by the MSAL libraries. For my &amp;ldquo;daemon apps” (Azure Functions) I rely on the pure MSAL implementation, but for this application I tried something new and used the &lt;a href=&#34;https://github.com/microsoftgraph/msgraph-sdk-dotnet-auth&#34; target=&#34;_blank&#34;&gt;Microsoft Graph Auth&lt;/a&gt; libraries. The NuGet is still in preview, but this was the easiest solution to get the device code up and running in minutes. I plan to use this library in the future for my other projects. One thing was missing and was really annoying: I had to authenticate on every debug run, so I copied some code to &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/src/Core/Services/Util/TokenCacheHelper.cs&#34; target=&#34;_blank&#34;&gt;persist the token&lt;/a&gt; to a file. This code is also standard Microsoft code, and it will put the token in a locally protected file. For the generation of the HTML file I visited an old friend: &lt;a href=&#34;https://html-agility-pack.net/&#34; target=&#34;_blank&#34;&gt;HTML Agility Pack (HAP)&lt;/a&gt;. This is an awesome library and working with the HTML DOM is a breeze! The HTML from the Teams chat message can contain images (hosted content) pointing to the Microsoft Graph endpoint. Using the HTML Agility Pack, I search the images and replace the src with as base64 encoded version or a local file reference.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--nuget.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;the-result&#34;&gt;The result&lt;/h2&gt;
+&lt;p&gt;Here is a side-by-side comparison. The original channel in Microsoft Teams and the HTML backup generated from the Microsoft Graph API.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--originalvsbackup.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;The HTML file will contain the Team name, creation date and the member count. The Channel name is also part of every file and if it is a private channel also the member count. Every post will contain the creation (+ edit if available) time, the author and the body including images. Links to documents are not modified and the file will not be downloaded. The content of an adaptive card is available in the JSON, but currently the output is not rendered in HTML. The adaptive cards rendering will be added later.&lt;/p&gt;
+&lt;p&gt;After the complete run you have a set of JSON files representing Microsoft Graph SDK classes. I recommend putting them in to a ZIP file (there are a lot of files) and place them next to the HTML output. Based on your data and configuration the output can be stored in a SharePoint library or on a file based archive.&lt;/p&gt;
+&lt;h2 id=&#34;your-setup&#34;&gt;Your setup&lt;/h2&gt;
+&lt;p&gt;Currently the setup is not download and ready to run. First I don&amp;rsquo;t want to offer a &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/single-and-multi-tenant-apps&#34; target=&#34;_blank&#34;&gt;multi-tenant application in my Azure AD&lt;/a&gt;. Therefor you need to talk to your admin to register the application in the first place. Based on the permission the app needs the admin consent in any way. Please check out the project &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34; target=&#34;_blank&#34;&gt;Readme.md&lt;/a&gt; to get the needed permissions and put the needed details in the application settings file. The binaries can be downloaded from the &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/releases&#34; target=&#34;_blank&#34;&gt;release page&lt;/a&gt; of the GitHub project. You will need to have the &lt;a href=&#34;https://dotnet.microsoft.com/download/dotnet-core/5.0/runtime/?utm_source=getdotnetcore&amp;amp;utm_medium=referral&#34; target=&#34;_blank&#34;&gt;.NET 5 runtime&lt;/a&gt; installed.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--run.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;I had a blast writing the solution from start to end. I will tweak the solution in the near future. These are the next ideas I want to code:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Save images with the date in the name and add EXIF data with the author information&lt;/li&gt;
+&lt;li&gt;Allow the use of a non-interactive AAD login (confidential client)&lt;/li&gt;
+&lt;li&gt;Integrate features in an Azure Function and maybe trigger from a Teams Message Extension for an ad-hoc export for every user&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I created the solution for a very specific use case (our tenant migration), but I hope in making the source code available you will be able to solve your problems. If you have feedback, please let me know. Create an issue, hit me up on &lt;a href=&#34;https://twitter.com/marcoscheel&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt; or &lt;a href=&#34;https://www.linkedin.com/in/marcoscheel&#34; target=&#34;_blank&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Eigene Vorlagen für Microsoft Teams</title>
       <link>https://marcoscheel.de/post/2020/11/20201103-microsoftteams-customtemplates/</link>
@@ -1547,69 +1621,6 @@ Implementierung vorzubereiten.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Posted from WordPress for Windows Phone&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/12/20101219234245.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>SharePoint Blob Cache Corrupt</title>
-      <link>https://marcoscheel.de/2010/10/03/sharepoint-blob-cache-corrupt/</link>
-      <pubDate>Sun, 03 Oct 2010 10:45:18 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/2010/10/03/sharepoint-blob-cache-corrupt/</guid>
-      <description>&lt;p&gt;In einer der SharePoint 2007 Farmen, die ich betreue, nutzen wir die &lt;a href=&#34;http://marcoscheel.de/sharepoint/sharepoint-disk-based-blob-cache&#34; target=&#34;_blank&#34;&gt;Blobcache&lt;/a&gt; &lt;a href=&#34;http://office.microsoft.com/en-us/sharepoint-server-help/configure-disk-based-cache-settings-HA010176284.aspx&#34; target=&#34;_blank&#34;&gt;Funktion&lt;/a&gt;, um Video’s, Flash und Bilder zu cachen. Wir haben zwei Web Front End Server (WFE) und die Funktion leistet eigentlich gute Dienste. Es kommt allerdings immer mal wieder vor, dass Bilder (das Verhältnis ist viel höher zum restlichen Content im Cache) nicht mehr angezeigt werden und es ein ASP.NET Error gibt. Genau es gibt folgendes Fehler:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Server Error in &#39;/&#39; Application. 
--------------------------------------------------------------------------------- 
-
-Cannot complete this action. 
-
-Please try again. 
-Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code. 
-
-Exception Details: System.Runtime.InteropServices.COMException: Cannot complete this action. 
-
-Please try again. 
-
-Source Error: 
-
-An unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.  
-
-Stack Trace: 
-
-[COMException (0x80004005): Cannot complete this action. 
-
-Please try again.] 
-   Microsoft.SharePoint.Library.SPRequestInternalClass.GetAclForScope(String bstrWebUrl, Guid guidScopeId, Object&amp;amp; pvarAcl, UInt64&amp;amp; lAnonymousMask) +0 
-   Microsoft.SharePoint.Library.SPRequest.GetAclForScope(String bstrWebUrl, Guid guidScopeId, Object&amp;amp; pvarAcl, UInt64&amp;amp; lAnonymousMask) +238 
-
-[SPException: Cannot complete this action. 
-
-Please try again.] 
-   Microsoft.SharePoint.Library.SPRequest.GetAclForScope(String bstrWebUrl, Guid guidScopeId, Object&amp;amp; pvarAcl, UInt64&amp;amp; lAnonymousMask) +349 
-   Microsoft.SharePoint.SPReusableAcl..ctor(SPRequest request, String webUrl, Guid scopeId) +149 
-   Microsoft.SharePoint.SPSite.GetReusableAclForScope(Guid scopeId) +133 
-   Microsoft.SharePoint.Publishing.&amp;lt;&amp;gt;c__DisplayClass3.&amp;lt;EnsureAuthenticatedRights&amp;gt;b__0() +1296 
-   Microsoft.SharePoint.SPSecurity.CodeToRunElevatedWrapper(Object state) +73 
-   Microsoft.SharePoint.&amp;lt;&amp;gt;c__DisplayClass4.&amp;lt;RunWithElevatedPrivileges&amp;gt;b__2() +592 
-   Microsoft.SharePoint.Utilities.SecurityContext.RunAsProcess(CodeToRunElevated secureCode) +319 
-   Microsoft.SharePoint.SPSecurity.RunWithElevatedPrivileges(WaitCallback secureCode, Object param) +571 
-   Microsoft.SharePoint.SPSecurity.RunWithElevatedPrivileges(CodeToRunElevated secureCode) +135 
-   Microsoft.SharePoint.Publishing.BlobCache.EnsureAuthenticatedRights(Guid siteID, Guid scopeID) +1020 
-   Microsoft.SharePoint.Publishing.BlobCache.RewriteUrl(Object sender, EventArgs e) +2949 
-   System.Web.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute() +80 
-   System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp;amp; completedSynchronously) +171 
-
--------------------------------------------------------------------------------- 
-Version Information: Microsoft .NET Framework Version:2.0.50727.3603; ASP.NET Version:2.0.50727.3082
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/10/image2.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/10/image_thumb1.png&#34; alt=&#34;image&#34; /&gt;
-
-&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Die Lösung in diesem Fall ist das Resetten des Caches für diese SiteColletion. Über die SiteSettings kommt man zu den “Object Cache Settings” und hier kann man die drei Checkboxen zum Zurücksetzen des Caches setzen:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://marcoscheel.de/files/2010/10/image31.png&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;http://marcoscheel.de/files/2010/10/image3_thumb1.png&#34; alt=&#34;image&#34; /&gt;
-
-&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Ich hoffe es hilft dem einen oder anderen, der noch in Sharepoint 2007 feststeckt ;-)&lt;/p&gt;
-&lt;p&gt;Ciao Marco&lt;/p&gt;
 </description>
     </item>
     

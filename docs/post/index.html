@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/post/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-11-08T10:00:00+01:00" />
+<meta property="og:updated_time" content="2020-12-13T00:21:00+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,31 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/">Microsoft Teams backup your channel messages with Microsoft Graph</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2363 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:</p>
+<ul>
+<li>I wanted to save all images from a beautiful Teams channel message. Teams is saving these inline images not to SharePoint. The only way to download is to click on each image.</li>
+<li>We are doing a Tenant to Tenant migration at <a href="https://glueckkanja-gab.com/en/" target="_blank">glueckkanja-gab</a> after our merger. Most of the migration tools will support the migration of Teams chat, but not all tools are available, and some implementations are lacking features for a more flexible approach.</li>
+</ul>
+<p>I started my career as a developer and my heart is still thinking Visual Basic. Do not be afraid, I migrated my dev skills to C# a long time ago and my array starts at 0 not 1.</p>
+<p><img class="img-zoomable" src="/img/20201130-m365teamsbackup--title.png" alt="image" />
+</p>
+<p>I really wanted to try a few things regarding Microsoft Graph, the Microsoft Graph SDK and Microsoft Teams. The Microsoft Teamwork part of the API has a solid starting point (if you look at the beta version). The API is getting <a href="https://docs.microsoft.com/en-us/graph/teams-concept-overview" target="_blank">very mature set of capabilities</a>. I&rsquo;m a huge fan of <a href="https://azure.microsoft.com/en-us/services/functions/" target="_blank">Azure Functions</a> and I&rsquo;ve done quite a few projects that are talking to the Microsoft Graph using <a href="https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions" target="_blank">Application Permissions</a>. I&rsquo;ve checked the documentation and if I wanted to go this route I would have to request <a href="https://docs.microsoft.com/en-us/graph/teams-protected-apis" target="_blank">special permissions</a> from Microsoft to access the content without a real user. For now I decided to go with a console application and a <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code" target="_blank">Azure AD Device Code flow</a>.</p>
+<p>I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &hellip;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)</p>
+<p><a href="https://github.com/marcoscheel/M365.TeamsBackup">https://github.com/marcoscheel/M365.TeamsBackup</a></p>
+<p>In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself.</p>
+        <a href="https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -287,23 +312,6 @@
         <p>My buddy <a href="https://twitter.com/okieselb" target="_blank">Oliver Kieselbach</a> did a <a href="https://oliverkieselbach.com/2020/03/03/quick-assist-the-built-in-remote-control-in-windows-10/" target="_blank">blog post about the capabilities of Microsoft Quick Assist</a> (as part of the current operation system). In his post he raised the question if Microsoft Teams is not enough for this kind of IT support scenarios. Check out his blog to see it live in action and what the biggest shortcoming is. Microsoft Teams is not a good option for anything <a href="https://en.wikipedia.org/wiki/User_Account_Control" target="_blank">UAC</a> related. Even without the so called <a href="https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/user-account-control-switch-to-the-secure-desktop-when-prompting-for-elevation" target="_blank">secure desktop</a> feature Microsoft Teams will not allow the support staff to enter admin credentials if needed. I also would suggest (for the most customers) to pick a proper IT support tool for these scenarios.</p>
 <p>Microsoft Teams is the hub for teamwork, but that doesn’t mean you could not support your colleagues, if they are experiencing non admin related issues. But first things first, we should check, if your tenant settings are ready to allow remote control during a desktop sharing session. In quite a few customer environments I’ve noticed that remote sharing is restricted or completely disabled.</p>
         <a href="https://marcoscheel.de/post/2020/03/613300443898068992-is-microsoft-teams-a-remote-support-tool/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2019/12/189806058922-microsoft-teams-known-issues-no-more/">Microsoft Teams - Known issues... no more!?</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-12-22</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;817 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>Microsoft is documenting a list of things (about Microsoft Teams) that are not working as expected by Microsoft or customers. The list has been around for quite some time. New things are added, but I noticed things on the list that are clearly working as of this writing are not removed. So let’s have a look together and maybe you support my pull request.</p>
-<p>The article: <a href="https://docs.microsoft.com/en-us/microsoftteams/known-issues" target="_blank">Known issues for Microsoft Teams</a></p>
-<p>My pull request:</p>
-<p><a href="https://github.com/MicrosoftDocs/OfficeDocs-SkypeForBusiness/pull/3686" target="_blank">Known issues that are no longer known issues</a></p>
-        <a href="https://marcoscheel.de/post/2019/12/189806058922-microsoft-teams-known-issues-no-more/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 

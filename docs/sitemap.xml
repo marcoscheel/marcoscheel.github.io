@@ -3,27 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://marcoscheel.de/post/2020/11/20201103-microsoftteams-customtemplates/</loc>
-    <lastmod>2020-11-08T10:00:00+01:00</lastmod>
+    <loc>https://marcoscheel.de/tags/development/</loc>
+    <lastmod>2020-12-13T00:21:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://marcoscheel.de/</loc>
-    <lastmod>2020-11-08T10:00:00+01:00</lastmod>
+    <lastmod>2020-12-13T00:21:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://marcoscheel.de/tags/microsoft-365/</loc>
-    <lastmod>2020-11-08T10:00:00+01:00</lastmod>
+    <lastmod>2020-12-13T00:21:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/tags/microsoft-graph/</loc>
+    <lastmod>2020-12-13T00:21:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://marcoscheel.de/tags/microsoft-teams/</loc>
-    <lastmod>2020-11-08T10:00:00+01:00</lastmod>
+    <lastmod>2020-12-13T00:21:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/</loc>
+    <lastmod>2020-12-13T00:21:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://marcoscheel.de/post/</loc>
+    <lastmod>2020-12-13T00:21:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/post/2020/11/20201103-microsoftteams-customtemplates/</loc>
     <lastmod>2020-11-08T10:00:00+01:00</lastmod>
   </url>
   
@@ -114,16 +129,6 @@
   
   <url>
     <loc>https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</loc>
-    <lastmod>2019-07-08T11:47:21+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marcoscheel.de/tags/development/</loc>
-    <lastmod>2019-07-08T11:47:21+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marcoscheel.de/tags/microsoft-graph/</loc>
     <lastmod>2019-07-08T11:47:21+00:00</lastmod>
   </url>
   
