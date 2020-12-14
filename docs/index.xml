@@ -657,7 +657,7 @@ $setting.Values;
       <pubDate>Sat, 11 Apr 2020 19:15:32 +0800</pubDate>
       
       <guid>https://marcoscheel.de/about/</guid>
-      <description>&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;me.jpg&#34; alt=&#34;image&#34; /&gt;
+      <description>&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/me.jpg&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 </description>
     </item>
