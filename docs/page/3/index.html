@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.75.1" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-12-13T00:21:00+01:00" />
+<meta property="og:updated_time" content="2021-01-25T10:10:10+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,23 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2012/06/11/asp-net-4-5-sqlmembership-und-keine-roles-2/">ASP.NET 4.5, SQLMembership und (keine) Roles</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2012-06-11</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;129 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Wir sind aktuell auf Bootcamp und ich habe Claims und alles drum herum zum Thema. Natürlich ist auch die Migration aus &ldquo;alten&rdquo; Systemen ein Punkt auf der Agenda. Ich brauche also ein altes System&hellip; Also habe ich schnell eine ASP.NET 4.5 WebForms Site angelegt und konnte auch schnell die Logins aus dem SQL Membership Provider zum Fliegen bekommen. Allerdings konnte ich keine Seiten vor Zugriff über eine spezielle Role schützen. Hier meine Web.Config:
+&lt;system.web&gt;
+  &lt;/system.web&gt;
+ Bei einem Test hattet die Konfiguration aber kein Erfolg. Mein Admin User durfte die Admin.aspx einfach nicht sehen. Eine kurze Recherche hat gezeigt, dass ich den Role Provider der zwar vorkonfiguriert war noch enablen mußte.
+        <a href="https://marcoscheel.de/2012/06/11/asp-net-4-5-sqlmembership-und-keine-roles-2/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -254,23 +271,6 @@ Ciao Marco
         Die letzten SharePoint 2007 Installationen werden immer häufiger auf Windows Server 2008 R2 (W2K8R2) ausgeführt. Der Unterschied (für SharePoint relevant) zum “alten” Windows Server 2008 (W2K8) liegt zum Beispiel in einigen IIS7 Änderungen. Eine dieser Änderungen hat mich in einer der letzten Installationen “eingeholt”. Wie ich SharePoint installiere, habe ich bereits dokumentiert. Bei der Auswahl der Internet Information Server 7 (IIS7) Konfiguration sind nun die ersten Out-Of-Band Komponenten direkt anwählbar. Hier habe ich, ohne mir weiter Gedanken zu machen, auch WebDav ausgewählt, da nun die downloadbare Variante von W2K8 direkt integriert ist.
 Nach einer Woche hatte ich dann die Kundenanfrage auf dem Tisch: WebDav geht nicht unter Vista und höher.
         <a href="https://marcoscheel.de/2010/01/17/windows-server-2008-r2-sharepoint-2007-und-webdav-probleme/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2009/11/16/office-und-sharepoint-2010-beta-fr-msdn-subscriber-verfgbar/">Office und SharePoint 2010 Beta für MSDN Subscriber verfügbar</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-11-16</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;102 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Twitter ist schon cool… Ich dachte ich checke mal, ob sich in der Beta Welt von Office was tut und siehe da… alles voll. In der MSDN war zuerst nur über den RSS Feed was zu sehen… und seit 5 Minuten kann ich auch die gewohnte Struktur der MSDN nutzen.
-Viel Spaß beim Downloaden :-) Der Server ist schon da (rund 1,5 MB/s) und der Rest ist gescheduled.
-Wenn ich mir am Wochenede nicht irgendwie ne Nervenentzündung unterm Schulterblatt zugezogen hätte… würde ich heute vielleicht noch etwas länger durch halten… aber so muss ich gleich Schluss machen :-S
-Viele Spaß.
-        <a href="https://marcoscheel.de/2009/11/16/office-und-sharepoint-2010-beta-fr-msdn-subscriber-verfgbar/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -709,7 +709,7 @@ Viele Spaß.
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2020
+            <span>&copy; 2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
                 
                 | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"

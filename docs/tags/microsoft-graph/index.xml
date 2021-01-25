@@ -6,7 +6,171 @@
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 13 Dec 2020 00:21:00 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/microsoft-graph/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 10:10:10 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/microsoft-graph/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create your Azure AD application via script - M365.TeamsBackup</title>
+      <link>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</link>
+      <pubDate>Mon, 25 Jan 2021 10:10:10 +0100</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</guid>
+      <description>&lt;p&gt;If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;App registrations&amp;rdquo;&lt;/a&gt; part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.&lt;/p&gt;
+&lt;p&gt;This post provides you will all the needed information to create your own script. I&amp;rsquo;m using my &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34; target=&#34;_blank&#34;&gt;M365 Teams Backup&lt;/a&gt; solution as a reference. The key components are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install the Azure CLI or the Azure AD Preview PowerShell module&lt;/li&gt;
+&lt;li&gt;The scripts to setup the app
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp-cli.ps1&lt;/a&gt; via Azure CLI&lt;/li&gt;
+&lt;li&gt;or &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp.ps1&lt;/a&gt; via PowerShell&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--title.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;choose-a-scripting-environment-azure-cli-vs-azure-ad-ps&#34;&gt;Choose a scripting environment (Azure CLI vs Azure AD PS)&lt;/h2&gt;
+&lt;p&gt;During my day job I created some applications based on &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/overview&#34; target=&#34;_blank&#34;&gt;Microsoft Graph&lt;/a&gt; and I tried a few approaches to script the Azure AD app creation. It is important to understand that an Azure AD application consists of two parts. The application registration is like a blueprint for your app. The enterprise application is the implementation of your blueprint.&lt;/p&gt;
+&lt;p&gt;The application permissions are defined in the &amp;ldquo;App registration&amp;rdquo;. Here you select the permissions that your app will request from users in the tenant. Without a consent the permissions are not in effect. If your only have an app registered but not received consent the app will not be able to use the requested permissions. Check the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent&#34; target=&#34;_blank&#34;&gt;Microsoft documentation&lt;/a&gt; for a deeper look at the consent framework.&lt;/p&gt;
+&lt;p&gt;Most of my applications leverage &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#permission-types&#34; target=&#34;_blank&#34;&gt;application permissions&lt;/a&gt; or require admin consent for delegate permissions. The �M365.TeamsBackup� solution is using a bunch of Microsoft Graph permissions and some of them are pretty powerful. If you have an application with this kind of permission requirements it is needed to have &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#admin-restricted-permissions&#34; target=&#34;_blank&#34;&gt;admin consent&lt;/a&gt; given by a (best case) global administrator.&lt;/p&gt;
+&lt;p&gt;If your apps are like mine, it might be the best to use the Azure CLI because this is as of my knowledge the only way to script the admin consent. I am not a CLI guy. I am a PowerShell fan. I struggled in the past integrating the CLI and its output into my scripting flow. That is why I wanted to show you what and how it can be done. If you are OK with opening the portal to give admin consent or you don&amp;rsquo;t want to give admin consent during application setup, I also have an Azure AD PowerShell version of the script.&lt;/p&gt;
+&lt;h3 id=&#34;setup-azure-cli-and-connect&#34;&gt;Setup Azure CLI and connect&lt;/h3&gt;
+&lt;p&gt;The Azure CLI is not purely targeted at Azure AD. It is the other way around because the CLI is used to script all the Azure things available. There is great Microsoft docs on &lt;a href=&#34;https://docs.microsoft.com/en-us/cli/azure/install-azure-cli&#34; target=&#34;_blank&#34;&gt;installing the Azure CLI&lt;/a&gt;. I&amp;rsquo;m running on Windows, so I typically go the MSI route:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download the release version of the MSI (that is what I&amp;rsquo;m running)&lt;/li&gt;
+&lt;li&gt;Install the MSI (bring some extra time because the installation is slow)&lt;/li&gt;
+&lt;li&gt;After the download open a new PowerShell (this ensured the path is set and available)&lt;/li&gt;
+&lt;li&gt;You can check if the installation worked using the &amp;lsquo;az &amp;ndash;version&amp;rsquo; command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-cli.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;As you can see my version is not up to date. As with most tools you need to keep these tools at the latest version. The Azure CLI can be updated by installing the newest MSI or by running an admin command using this command &amp;lsquo;az upgrade&amp;rsquo;. The upgrade command will download the MSI and start the installation for you.&lt;/p&gt;
+&lt;p&gt;Installation is finish and now it is time to login to your tenant. The CLI is different from your normal &amp;ldquo;PowerShell Connect-SERVICE&amp;rdquo; (SharePoint, AD, Teams, &amp;hellip;) command. The Azure CLI will remember your last login. If you close and open your terminal you will still be logged in. If you use the Azure CLI just for the one-time setup, please consider a logout after you finish any script. But first lets login. I&amp;rsquo;m a big fan of &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code&#34; target=&#34;_blank&#34;&gt;device code authentication&lt;/a&gt; where possible. &lt;a href=&#34;https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#run-the-azure-cli&#34; target=&#34;_blank&#34;&gt;Azure CLI is supporting&lt;/a&gt; this flow so that is how I roll:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Login:
+&lt;ul&gt;
+&lt;li&gt;az login &amp;ndash;use-device-code &amp;ndash;allow-no-subscriptions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Check current login:
+&lt;ul&gt;
+&lt;li&gt;az account show&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Logout:
+&lt;ul&gt;
+&lt;li&gt;az logout&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-cliaccount.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Check my script using the Azure CLI:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp-cli.ps1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;setup-azure-ad-powershell-and-connect&#34;&gt;Setup Azure AD PowerShell and connect&lt;/h3&gt;
+&lt;p&gt;Azure AD PowerShell versioning is complicated. For my job (M365 Modern Collaboration) I am always using the AzureADPreview module and this is what I recommend in most cases. The AzureADPreview cannot be installed side by side with the &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0-preview&#34; target=&#34;_blank&#34;&gt;AzureADPreview&lt;/a&gt;, so at some point you will have to move to the AzureADPreview. As the Azure CLI is not PowerShell based I am using my Windows Terminal default that is PowerShell 7. The Azure AD modules are not yet ready for PowerShell 7 so you will need to open your old school PowerShell 5.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&#34; target=&#34;_blank&#34;&gt;Installing the Azure AD module&lt;/a&gt; is like most modern modules and relies on the Powershell gallery.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open your PowerShell as an administrator and execute
+&lt;ul&gt;
+&lt;li&gt;Install-module AzureADPreview&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Check your version opening a non admin session
+&lt;ul&gt;
+&lt;li&gt;Get-Module AzureADPreview -ListAvailable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-ps.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;If you are not on the latest version, you need to upgrade the module like any other module:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open your PowerShell as an administrator and execute
+&lt;ul&gt;
+&lt;li&gt;Update-Module AzureADPreview&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-psupdate.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;To connect to Azure AD you cannot rely on device authentication and you will need to login directly on the script execution. If you need to execute multiple scripts, check if you want to disable the login command &amp;ldquo;Connect-AzureAD&amp;rdquo; in the script to prevent multiple logins (incl. MFA).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open your PowerShell and execute
+&lt;ul&gt;
+&lt;li&gt;Connect-AzureAD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Check my script using the Azure CLI:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp.ps1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;script-the-creation-process&#34;&gt;Script the creation process&lt;/h2&gt;
+&lt;p&gt;Now we are prepared, and we can create our application. The easy part is to create an &amp;ldquo;App registration&amp;rdquo;. If your app need permissions the trouble begins. There are two challenges:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Setting the permission in the two scripts&lt;/li&gt;
+&lt;li&gt;Getting the permission definition in the first place&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Getting the permission translated from the nice Azure AD portal UX to a script-ready solution is harder to research than expected. I&amp;rsquo;ve done a &lt;a href=&#34;https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/&#34; target=&#34;_blank&#34;&gt;blog post&lt;/a&gt; (in German) about this in the past. In the next section I will show you how to get the ID of the Microsoft Graph application and the IDs of the required permissions.&lt;/p&gt;
+&lt;p&gt;My Teams Backup solution requires many permissions from the Microsoft Graph (this time delegation because app permissions for &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-protected-apis&#34; target=&#34;_blank&#34;&gt;some require Microsoft approval&lt;/a&gt;) so let�s have a look at a non-error prone implementation that is also easy to read and extend.&lt;/p&gt;
+&lt;h3 id=&#34;azure-cli&#34;&gt;Azure CLI&lt;/h3&gt;
+&lt;p&gt;For reference: &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp-cli.ps1&lt;/a&gt;
+Microsoft docs: &lt;a href=&#34;https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest&#34; target=&#34;_blank&#34;&gt;az command overview&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Use the Azure CLI to query the Azure Active Directory for the service principal with the name of the Microsoft Graph.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalName = &amp;quot;Microsoft Graph&amp;quot;;
+$servicePrincipalId = az ad sp list --filter &amp;quot;displayname eq &#39;$servicePrincipalName&#39;&amp;quot; --query &#39;[0].appId&#39; | ConvertFrom-Json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using the query parameter we select the first result (there is only one Microsoft Graph) and &amp;ldquo;cast&amp;rdquo; the app ID. Using the ConvertFrom-JSON makes it easy to parse the result and we receive &amp;ldquo;00000003-0000-0000-c000-000000000000&amp;rdquo; as the value for the app id.&lt;/p&gt;
+&lt;p&gt;Next, we need to get the ID for each required permission. This info is part of the &amp;ldquo;oauth2Permissions&amp;rdquo; property from the MS Graph service principal:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalNameOauth2Permissions = @(&amp;quot;Channel.ReadBasic.All&amp;quot;, &amp;quot;ChannelMember.Read.All&amp;quot;, &amp;quot;ChannelMessage.Read.All&amp;quot;, &amp;quot;ChannelSettings.Read.All&amp;quot;, &amp;quot;Group.Read.All&amp;quot;, &amp;quot;GroupMember.Read.All&amp;quot;, &amp;quot;Team.ReadBasic.All&amp;quot;, &amp;quot;TeamMember.Read.All&amp;quot;, &amp;quot;TeamSettings.Read.All&amp;quot;, &amp;quot;TeamsTab.Read.All&amp;quot;);
+(az ad sp show --id $servicePrincipalId --query oauth2Permissions | ConvertFrom-Json) | ? { $_.value -in $servicePrincipalNameOauth2Permissions} | % {
+    $permission = $_
+
+    $delPermission = @{
+        id = $permission.Id
+        type = &amp;quot;Scope&amp;quot;
+    }
+    $reqGraph.resourceAccess += $delPermission
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using the &amp;ldquo;-in&amp;rdquo; filter we receive all specified entries for the array we need. To use the IDs in the next command the script creates a hashtable that can be converted in the needed JSON file (correct a file). The permissions are added as &amp;ldquo;Scope&amp;rdquo; representing &amp;ldquo;Delegation&amp;rdquo; permission. The &amp;ldquo;az ad app create&amp;rdquo; command will require a file with the permissions.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Set-Content ./required_resource_accesses.json -Value (&amp;quot;[&amp;quot; + ($reqGraph | ConvertTo-Json) + &amp;quot;]&amp;quot;)
+$newapp = az ad app create --display-name $appName --available-to-other-tenants false --native-app true --required-resource-accesses `@required_resource_accesses.json | ConvertFrom-Json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This creates an app that is only valid in your tenant &amp;ldquo;&amp;ndash;available-to-other-tenants false&amp;rdquo; and allows the login as a public client &amp;ldquo;&amp;ndash;native-app true&amp;rdquo;. The result is a JSON representing the new application.&lt;/p&gt;
+&lt;p&gt;The benefit of using the Azure CLI is the possibility to grant admin consent for the newly created app&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission admin-consent --id $newapp.appId
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;powershell-with-azure-ad&#34;&gt;PowerShell with Azure AD&lt;/h3&gt;
+&lt;p&gt;For reference: &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp.ps1&lt;/a&gt;
+Microsoft docs: &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#applications&#34; target=&#34;_blank&#34;&gt;Azure AD Application command overview&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To get the ID for the Microsoft Graph Service principal we query the current directory and filter to the display name.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalName = &amp;quot;Microsoft Graph&amp;quot;;
+$servicePrincipal = Get-AzureADServicePrincipal -All $true | ? { $_.DisplayName -eq $servicePrincipalName };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Where the Azure CLI requires a file to setup permission, the PowerShell version requires a .NET object. The Microsoft Graph service principal ID is the ResourceAppID.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$reqGraph = New-Object -TypeName &amp;quot;Microsoft.Open.AzureAD.Model.RequiredResourceAccess&amp;quot;;
+$reqGraph.ResourceAppId = $servicePrincipal.AppId;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;From the returned object we can select the &amp;ldquo;Oauth2Permissions&amp;rdquo; property to filter on our array with the required permissions. For each permission another .NET object is created and added to the collection named &amp;ldquo;ResourceAccess&amp;rdquo;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalNameOauth2Permissions = @(&amp;quot;Channel.ReadBasic.All&amp;quot;, &amp;quot;ChannelMember.Read.All&amp;quot;, &amp;quot;ChannelMessage.Read.All&amp;quot;, &amp;quot;ChannelSettings.Read.All&amp;quot;, &amp;quot;Group.Read.All&amp;quot;, &amp;quot;GroupMember.Read.All&amp;quot;, &amp;quot;Team.ReadBasic.All&amp;quot;, &amp;quot;TeamMember.Read.All&amp;quot;, &amp;quot;TeamSettings.Read.All&amp;quot;, &amp;quot;TeamsTab.Read.All&amp;quot;);
+$servicePrincipal.Oauth2Permissions | ? { $_.Value -in $servicePrincipalNameOauth2Permissions} | % {
+    $permission = $_
+    $delPermission = New-Object -TypeName &amp;quot;Microsoft.Open.AzureAD.Model.ResourceAccess&amp;quot; -ArgumentList $permission.Id,&amp;quot;Scope&amp;quot; #delegate permission (oauth) are always &amp;quot;Scope&amp;quot;
+    $reqGraph.ResourceAccess += $delPermission
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now it is time to setup the application (only in this directory and as public client) and retrieve the ID of the new app:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;New-AzureADApplication -DisplayName $appName -AvailableToOtherTenants:$false -PublicClient:$true -RequiredResourceAccess $reqGraph;
+&amp;quot;ClientId: &amp;quot; + $newapp.AppId;
+&amp;quot;TenantId: &amp;quot; + (Get-AzureADTenantDetail).ObjectId;
+&amp;quot;Check AAD app: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/&amp;quot; + $newapp.AppId + &amp;quot;/objectId/&amp;quot; + $newapp.ObjectId + &amp;quot;/isMSAApp/&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The last line creates a link to the Azure AD to grant admin consent.&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You can check out my linked solution to get the full picture from the client code using the app to the setup required for authentication. I would recommend checking out the Azure CLI because it is the most complete solution even though it does not feel natural to me as a PowerShell guy. The example should give you an idea how to get the needed IDs and how to constructed the required objects/file to create the app. Let me know how you setup Azure AD apps and if there are other options. I&amp;rsquo;ve ignored the &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadapplication&#34; target=&#34;_blank&#34;&gt;PowerShell AZ module&lt;/a&gt; because you are not able to grant admin consent too and chances are higher you may have AzureAD PowerShell installed already.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Microsoft Teams backup your channel messages with Microsoft Graph</title>
       <link>https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/</link>

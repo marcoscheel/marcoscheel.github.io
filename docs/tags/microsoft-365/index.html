@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.75.1" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/tags/microsoft-365/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-12-13T00:21:00+01:00" />
+<meta property="og:updated_time" content="2021-01-25T10:10:10+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -119,6 +119,31 @@
 </div>
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/">Create your Azure AD application via script - M365.TeamsBackup</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-25</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1763 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">&ldquo;App registrations&rdquo;</a> part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.</p>
+<p>This post provides you will all the needed information to create your own script. I&rsquo;m using my <a href="https://github.com/marcoscheel/M365.TeamsBackup" target="_blank">M365 Teams Backup</a> solution as a reference. The key components are:</p>
+<ul>
+<li>Install the Azure CLI or the Azure AD Preview PowerShell module</li>
+<li>The scripts to setup the app
+<ul>
+<li><a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1" target="_blank">create-aadapp-cli.ps1</a> via Azure CLI</li>
+<li>or <a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1" target="_blank">create-aadapp.ps1</a> via PowerShell</li>
+</ul>
+</li>
+</ul>
+<p><img class="img-zoomable" src="/img/20210124-m365teamsbackup-aadapp--title.jpg" alt="image" />
+</p>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -278,22 +303,6 @@
     <div class="post-item post-summary markdown-body">
         <p>My buddy <a href="https://twitter.com/okieselb" target="_blank">Oliver Kieselbach</a> did a <a href="https://oliverkieselbach.com/2020/03/03/quick-assist-the-built-in-remote-control-in-windows-10/" target="_blank">blog post about the capabilities of Microsoft Quick Assist</a> (as part of the current operation system). In his post he raised the question if Microsoft Teams is not enough for this kind of IT support scenarios. Check out his blog to see it live in action and what the biggest shortcoming is. Microsoft Teams is not a good option for anything <a href="https://en.wikipedia.org/wiki/User_Account_Control" target="_blank">UAC</a> related. Even without the so called <a href="https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/user-account-control-switch-to-the-secure-desktop-when-prompting-for-elevation" target="_blank">secure desktop</a> feature Microsoft Teams will not allow the support staff to enter admin credentials if needed. I also would suggest (for the most customers) to pick a proper IT support tool for these scenarios.</p>
 <p>Microsoft Teams is the hub for teamwork, but that doesn’t mean you could not support your colleagues, if they are experiencing non admin related issues. But first things first, we should check, if your tenant settings are ready to allow remote control during a desktop sharing session. In quite a few customer environments I’ve noticed that remote sharing is restricted or completely disabled.</p>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2019/12/189806058922-microsoft-teams-known-issues-no-more/">Microsoft Teams - Known issues... no more!?</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-12-22</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;817 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>Microsoft is documenting a list of things (about Microsoft Teams) that are not working as expected by Microsoft or customers. The list has been around for quite some time. New things are added, but I noticed things on the list that are clearly working as of this writing are not removed. So let’s have a look together and maybe you support my pull request.</p>
-<p>The article: <a href="https://docs.microsoft.com/en-us/microsoftteams/known-issues" target="_blank">Known issues for Microsoft Teams</a></p>
-<p>My pull request:</p>
-<p><a href="https://github.com/MicrosoftDocs/OfficeDocs-SkypeForBusiness/pull/3686" target="_blank">Known issues that are no longer known issues</a></p>
     </div>
 </div>
 
@@ -610,7 +619,7 @@
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2020
+            <span>&copy; 2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
                 
                 | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"

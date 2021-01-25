@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.75.1" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/post/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-12-13T00:21:00+01:00" />
+<meta property="og:updated_time" content="2021-01-25T10:10:10+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,24 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2009/06/06/c-ftp-gegen-openvms-ftp-server/">C# FTP gegen OpenVMS FTP Server</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-06-06</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;203 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        In einem meiner letzten Projekte bin ich in die “glückliche” Lage gekommen, mit einer VAX über FTP zu kommunizieren. Gegen unser IIS7 FTP hatten alle Tests super funktioniert. Ich verbinde mich gegen den Server und mache dann einen Upload mit der Angabe der vollen URI:
+Connect: ftp.servername.com
+Upload File: /upd/knr/abc/request.txt
+Mein erster Code nutzte die native C# FTP Api und antwortet einfach nur mit einem Fehler ohne Details. Ich habe dann auf eine Komponente von Aspose zurückgegriffen (wir nutzen Aspose.NET Total, was ich nur empfehlen kann). Ich bekam folgende Fehlermeldung:
+Aspose.Network.Ftp.FtpException: Failed to upload file :500 %CLI-W-IVQUAL, unrecognized qualifier - check validity, spelling, and placement at Aspose.
+        <a href="https://marcoscheel.de/2009/06/06/c-ftp-gegen-openvms-ftp-server/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -262,24 +280,6 @@ Quelle:
 http://blogs.msdn.com/spfargo/archive/2009/04/28/microsoft-office-sharepoint-server-service-pack-2-is-now-available.aspx
 Ciao Marco
         <a href="https://marcoscheel.de/2009/04/28/microsoft-office-server-2007-sp2-is-coming/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2009/04/20/powershell-mit-c-generieren-und-scheitern-unicode-anstatt-utf-8/">PowerShell mit C# generieren und scheitern? Unicode anstatt UTF-8!</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-04-20</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;192 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Ich hatte die Gelegenheit, meinem Kollegen Jan bei einem Projekt zu helfen. Es geht darum, aus einer C# Applikation PowerShell Scripte zu erzeugen. Diese Scripte werden dann später auf einem Server ausgeführt. Klingt erst mal nicht wirklich spannend. Spannend wurde es dann, als der Code für die Erzeugung abgeschlossen wurde und das erste mal die Scripte ausgeführt wurden. Die PowerShell meldete eine kryptische Exception:
-
-   Unexpected token in expression or statement.    Beim Editieren des PowerShells mit dem neuen Windows 7 PowerShell Editor kommt beim Speichern folgende Meldung:
-
-Und schon hatten wir den fehlenden Hinweis.
-        <a href="https://marcoscheel.de/2009/04/20/powershell-mit-c-generieren-und-scheitern-unicode-anstatt-utf-8/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -730,7 +730,7 @@ Und schon hatten wir den fehlenden Hinweis.
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2020
+            <span>&copy; 2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
                 
                 | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"

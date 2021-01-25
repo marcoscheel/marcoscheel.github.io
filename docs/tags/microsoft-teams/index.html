@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.75.1" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/tags/microsoft-teams/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-12-13T00:21:00+01:00" />
+<meta property="og:updated_time" content="2021-01-25T10:10:10+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -119,6 +119,31 @@
 </div>
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/">Create your Azure AD application via script - M365.TeamsBackup</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-25</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1763 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        <p>If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">&ldquo;App registrations&rdquo;</a> part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.</p>
+<p>This post provides you will all the needed information to create your own script. I&rsquo;m using my <a href="https://github.com/marcoscheel/M365.TeamsBackup" target="_blank">M365 Teams Backup</a> solution as a reference. The key components are:</p>
+<ul>
+<li>Install the Azure CLI or the Azure AD Preview PowerShell module</li>
+<li>The scripts to setup the app
+<ul>
+<li><a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1" target="_blank">create-aadapp-cli.ps1</a> via Azure CLI</li>
+<li>or <a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1" target="_blank">create-aadapp.ps1</a> via PowerShell</li>
+</ul>
+</li>
+</ul>
+<p><img class="img-zoomable" src="/img/20210124-m365teamsbackup-aadapp--title.jpg" alt="image" />
+</p>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -280,30 +305,48 @@
     </div>
 </div>
 
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/">Manage Microsoft Teams membership with Azure AD Access Review</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-08-02</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1764 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
 
+
+
+
+
+
+
+<div class="pagination">
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item pag-current">
+        <a href="/tags/microsoft-teams/">1</a>
     </div>
-    <div class="post-item post-summary markdown-body">
-        <p>This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).</p>
-<p>&lt;DE&gt;Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&lt;/DE&gt;</p>
-<p>Microsoft has great <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">resources</a> to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview" target="_blank">Identity Governance)</a> on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.</p>
-<p>Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
-<img class="img-zoomable" src="/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png" alt="image" />
-</p>
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item">
+        <a href="/tags/microsoft-teams/page/2/">2</a>
     </div>
+    
+    
+    
+    <div class="pag-next">
+        <a href="/tags/microsoft-teams/page/2/"><i class="iconfont icon-chevron-forward-circle-sharp"></i></a>
+    </div>
+    
+    
+    <div class="pag-last">
+        <a href="/tags/microsoft-teams/page/2/"><i class="iconfont icon-caret-forward-circle-sharp"></i></a>
+    </div>
+    
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -575,7 +618,7 @@
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2020
+            <span>&copy; 2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
                 
                 | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"

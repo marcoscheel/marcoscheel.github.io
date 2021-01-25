@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.75.1" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-12-13T00:21:00+01:00" />
+<meta property="og:updated_time" content="2021-01-25T10:10:10+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,25 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2008/05/30/sharepoint-und-microsoft-sql-server-2008-reporting-add-in-installation/">SharePoint und Microsoft SQL Server 2008 Reporting Add-in Installation</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-30</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;133 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Ich habe eben versucht die Reporting Integration für den SQL2008 auf dem MOSS Server zu aktivieren. Die Installation ist ohne Fehler abgebrochen. Die Lösung gibt es in der Readme von MS zum Add-In:
+Readme:
+http://download.microsoft.com/download/0/9/4/09438108-4f1d-4734-8100-4ff73d549082/Readme_rsaddin.htm
+Download aus dem February CTP Feature Pack des SQL 2008:
+http://www.microsoft.com/downloads/details.aspx?FamilyId=D68DE3C9-60A9-49C9-A28C-5C46BBC3356F&amp;displaylang=en
+Die Installation läuft anders als das Add-In aus dem SQL 2005 SP2 Feature Pack. Es muss kein Cab per STSADM registriert werden, sondern das MSI erledigt die ganze Arbeit. Mein Testenviroment hat wenig RAM, da alles auf meinem Lenovo x61T mit 4 GB unter Vista läuft. Das Setup schlägt fehl und die Readme hat mir dann weiter geholfen.
+        <a href="https://marcoscheel.de/2008/05/30/sharepoint-und-microsoft-sql-server-2008-reporting-add-in-installation/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -258,23 +277,6 @@ Ciao Marco
         Ich habe mich vor kurzem etwas intensiver mit dem MS SiteDirectory Template beschäftigt. Es ging darum, hier automatisch MetaDaten zu aktualisieren. Die &ldquo;Kindsite&rdquo;, die im SiteDirectory einen Eintrag in der &ldquo;Sites&rdquo; Liste hat, sollte unter speziellen Bedingungen aktualisiert werden. Nun ist die Frage wie kommt man ran? Die URL irgendwie speichern? Aber wer macht das? Wann macht man das? Ein Griff zur PowerShell hat schnell zu Tage gefördert, dass alle Anstrengungen überflüssig sind. Zumindest für Sites, die über das SiteDirectory erstellt wurden, findet man in den Properties des SPWeb Objektes die nötigen Informationen: * SPWeb.AllProperties[&ldquo;DefaultSiteDirectorySiteId&rdquo;]
 Damit kann ich mir die SiteCollection öffen * SPWeb.
         <a href="https://marcoscheel.de/2008/05/13/arbeiten-mit-dem-sharepoint-site-directory/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/05/13/mysite-creation-fehler/">MySite Creation Fehler</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;129 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        In zwei Installationen hatte ich jetzt schon einen Fehler beim Erzeugen von MySites, obwohl das bisher ohne Problem funktioniert hat. Es wird wohl an SP1 oder einem anderen MS OS Update liegen, da auch bisher Farmen, die über 1 Jahr ohne Probleme liefen, betroffen sind. Bei der bereits laufenden Farm hat mir der System Center Operations Manager (SCOM oder OpsMgr) den Gefallen getan, mich darüber zu informieren, da nicht unbeingt jeder User sich darüber beschwert, wenn etwas nicht funktioniert, was er bisher noch nciht kennt :-)
-Die Lösung:
-http://forums.microsoft.com/TechNet/ShowPost.aspx?PostID=1196717&amp;SiteID=17&amp;pageid=0
-Bei mir hat auch das Aufnehmen in die locale Admingruppe geholfen, irgendwie unschön, aber solange ich nicht mehr Zeit habe, das bei MS zu verifizieren und ein Hotfix anzufordern (wenn er denn existiert), wird es erstmal so bleiben.
-        <a href="https://marcoscheel.de/2008/05/13/mysite-creation-fehler/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -713,7 +715,7 @@ Bei mir hat auch das Aufnehmen in die locale Admingruppe geholfen, irgendwie uns
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2020
+            <span>&copy; 2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
                 
                 | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"

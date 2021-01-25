@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.75.1" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://marcoscheel.de/" />
 <meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2020-12-13T00:21:00+01:00" />
+<meta property="og:updated_time" content="2021-01-25T10:10:10+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
@@ -115,6 +115,20 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2008/06/19/doppelte-spns-finden/">Doppelte SPN’s finden</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-19</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;257 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Meine SharePoint Installationen sind in der Regel Intranet Installationen. Je nach Szenario ist Kerberos uber NTLM als Authentifizierung zu beorzugen. Es ist schwer mit Pauschalen zu arbeiten, aber in der Regel empfehle ich den EInsatz von Kerberos. Die Intrastruktur laßt sich so schnell an wachsende Aufgaben (Reporting, OTP, etc) anpassen. Beim Setzen der Service Principal Names (SPN) ist es wichtig, das der Service nur auf einm einzigen Objekt im Active Directory (AD) liegt. Zum Setzen und Auslesen der SPN&rsquo;s gibt es SETSPN.exe aus dem Ressource Kit (oder in Windows Server 2008 bereits enthalten). In der W2K8 Version von SETSPN kann ich beim Hinzufugen gleich auf doppelte Eintrage prufen lassen.
+        <a href="https://marcoscheel.de/2008/06/19/doppelte-spns-finden/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -267,25 +281,6 @@ Es ist nicht einfach da den Überblick zu behalten. der Kollege Spencer Harbar (
 Alle folgenden Aktionen haben eine Einstellung für die Aktualisierungsweitergabe )&ldquo;Update List and Site Content Types&rdquo;). Ob bestehende Listen aktualisiert, werden hängt von der Wahl der entsprecheden Option ab. Alle folgenden Aktionen werden auf dem ContentType gemacht! 2. Hinzufügen einer Spalte
 Beim Einfügen werden alle Listen, die den ContentType verwendet, entsprechend der Einstellung aktualisiert. Der Liste wird eine neue Spalte hinzugefügt. Der Wert der Spalte für bestehende Einträge wird **nicht **auf den definierten Default-Wert gesetzt! Die neue Spalte ist also ungefüllt.
         <a href="https://marcoscheel.de/2008/06/02/contenttypes-und-was-passiert-bei-nderungen/">&gt;&gt; continue reading | weiter lesen</a>
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/05/30/sharepoint-und-microsoft-sql-server-2008-reporting-add-in-installation/">SharePoint und Microsoft SQL Server 2008 Reporting Add-in Installation</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-30</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;133 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Ich habe eben versucht die Reporting Integration für den SQL2008 auf dem MOSS Server zu aktivieren. Die Installation ist ohne Fehler abgebrochen. Die Lösung gibt es in der Readme von MS zum Add-In:
-Readme:
-http://download.microsoft.com/download/0/9/4/09438108-4f1d-4734-8100-4ff73d549082/Readme_rsaddin.htm
-Download aus dem February CTP Feature Pack des SQL 2008:
-http://www.microsoft.com/downloads/details.aspx?FamilyId=D68DE3C9-60A9-49C9-A28C-5C46BBC3356F&amp;displaylang=en
-Die Installation läuft anders als das Add-In aus dem SQL 2005 SP2 Feature Pack. Es muss kein Cab per STSADM registriert werden, sondern das MSI erledigt die ganze Arbeit. Mein Testenviroment hat wenig RAM, da alles auf meinem Lenovo x61T mit 4 GB unter Vista läuft. Das Setup schlägt fehl und die Readme hat mir dann weiter geholfen.
-        <a href="https://marcoscheel.de/2008/05/30/sharepoint-und-microsoft-sql-server-2008-reporting-add-in-installation/">&gt;&gt; continue reading | weiter lesen</a>
     </div>
 </div>
 
@@ -724,7 +719,7 @@ Die Installation läuft anders als das Add-In aus dem SQL 2005 SP2 Feature Pack.
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2020
+            <span>&copy; 2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
                 
                 | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
