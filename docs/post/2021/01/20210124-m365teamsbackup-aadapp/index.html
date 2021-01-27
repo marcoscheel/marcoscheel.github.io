@@ -29,10 +29,13 @@
 <meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 
 
-<meta name="keywords" content="Microsoft 365, Microsoft Teams, Development, Microsoft Graph" />
+<meta name="keywords" content="Microsoft 365, Microsoft Teams, Development, Microsoft Graph, Azure AD" />
+
 
 <meta property="og:title" content="Create your Azure AD application via script - M365.TeamsBackup" />
-<meta property="og:description" content="If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the &ldquo;App registrations&rdquo; part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.
+<meta name="twitter:title" content="Create your Azure AD application via script - M365.TeamsBackup" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/" /><meta property="og:description" content="If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the &ldquo;App registrations&rdquo; part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.
 This post provides you will all the needed information to create your own script. I&rsquo;m using my M365 Teams Backup solution as a reference. The key components are:
 
 Install the Azure CLI or the Azure AD Preview PowerShell module
@@ -45,16 +48,6 @@ or create-aadapp.ps1 via PowerShell
 
 
 " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/" />
-<meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="article:published_time" content="2021-01-25T10:10:10+01:00" />
-<meta property="article:modified_time" content="2021-01-25T10:10:10+01:00" />
-
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
-
-<meta name="twitter:title" content="Create your Azure AD application via script - M365.TeamsBackup"/>
 <meta name="twitter:description" content="If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the &ldquo;App registrations&rdquo; part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.
 This post provides you will all the needed information to create your own script. I&rsquo;m using my M365 Teams Backup solution as a reference. The key components are:
 
@@ -67,8 +60,9 @@ or create-aadapp.ps1 via PowerShell
 
 
 
-"/>
-
+" /><meta property="og:image" content="https://marcoscheel.de/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2021-01-25T10:10:10+01:00" /><meta property="article:modified_time" content="2021-01-25T10:10:10+01:00" />
 
 
 <style>
@@ -123,7 +117,6 @@ or create-aadapp.ps1 via PowerShell
     }
   }
 </script>
-
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
@@ -146,10 +139,9 @@ or create-aadapp.ps1 via PowerShell
         <a href="https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/">Create your Azure AD application via script - M365.TeamsBackup</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-25</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1763 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-25</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1763 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
 
     </div>
-    
     
     <div class="post-content markdown-body">
         <p>If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">&ldquo;App registrations&rdquo;</a> part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.</p>
@@ -465,12 +457,8 @@ $servicePrincipal.Oauth2Permissions | ? { $_.Value -in $servicePrincipalNameOaut
     <div class="sidebar-item sidebar">
         <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    
-    
-    
     <div class="sidebar-item sidebar-toc">
-        <h3>TOC</h3>
-        <nav id="TableOfContents">
+        <h3>TOC</h3><nav id="TableOfContents">
   <ul>
     <li><a href="#choose-a-scripting-environment-azure-cli-vs-azure-ad-ps">Choose a scripting environment (Azure CLI vs Azure AD PS)</a>
       <ul>
@@ -486,10 +474,7 @@ $servicePrincipal.Oauth2Permissions | ? { $_.Value -in $servicePrincipalNameOaut
     </li>
     <li><a href="#summary">Summary</a></li>
   </ul>
-</nav>
-    </div>
-    
-    
+</nav></div>
 </aside>
         </div>
         <div class="btn">
@@ -667,9 +652,10 @@ $servicePrincipal.Oauth2Permissions | ? { $_.Value -in $servicePrincipalNameOaut
 </footer>
 
     
-<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 

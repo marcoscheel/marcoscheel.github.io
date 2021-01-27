@@ -6,7 +6,96 @@
     <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Jan 2021 10:10:10 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/microsoft-365/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Jan 2021 08:08:08 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/microsoft-365/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microsoft Teams Incoming Webhook update required</title>
+      <link>https://marcoscheel.de/post/2021/01/20210127-microsoftteams-webhookupdate/</link>
+      <pubDate>Wed, 27 Jan 2021 08:08:08 +0100</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2021/01/20210127-microsoftteams-webhookupdate/</guid>
+      <description>&lt;p&gt;With the &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34; target=&#34;_blank&#34;&gt;Message Center Notification MC234048&lt;/a&gt; Microsoft announced a change to the Microsoft Teams App &amp;ldquo;Incoming Webhook&amp;rdquo;. The URL currently used will be deprecated by mid of April 2021. The exact wording is:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We will begin transitioning to the new webhook URLs on Monday January 11, 2021; however, existing webhooks URLs will continue to work for three (3) months to allow for migration time
+Source (as of 2021-01-26): &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34;&gt;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;If you created a webhook prior January 11, 2021 you will need to update your existing connector configuration!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This app is in regular use by most companies, if not disabled by a Teams App permission policy in the tenant. The app is a very easy option to post a message to a team. The URI of a webhook is cryptic and the only security in place. If you send a well-crafted HTTP message to the endpoint, you will create a Teams post in the channel the app is connected to. Here is the &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook&#34; target=&#34;_blank&#34;&gt;Microsoft documentation&lt;/a&gt; and a great &lt;a href=&#34;https://d365dotblog.com/2021/01/18/post-message-to-teams-using-incoming-webhook/&#34; target=&#34;_blank&#34;&gt;community article&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Currently Microsoft is using a non-tenant specific URI (outlook.office.com). The new URI will be tenant related (YOURTENANT.webhook.office.com).&lt;/p&gt;
+&lt;p&gt;This feature is communicated for Microsoft Teams, but it is also a Microsoft 365 Group Connector feature so these might also affected.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--title.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;check-if-the-app-is-used&#34;&gt;Check if the app is used&lt;/h2&gt;
+&lt;p&gt;It could be a good idea to check, if the app is active in your tenant. As a Teams administrator you can &lt;a href=&#34;https://admin.teams.microsoft.com/policies/manage-apps/203a1e2c-26cc-47ca-83ae-be98f960b6b2/&#34; target=&#34;_blank&#34;&gt;check the application in your admin center&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--app.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Even if you checked the app and the Teams App Permission policy you could still have the app installed prior this configuration. It is easy to check if the application is installed in a Microsoft Team. To query for installed apps we will need to use the &lt;a href=&#34;https://www.powershellgallery.com/packages/MicrosoftTeams/&#34; target=&#34;_blank&#34;&gt;preview version of the MicrosoftTeams module (as of writing 1.1.10-preview)&lt;/a&gt;. Using the Teams PowerShell you can get a list of Teams the app is installed in.&lt;/p&gt;
+&lt;p&gt;Get the application ID and more details:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Get-TeamsApp | Where-Object { $_.DisplayName -eq &amp;quot;Incoming Webhook&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Result:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ExternalId Id                                   DisplayName      DistributionMethod
+---------- --                                   -----------      ------------------
+           203a1e2c-26cc-47ca-83ae-be98f960b6b2 Incoming Webhook store
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With the application id we now can query all teams and check if the app is installed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Get-Team | ForEach-Object {
+    $team = $_;
+    $apps = Get-TeamsAppInstallation -TeamId $team.GroupId | Where-Object { $_.TeamsAppId -eq &amp;quot;203a1e2c-26cc-47ca-83ae-be98f960b6b2&amp;quot;};
+    if ($apps -ne $null){
+        $team;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Result for my two teams with the app installed:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GroupId                              DisplayName        Visibility  Archived  MailNickName       Description
+-------                              -----------        ----------  --------  ------------       -----------
+a6687ed4-c1a6-4c7b-9171-2d625a60b76e GK Malachor MSDN   Public      False     GKMalachorMSDN     Check here for or…
+75366f42-6fc6-4857-90d1-3283236789b6 20200906 Demo Acc… Private     False     20200906DemoAcces… 20200906 Demo Acc…
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Based on this information we now can contact the owners/members of a team and make them check if they use the app and need to update the URI. Currently I am not aware of a method to get the specific channel the webhook is attached to. The user needs to check all the channels to find the connectors.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-fix-the-problem&#34;&gt;How to fix the problem&lt;/h2&gt;
+&lt;p&gt;The user needs to navigate to the team and check for the connector of all channels:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--channel.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--channel-configure.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Open the &amp;ldquo;x configured&amp;rdquo; (1) if available and click on the &amp;ldquo;Manage&amp;rdquo; (2) button for the specific implementation:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--channel-configured.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;This will show you the current configuration of the webhook:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--fix.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;You need to click on &amp;ldquo;Update URL&amp;rdquo; and you will receive a new URI with the tenant specific part. The connector page did not refresh automatically. I quite the page and reopened the dialog. Now the page is not complaining about a required update and I could copy the new webhook URI:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--fixed.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Now you just need to remember and find the app you integrated the webhook in :)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; I was not able to update the incoming webhook, if the account that created the webhook is not the account updating the webhook. You can see the account that did the setup in the connector list and you will notice the &amp;ldquo;Save&amp;rdquo; button is disabled. In this case an easy option is to delete webhook and recreate it with the same name.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--unfixable.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Check your tenant (admin) or teams (power users) for the configuration of incoming webhook. Remember as soon as you update the URL the webhook for this will stop working and not accept messages. Updating the URL is only solving 50% of the problem. You also need to update your Power Automate flows, Azure Functions, Azure Automation Runbooks or your PowerShell scripts in your on-prem servers task scheduler.&lt;/p&gt;
+&lt;h2 id=&#34;bonus&#34;&gt;Bonus&lt;/h2&gt;
+&lt;p&gt;Get the owners of the groups to send an email:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Get-Team | ForEach-Object {
+    $team = $_;
+    $apps = Get-TeamsAppInstallation -TeamId $team.GroupId | Where-Object { $_.TeamsAppId -eq &amp;quot;203a1e2c-26cc-47ca-83ae-be98f960b6b2&amp;quot;};
+    if ($apps -ne $null){
+        Get-TeamUser -GroupId $team.GroupId -Role Owner | ForEach-Object {
+            $owner = $_;
+            $fields = @{
+                Team = $team.DisplayName
+                OwnerEmail = $owner.User
+            }
+            New-Object -TypeName PSObject -Property $fields;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Result:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--owneremail.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Create your Azure AD application via script - M365.TeamsBackup</title>
       <link>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</link>

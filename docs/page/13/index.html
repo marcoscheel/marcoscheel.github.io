@@ -29,19 +29,13 @@
 <meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 
 
+
 <meta property="og:title" content="Marco Scheel aka GeekDotNet" />
-<meta property="og:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
+<meta name="twitter:title" content="Marco Scheel aka GeekDotNet" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://marcoscheel.de/" />
-<meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="og:updated_time" content="2021-01-25T10:10:10+01:00" />
-
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
-
-<meta name="twitter:title" content="Marco Scheel aka GeekDotNet"/>
-<meta name="twitter:description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud"/>
-
+<meta property="og:url" content="https://marcoscheel.de/" /><meta property="og:image" content="https://marcoscheel.de/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="og:updated_time" content="2021-01-27T08:08:08+01:00" />
 
 
 <style>
@@ -96,7 +90,6 @@
     }
   }
 </script>
-
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
@@ -115,6 +108,21 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2008/05/13/arbeiten-mit-dem-sharepoint-site-directory/">Arbeiten mit dem Sharepoint &#34;Site Directory&#34;</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;139 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Ich habe mich vor kurzem etwas intensiver mit dem MS SiteDirectory Template beschäftigt. Es ging darum, hier automatisch MetaDaten zu aktualisieren. Die &ldquo;Kindsite&rdquo;, die im SiteDirectory einen Eintrag in der &ldquo;Sites&rdquo; Liste hat, sollte unter speziellen Bedingungen aktualisiert werden. Nun ist die Frage wie kommt man ran? Die URL irgendwie speichern? Aber wer macht das? Wann macht man das? Ein Griff zur PowerShell hat schnell zu Tage gefördert, dass alle Anstrengungen überflüssig sind. Zumindest für Sites, die über das SiteDirectory erstellt wurden, findet man in den Properties des SPWeb Objektes die nötigen Informationen: * SPWeb.AllProperties[&ldquo;DefaultSiteDirectorySiteId&rdquo;]
+Damit kann ich mir die SiteCollection öffen * SPWeb.
+        <a href="https://marcoscheel.de/2008/05/13/arbeiten-mit-dem-sharepoint-site-directory/">&gt;&gt; continue reading | weiter lesen</a>
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -554,7 +562,6 @@ Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, d
     
     
     
-    
 </aside>
         </div>
         <div class="btn">
@@ -709,9 +716,10 @@ Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, d
 </footer>
 
     
-<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 

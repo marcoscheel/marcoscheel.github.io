@@ -31,8 +31,11 @@
 
 <meta name="keywords" content="Microsoft 365, Microsoft Teams, SharePoint" />
 
+
 <meta property="og:title" content="Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream" />
-<meta property="og:description" content="Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream einstellen neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:
+<meta name="twitter:title" content="Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/" /><meta property="og:description" content="Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream einstellen neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:
 Migration vom @SharePoint Video Portal schon begonnen? Alle Videos in @MicrosoftStream angekommen?  Jetzt geht&#39;s wieder zurück 🤣 Aber ich finde das super. Endlich eine Video API natürlich mit @microsoftgraph! Und Meetingrecording von @MicrosoftTeams!  https://t.co/ZKZsjWaDhP&mdash; Marco Scheel (@marcoscheel) September 22, 2020
 
 
@@ -45,16 +48,6 @@ Es gibt keine offizielle API
 Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und es werden noch viele Funktionen in der nahen Zukunft ergänzt. Zum Start bekommen wir aber eine sehr rudimentäre Implementierung mit ihren eigenen Problemen. Wir schauen einmal auf die entsprechende Implementierung Stand Oktober 2020. Microsoft hat zur Ignite eine dedizierte Session zum Thema Besprechungsaufzeichnung erstellt in der ihr viele Details findet.
 
 " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/" />
-<meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="article:published_time" content="2020-10-24T12:35:35+02:00" />
-<meta property="article:modified_time" content="2020-10-24T12:35:35+02:00" />
-
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
-
-<meta name="twitter:title" content="Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream"/>
 <meta name="twitter:description" content="Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream einstellen neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:
 Migration vom @SharePoint Video Portal schon begonnen? Alle Videos in @MicrosoftStream angekommen?  Jetzt geht&#39;s wieder zurück 🤣 Aber ich finde das super. Endlich eine Video API natürlich mit @microsoftgraph! Und Meetingrecording von @MicrosoftTeams!  https://t.co/ZKZsjWaDhP&mdash; Marco Scheel (@marcoscheel) September 22, 2020
 
@@ -67,8 +60,9 @@ Es gibt keine offizielle API
 
 Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und es werden noch viele Funktionen in der nahen Zukunft ergänzt. Zum Start bekommen wir aber eine sehr rudimentäre Implementierung mit ihren eigenen Problemen. Wir schauen einmal auf die entsprechende Implementierung Stand Oktober 2020. Microsoft hat zur Ignite eine dedizierte Session zum Thema Besprechungsaufzeichnung erstellt in der ihr viele Details findet.
 
-"/>
-
+" /><meta property="og:image" content="https://marcoscheel.de/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2020-10-24T12:35:35+02:00" /><meta property="article:modified_time" content="2020-10-24T12:35:35+02:00" />
 
 
 <style>
@@ -123,7 +117,6 @@ Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und 
     }
   }
 </script>
-
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
@@ -149,7 +142,6 @@ Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und 
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1494 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;</span>
 
     </div>
-    
     
     <div class="post-content markdown-body">
         <p>Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream <del>einstellen</del> neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:</p>
@@ -415,12 +407,8 @@ Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &quot;OneDriveFo
     <div class="sidebar-item sidebar">
         <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    
-    
-    
     <div class="sidebar-item sidebar-toc">
-        <h3>TOC</h3>
-        <nav id="TableOfContents">
+        <h3>TOC</h3><nav id="TableOfContents">
   <ul>
     <li><a href="#im-meeting">Im Meeting</a></li>
     <li><a href="#recording-ansehen">Recording ansehen</a></li>
@@ -428,10 +416,7 @@ Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &quot;OneDriveFo
     <li><a href="#einschalten-im-tenant">Einschalten im Tenant</a></li>
     <li><a href="#zusammenfassung">Zusammenfassung</a></li>
   </ul>
-</nav>
-    </div>
-    
-    
+</nav></div>
 </aside>
         </div>
         <div class="btn">
@@ -601,9 +586,10 @@ Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &quot;OneDriveFo
 </footer>
 
     
-<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 

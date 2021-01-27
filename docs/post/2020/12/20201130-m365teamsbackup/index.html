@@ -31,8 +31,11 @@
 
 <meta name="keywords" content="Microsoft 365, Microsoft Teams, Development, Microsoft Graph" />
 
+
 <meta property="og:title" content="Microsoft Teams backup your channel messages with Microsoft Graph" />
-<meta property="og:description" content="I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:
+<meta name="twitter:title" content="Microsoft Teams backup your channel messages with Microsoft Graph" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/" /><meta property="og:description" content="I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:
 
 I wanted to save all images from a beautiful Teams channel message. Teams is saving these inline images not to SharePoint. The only way to download is to click on each image.
 We are doing a Tenant to Tenant migration at glueckkanja-gab after our merger. Most of the migration tools will support the migration of Teams chat, but not all tools are available, and some implementations are lacking features for a more flexible approach.
@@ -44,16 +47,6 @@ I really wanted to try a few things regarding Microsoft Graph, the Microsoft Gra
 I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &hellip;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)
 https://github.com/marcoscheel/M365.TeamsBackup
 In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/" />
-<meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="article:published_time" content="2020-12-13T00:21:00+01:00" />
-<meta property="article:modified_time" content="2020-12-13T00:21:00+01:00" />
-
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
-
-<meta name="twitter:title" content="Microsoft Teams backup your channel messages with Microsoft Graph"/>
 <meta name="twitter:description" content="I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:
 
 I wanted to save all images from a beautiful Teams channel message. Teams is saving these inline images not to SharePoint. The only way to download is to click on each image.
@@ -65,8 +58,9 @@ I started my career as a developer and my heart is still thinking Visual Basic. 
 I really wanted to try a few things regarding Microsoft Graph, the Microsoft Graph SDK and Microsoft Teams. The Microsoft Teamwork part of the API has a solid starting point (if you look at the beta version). The API is getting very mature set of capabilities. I&rsquo;m a huge fan of Azure Functions and I&rsquo;ve done quite a few projects that are talking to the Microsoft Graph using Application Permissions. I&rsquo;ve checked the documentation and if I wanted to go this route I would have to request special permissions from Microsoft to access the content without a real user. For now I decided to go with a console application and a Azure AD Device Code flow.
 I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &hellip;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)
 https://github.com/marcoscheel/M365.TeamsBackup
-In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself."/>
-
+In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself." /><meta property="og:image" content="https://marcoscheel.de/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2020-12-13T00:21:00+01:00" /><meta property="article:modified_time" content="2020-12-13T00:21:00+01:00" />
 
 
 <style>
@@ -121,7 +115,6 @@ In the following sections I will show you how I approached the problem, how the 
     }
   }
 </script>
-
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
@@ -147,7 +140,6 @@ In the following sections I will show you how I approached the problem, how the 
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2363 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;</span>
 
     </div>
-    
     
     <div class="post-content markdown-body">
         <p>I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:</p>
@@ -373,12 +365,8 @@ In the following sections I will show you how I approached the problem, how the 
     <div class="sidebar-item sidebar">
         <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    
-    
-    
     <div class="sidebar-item sidebar-toc">
-        <h3>TOC</h3>
-        <nav id="TableOfContents">
+        <h3>TOC</h3><nav id="TableOfContents">
   <ul>
     <li><a href="#check-your-migration-vendor-of-choice-first">Check your migration vendor of choice first!</a></li>
     <li><a href="#my-goal">My goal</a></li>
@@ -388,10 +376,7 @@ In the following sections I will show you how I approached the problem, how the 
     <li><a href="#your-setup">Your setup</a></li>
     <li><a href="#summary">Summary</a></li>
   </ul>
-</nav>
-    </div>
-    
-    
+</nav></div>
 </aside>
         </div>
         <div class="btn">
@@ -563,9 +548,10 @@ In the following sections I will show you how I approached the problem, how the 
 </footer>
 
     
-<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 

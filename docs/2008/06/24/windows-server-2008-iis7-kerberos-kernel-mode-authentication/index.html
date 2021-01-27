@@ -31,20 +31,14 @@
 
 <meta name="keywords" content="xArchived" />
 
+
 <meta property="og:title" content="Windows Server 2008 – IIS7 – Kerberos Kernel Mode Authentication" />
-<meta property="og:description" content="Auf einer internen Fortbildung hatte ich mir den IIS7 angesehen. Eine der unscheinbarsten Änderungen trifft alle, die sich mit Kerberos auf einem IIS auseinander setzen mussen. Meine SharePoint Installationen sind also in Zukunft davon betroffen. Der Internet Information Server 7 (IIS7) kommt in der Default Konfiguration mit der Einstellung &ldquo;Enable Kernel-mode authentication&rdquo; gleich ON daher. Damit unterscheidet sich das Auflosen der Service Principlal Names (SPN) drastisch von der Art, die der IIS6 durchfuhrt. Normalerweise wurde der SPN auf dem Application Pool (AppPool) Acount gesucht. Also auf einem Domain Acount oder auf dem Machine Account, wenn es der &ldquo;Network Service&rdquo; oder das &ldquo;Local System&rdquo; ist." />
+<meta name="twitter:title" content="Windows Server 2008 – IIS7 – Kerberos Kernel Mode Authentication" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://marcoscheel.de/2008/06/24/windows-server-2008-iis7-kerberos-kernel-mode-authentication/" />
-<meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="article:published_time" content="2008-06-24T07:20:30+00:00" />
-<meta property="article:modified_time" content="2008-06-24T07:20:30+00:00" />
-
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
-
-<meta name="twitter:title" content="Windows Server 2008 – IIS7 – Kerberos Kernel Mode Authentication"/>
-<meta name="twitter:description" content="Auf einer internen Fortbildung hatte ich mir den IIS7 angesehen. Eine der unscheinbarsten Änderungen trifft alle, die sich mit Kerberos auf einem IIS auseinander setzen mussen. Meine SharePoint Installationen sind also in Zukunft davon betroffen. Der Internet Information Server 7 (IIS7) kommt in der Default Konfiguration mit der Einstellung &ldquo;Enable Kernel-mode authentication&rdquo; gleich ON daher. Damit unterscheidet sich das Auflosen der Service Principlal Names (SPN) drastisch von der Art, die der IIS6 durchfuhrt. Normalerweise wurde der SPN auf dem Application Pool (AppPool) Acount gesucht. Also auf einem Domain Acount oder auf dem Machine Account, wenn es der &ldquo;Network Service&rdquo; oder das &ldquo;Local System&rdquo; ist."/>
-
+<meta property="og:url" content="https://marcoscheel.de/2008/06/24/windows-server-2008-iis7-kerberos-kernel-mode-authentication/" /><meta property="og:description" content="Auf einer internen Fortbildung hatte ich mir den IIS7 angesehen. Eine der unscheinbarsten Änderungen trifft alle, die sich mit Kerberos auf einem IIS auseinander setzen mussen. Meine SharePoint Installationen sind also in Zukunft davon betroffen. Der Internet Information Server 7 (IIS7) kommt in der Default Konfiguration mit der Einstellung &ldquo;Enable Kernel-mode authentication&rdquo; gleich ON daher. Damit unterscheidet sich das Auflosen der Service Principlal Names (SPN) drastisch von der Art, die der IIS6 durchfuhrt. Normalerweise wurde der SPN auf dem Application Pool (AppPool) Acount gesucht. Also auf einem Domain Acount oder auf dem Machine Account, wenn es der &ldquo;Network Service&rdquo; oder das &ldquo;Local System&rdquo; ist." />
+<meta name="twitter:description" content="Auf einer internen Fortbildung hatte ich mir den IIS7 angesehen. Eine der unscheinbarsten Änderungen trifft alle, die sich mit Kerberos auf einem IIS auseinander setzen mussen. Meine SharePoint Installationen sind also in Zukunft davon betroffen. Der Internet Information Server 7 (IIS7) kommt in der Default Konfiguration mit der Einstellung &ldquo;Enable Kernel-mode authentication&rdquo; gleich ON daher. Damit unterscheidet sich das Auflosen der Service Principlal Names (SPN) drastisch von der Art, die der IIS6 durchfuhrt. Normalerweise wurde der SPN auf dem Application Pool (AppPool) Acount gesucht. Also auf einem Domain Acount oder auf dem Machine Account, wenn es der &ldquo;Network Service&rdquo; oder das &ldquo;Local System&rdquo; ist." /><meta property="og:image" content="https://marcoscheel.de/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2008-06-24T07:20:30+00:00" /><meta property="article:modified_time" content="2008-06-24T07:20:30+00:00" />
 
 
 <style>
@@ -99,7 +93,6 @@
     }
   }
 </script>
-
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
@@ -125,7 +118,6 @@
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;217 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
 
     </div>
-    
     
     <div class="post-content markdown-body">
         <p><a href="http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/b70d5a3978a3_1448E/image_2.png" target="_blank"><img class="img-zoomable" src="http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/b70d5a3978a3_1448E/image_thumb.png" alt="image" />
@@ -291,15 +283,8 @@
     <div class="sidebar-item sidebar">
         <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    
-    
-    
     <div class="sidebar-item sidebar-toc">
-        <h3>TOC</h3>
-        <nav id="TableOfContents"></nav>
-    </div>
-    
-    
+        <h3>TOC</h3><nav id="TableOfContents"></nav></div>
 </aside>
         </div>
         <div class="btn">
@@ -461,9 +446,10 @@
 </footer>
 
     
-<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 

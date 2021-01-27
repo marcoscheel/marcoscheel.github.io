@@ -3,37 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marcoscheel.de/tags/development/</loc>
+    <lastmod>2021-01-27T08:08:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/</loc>
+    <lastmod>2021-01-27T08:08:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/tags/microsoft-365/</loc>
+    <lastmod>2021-01-27T08:08:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/tags/microsoft-teams/</loc>
+    <lastmod>2021-01-27T08:08:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/post/2021/01/20210127-microsoftteams-webhookupdate/</loc>
+    <lastmod>2021-01-27T08:08:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/post/</loc>
+    <lastmod>2021-01-27T08:08:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcoscheel.de/tags/azure-ad/</loc>
+    <lastmod>2021-01-25T10:10:10+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</loc>
     <lastmod>2021-01-25T10:10:10+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://marcoscheel.de/tags/development/</loc>
-    <lastmod>2021-01-25T10:10:10+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marcoscheel.de/</loc>
-    <lastmod>2021-01-25T10:10:10+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marcoscheel.de/tags/microsoft-365/</loc>
-    <lastmod>2021-01-25T10:10:10+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://marcoscheel.de/tags/microsoft-graph/</loc>
-    <lastmod>2021-01-25T10:10:10+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marcoscheel.de/tags/microsoft-teams/</loc>
-    <lastmod>2021-01-25T10:10:10+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marcoscheel.de/post/</loc>
     <lastmod>2021-01-25T10:10:10+01:00</lastmod>
   </url>
   
@@ -120,11 +130,6 @@
   <url>
     <loc>https://marcoscheel.de/post/2019/12/189806058922-microsoft-teams-known-issues-no-more/</loc>
     <lastmod>2019-12-22T08:06:03+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marcoscheel.de/tags/azure-ad/</loc>
-    <lastmod>2019-08-02T19:41:30+00:00</lastmod>
   </url>
   
   <url>

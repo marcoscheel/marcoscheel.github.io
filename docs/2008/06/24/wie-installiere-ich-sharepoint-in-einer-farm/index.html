@@ -31,24 +31,18 @@
 
 <meta name="keywords" content="xArchived" />
 
+
 <meta property="og:title" content="Wie installiere ICH SharePoint in einer Farm?" />
-<meta property="og:description" content="Version 0.1 - 2008-05-07 Version 0.2 - 2008-06-24 Version 0.3 - 2009-06-24 (SP2, CU, IIS7, SQL2K8)
+<meta name="twitter:title" content="Wie installiere ICH SharePoint in einer Farm?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcoscheel.de/2008/06/24/wie-installiere-ich-sharepoint-in-einer-farm/" /><meta property="og:description" content="Version 0.1 - 2008-05-07 Version 0.2 - 2008-06-24 Version 0.3 - 2009-06-24 (SP2, CU, IIS7, SQL2K8)
 Vorbedingungen:
 * Betriebssystem und alles weitere Software ist in der Hauptsprache Englisch * OS und Software ist 64-Bit * Alle Server haben min. 4 GB RAM * Der Datenbankserver hat 8 GB RAM und min. 2 CPU&#39;s mit 2 Cores * Min. 2 Partitionen mit zwei getrennten Plattensystemen * PowerShell auf allen Sharepoint Servern für Scripting  Über die Punkte oben kann man streiten, aber das Sizing ist für mich min. wenn ein Kunde ein Farm mit zwei SharePoint und einem DB Server aufbaut. Die Hardware ist so oder so 64-bit fähig und 8 GB RAM sind heute günstig zu erwerben." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://marcoscheel.de/2008/06/24/wie-installiere-ich-sharepoint-in-einer-farm/" />
-<meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="article:published_time" content="2008-06-24T07:28:27+00:00" />
-<meta property="article:modified_time" content="2008-06-24T07:28:27+00:00" />
-
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
-
-<meta name="twitter:title" content="Wie installiere ICH SharePoint in einer Farm?"/>
 <meta name="twitter:description" content="Version 0.1 - 2008-05-07 Version 0.2 - 2008-06-24 Version 0.3 - 2009-06-24 (SP2, CU, IIS7, SQL2K8)
 Vorbedingungen:
-* Betriebssystem und alles weitere Software ist in der Hauptsprache Englisch * OS und Software ist 64-Bit * Alle Server haben min. 4 GB RAM * Der Datenbankserver hat 8 GB RAM und min. 2 CPU&#39;s mit 2 Cores * Min. 2 Partitionen mit zwei getrennten Plattensystemen * PowerShell auf allen Sharepoint Servern für Scripting  Über die Punkte oben kann man streiten, aber das Sizing ist für mich min. wenn ein Kunde ein Farm mit zwei SharePoint und einem DB Server aufbaut. Die Hardware ist so oder so 64-bit fähig und 8 GB RAM sind heute günstig zu erwerben."/>
-
+* Betriebssystem und alles weitere Software ist in der Hauptsprache Englisch * OS und Software ist 64-Bit * Alle Server haben min. 4 GB RAM * Der Datenbankserver hat 8 GB RAM und min. 2 CPU&#39;s mit 2 Cores * Min. 2 Partitionen mit zwei getrennten Plattensystemen * PowerShell auf allen Sharepoint Servern für Scripting  Über die Punkte oben kann man streiten, aber das Sizing ist für mich min. wenn ein Kunde ein Farm mit zwei SharePoint und einem DB Server aufbaut. Die Hardware ist so oder so 64-bit fähig und 8 GB RAM sind heute günstig zu erwerben." /><meta property="og:image" content="https://marcoscheel.de/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2008-06-24T07:28:27+00:00" /><meta property="article:modified_time" content="2008-06-24T07:28:27+00:00" />
 
 
 <style>
@@ -103,7 +97,6 @@ Vorbedingungen:
     }
   }
 </script>
-
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
@@ -129,7 +122,6 @@ Vorbedingungen:
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1164 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
 
     </div>
-    
     
     <div class="post-content markdown-body">
         <p>Version 0.1 - 2008-05-07   <br>
@@ -307,15 +299,8 @@ S SiteCollection in eine eigene Content DB legen, diese dann offline nehmen, dam
     <div class="sidebar-item sidebar">
         <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    
-    
-    
     <div class="sidebar-item sidebar-toc">
-        <h3>TOC</h3>
-        <nav id="TableOfContents"></nav>
-    </div>
-    
-    
+        <h3>TOC</h3><nav id="TableOfContents"></nav></div>
 </aside>
         </div>
         <div class="btn">
@@ -477,9 +462,10 @@ S SiteCollection in eine eigene Content DB legen, diese dann offline nehmen, dam
 </footer>
 
     
-<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 

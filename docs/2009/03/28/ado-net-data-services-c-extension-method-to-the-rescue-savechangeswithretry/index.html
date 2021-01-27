@@ -31,20 +31,14 @@
 
 <meta name="keywords" content="xArchived" />
 
+
 <meta property="og:title" content="ADO.NET Data Services – C# Extension Method to the rescue – SaveChangesWithRetry" />
-<meta property="og:description" content="Ich habe mich diese Woche wieder mit den Core Funktionen der ADO.NET Data Services beschäftigt. Wir nutzen aktuell das Microsoft Ex-Astoria Projekt, um eine SQL 2008 Datenbank (läuft mit SQL Mirroring) über das Internet an eine Applikation zu binden. An sich eine tolle Sache, aber immer wieder gibt es “neue” Situationen auf die man reagieren muss. In der klassischen Programmierung (C#, SQL über TCP 1433, …) kommt es recht selten vor, dass die Verbindung zur Datenschicht (SqlNativeClient, OLEDB, ODBC, …) unterbrochen wird. In unserem Szenario steckt viel “Cloud” in der Lösung und somit müssen wir mit dem “nicht immer” funktionierenden Internet rechnen." />
+<meta name="twitter:title" content="ADO.NET Data Services – C# Extension Method to the rescue – SaveChangesWithRetry" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://marcoscheel.de/2009/03/28/ado-net-data-services-c-extension-method-to-the-rescue-savechangeswithretry/" />
-<meta property="og:image" content="https://marcoscheel.de/og.png"/>
-<meta property="article:published_time" content="2009-03-28T21:24:55+00:00" />
-<meta property="article:modified_time" content="2009-03-28T21:24:55+00:00" />
-
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://marcoscheel.de/og.png"/>
-
-<meta name="twitter:title" content="ADO.NET Data Services – C# Extension Method to the rescue – SaveChangesWithRetry"/>
-<meta name="twitter:description" content="Ich habe mich diese Woche wieder mit den Core Funktionen der ADO.NET Data Services beschäftigt. Wir nutzen aktuell das Microsoft Ex-Astoria Projekt, um eine SQL 2008 Datenbank (läuft mit SQL Mirroring) über das Internet an eine Applikation zu binden. An sich eine tolle Sache, aber immer wieder gibt es “neue” Situationen auf die man reagieren muss. In der klassischen Programmierung (C#, SQL über TCP 1433, …) kommt es recht selten vor, dass die Verbindung zur Datenschicht (SqlNativeClient, OLEDB, ODBC, …) unterbrochen wird. In unserem Szenario steckt viel “Cloud” in der Lösung und somit müssen wir mit dem “nicht immer” funktionierenden Internet rechnen."/>
-
+<meta property="og:url" content="https://marcoscheel.de/2009/03/28/ado-net-data-services-c-extension-method-to-the-rescue-savechangeswithretry/" /><meta property="og:description" content="Ich habe mich diese Woche wieder mit den Core Funktionen der ADO.NET Data Services beschäftigt. Wir nutzen aktuell das Microsoft Ex-Astoria Projekt, um eine SQL 2008 Datenbank (läuft mit SQL Mirroring) über das Internet an eine Applikation zu binden. An sich eine tolle Sache, aber immer wieder gibt es “neue” Situationen auf die man reagieren muss. In der klassischen Programmierung (C#, SQL über TCP 1433, …) kommt es recht selten vor, dass die Verbindung zur Datenschicht (SqlNativeClient, OLEDB, ODBC, …) unterbrochen wird. In unserem Szenario steckt viel “Cloud” in der Lösung und somit müssen wir mit dem “nicht immer” funktionierenden Internet rechnen." />
+<meta name="twitter:description" content="Ich habe mich diese Woche wieder mit den Core Funktionen der ADO.NET Data Services beschäftigt. Wir nutzen aktuell das Microsoft Ex-Astoria Projekt, um eine SQL 2008 Datenbank (läuft mit SQL Mirroring) über das Internet an eine Applikation zu binden. An sich eine tolle Sache, aber immer wieder gibt es “neue” Situationen auf die man reagieren muss. In der klassischen Programmierung (C#, SQL über TCP 1433, …) kommt es recht selten vor, dass die Verbindung zur Datenschicht (SqlNativeClient, OLEDB, ODBC, …) unterbrochen wird. In unserem Szenario steckt viel “Cloud” in der Lösung und somit müssen wir mit dem “nicht immer” funktionierenden Internet rechnen." /><meta property="og:image" content="https://marcoscheel.de/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2009-03-28T21:24:55+00:00" /><meta property="article:modified_time" content="2009-03-28T21:24:55+00:00" />
 
 
 <style>
@@ -99,7 +93,6 @@
     }
   }
 </script>
-
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
@@ -125,7 +118,6 @@
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-03-28</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;615 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
 
     </div>
-    
     
     <div class="post-content markdown-body">
         <p><a href="http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/ADO.NETDataServicesCExtensionMethodtothe_13D6A/image_2.png" target="_blank"><img class="img-zoomable" src="http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/ADO.NETDataServicesCExtensionMethodtothe_13D6A/image_thumb.png" alt="image" />
@@ -409,15 +401,8 @@ ctxMaster.SaveChangesWithRetry(3); //New: with retry!
     <div class="sidebar-item sidebar">
         <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    
-    
-    
     <div class="sidebar-item sidebar-toc">
-        <h3>TOC</h3>
-        <nav id="TableOfContents"></nav>
-    </div>
-    
-    
+        <h3>TOC</h3><nav id="TableOfContents"></nav></div>
 </aside>
         </div>
         <div class="btn">
@@ -579,9 +564,10 @@ ctxMaster.SaveChangesWithRetry(3); //New: with retry!
 </footer>
 
     
-<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 
