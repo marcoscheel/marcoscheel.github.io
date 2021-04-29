@@ -16,3 +16,8 @@ body header .title-sub{
 body .markdown-body strong{
     color: #000000;
 }
+
+sidebarh3 {
+    font-size: 20px;
+    font-weight: 600;
+}

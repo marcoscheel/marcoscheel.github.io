@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     
@@ -29,6 +29,7 @@
 <meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 
 
+<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel" title="Marco Scheel aka GeekDotNet" />
 
 <meta property="og:title" content="Azure AD" />
 <meta name="twitter:title" content="Azure AD" />
@@ -72,7 +73,7 @@
 
 
 <link rel="stylesheet" href="/css/custom.css">
-<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel">
+
 
 </head>
 
@@ -93,7 +94,7 @@
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
-            <a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a>
+            <h1><a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a></h1>
             
             <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
             
@@ -108,21 +109,25 @@
                 
 
 <div class="page-info">
-    <span>Posts with the tag Azure AD: </span>
+  <span>Beiträge mit dem Tag Azure AD: </span>
 </div>
 
 
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/">Create your Azure AD application via script - M365.TeamsBackup</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-25</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1763 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/">Create your Azure AD application via script - M365.TeamsBackup</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-25</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">&ldquo;App registrations&rdquo;</a> part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.</p>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1763 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    <p>If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">&ldquo;App registrations&rdquo;</a> part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.</p>
 <p>This post provides you will all the needed information to create your own script. I&rsquo;m using my <a href="https://github.com/marcoscheel/M365.TeamsBackup" target="_blank">M365 Teams Backup</a> solution as a reference. The key components are:</p>
 <ul>
 <li>Install the Azure CLI or the Azure AD Preview PowerShell module</li>
@@ -135,87 +140,96 @@
 </ul>
 <p><img class="img-zoomable" src="/img/20210124-m365teamsbackup-aadapp--title.jpg" alt="image" />
 </p>
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/">Manage Microsoft Teams membership with Azure AD Access Review</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-08-02</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1764 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/">Manage Microsoft Teams membership with Azure AD Access Review</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-08-02</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).</p>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1764 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    <p>This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).</p>
 <p>&lt;DE&gt;Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&lt;/DE&gt;</p>
 <p>Microsoft has great <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">resources</a> to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview" target="_blank">Identity Governance)</a> on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.</p>
 <p>Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
 <img class="img-zoomable" src="/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png" alt="image" />
 </p>
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/">App Permissions für Microsoft Graph Calls automatisiert einrichten</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-08</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;393 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/">App Permissions für Microsoft Graph Calls automatisiert einrichten</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-08</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>Für unser Glück &amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die <a href="https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0" target="_blank">PowerShell AZ</a> und die <a href="https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.</p>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;393 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    <p>Für unser Glück &amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die <a href="https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0" target="_blank">PowerShell AZ</a> und die <a href="https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.</p>
 <p>Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">Access Reviews</a> Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:</p>
 <pre><code class="language-PowerShell">az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
 az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 62a82d76-70ea-41e2-9197-370581804d09=Role #msgraph Group.ReadWrite.All
 az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions ef5f7d5c-338f-44b0-86c3-351f46c8bb5f=Role #msgraph AccessReview.ReadWrite.All
 az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 60a901ed-09f7-4aa5-a16e-7dd3d6f9de36=Role #msgraph ProgramControl.ReadWrite.All
 </code></pre>
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/">Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-01</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;424 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/tools">Tools</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/">Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-01</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im <a href="https://hairlessinthecloud.com" target="_blank">Hairless in the Cloud</a> Podcast Nummer <a href="https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff" target="_blank">18</a> habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.</p>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;424 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/tools">Tools</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    <p>Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im <a href="https://hairlessinthecloud.com" target="_blank">Hairless in the Cloud</a> Podcast Nummer <a href="https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff" target="_blank">18</a> habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.</p>
 <p>Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem <a href="https://developer.microsoft.com/en-us/graph/blogs/postman-collections/" target="_blank">Graph Explorer in einer Collection für Postman</a> zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.</p>
 <p>In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
 <img class="img-zoomable" src="/tmblr/cd/ef/cad14ee0d8e93c6d3b12f08d7601.png" alt="image" />
 </p>
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/">SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2017-09-17</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;257 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/office365">Office365</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/">SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2017-09-17</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>In meinen Projekten (<a href="https://www.glueckkanja.com/technologien/office-365/" target="_blank">Office 365</a> / <a href="https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/" target="_blank">100% Cloud</a>) ist <a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference" target="_blank">Conditional Access</a> (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem <a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912" target="_blank">Blogpost</a> beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern <a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827" target="_blank">einzelne Site Collections </a>adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;257 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/office365">Office365</a>&nbsp;<a href="/tags/sharepoint">SharePoint</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    <p>In meinen Projekten (<a href="https://www.glueckkanja.com/technologien/office-365/" target="_blank">Office 365</a> / <a href="https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/" target="_blank">100% Cloud</a>) ist <a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference" target="_blank">Conditional Access</a> (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem <a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912" target="_blank">Blogpost</a> beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern <a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827" target="_blank">einzelne Site Collections </a>adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
 <img class="img-zoomable" src="/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png" alt="image" />
 </p>
 <p>Eigentlich sollte der Dialog so aussehen:
 <img class="img-zoomable" src="/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png" alt="image" />
 </p>
-    </div>
+  </div>
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -223,7 +237,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
             <aside class="col-12 col-md-3 float-left sidebar">
     
     <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
+        <sidebarh3>Seiten</sidebarh3>
         <ul>
             
             <li>
@@ -254,7 +268,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     </div>
     
     <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
+        <sidebarh3>Links</sidebarh3>
         <ul>
             
             <li>
@@ -277,7 +291,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     </div>
     
     <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
+        <sidebarh3>Tags</sidebarh3>
         <div>
             
             <span>
@@ -361,7 +375,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
   <div class="sidebar-wrapper">
     
     <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
+        <sidebarh3>Seiten</sidebarh3>
         <ul>
             
             <li>
@@ -392,7 +406,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     </div>
     
     <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
+        <sidebarh3>Links</sidebarh3>
         <ul>
             
             <li>
@@ -415,7 +429,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     </div>
     
     <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
+        <sidebarh3>Tags</sidebarh3>
         <div>
             
             <span>
@@ -486,10 +500,10 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2021
+            <span>&copy; 2021-2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
-                
-                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                 | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
                    target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
                                                     target="_blank">Hugo</a> 
             </span>

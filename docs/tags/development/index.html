@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     
@@ -29,6 +29,7 @@
 <meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 
 
+<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel" title="Marco Scheel aka GeekDotNet" />
 
 <meta property="og:title" content="Development" />
 <meta name="twitter:title" content="Development" />
@@ -72,7 +73,7 @@
 
 
 <link rel="stylesheet" href="/css/custom.css">
-<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel">
+
 
 </head>
 
@@ -93,7 +94,7 @@
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
-            <a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a>
+            <h1><a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a></h1>
             
             <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
             
@@ -108,21 +109,25 @@
                 
 
 <div class="page-info">
-    <span>Posts with the tag Development: </span>
+  <span>Beiträge mit dem Tag Development: </span>
 </div>
 
 
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2021/01/20210127-microsoftteams-webhookupdate/">Microsoft Teams Incoming Webhook update required</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-27</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;797 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/post/2021/01/20210127-microsoftteams-webhookupdate/">Microsoft Teams Incoming Webhook update required</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-27</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>With the <a href="https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048" target="_blank">Message Center Notification MC234048</a> Microsoft announced a change to the Microsoft Teams App &ldquo;Incoming Webhook&rdquo;. The URL currently used will be deprecated by mid of April 2021. The exact wording is:</p>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;797 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    <p>With the <a href="https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048" target="_blank">Message Center Notification MC234048</a> Microsoft announced a change to the Microsoft Teams App &ldquo;Incoming Webhook&rdquo;. The URL currently used will be deprecated by mid of April 2021. The exact wording is:</p>
 <blockquote>
 <p>We will begin transitioning to the new webhook URLs on Monday January 11, 2021; however, existing webhooks URLs will continue to work for three (3) months to allow for migration time
 Source (as of 2021-01-26): <a href="https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048">https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048</a></p>
@@ -133,19 +138,23 @@ Source (as of 2021-01-26): <a href="https://admin.microsoft.com/Adminportal/Home
 <p>This feature is communicated for Microsoft Teams, but it is also a Microsoft 365 Group Connector feature so these might also affected.</p>
 <p><img class="img-zoomable" src="/img/20210127-microsoftteams-webhookupdate--title.png" alt="image" />
 </p>
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/">Create your Azure AD application via script - M365.TeamsBackup</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-25</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1763 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/">Create your Azure AD application via script - M365.TeamsBackup</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-25</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">&ldquo;App registrations&rdquo;</a> part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.</p>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1763 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    <p>If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">&ldquo;App registrations&rdquo;</a> part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.</p>
 <p>This post provides you will all the needed information to create your own script. I&rsquo;m using my <a href="https://github.com/marcoscheel/M365.TeamsBackup" target="_blank">M365 Teams Backup</a> solution as a reference. The key components are:</p>
 <ul>
 <li>Install the Azure CLI or the Azure AD Preview PowerShell module</li>
@@ -158,19 +167,23 @@ Source (as of 2021-01-26): <a href="https://admin.microsoft.com/Adminportal/Home
 </ul>
 <p><img class="img-zoomable" src="/img/20210124-m365teamsbackup-aadapp--title.jpg" alt="image" />
 </p>
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/">Microsoft Teams backup your channel messages with Microsoft Graph</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2363 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/">Microsoft Teams backup your channel messages with Microsoft Graph</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-13</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:</p>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2363 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    <p>I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:</p>
 <ul>
 <li>I wanted to save all images from a beautiful Teams channel message. Teams is saving these inline images not to SharePoint. The only way to download is to click on each image.</li>
 <li>We are doing a Tenant to Tenant migration at <a href="https://glueckkanja-gab.com/en/" target="_blank">glueckkanja-gab</a> after our merger. Most of the migration tools will support the migration of Teams chat, but not all tools are available, and some implementations are lacking features for a more flexible approach.</li>
@@ -182,34 +195,31 @@ Source (as of 2021-01-26): <a href="https://admin.microsoft.com/Adminportal/Home
 <p>I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &hellip;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)</p>
 <p><a href="https://github.com/marcoscheel/M365.TeamsBackup">https://github.com/marcoscheel/M365.TeamsBackup</a></p>
 <p>In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself.</p>
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/">App Permissions für Microsoft Graph Calls automatisiert einrichten</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-08</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;393 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/">App Permissions für Microsoft Graph Calls automatisiert einrichten</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-08</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        <p>Für unser Glück &amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die <a href="https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0" target="_blank">PowerShell AZ</a> und die <a href="https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.</p>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;393 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/azure-ad">Azure AD</a>&nbsp;<a href="/tags/microsoft-graph">Microsoft Graph</a>&nbsp;<a href="/tags/development">Development</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    <p>Für unser Glück &amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die <a href="https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0" target="_blank">PowerShell AZ</a> und die <a href="https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.</p>
 <p>Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf <a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">Access Reviews</a> Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:</p>
 <pre><code class="language-PowerShell">az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
 az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 62a82d76-70ea-41e2-9197-370581804d09=Role #msgraph Group.ReadWrite.All
 az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions ef5f7d5c-338f-44b0-86c3-351f46c8bb5f=Role #msgraph AccessReview.ReadWrite.All
 az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 60a901ed-09f7-4aa5-a16e-7dd3d6f9de36=Role #msgraph ProgramControl.ReadWrite.All
 </code></pre>
-    </div>
+  </div>
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -217,7 +227,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
             <aside class="col-12 col-md-3 float-left sidebar">
     
     <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
+        <sidebarh3>Seiten</sidebarh3>
         <ul>
             
             <li>
@@ -248,7 +258,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     </div>
     
     <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
+        <sidebarh3>Links</sidebarh3>
         <ul>
             
             <li>
@@ -271,7 +281,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     </div>
     
     <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
+        <sidebarh3>Tags</sidebarh3>
         <div>
             
             <span>
@@ -355,7 +365,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
   <div class="sidebar-wrapper">
     
     <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
+        <sidebarh3>Seiten</sidebarh3>
         <ul>
             
             <li>
@@ -386,7 +396,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     </div>
     
     <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
+        <sidebarh3>Links</sidebarh3>
         <ul>
             
             <li>
@@ -409,7 +419,7 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     </div>
     
     <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
+        <sidebarh3>Tags</sidebarh3>
         <div>
             
             <span>
@@ -480,10 +490,10 @@ az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2021
+            <span>&copy; 2021-2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
-                
-                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                 | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
                    target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
                                                     target="_blank">Hugo</a> 
             </span>

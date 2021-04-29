@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     
@@ -29,6 +29,7 @@
 <meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 
 
+<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel" title="Marco Scheel aka GeekDotNet" />
 
 <meta property="og:title" content="Search" />
 <meta name="twitter:title" content="Search" />
@@ -72,7 +73,7 @@
 
 
 <link rel="stylesheet" href="/css/custom.css">
-<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel">
+
 
 </head>
 
@@ -93,7 +94,7 @@
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
-            <a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a>
+            <h1><a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a></h1>
             
             <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
             
@@ -117,9 +118,9 @@
     </form>
 </div>
 
-<div class="search-result-info" style="display: none;"><span>[NUM] results ([TIME] ms)</span></div>
-<div class="search-result-info" style="display: none;"><span>Results not found</span></div>
-<div class="search-result-info" style="display: none;"><span>Failed to load index file</span></div>
+<div class="search-result-info" style="display: none;"><span>[NUM] Resultate ([TIME] ms)</span></div>
+<div class="search-result-info" style="display: none;"><span>Keine Übereinstimmung</span></div>
+<div class="search-result-info" style="display: none;"><span>Laden des Index fehlgeschlagen!</span></div>
 <div id="search-result"></div>
 <script id="search-result-template" type="text/fuse-template">
     <% for(var i = 0; i < $data.length; i++){ %>
@@ -130,7 +131,7 @@
         <div class="post-item post-meta-archive">
             <span><i class="iconfont icon-today-sharp"></i>&nbsp;<%= $data[i].item.date %></span>
             <span>
-                <i class="iconfont icon-pricetags-sharp"></i>&nbsp;<% if ($data[i].item.tags && $data[i].item.tags.length > 0) { %><% for(var j = 0; j < $data[i].item.tags.length; j++){ %><%= $data[i].item.tags[j] %>&nbsp;<% } %><% } else { %>No tag<% } %>
+                <i class="iconfont icon-pricetags-sharp"></i>&nbsp;<% if ($data[i].item.tags && $data[i].item.tags.length > 0) { %><% for(var j = 0; j < $data[i].item.tags.length; j++){ %><%= $data[i].item.tags[j] %>&nbsp;<% } %><% } else { %>Kein Tag<% } %>
             </span>
         </div>
     </div>
@@ -141,7 +142,7 @@
             <aside class="col-12 col-md-3 float-left sidebar">
     
     <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
+        <sidebarh3>Seiten</sidebarh3>
         <ul>
             
             <li>
@@ -172,7 +173,7 @@
     </div>
     
     <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
+        <sidebarh3>Links</sidebarh3>
         <ul>
             
             <li>
@@ -195,7 +196,7 @@
     </div>
     
     <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
+        <sidebarh3>Tags</sidebarh3>
         <div>
             
             <span>
@@ -279,7 +280,7 @@
   <div class="sidebar-wrapper">
     
     <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
+        <sidebarh3>Seiten</sidebarh3>
         <ul>
             
             <li>
@@ -310,7 +311,7 @@
     </div>
     
     <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
+        <sidebarh3>Links</sidebarh3>
         <ul>
             
             <li>
@@ -333,7 +334,7 @@
     </div>
     
     <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
+        <sidebarh3>Tags</sidebarh3>
         <div>
             
             <span>
@@ -404,10 +405,10 @@
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2021
+            <span>&copy; 2021-2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
-                
-                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                 | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
                    target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
                                                     target="_blank">Hugo</a> 
             </span>

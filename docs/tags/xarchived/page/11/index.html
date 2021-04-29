@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     
@@ -29,6 +29,7 @@
 <meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
 
 
+<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel" title="Marco Scheel aka GeekDotNet" />
 
 <meta property="og:title" content="xArchived" />
 <meta name="twitter:title" content="xArchived" />
@@ -72,7 +73,7 @@
 
 
 <link rel="stylesheet" href="/css/custom.css">
-<link rel="alternate" type="application/rss+xml" href="http://feeds.marcoscheel.de/marcoscheel">
+
 
 </head>
 
@@ -93,7 +94,7 @@
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
-            <a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a>
+            <h1><a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a></h1>
             
             <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
             
@@ -108,318 +109,231 @@
                 
 
 <div class="page-info">
-    <span>Posts with the tag xArchived: </span>
+  <span>Beiträge mit dem Tag xArchived: </span>
 </div>
 
 
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/05/13/arbeiten-mit-dem-sharepoint-site-directory/">Arbeiten mit dem Sharepoint &#34;Site Directory&#34;</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;139 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2008/05/13/arbeiten-mit-dem-sharepoint-site-directory/">Arbeiten mit dem Sharepoint &#34;Site Directory&#34;</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Ich habe mich vor kurzem etwas intensiver mit dem MS SiteDirectory Template beschäftigt. Es ging darum, hier automatisch MetaDaten zu aktualisieren. Die &ldquo;Kindsite&rdquo;, die im SiteDirectory einen Eintrag in der &ldquo;Sites&rdquo; Liste hat, sollte unter speziellen Bedingungen aktualisiert werden. Nun ist die Frage wie kommt man ran? Die URL irgendwie speichern? Aber wer macht das? Wann macht man das? Ein Griff zur PowerShell hat schnell zu Tage gefördert, dass alle Anstrengungen überflüssig sind. Zumindest für Sites, die über das SiteDirectory erstellt wurden, findet man in den Properties des SPWeb Objektes die nötigen Informationen: * SPWeb.AllProperties[&ldquo;DefaultSiteDirectorySiteId&rdquo;]
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;139 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Ich habe mich vor kurzem etwas intensiver mit dem MS SiteDirectory Template beschäftigt. Es ging darum, hier automatisch MetaDaten zu aktualisieren. Die &ldquo;Kindsite&rdquo;, die im SiteDirectory einen Eintrag in der &ldquo;Sites&rdquo; Liste hat, sollte unter speziellen Bedingungen aktualisiert werden. Nun ist die Frage wie kommt man ran? Die URL irgendwie speichern? Aber wer macht das? Wann macht man das? Ein Griff zur PowerShell hat schnell zu Tage gefördert, dass alle Anstrengungen überflüssig sind. Zumindest für Sites, die über das SiteDirectory erstellt wurden, findet man in den Properties des SPWeb Objektes die nötigen Informationen: * SPWeb.AllProperties[&ldquo;DefaultSiteDirectorySiteId&rdquo;]
 Damit kann ich mir die SiteCollection öffen * SPWeb.
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/05/13/mysite-creation-fehler/">MySite Creation Fehler</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;129 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2008/05/13/mysite-creation-fehler/">MySite Creation Fehler</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        In zwei Installationen hatte ich jetzt schon einen Fehler beim Erzeugen von MySites, obwohl das bisher ohne Problem funktioniert hat. Es wird wohl an SP1 oder einem anderen MS OS Update liegen, da auch bisher Farmen, die über 1 Jahr ohne Probleme liefen, betroffen sind. Bei der bereits laufenden Farm hat mir der System Center Operations Manager (SCOM oder OpsMgr) den Gefallen getan, mich darüber zu informieren, da nicht unbeingt jeder User sich darüber beschwert, wenn etwas nicht funktioniert, was er bisher noch nciht kennt :-)
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;129 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    In zwei Installationen hatte ich jetzt schon einen Fehler beim Erzeugen von MySites, obwohl das bisher ohne Problem funktioniert hat. Es wird wohl an SP1 oder einem anderen MS OS Update liegen, da auch bisher Farmen, die über 1 Jahr ohne Probleme liefen, betroffen sind. Bei der bereits laufenden Farm hat mir der System Center Operations Manager (SCOM oder OpsMgr) den Gefallen getan, mich darüber zu informieren, da nicht unbeingt jeder User sich darüber beschwert, wenn etwas nicht funktioniert, was er bisher noch nciht kennt :-)
 Die Lösung:
 http://forums.microsoft.com/TechNet/ShowPost.aspx?PostID=1196717&amp;SiteID=17&amp;pageid=0
 Bei mir hat auch das Aufnehmen in die locale Admingruppe geholfen, irgendwie unschön, aber solange ich nicht mehr Zeit habe, das bei MS zu verifizieren und ein Hotfix anzufordern (wenn er denn existiert), wird es erstmal so bleiben.
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2008/05/13/ad-properties-fr-profile-import/">AD Properties für Profile Import</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;64 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2008/05/13/ad-properties-fr-profile-import/">AD Properties für Profile Import</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Es kommt immer mal wieder vor, dass man mit den Standard Properties des Profile Imports (im Shared Service Provider zu finden) nicht auskommt. Zum Beispiel ist das AD Feld für das Unternehmen (Company) nicht gemapped. Eine schnelle Suche hat mich hier her geführt:
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;64 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Es kommt immer mal wieder vor, dass man mit den Standard Properties des Profile Imports (im Shared Service Provider zu finden) nicht auskommt. Zum Beispiel ist das AD Feld für das Unternehmen (Company) nicht gemapped. Eine schnelle Suche hat mich hier her geführt:
 http://www.computerperformance.co.uk/Logon/LDAP_attributes_active_directory.htm
 Vielleicht hilft es euch ja auch weiter. Mir hat es geholfen, mein Property aus dem AD zu fischen.
 Ciao Marco
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2007/12/04/onenote-als-kalender-darstellen/">OneNote als Kalender darstellen</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-12-04</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;81 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2007/12/04/onenote-als-kalender-darstellen/">OneNote als Kalender darstellen</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-12-04</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Ich als alter Tablet PC user bin ein totaler Microsoft Office OneNote 2007 Fan. In Kombination mit meiner MySite (als Ablageort meiner OneNote Files) ist es das Produktivitätstool schlecht hin. Ich zeichne beim Kunden oft die Start und Endzeiten meines Aufenthalts auf. Somit eignet sich das ganze auch als gedächnisstütze für die Zeiterfassung die ich zu erledigen habe. Bei der zeitlichen Darstellung hilft ein Tool von Josh Einstein (Freeware):
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;81 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Ich als alter Tablet PC user bin ein totaler Microsoft Office OneNote 2007 Fan. In Kombination mit meiner MySite (als Ablageort meiner OneNote Files) ist es das Produktivitätstool schlecht hin. Ich zeichne beim Kunden oft die Start und Endzeiten meines Aufenthalts auf. Somit eignet sich das ganze auch als gedächnisstütze für die Zeiterfassung die ich zu erledigen habe. Bei der zeitlichen Darstellung hilft ein Tool von Josh Einstein (Freeware):
 
 Das Tools heißt &ldquo;OneNote Calendar&rdquo; gibt es hier zum Download.
 Ciao Marco
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2007/12/04/citrix-und-sharepoint/">Citrix und Sharepoint</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-12-04</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;147 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2007/12/04/citrix-und-sharepoint/">Citrix und Sharepoint</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-12-04</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Ich habe fur einen Kunden vor einiger zeit auf der testumgebung die damalige Beta fur die Citrix Integration installiert. Es geht hautsachlich darum, den AppDelivery Webpart zu nutzen. In der Beta hat das auf einer Maschine auch wunderbar funktioniert. In der Produktion haben wir aber 2 WFE Server und einen APP Server. Die Administration hat immer einen Fehler geworfen:
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;147 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Ich habe fur einen Kunden vor einiger zeit auf der testumgebung die damalige Beta fur die Citrix Integration installiert. Es geht hautsachlich darum, den AppDelivery Webpart zu nutzen. In der Beta hat das auf einer Maschine auch wunderbar funktioniert. In der Produktion haben wir aber 2 WFE Server und einen APP Server. Die Administration hat immer einen Fehler geworfen:
 
 Ich liebe es: Unknown Error. Da wir in der Produktion sind, kann ich kein erweitertes Fehlerhandling einschalten.
 Losung:
 Ess fehlte folgender Eintrag in der WebConfig (system.web/compilation/expressionBuilders):
 Alternative:
 Die Farm ist so aufgebaut, dass vom APP Server deployed wird. Der AppServer selber aber nicht die die WebApplication Rolle hat.
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2007/11/28/genuine-validation-failed/">Genuine Validation failed</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-28</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;82 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2007/11/28/genuine-validation-failed/">Genuine Validation failed</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-28</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Unglaublich. Da ich gerade noch nicht sicher bin, ob mein aktuelle Installtion auf dem Lenovo lange lebt, habe ich mir nicht die Mühe gemacht und einige Office 2007 Tools erstmal ohne Key, also als Trial (25x kann man alles öffnen) installiert. Bisher habe ich Sie auch nicht gebraucht&hellip; und nun das! Beim Download Versuch des PDF/XPS Add-Ins werde ich abgewiesen&hellip;
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;82 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Unglaublich. Da ich gerade noch nicht sicher bin, ob mein aktuelle Installtion auf dem Lenovo lange lebt, habe ich mir nicht die Mühe gemacht und einige Office 2007 Tools erstmal ohne Key, also als Trial (25x kann man alles öffnen) installiert. Bisher habe ich Sie auch nicht gebraucht&hellip; und nun das! Beim Download Versuch des PDF/XPS Add-Ins werde ich abgewiesen&hellip;
 
 Naja, dann doch über den internen Fileserver :-S Einfach nur ärgerlich, ob das wirklich MS oder dem Kunden weiter hilft.
 Ciao Marco
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2007/11/20/vista-vs2008-download-akamai-und-wo-sind-meine-dateien/">Vista, VS2008 Download, Akamai und wo sind meine Dateien?</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-19</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;73 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2007/11/20/vista-vs2008-download-akamai-und-wo-sind-meine-dateien/">Vista, VS2008 Download, Akamai und wo sind meine Dateien?</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-19</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Endlich ist man am &ldquo;Ende&rdquo; des Tags angekommen und möchte zumindest noch das fertig heruntergeladene VS2008 installieren&hellip; und dann so was&hellip; keine Files da? Irgendwie hat der Download Manager was von &ldquo;Virtualized&rdquo; oder ähnlichem gesagt&hellip;. hätte ich den Folder doch nicht zu gemacht :-(
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;73 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Endlich ist man am &ldquo;Ende&rdquo; des Tags angekommen und möchte zumindest noch das fertig heruntergeladene VS2008 installieren&hellip; und dann so was&hellip; keine Files da? Irgendwie hat der Download Manager was von &ldquo;Virtualized&rdquo; oder ähnlichem gesagt&hellip;. hätte ich den Folder doch nicht zu gemacht :-(
 Ein kurzer Weg zu Google hat folgenden Link hervorgebracht:
 http://kb.adobe.com/selfservice/viewContent.do?externalId=kb400534&amp;sliceId=1#FindVFolder
 Ich würde sagen es macht es im ersten Schritt nicht &ldquo;sicher&rdquo;, sondern es verunsichert.
 Danke Google und Danke Adobe
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2007/11/19/vs-2008-und-vs-2005-side-by-side/">VS 2008 und VS 2005 Side-By-Side</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-19</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;104 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2007/11/19/vs-2008-und-vs-2005-side-by-side/">VS 2008 und VS 2005 Side-By-Side</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-19</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Wie bei jedem Release einer neuen Visual Studio Version stellt sich erneut die Frage, ob die neue und die alte Version zusammen leben können. Der Mann der es wissen muss, hat dazu eine klare Aussage:
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;104 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Wie bei jedem Release einer neuen Visual Studio Version stellt sich erneut die Frage, ob die neue und die alte Version zusammen leben können. Der Mann der es wissen muss, hat dazu eine klare Aussage:
 Note that VS 2008 runs side-by-side with VS 2005 - so it is totally fine to have both on the same machine (you will not have any problems with them on the same box). Source: [ScottGu](http://weblogs.asp.net/scottgu/archive/2007/11/19/visual-studio-2008-and-net-3-5-released.aspx)    Neben dem Kommentar gibt es noch andere Interessante Info&rsquo;s im Überblick. Durch das neue Multi-Targeting Feature hoffe ich, nach der nächsten Neu-Installation nur noch ein Microsoft Visual Studio installieren zu müssen.
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2007/11/19/die-nchste-generation-ist-da-visual-studio-2008/">Die nächste Generation ist da – Visual Studio 2008</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-19</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;155 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2007/11/19/die-nchste-generation-ist-da-visual-studio-2008/">Die nächste Generation ist da – Visual Studio 2008</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-19</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Eben wollte ich eigentlich nur einen Download aus dem MSDN Subscriber Bereich machen, da ich heute Nachmittag Probleme hatte auf die Seiten zu kommen. Ich wurde mit folgender Fehlermeldung begrüßt:
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;155 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Eben wollte ich eigentlich nur einen Download aus dem MSDN Subscriber Bereich machen, da ich heute Nachmittag Probleme hatte auf die Seiten zu kommen. Ich wurde mit folgender Fehlermeldung begrüßt:
 
 Und eben hatt es dann geklappt, als über bink.nu dann die Nachricht kam, dass das .NET Framework 3.5 Released wurde, was eigentlich nur bedeuten kann, dass auch das zugehörige Visual Studio online sein muss. Siehe da&hellip; heute ist Release Day :-) Und die Fehler waren eventuell Vorboten des Go-Live.
 
 Für den Download benötigt man den Downloadmanager von Akamai&hellip; die wohl dafür sorge tragen, dass selbst an so einem Tag ich es schaffe meine 6MBit voll auszulasten :-) Und man sollte seinen Popup-Blocker (IE7) mal eben ausschalten.
-    </div>
+  </div>
 </div>
 
 <div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2007/11/18/sharepointmoss-statistiken-securityberblick/">SharePoint/MOSS Statistiken &#43; Securityüberblick</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-17</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;338 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+  <h2 class="post-item post-title">
+    <a href="https://marcoscheel.de/2007/11/18/sharepointmoss-statistiken-securityberblick/">SharePoint/MOSS Statistiken &#43; Securityüberblick</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2007-11-17</span>
 
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Für das Abrufen der Zugriffzaheln auf einen SharePoint Farm gibt es erstmal zwei Möglichkeiten: 1. Die eingebauten &ldquo;Usage Statistics&rdquo;: Diese sind allerdings immer auf die SiteCollection (SPSite) oder die Site (SPWeb) bezogen. Eine Farm übergreifendes Reporting ist so nicht möglich. 2. Die IIS Logfiles: Die IIS Logfiles können über klassische Tools ausgwertet werden. Sobald die Farm aus mehr als einer Application und mehr als einem Server besteht, muß man die Daten aggregieren.
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;338 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Für das Abrufen der Zugriffzaheln auf einen SharePoint Farm gibt es erstmal zwei Möglichkeiten: 1. Die eingebauten &ldquo;Usage Statistics&rdquo;: Diese sind allerdings immer auf die SiteCollection (SPSite) oder die Site (SPWeb) bezogen. Eine Farm übergreifendes Reporting ist so nicht möglich. 2. Die IIS Logfiles: Die IIS Logfiles können über klassische Tools ausgwertet werden. Sobald die Farm aus mehr als einer Application und mehr als einem Server besteht, muß man die Daten aggregieren.
 Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, daß es für die SiteCollection (SPSite) übergreifenden Situationen meist um Intranet Konfigurationen geht sind die klassischen Webreportings selten ausrechend.
-    </div>
+  </div>
 </div>
 
 
-
-
-
-
-
-
-<div class="pagination">
-    
-    <div class="pag-first">
-        <a href="/tags/xarchived/"><i class="iconfont icon-caret-back-circle-sharp"></i></a>
-    </div>
-    
-    
-    <div class="pag-previous">
-        <a href="/tags/xarchived/page/10/"><i class="iconfont icon-chevron-back-circle-sharp"></i></a>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="pag-item">
-        <a href="/tags/xarchived/page/7/">7</a>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="pag-item">
-        <a href="/tags/xarchived/page/8/">8</a>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="pag-item">
-        <a href="/tags/xarchived/page/9/">9</a>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="pag-item">
-        <a href="/tags/xarchived/page/10/">10</a>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="pag-item pag-current">
-        <a href="/tags/xarchived/page/11/">11</a>
-    </div>
-    
-    
-    
-    
-</div>
-
-
-
+<div class="pagination"><div class="pag-first">
+    <a href="/tags/xarchived/"><i class="iconfont icon-caret-back-circle-sharp"></i></a>
+  </div><div class="pag-previous">
+    <a href="/tags/xarchived/page/10/"><i class="iconfont icon-chevron-back-circle-sharp"></i></a>
+  </div><div class="pag-item">
+    <a href="/tags/xarchived/page/7/">7</a>
+  </div><div class="pag-item">
+    <a href="/tags/xarchived/page/8/">8</a>
+  </div><div class="pag-item">
+    <a href="/tags/xarchived/page/9/">9</a>
+  </div><div class="pag-item">
+    <a href="/tags/xarchived/page/10/">10</a>
+  </div><div class="pag-item pag-current">
+    <a href="/tags/xarchived/page/11/">11</a>
+  </div></div>
             </div>
             <aside class="col-12 col-md-3 float-left sidebar">
     
     <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
+        <sidebarh3>Seiten</sidebarh3>
         <ul>
             
             <li>
@@ -450,7 +364,7 @@ Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, d
     </div>
     
     <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
+        <sidebarh3>Links</sidebarh3>
         <ul>
             
             <li>
@@ -473,7 +387,7 @@ Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, d
     </div>
     
     <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
+        <sidebarh3>Tags</sidebarh3>
         <div>
             
             <span>
@@ -557,7 +471,7 @@ Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, d
   <div class="sidebar-wrapper">
     
     <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
+        <sidebarh3>Seiten</sidebarh3>
         <ul>
             
             <li>
@@ -588,7 +502,7 @@ Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, d
     </div>
     
     <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
+        <sidebarh3>Links</sidebarh3>
         <ul>
             
             <li>
@@ -611,7 +525,7 @@ Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, d
     </div>
     
     <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
+        <sidebarh3>Tags</sidebarh3>
         <div>
             
             <span>
@@ -682,10 +596,10 @@ Beide Varianten haben also ihre Vor- und Nachteile. Es bleibt noch anzumerken, d
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2021
+            <span>&copy; 2021-2021
                 <a href="https://marcoscheel.de">Marco Scheel</a>
-                
-                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                 | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
                    target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
                                                     target="_blank">Hugo</a> 
             </span>
