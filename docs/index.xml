@@ -16,7 +16,7 @@
       <description>&lt;p&gt;With the &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34; target=&#34;_blank&#34;&gt;Message Center Notification MC234048&lt;/a&gt; Microsoft announced a change to the Microsoft Teams App &amp;ldquo;Incoming Webhook&amp;rdquo;. The URL currently used will be deprecated by mid of April 2021. The exact wording is:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;We will begin transitioning to the new webhook URLs on Monday January 11, 2021; however, existing webhooks URLs will continue to work for three (3) months to allow for migration time
-Source (as of 2021-01-26): &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34;&gt;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&lt;/a&gt;&lt;/p&gt;
+Source (as of 2021-01-26): &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34; target=&#34;_blank&#34;&gt;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;If you created a webhook prior January 11, 2021 you will need to update your existing connector configuration!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This app is in regular use by most companies, if not disabled by a Teams App permission policy in the tenant. The app is a very easy option to post a message to a team. The URI of a webhook is cryptic and the only security in place. If you send a well-crafted HTTP message to the endpoint, you will create a Teams post in the channel the app is connected to. Here is the &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook&#34; target=&#34;_blank&#34;&gt;Microsoft documentation&lt;/a&gt; and a great &lt;a href=&#34;https://d365dotblog.com/2021/01/18/post-message-to-teams-using-incoming-webhook/&#34; target=&#34;_blank&#34;&gt;community article&lt;/a&gt;.&lt;/p&gt;
@@ -276,7 +276,7 @@ $servicePrincipal.Oauth2Permissions | ? { $_.Value -in $servicePrincipalNameOaut
 &lt;/p&gt;
 &lt;p&gt;I really wanted to try a few things regarding Microsoft Graph, the Microsoft Graph SDK and Microsoft Teams. The Microsoft Teamwork part of the API has a solid starting point (if you look at the beta version). The API is getting &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-concept-overview&#34; target=&#34;_blank&#34;&gt;very mature set of capabilities&lt;/a&gt;. I&amp;rsquo;m a huge fan of &lt;a href=&#34;https://azure.microsoft.com/en-us/services/functions/&#34; target=&#34;_blank&#34;&gt;Azure Functions&lt;/a&gt; and I&amp;rsquo;ve done quite a few projects that are talking to the Microsoft Graph using &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions&#34; target=&#34;_blank&#34;&gt;Application Permissions&lt;/a&gt;. I&amp;rsquo;ve checked the documentation and if I wanted to go this route I would have to request &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-protected-apis&#34; target=&#34;_blank&#34;&gt;special permissions&lt;/a&gt; from Microsoft to access the content without a real user. For now I decided to go with a console application and a &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code&#34; target=&#34;_blank&#34;&gt;Azure AD Device Code flow&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &amp;hellip;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34;&gt;https://github.com/marcoscheel/M365.TeamsBackup&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34; target=&#34;_blank&#34;&gt;https://github.com/marcoscheel/M365.TeamsBackup&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself.&lt;/p&gt;
 &lt;h2 id=&#34;check-your-migration-vendor-of-choice-first&#34;&gt;Check your migration vendor of choice first!&lt;/h2&gt;
 &lt;p&gt;I have only limited experience with the following tools. But these vendors are the big players, and you can easily get in touch with them to get a demo or further information.&lt;/p&gt;
@@ -632,10 +632,10 @@ Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &amp;quot;OneDri
       <description>&lt;p&gt;My blog now has a new home. It is no longer hosted on Tumblr.com and it is now hosted on GitHub Pages. The main reason to get of Tumblr is the poor image handling. The overall experience was OK. I liked the editor and best of all it is all free including running on your own domain! Having my own name was a key driver. I was running my blog on my own v-server back in the days. I tried a lot of platforms (blogger.com, wordpress.com and prior Tumblr I ran on a &amp;ldquo;self&amp;rdquo; hosted WordPress instance). The only constant was and will be my RSS hosting. Believe it or not I&amp;rsquo;m still running Feedburner from Google. One service that is still not (yet?) killed by search giant (RIP Google Reader). With all the previous choices there was also on driving factor: &lt;strong&gt;I&amp;rsquo;m cheap, can I get it for free? Yes and it will stay 100% free for you and me!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Today is the day I switched to a static website! It is 2020 and the hipster way to go. So, what does it take to run a blog on a static site generator?&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;A static site generator: &lt;a href=&#34;https://gohugo.io&#34;&gt;https://gohugo.io&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;A place to host the source files: &lt;a href=&#34;https://github.com&#34;&gt;https://github.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;A place to host the generated website: &lt;a href=&#34;https://pages.github.com&#34;&gt;https://pages.github.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;A method to publish after I committed a new blog post: This but later &lt;a href=&#34;https://github.com/features/actions&#34;&gt;https://github.com/features/actions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A static site generator: &lt;a href=&#34;https://gohugo.io&#34; target=&#34;_blank&#34;&gt;https://gohugo.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A place to host the source files: &lt;a href=&#34;https://github.com&#34; target=&#34;_blank&#34;&gt;https://github.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A place to host the generated website: &lt;a href=&#34;https://pages.github.com&#34; target=&#34;_blank&#34;&gt;https://pages.github.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A method to publish after I committed a new blog post: This but later &lt;a href=&#34;https://github.com/features/actions&#34; target=&#34;_blank&#34;&gt;https://github.com/features/actions&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Main benefits:&lt;/p&gt;
 &lt;ul&gt;
@@ -653,13 +653,13 @@ Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &amp;quot;OneDri
 &lt;/p&gt;
 &lt;p&gt;Why &lt;a href=&#34;https://gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; and not &lt;a href=&#34;https://jekyllrb.com/&#34; target=&#34;_blank&#34;&gt;Jekyll&lt;/a&gt;? Because there are blogs out there that I&amp;rsquo;m reading, and I liked the idea of being one of them :) Who?&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Andrew Connell: &lt;a href=&#34;https://www.andrewconnell.com/blog/hosting-hugo-on-azure&#34;&gt;https://www.andrewconnell.com/blog/hosting-hugo-on-azure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Maximilian Melcher: &lt;a href=&#34;https://melcher.dev/2017/11/bye-bye-wordpress-hello-hugo&#34;&gt;https://melcher.dev/2017/11/bye-bye-wordpress-hello-hugo&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Matthew McDermott: &lt;a href=&#34;https://www.ableblue.com/blog/archive/2019/02/20/learning-hugo-on-azure-part-1&#34;&gt;https://www.ableblue.com/blog/archive/2019/02/20/learning-hugo-on-azure-part-1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Jason Hand: &lt;a href=&#34;https://dev.to/jasonhand/10-tips-for-building-and-deploying-hugo-websites-on-azure-static-web-apps-307l&#34;&gt;https://dev.to/jasonhand/10-tips-for-building-and-deploying-hugo-websites-on-azure-static-web-apps-307l&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Aaron Wislang: &lt;a href=&#34;https://www.aaronmsft.com/posts/static-sites-hugo-azure-cloudflare&#34;&gt;https://www.aaronmsft.com/posts/static-sites-hugo-azure-cloudflare&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Andrew Connell: &lt;a href=&#34;https://www.andrewconnell.com/blog/hosting-hugo-on-azure&#34; target=&#34;_blank&#34;&gt;https://www.andrewconnell.com/blog/hosting-hugo-on-azure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Maximilian Melcher: &lt;a href=&#34;https://melcher.dev/2017/11/bye-bye-wordpress-hello-hugo&#34; target=&#34;_blank&#34;&gt;https://melcher.dev/2017/11/bye-bye-wordpress-hello-hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Matthew McDermott: &lt;a href=&#34;https://www.ableblue.com/blog/archive/2019/02/20/learning-hugo-on-azure-part-1&#34; target=&#34;_blank&#34;&gt;https://www.ableblue.com/blog/archive/2019/02/20/learning-hugo-on-azure-part-1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jason Hand: &lt;a href=&#34;https://dev.to/jasonhand/10-tips-for-building-and-deploying-hugo-websites-on-azure-static-web-apps-307l&#34; target=&#34;_blank&#34;&gt;https://dev.to/jasonhand/10-tips-for-building-and-deploying-hugo-websites-on-azure-static-web-apps-307l&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Aaron Wislang: &lt;a href=&#34;https://www.aaronmsft.com/posts/static-sites-hugo-azure-cloudflare&#34; target=&#34;_blank&#34;&gt;https://www.aaronmsft.com/posts/static-sites-hugo-azure-cloudflare&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There is even content on Microsoft Docs on hosting Hugo on Azure Static Websites: &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo&#34;&gt;https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There is even content on Microsoft Docs on hosting Hugo on Azure Static Websites: &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo&#34; target=&#34;_blank&#34;&gt;https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;It was easy to start. Just follow the steps on the &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34; target=&#34;_blank&#34;&gt;Getting started&lt;/a&gt; using &lt;a href=&#34;https://gohugo.io/getting-started/installing#chocolatey-windows&#34; target=&#34;_blank&#34;&gt;choco installation for Windows users&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve chosen the &lt;a href=&#34;https://github.com/amzrk2/hugo-theme-fuji/&#34; target=&#34;_blank&#34;&gt;Fuji theme&lt;/a&gt; as a great staring point and integrated it as a git submodule. As mentioned in the docs I copied the settings into my config.toml and I was ready to go.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo new post/hugo/2020/10/my-blog-has-moved.md
@@ -724,7 +724,7 @@ body .markdown-body strong{
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;content-migration&#34;&gt;Content migration&lt;/h3&gt;
 &lt;p&gt;I also need to take care about my old content living on Tumblr and if possible, on WordPress. It was kind of easy. I checked the &lt;a href=&#34;https://gohugo.io/tools/migrations/&#34; target=&#34;_blank&#34;&gt;migration article on the Hugo docs&lt;/a&gt; site.&lt;/p&gt;
-&lt;p&gt;Tumblr: &lt;a href=&#34;https://gohugo.io/tools/migrations/#tumblr&#34;&gt;https://gohugo.io/tools/migrations/#tumblr&lt;/a&gt;&lt;br/&gt;
+&lt;p&gt;Tumblr: &lt;a href=&#34;https://gohugo.io/tools/migrations/#tumblr&#34; target=&#34;_blank&#34;&gt;https://gohugo.io/tools/migrations/#tumblr&lt;/a&gt;&lt;br/&gt;
 All of the solutions require a Tumblr app registration, so I created on. To not mess with my fresh Windows install I enabled WSL2 and used the Ubuntu distro. This way I was able to clone the &lt;a href=&#34;https://github.com/carlmjohnson/tumblr-importr&#34; target=&#34;_blank&#34;&gt;tumblr-importr&lt;/a&gt; repo and build my application. The important part was to place the GO binary into the right location. Otherwise the command was unknown. After that I was able to generate the needed files.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-BASH&#34;&gt;git clone https://github.com/carlmjohnson/tumblr-importr
 cd tumblr-importr
@@ -755,7 +755,7 @@ Get-ChildItem -Filter &amp;quot;*.md&amp;quot; -Recurse | ForEach-Object {
     Set-Content -Value $content -Path ($file.FullName)
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;WordPress: &lt;a href=&#34;https://gohugo.io/tools/migrations/#wordpress&#34;&gt;https://gohugo.io/tools/migrations/#wordpress&lt;/a&gt;&lt;br/&gt;
+&lt;p&gt;WordPress: &lt;a href=&#34;https://gohugo.io/tools/migrations/#wordpress&#34; target=&#34;_blank&#34;&gt;https://gohugo.io/tools/migrations/#wordpress&lt;/a&gt;&lt;br/&gt;
 Once again, I used my handy WSL2 instance to not mess with not loved language. So a save route was to use the WordPress export feature and the repo &lt;a href=&#34;https://github.com/wooni005/exitwp-for-hugo&#34; target=&#34;_blank&#34;&gt;exitwp-for-hugo&lt;/a&gt;. I cloned the repo and a few &amp;ldquo;sudo apt-get&amp;rdquo; later I was ready to run the python script. I placed my downloaded XML into the &amp;ldquo;wordpress-xml&amp;rdquo; folder. I ended up changing the exitwp.py file to ignore all tags and replace it with a single &amp;ldquo;xArchived&amp;rdquo;.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;git clone https://github.com/wooni005/exitwp-for-hugo.git
 cd exitwp-for-hugo
@@ -765,7 +765,7 @@ cd exitwp-for-hugo
 &lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201011-my-blog-has-moved-hugo--hugo-content-posts.jpg&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
-&lt;p&gt;Now that the content is available on my local drive and I&amp;rsquo;m able to generate the static files. It is already a git repo so where to host the primary authority? So, the Hugo site with all config and logic will go to GitHub. There are only two choices for me. GitHub or Azure DevOps. Microsoft is owning both services. Private repos are free in both services. It looks like in the future Azure DevOps will not get all the love and that is why my website source code is hosted on GitHub: &lt;a href=&#34;https://github.com/marcoscheel/marcoscheel-de&#34;&gt;https://github.com/marcoscheel/marcoscheel-de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now that the content is available on my local drive and I&amp;rsquo;m able to generate the static files. It is already a git repo so where to host the primary authority? So, the Hugo site with all config and logic will go to GitHub. There are only two choices for me. GitHub or Azure DevOps. Microsoft is owning both services. Private repos are free in both services. It looks like in the future Azure DevOps will not get all the love and that is why my website source code is hosted on GitHub: &lt;a href=&#34;https://github.com/marcoscheel/marcoscheel-de&#34; target=&#34;_blank&#34;&gt;https://github.com/marcoscheel/marcoscheel-de&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201011-my-blog-has-moved-hugo--github-private.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;h2 id=&#34;github-pages&#34;&gt;GitHub Pages&lt;/h2&gt;
@@ -776,7 +776,7 @@ cd exitwp-for-hugo
 &lt;blockquote&gt;
 &lt;p&gt;Websites for you and your projects. Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;For every account GitHub is offering &lt;strong&gt;one&lt;/strong&gt; &lt;a href=&#34;https://pages.github.com/&#34; target=&#34;_blank&#34;&gt;GitHub Pages&lt;/a&gt; repository. I created the repository at: &lt;a href=&#34;https://github.com/marcoscheel/marcoscheel.github.io&#34;&gt;https://github.com/marcoscheel/marcoscheel.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For every account GitHub is offering &lt;strong&gt;one&lt;/strong&gt; &lt;a href=&#34;https://pages.github.com/&#34; target=&#34;_blank&#34;&gt;GitHub Pages&lt;/a&gt; repository. I created the repository at: &lt;a href=&#34;https://github.com/marcoscheel/marcoscheel.github.io&#34; target=&#34;_blank&#34;&gt;https://github.com/marcoscheel/marcoscheel.github.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Normally the content will be server on the github.io domain, but through the settings we can add a CNAME to the site. To achieve this we need to put a file called &amp;ldquo;CNAME&amp;rdquo; into the root directory. For my Hugo site and the publish process I placed the file into the &amp;ldquo;static&amp;rdquo; folder so every time the site is generated the file will be copied to the root of the site. Once the CNAME is in place we configure the HTTPS redirect.&lt;/p&gt;
 &lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201011-my-blog-has-moved-hugo--githubpages-https.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
@@ -829,12 +829,12 @@ $setting = Get-AzureADDirectorySetting | Where-Object { $_.DisplayName -eq &amp;
 if ($null -eq $setting){
     Write-Host &amp;quot;Not directory settings for Group.Unified found. Create new!&amp;quot; -ForegroundColor Green;
     $settingIsNew = $true;
-    $aaddirtempid = (Get-AzureADDirectorySettingTemplate | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot; }Id;
+    $aaddirtempid = (Get-AzureADDirectorySettingTemplate | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot; }).Id;
     $template = Get-AzureADDirectorySettingTemplate -Id $aaddirtempid;
     $setting = $template.CreateDirectorySetting();
 }
 else{
-    Write-Host &amp;quot;Directory settings for Group.Unified found. Current value for EnableMIPLabels:&amp;quot; oregroundColor Green;
+    Write-Host &amp;quot;Directory settings for Group.Unified found. Current value for EnableMIPLabels:&amp;quot; -ForegroundColor Green;
     Write-Host $setting[&amp;quot;EnableMIPLabels&amp;quot;];
 }
 
@@ -926,7 +926,7 @@ $setting.Values;
 Erlenbruchstr. 25&lt;br/&gt;
 63071 Offenbach&lt;/p&gt;
 &lt;h1 id=&#34;kontakt&#34;&gt;Kontakt&lt;/h1&gt;
-&lt;p&gt;E-Mail: &lt;a href=&#34;mailto:ich+blog@marcoscheel.de&#34;&gt;ich+blog@marcoscheel.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;E-Mail: &lt;a href=&#34;mailto:ich&amp;#43;blog@marcoscheel.de&#34;&gt;ich+blog@marcoscheel.de&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;haftung-für-inhalte&#34;&gt;Haftung für Inhalte&lt;/h1&gt;
 &lt;p&gt;Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.&lt;/p&gt;
 &lt;p&gt;Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinenGesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.&lt;/p&gt;
@@ -936,7 +936,7 @@ Erlenbruchstr. 25&lt;br/&gt;
 &lt;h1 id=&#34;urheberrecht&#34;&gt;Urheberrecht&lt;/h1&gt;
 &lt;p&gt;Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.&lt;/p&gt;
 &lt;p&gt;Quelle:
-&lt;a href=&#34;https://e-recht24.de&#34;&gt;https://e-recht24.de&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://e-recht24.de&#34; target=&#34;_blank&#34;&gt;https://e-recht24.de&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -989,7 +989,7 @@ Erlenbruchstr. 25&lt;br/&gt;
 &lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/c8/51/26662fe8c7adfa060bd2ef468b8a.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;p&gt;Der Link zum Teilnehmen sieht ungefähr so aus wie jeder andere Meeting Link:
-&lt;a href=&#34;https://teams.microsoft.com/l/meetup-join/19%3ameeting_..&#34;&gt;https://teams.microsoft.com/l/meetup-join/19%3ameeting_..&lt;/a&gt;.
+&lt;a href=&#34;https://teams.microsoft.com/l/meetup-join/19%3ameeting&#34; target=&#34;_blank&#34;&gt;https://teams.microsoft.com/l/meetup-join/19%3ameeting&lt;/a&gt;_&amp;hellip;
 aber für die Teilnehmer-Links endet der Link mit
 &lt;strong&gt;IsBroadcastMeeting&lt;/strong&gt;=true&lt;/p&gt;
 &lt;h2 id=&#34;live-event-produzieren&#34;&gt;Live Event produzieren&lt;/h2&gt;
@@ -1183,9 +1183,9 @@ Meeting policies - Pick a policy (”Global - Org Wide Default”) - Content sha
 &lt;p&gt;Teams team is a modern group in AAD. When you add/remove a member through the Teams user interface, the flow knows exactly which user initiated the change, and the Audit log reflects the correct info. However, if a user adds/removes a member through AAD, the change is synced to the Teams backend without telling Teams who initiated the action. Microsoft Teams picks the first owner of team as the initiator, which is eventually reflected in the Audit log as well.
 &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/known-issues#administration&#34; target=&#34;_blank&#34;&gt;https://docs.microsoft.com/en-us/microsoftteams/known-issues#administration&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Related Issue: [Audit logs may report an incorrect username as initiator when someone has been removed from a Team&lt;/p&gt;
-&lt;p&gt;](&lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/known-issues#teams&#34;&gt;https://docs.microsoft.com/en-us/microsoftteams/known-issues#teams&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;](&lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/known-issues#teams&#34; target=&#34;_blank&#34;&gt;https://docs.microsoft.com/en-us/microsoftteams/known-issues#teams&lt;/a&gt;)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I validated group membership edits from the new Microsoft Admin Portal (&lt;a href=&#34;https://admin.microsoft.com&#34;&gt;https://admin.microsoft.com&lt;/a&gt;) and from the Azure Portal (&lt;a href=&#34;https://portal.azure.com&#34;&gt;https://portal.azure.com&lt;/a&gt;). In both cases the audit logs showed the correct user. In both cases I used my &lt;em&gt;cloudadmin&lt;/em&gt; account that is not part of the team and the audit logs documented the operation as the executing user.
+&lt;p&gt;I validated group membership edits from the new Microsoft Admin Portal (&lt;a href=&#34;https://admin.microsoft.com&#34; target=&#34;_blank&#34;&gt;https://admin.microsoft.com&lt;/a&gt;) and from the Azure Portal (&lt;a href=&#34;https://portal.azure.com&#34; target=&#34;_blank&#34;&gt;https://portal.azure.com&lt;/a&gt;). In both cases the audit logs showed the correct user. In both cases I used my &lt;em&gt;cloudadmin&lt;/em&gt; account that is not part of the team and the audit logs documented the operation as the executing user.
 &lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/f8/43/83112170347dd6c8e493bcb546d6.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
@@ -1459,7 +1459,7 @@ df021288-bdef-4463-88db-98f22de89214 User.Read.All
 &lt;p&gt;Client ID:  50641771-73ac-42fa-9b6f-f25e49ec6871&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Client Secret:  dvMR0c_*_RlxvV*JQQZGDICH6N04ZT2/&lt;/p&gt;
+&lt;p&gt;Client Secret:  dvMR0c_&lt;em&gt;_RlxvV&lt;/em&gt;JQQZGDICH6N04ZT2/&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Scope : &lt;a href=&#34;https://graph.microsoft.com/.default&#34; target=&#34;_blank&#34;&gt;https://graph.microsoft.com/.default&lt;/a&gt;
@@ -1813,13 +1813,13 @@ Implementierung vorzubereiten.&lt;/p&gt;
 &lt;p&gt;Vorher:&lt;/p&gt;
 &lt;roleManager defaultProvider=&#34;DefaultRoleProvider&#34;&gt;
 &lt;providers&gt;
-&lt;p&gt;&lt;add name=&#34;DefaultRoleProvider&#34; type=&#34;System.Web.Providers.DefaultRoleProvider, System.Web.Providers, Version=1.0.0.0, ulture=neutral, PublicKeyToken=31bf3856ad364e35&#34; connectionStringName=&#34;DefaultConnection&#34; applicationName=&#34;/&#34; /&gt;&lt;/p&gt;
+&lt;add name=&#34;DefaultRoleProvider&#34; type=&#34;System.Web.Providers.DefaultRoleProvider, System.Web.Providers, Version=1.0.0.0, ulture=neutral, PublicKeyToken=31bf3856ad364e35&#34; connectionStringName=&#34;DefaultConnection&#34; applicationName=&#34;/&#34; /&gt;
 &lt;/providers&gt;
 &lt;/roleManager&gt;
 &lt;p&gt;Nachher:&lt;/p&gt;
 &lt;p&gt;&amp;lt;roleManager defaultProvider=&amp;ldquo;DefaultRoleProvider&amp;rdquo; &lt;strong&gt;enabled=&amp;ldquo;true&amp;rdquo;&lt;/strong&gt;&amp;gt;&lt;/p&gt;
 &lt;providers&gt;
-&lt;p&gt;&lt;add name=&#34;DefaultRoleProvider&#34; type=&#34;System.Web.Providers.DefaultRoleProvider, System.Web.Providers, Version=1.0.0.0, ulture=neutral, PublicKeyToken=31bf3856ad364e35&#34; connectionStringName=&#34;DefaultConnection&#34; applicationName=&#34;/&#34; /&gt;&lt;/p&gt;
+&lt;add name=&#34;DefaultRoleProvider&#34; type=&#34;System.Web.Providers.DefaultRoleProvider, System.Web.Providers, Version=1.0.0.0, ulture=neutral, PublicKeyToken=31bf3856ad364e35&#34; connectionStringName=&#34;DefaultConnection&#34; applicationName=&#34;/&#34; /&gt;
 &lt;/providers&gt;
 &lt;/roleManager&gt;
 &lt;p&gt;Anschließen konnte ich mit dem Admin User die entsprechende Seite aufrufen :-)&lt;/p&gt;

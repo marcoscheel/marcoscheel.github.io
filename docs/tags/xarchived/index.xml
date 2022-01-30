@@ -43,13 +43,13 @@
 &lt;p&gt;Vorher:&lt;/p&gt;
 &lt;roleManager defaultProvider=&#34;DefaultRoleProvider&#34;&gt;
 &lt;providers&gt;
-&lt;p&gt;&lt;add name=&#34;DefaultRoleProvider&#34; type=&#34;System.Web.Providers.DefaultRoleProvider, System.Web.Providers, Version=1.0.0.0, ulture=neutral, PublicKeyToken=31bf3856ad364e35&#34; connectionStringName=&#34;DefaultConnection&#34; applicationName=&#34;/&#34; /&gt;&lt;/p&gt;
+&lt;add name=&#34;DefaultRoleProvider&#34; type=&#34;System.Web.Providers.DefaultRoleProvider, System.Web.Providers, Version=1.0.0.0, ulture=neutral, PublicKeyToken=31bf3856ad364e35&#34; connectionStringName=&#34;DefaultConnection&#34; applicationName=&#34;/&#34; /&gt;
 &lt;/providers&gt;
 &lt;/roleManager&gt;
 &lt;p&gt;Nachher:&lt;/p&gt;
 &lt;p&gt;&amp;lt;roleManager defaultProvider=&amp;ldquo;DefaultRoleProvider&amp;rdquo; &lt;strong&gt;enabled=&amp;ldquo;true&amp;rdquo;&lt;/strong&gt;&amp;gt;&lt;/p&gt;
 &lt;providers&gt;
-&lt;p&gt;&lt;add name=&#34;DefaultRoleProvider&#34; type=&#34;System.Web.Providers.DefaultRoleProvider, System.Web.Providers, Version=1.0.0.0, ulture=neutral, PublicKeyToken=31bf3856ad364e35&#34; connectionStringName=&#34;DefaultConnection&#34; applicationName=&#34;/&#34; /&gt;&lt;/p&gt;
+&lt;add name=&#34;DefaultRoleProvider&#34; type=&#34;System.Web.Providers.DefaultRoleProvider, System.Web.Providers, Version=1.0.0.0, ulture=neutral, PublicKeyToken=31bf3856ad364e35&#34; connectionStringName=&#34;DefaultConnection&#34; applicationName=&#34;/&#34; /&gt;
 &lt;/providers&gt;
 &lt;/roleManager&gt;
 &lt;p&gt;Anschließen konnte ich mit dem Admin User die entsprechende Seite aufrufen :-)&lt;/p&gt;

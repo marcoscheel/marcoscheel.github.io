@@ -16,7 +16,7 @@
       <description>&lt;p&gt;With the &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34; target=&#34;_blank&#34;&gt;Message Center Notification MC234048&lt;/a&gt; Microsoft announced a change to the Microsoft Teams App &amp;ldquo;Incoming Webhook&amp;rdquo;. The URL currently used will be deprecated by mid of April 2021. The exact wording is:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;We will begin transitioning to the new webhook URLs on Monday January 11, 2021; however, existing webhooks URLs will continue to work for three (3) months to allow for migration time
-Source (as of 2021-01-26): &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34;&gt;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&lt;/a&gt;&lt;/p&gt;
+Source (as of 2021-01-26): &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34; target=&#34;_blank&#34;&gt;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;If you created a webhook prior January 11, 2021 you will need to update your existing connector configuration!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This app is in regular use by most companies, if not disabled by a Teams App permission policy in the tenant. The app is a very easy option to post a message to a team. The URI of a webhook is cryptic and the only security in place. If you send a well-crafted HTTP message to the endpoint, you will create a Teams post in the channel the app is connected to. Here is the &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook&#34; target=&#34;_blank&#34;&gt;Microsoft documentation&lt;/a&gt; and a great &lt;a href=&#34;https://d365dotblog.com/2021/01/18/post-message-to-teams-using-incoming-webhook/&#34; target=&#34;_blank&#34;&gt;community article&lt;/a&gt;.&lt;/p&gt;
@@ -276,7 +276,7 @@ $servicePrincipal.Oauth2Permissions | ? { $_.Value -in $servicePrincipalNameOaut
 &lt;/p&gt;
 &lt;p&gt;I really wanted to try a few things regarding Microsoft Graph, the Microsoft Graph SDK and Microsoft Teams. The Microsoft Teamwork part of the API has a solid starting point (if you look at the beta version). The API is getting &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-concept-overview&#34; target=&#34;_blank&#34;&gt;very mature set of capabilities&lt;/a&gt;. I&amp;rsquo;m a huge fan of &lt;a href=&#34;https://azure.microsoft.com/en-us/services/functions/&#34; target=&#34;_blank&#34;&gt;Azure Functions&lt;/a&gt; and I&amp;rsquo;ve done quite a few projects that are talking to the Microsoft Graph using &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions&#34; target=&#34;_blank&#34;&gt;Application Permissions&lt;/a&gt;. I&amp;rsquo;ve checked the documentation and if I wanted to go this route I would have to request &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-protected-apis&#34; target=&#34;_blank&#34;&gt;special permissions&lt;/a&gt; from Microsoft to access the content without a real user. For now I decided to go with a console application and a &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code&#34; target=&#34;_blank&#34;&gt;Azure AD Device Code flow&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &amp;hellip;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34;&gt;https://github.com/marcoscheel/M365.TeamsBackup&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34; target=&#34;_blank&#34;&gt;https://github.com/marcoscheel/M365.TeamsBackup&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself.&lt;/p&gt;
 &lt;h2 id=&#34;check-your-migration-vendor-of-choice-first&#34;&gt;Check your migration vendor of choice first!&lt;/h2&gt;
 &lt;p&gt;I have only limited experience with the following tools. But these vendors are the big players, and you can easily get in touch with them to get a demo or further information.&lt;/p&gt;
@@ -659,12 +659,12 @@ $setting = Get-AzureADDirectorySetting | Where-Object { $_.DisplayName -eq &amp;
 if ($null -eq $setting){
     Write-Host &amp;quot;Not directory settings for Group.Unified found. Create new!&amp;quot; -ForegroundColor Green;
     $settingIsNew = $true;
-    $aaddirtempid = (Get-AzureADDirectorySettingTemplate | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot; }Id;
+    $aaddirtempid = (Get-AzureADDirectorySettingTemplate | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot; }).Id;
     $template = Get-AzureADDirectorySettingTemplate -Id $aaddirtempid;
     $setting = $template.CreateDirectorySetting();
 }
 else{
-    Write-Host &amp;quot;Directory settings for Group.Unified found. Current value for EnableMIPLabels:&amp;quot; oregroundColor Green;
+    Write-Host &amp;quot;Directory settings for Group.Unified found. Current value for EnableMIPLabels:&amp;quot; -ForegroundColor Green;
     Write-Host $setting[&amp;quot;EnableMIPLabels&amp;quot;];
 }
 
@@ -783,7 +783,7 @@ $setting.Values;
 &lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/c8/51/26662fe8c7adfa060bd2ef468b8a.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;p&gt;Der Link zum Teilnehmen sieht ungefähr so aus wie jeder andere Meeting Link:
-&lt;a href=&#34;https://teams.microsoft.com/l/meetup-join/19%3ameeting_..&#34;&gt;https://teams.microsoft.com/l/meetup-join/19%3ameeting_..&lt;/a&gt;.
+&lt;a href=&#34;https://teams.microsoft.com/l/meetup-join/19%3ameeting&#34; target=&#34;_blank&#34;&gt;https://teams.microsoft.com/l/meetup-join/19%3ameeting&lt;/a&gt;_&amp;hellip;
 aber für die Teilnehmer-Links endet der Link mit
 &lt;strong&gt;IsBroadcastMeeting&lt;/strong&gt;=true&lt;/p&gt;
 &lt;h2 id=&#34;live-event-produzieren&#34;&gt;Live Event produzieren&lt;/h2&gt;
@@ -977,9 +977,9 @@ Meeting policies - Pick a policy (”Global - Org Wide Default”) - Content sha
 &lt;p&gt;Teams team is a modern group in AAD. When you add/remove a member through the Teams user interface, the flow knows exactly which user initiated the change, and the Audit log reflects the correct info. However, if a user adds/removes a member through AAD, the change is synced to the Teams backend without telling Teams who initiated the action. Microsoft Teams picks the first owner of team as the initiator, which is eventually reflected in the Audit log as well.
 &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/known-issues#administration&#34; target=&#34;_blank&#34;&gt;https://docs.microsoft.com/en-us/microsoftteams/known-issues#administration&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Related Issue: [Audit logs may report an incorrect username as initiator when someone has been removed from a Team&lt;/p&gt;
-&lt;p&gt;](&lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/known-issues#teams&#34;&gt;https://docs.microsoft.com/en-us/microsoftteams/known-issues#teams&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;](&lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/known-issues#teams&#34; target=&#34;_blank&#34;&gt;https://docs.microsoft.com/en-us/microsoftteams/known-issues#teams&lt;/a&gt;)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I validated group membership edits from the new Microsoft Admin Portal (&lt;a href=&#34;https://admin.microsoft.com&#34;&gt;https://admin.microsoft.com&lt;/a&gt;) and from the Azure Portal (&lt;a href=&#34;https://portal.azure.com&#34;&gt;https://portal.azure.com&lt;/a&gt;). In both cases the audit logs showed the correct user. In both cases I used my &lt;em&gt;cloudadmin&lt;/em&gt; account that is not part of the team and the audit logs documented the operation as the executing user.
+&lt;p&gt;I validated group membership edits from the new Microsoft Admin Portal (&lt;a href=&#34;https://admin.microsoft.com&#34; target=&#34;_blank&#34;&gt;https://admin.microsoft.com&lt;/a&gt;) and from the Azure Portal (&lt;a href=&#34;https://portal.azure.com&#34; target=&#34;_blank&#34;&gt;https://portal.azure.com&lt;/a&gt;). In both cases the audit logs showed the correct user. In both cases I used my &lt;em&gt;cloudadmin&lt;/em&gt; account that is not part of the team and the audit logs documented the operation as the executing user.
 &lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/f8/43/83112170347dd6c8e493bcb546d6.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
 &lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
@@ -1253,7 +1253,7 @@ df021288-bdef-4463-88db-98f22de89214 User.Read.All
 &lt;p&gt;Client ID:  50641771-73ac-42fa-9b6f-f25e49ec6871&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Client Secret:  dvMR0c_*_RlxvV*JQQZGDICH6N04ZT2/&lt;/p&gt;
+&lt;p&gt;Client Secret:  dvMR0c_&lt;em&gt;_RlxvV&lt;/em&gt;JQQZGDICH6N04ZT2/&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Scope : &lt;a href=&#34;https://graph.microsoft.com/.default&#34; target=&#34;_blank&#34;&gt;https://graph.microsoft.com/.default&lt;/a&gt;

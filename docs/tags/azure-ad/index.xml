@@ -373,7 +373,7 @@ df021288-bdef-4463-88db-98f22de89214 User.Read.All
 &lt;p&gt;Client ID:  50641771-73ac-42fa-9b6f-f25e49ec6871&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Client Secret:  dvMR0c_*_RlxvV*JQQZGDICH6N04ZT2/&lt;/p&gt;
+&lt;p&gt;Client Secret:  dvMR0c_&lt;em&gt;_RlxvV&lt;/em&gt;JQQZGDICH6N04ZT2/&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Scope : &lt;a href=&#34;https://graph.microsoft.com/.default&#34; target=&#34;_blank&#34;&gt;https://graph.microsoft.com/.default&lt;/a&gt;

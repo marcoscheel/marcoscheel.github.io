@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.92.1" />
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -85,6 +85,7 @@ Learning new stuff
 
 
 
+
 <link rel="stylesheet" href="https://marcoscheel.de/assets/css/fuji.min.css" />
 
 
@@ -104,12 +105,16 @@ Learning new stuff
 
 
 
+
 <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
 
-<body data-theme="auto">
+<body
+  data-theme="auto"
+  data-theme-auto='false'
+  >
     <script data-cfasync="false">
   
   var fujiThemeData = localStorage.getItem('fuji_data-theme');
@@ -123,6 +128,7 @@ Learning new stuff
     }
   }
 </script>
+
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
@@ -157,10 +163,10 @@ Learning new stuff
         <p>My blog now has a new home. It is no longer hosted on Tumblr.com and it is now hosted on GitHub Pages. The main reason to get of Tumblr is the poor image handling. The overall experience was OK. I liked the editor and best of all it is all free including running on your own domain! Having my own name was a key driver. I was running my blog on my own v-server back in the days. I tried a lot of platforms (blogger.com, wordpress.com and prior Tumblr I ran on a &ldquo;self&rdquo; hosted WordPress instance). The only constant was and will be my RSS hosting. Believe it or not I&rsquo;m still running Feedburner from Google. One service that is still not (yet?) killed by search giant (RIP Google Reader). With all the previous choices there was also on driving factor: <strong>I&rsquo;m cheap, can I get it for free? Yes and it will stay 100% free for you and me!</strong></p>
 <p>Today is the day I switched to a static website! It is 2020 and the hipster way to go. So, what does it take to run a blog on a static site generator?</p>
 <ul>
-<li>A static site generator: <a href="https://gohugo.io">https://gohugo.io</a></li>
-<li>A place to host the source files: <a href="https://github.com">https://github.com</a></li>
-<li>A place to host the generated website: <a href="https://pages.github.com">https://pages.github.com</a></li>
-<li>A method to publish after I committed a new blog post: This but later <a href="https://github.com/features/actions">https://github.com/features/actions</a></li>
+<li>A static site generator: <a href="https://gohugo.io" target="_blank">https://gohugo.io</a></li>
+<li>A place to host the source files: <a href="https://github.com" target="_blank">https://github.com</a></li>
+<li>A place to host the generated website: <a href="https://pages.github.com" target="_blank">https://pages.github.com</a></li>
+<li>A method to publish after I committed a new blog post: This but later <a href="https://github.com/features/actions" target="_blank">https://github.com/features/actions</a></li>
 </ul>
 <p>Main benefits:</p>
 <ul>
@@ -178,13 +184,13 @@ Learning new stuff
 </p>
 <p>Why <a href="https://gohugo.io" target="_blank">Hugo</a> and not <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>? Because there are blogs out there that I&rsquo;m reading, and I liked the idea of being one of them :) Who?</p>
 <ul>
-<li>Andrew Connell: <a href="https://www.andrewconnell.com/blog/hosting-hugo-on-azure">https://www.andrewconnell.com/blog/hosting-hugo-on-azure</a></li>
-<li>Maximilian Melcher: <a href="https://melcher.dev/2017/11/bye-bye-wordpress-hello-hugo">https://melcher.dev/2017/11/bye-bye-wordpress-hello-hugo</a></li>
-<li>Matthew McDermott: <a href="https://www.ableblue.com/blog/archive/2019/02/20/learning-hugo-on-azure-part-1">https://www.ableblue.com/blog/archive/2019/02/20/learning-hugo-on-azure-part-1</a></li>
-<li>Jason Hand: <a href="https://dev.to/jasonhand/10-tips-for-building-and-deploying-hugo-websites-on-azure-static-web-apps-307l">https://dev.to/jasonhand/10-tips-for-building-and-deploying-hugo-websites-on-azure-static-web-apps-307l</a></li>
-<li>Aaron Wislang: <a href="https://www.aaronmsft.com/posts/static-sites-hugo-azure-cloudflare">https://www.aaronmsft.com/posts/static-sites-hugo-azure-cloudflare</a></li>
+<li>Andrew Connell: <a href="https://www.andrewconnell.com/blog/hosting-hugo-on-azure" target="_blank">https://www.andrewconnell.com/blog/hosting-hugo-on-azure</a></li>
+<li>Maximilian Melcher: <a href="https://melcher.dev/2017/11/bye-bye-wordpress-hello-hugo" target="_blank">https://melcher.dev/2017/11/bye-bye-wordpress-hello-hugo</a></li>
+<li>Matthew McDermott: <a href="https://www.ableblue.com/blog/archive/2019/02/20/learning-hugo-on-azure-part-1" target="_blank">https://www.ableblue.com/blog/archive/2019/02/20/learning-hugo-on-azure-part-1</a></li>
+<li>Jason Hand: <a href="https://dev.to/jasonhand/10-tips-for-building-and-deploying-hugo-websites-on-azure-static-web-apps-307l" target="_blank">https://dev.to/jasonhand/10-tips-for-building-and-deploying-hugo-websites-on-azure-static-web-apps-307l</a></li>
+<li>Aaron Wislang: <a href="https://www.aaronmsft.com/posts/static-sites-hugo-azure-cloudflare" target="_blank">https://www.aaronmsft.com/posts/static-sites-hugo-azure-cloudflare</a></li>
 </ul>
-<p>There is even content on Microsoft Docs on hosting Hugo on Azure Static Websites: <a href="https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo">https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo</a></p>
+<p>There is even content on Microsoft Docs on hosting Hugo on Azure Static Websites: <a href="https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo" target="_blank">https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo</a></p>
 <p>It was easy to start. Just follow the steps on the <a href="https://gohugo.io/getting-started/quick-start/" target="_blank">Getting started</a> using <a href="https://gohugo.io/getting-started/installing#chocolatey-windows" target="_blank">choco installation for Windows users</a>.</p>
 <p>I&rsquo;ve chosen the <a href="https://github.com/amzrk2/hugo-theme-fuji/" target="_blank">Fuji theme</a> as a great staring point and integrated it as a git submodule. As mentioned in the docs I copied the settings into my config.toml and I was ready to go.</p>
 <pre><code>hugo new post/hugo/2020/10/my-blog-has-moved.md
@@ -249,7 +255,7 @@ body .markdown-body strong{
 </code></pre>
 <h3 id="content-migration">Content migration</h3>
 <p>I also need to take care about my old content living on Tumblr and if possible, on WordPress. It was kind of easy. I checked the <a href="https://gohugo.io/tools/migrations/" target="_blank">migration article on the Hugo docs</a> site.</p>
-<p>Tumblr: <a href="https://gohugo.io/tools/migrations/#tumblr">https://gohugo.io/tools/migrations/#tumblr</a><br/>
+<p>Tumblr: <a href="https://gohugo.io/tools/migrations/#tumblr" target="_blank">https://gohugo.io/tools/migrations/#tumblr</a><br/>
 All of the solutions require a Tumblr app registration, so I created on. To not mess with my fresh Windows install I enabled WSL2 and used the Ubuntu distro. This way I was able to clone the <a href="https://github.com/carlmjohnson/tumblr-importr" target="_blank">tumblr-importr</a> repo and build my application. The important part was to place the GO binary into the right location. Otherwise the command was unknown. After that I was able to generate the needed files.</p>
 <pre><code class="language-BASH">git clone https://github.com/carlmjohnson/tumblr-importr
 cd tumblr-importr
@@ -280,7 +286,7 @@ Get-ChildItem -Filter &quot;*.md&quot; -Recurse | ForEach-Object {
     Set-Content -Value $content -Path ($file.FullName)
 }
 </code></pre>
-<p>WordPress: <a href="https://gohugo.io/tools/migrations/#wordpress">https://gohugo.io/tools/migrations/#wordpress</a><br/>
+<p>WordPress: <a href="https://gohugo.io/tools/migrations/#wordpress" target="_blank">https://gohugo.io/tools/migrations/#wordpress</a><br/>
 Once again, I used my handy WSL2 instance to not mess with not loved language. So a save route was to use the WordPress export feature and the repo <a href="https://github.com/wooni005/exitwp-for-hugo" target="_blank">exitwp-for-hugo</a>. I cloned the repo and a few &ldquo;sudo apt-get&rdquo; later I was ready to run the python script. I placed my downloaded XML into the &ldquo;wordpress-xml&rdquo; folder. I ended up changing the exitwp.py file to ignore all tags and replace it with a single &ldquo;xArchived&rdquo;.</p>
 <pre><code class="language-Bash">git clone https://github.com/wooni005/exitwp-for-hugo.git
 cd exitwp-for-hugo
@@ -290,7 +296,7 @@ cd exitwp-for-hugo
 <p><img class="img-zoomable" src="/img/20201011-my-blog-has-moved-hugo--hugo-content-posts.jpg" alt="image" />
 </p>
 <h2 id="github">Github</h2>
-<p>Now that the content is available on my local drive and I&rsquo;m able to generate the static files. It is already a git repo so where to host the primary authority? So, the Hugo site with all config and logic will go to GitHub. There are only two choices for me. GitHub or Azure DevOps. Microsoft is owning both services. Private repos are free in both services. It looks like in the future Azure DevOps will not get all the love and that is why my website source code is hosted on GitHub: <a href="https://github.com/marcoscheel/marcoscheel-de">https://github.com/marcoscheel/marcoscheel-de</a></p>
+<p>Now that the content is available on my local drive and I&rsquo;m able to generate the static files. It is already a git repo so where to host the primary authority? So, the Hugo site with all config and logic will go to GitHub. There are only two choices for me. GitHub or Azure DevOps. Microsoft is owning both services. Private repos are free in both services. It looks like in the future Azure DevOps will not get all the love and that is why my website source code is hosted on GitHub: <a href="https://github.com/marcoscheel/marcoscheel-de" target="_blank">https://github.com/marcoscheel/marcoscheel-de</a></p>
 <p><img class="img-zoomable" src="/img/20201011-my-blog-has-moved-hugo--github-private.png" alt="image" />
 </p>
 <h2 id="github-pages">GitHub Pages</h2>
@@ -301,7 +307,7 @@ cd exitwp-for-hugo
 <blockquote>
 <p>Websites for you and your projects. Hosted directly from your GitHub repository. Just edit, push, and your changes are live.</p>
 </blockquote>
-<p>For every account GitHub is offering <strong>one</strong> <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> repository. I created the repository at: <a href="https://github.com/marcoscheel/marcoscheel.github.io">https://github.com/marcoscheel/marcoscheel.github.io</a></p>
+<p>For every account GitHub is offering <strong>one</strong> <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> repository. I created the repository at: <a href="https://github.com/marcoscheel/marcoscheel.github.io" target="_blank">https://github.com/marcoscheel/marcoscheel.github.io</a></p>
 <p>Normally the content will be server on the github.io domain, but through the settings we can add a CNAME to the site. To achieve this we need to put a file called &ldquo;CNAME&rdquo; into the root directory. For my Hugo site and the publish process I placed the file into the &ldquo;static&rdquo; folder so every time the site is generated the file will be copied to the root of the site. Once the CNAME is in place we configure the HTTPS redirect.</p>
 <p><img class="img-zoomable" src="/img/20201011-my-blog-has-moved-hugo--githubpages-https.png" alt="image" />
 </p>
@@ -349,6 +355,7 @@ git push
         }
     </script>
 </div>
+
 
 
             </div>
@@ -648,7 +655,7 @@ git push
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2021-2021
+            <span>&copy; 2021-2022
                 <a href="https://marcoscheel.de">Marco Scheel</a>
                  | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
                 | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
@@ -661,13 +668,14 @@ git push
 
     
 <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 
 <script defer src="/assets/js/fuji.min.js"></script>
+
 
 
 </body>

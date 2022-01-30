@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.92.1" />
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -63,6 +63,7 @@ Source: https://techcommunity.microsoft.com/t5/microsoft-security-and/general-av
 
 
 
+
 <link rel="stylesheet" href="https://marcoscheel.de/assets/css/fuji.min.css" />
 
 
@@ -82,12 +83,16 @@ Source: https://techcommunity.microsoft.com/t5/microsoft-security-and/general-av
 
 
 
+
 <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
 
-<body data-theme="auto">
+<body
+  data-theme="auto"
+  data-theme-auto='false'
+  >
     <script data-cfasync="false">
   
   var fujiThemeData = localStorage.getItem('fuji_data-theme');
@@ -101,6 +106,7 @@ Source: https://techcommunity.microsoft.com/t5/microsoft-security-and/general-av
     }
   }
 </script>
+
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
@@ -162,12 +168,12 @@ $setting = Get-AzureADDirectorySetting | Where-Object { $_.DisplayName -eq &quot
 if ($null -eq $setting){
     Write-Host &quot;Not directory settings for Group.Unified found. Create new!&quot; -ForegroundColor Green;
     $settingIsNew = $true;
-    $aaddirtempid = (Get-AzureADDirectorySettingTemplate | Where-Object { $_.DisplayName -eq &quot;Group.Unified&quot; }Id;
+    $aaddirtempid = (Get-AzureADDirectorySettingTemplate | Where-Object { $_.DisplayName -eq &quot;Group.Unified&quot; }).Id;
     $template = Get-AzureADDirectorySettingTemplate -Id $aaddirtempid;
     $setting = $template.CreateDirectorySetting();
 }
 else{
-    Write-Host &quot;Directory settings for Group.Unified found. Current value for EnableMIPLabels:&quot; oregroundColor Green;
+    Write-Host &quot;Directory settings for Group.Unified found. Current value for EnableMIPLabels:&quot; -ForegroundColor Green;
     Write-Host $setting[&quot;EnableMIPLabels&quot;];
 }
 
@@ -225,6 +231,7 @@ $setting.Values;
         }
     </script>
 </div>
+
 
 
             </div>
@@ -500,7 +507,7 @@ $setting.Values;
     <div class="container-lg clearfix">
         <div class="col-12 footer">
             
-            <span>&copy; 2021-2021
+            <span>&copy; 2021-2022
                 <a href="https://marcoscheel.de">Marco Scheel</a>
                  | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
                 | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
@@ -513,13 +520,14 @@ $setting.Values;
 
     
 <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 
 <script defer src="/assets/js/fuji.min.js"></script>
+
 
 
 </body>

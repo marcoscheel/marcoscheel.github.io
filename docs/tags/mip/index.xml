@@ -43,12 +43,12 @@ $setting = Get-AzureADDirectorySetting | Where-Object { $_.DisplayName -eq &amp;
 if ($null -eq $setting){
     Write-Host &amp;quot;Not directory settings for Group.Unified found. Create new!&amp;quot; -ForegroundColor Green;
     $settingIsNew = $true;
-    $aaddirtempid = (Get-AzureADDirectorySettingTemplate | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot; }Id;
+    $aaddirtempid = (Get-AzureADDirectorySettingTemplate | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot; }).Id;
     $template = Get-AzureADDirectorySettingTemplate -Id $aaddirtempid;
     $setting = $template.CreateDirectorySetting();
 }
 else{
-    Write-Host &amp;quot;Directory settings for Group.Unified found. Current value for EnableMIPLabels:&amp;quot; oregroundColor Green;
+    Write-Host &amp;quot;Directory settings for Group.Unified found. Current value for EnableMIPLabels:&amp;quot; -ForegroundColor Green;
     Write-Host $setting[&amp;quot;EnableMIPLabels&amp;quot;];
 }
 
