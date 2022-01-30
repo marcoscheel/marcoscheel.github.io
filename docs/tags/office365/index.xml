@@ -1,60 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Office365 on Marco Scheel aka GeekDotNet</title>
-    <link>https://marcoscheel.de/tags/office365/</link>
-    <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>de</language>
-    <lastBuildDate>Sun, 17 Sep 2017 21:11:09 +0000</lastBuildDate><atom:link href="https://marcoscheel.de/tags/office365/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</title>
-      <link>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</link>
-      <pubDate>Sun, 17 Sep 2017 21:11:09 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</guid>
-      <description>&lt;p&gt;In meinen Projekten (&lt;a href=&#34;https://www.glueckkanja.com/technologien/office-365/&#34; target=&#34;_blank&#34;&gt;Office 365&lt;/a&gt; / &lt;a href=&#34;https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/&#34; target=&#34;_blank&#34;&gt;100% Cloud&lt;/a&gt;) ist &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference&#34; target=&#34;_blank&#34;&gt;Conditional Access&lt;/a&gt; (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912&#34; target=&#34;_blank&#34;&gt;Blogpost&lt;/a&gt; beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827&#34; target=&#34;_blank&#34;&gt;einzelne Site Collections &lt;/a&gt;adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&amp;hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Eigentlich sollte der Dialog so aussehen:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Es fehlt der entscheidende Teil:
-&lt;em&gt;&amp;ldquo;Control access from devices that aren&amp;rsquo;t compliant or joined to a domain&amp;rdquo;&lt;/em&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Office365 on Marco Scheel aka GeekDotNet</title><link>https://marcoscheel.de/tags/office365/</link><description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description><generator>Hugo -- gohugo.io</generator><language>de</language><lastBuildDate>Sun, 17 Sep 2017 21:11:09 +0000</lastBuildDate><atom:link href="https://marcoscheel.de/tags/office365/index.xml" rel="self" type="application/rss+xml"/><item><title>SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</title><link>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</link><pubDate>Sun, 17 Sep 2017 21:11:09 +0000</pubDate><guid>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</guid><description>&lt;p>In meinen Projekten (&lt;a href="https://www.glueckkanja.com/technologien/office-365/" target="_blank">Office 365&lt;/a> / &lt;a href="https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/" target="_blank">100% Cloud&lt;/a>) ist &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference" target="_blank">Conditional Access&lt;/a> (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem &lt;a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912" target="_blank">Blogpost&lt;/a> beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern &lt;a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827" target="_blank">einzelne Site Collections &lt;/a>adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&amp;hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png" alt="image" />
+&lt;/p>
+&lt;p>Eigentlich sollte der Dialog so aussehen:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png" alt="image" />
+&lt;/p>
+&lt;p>Es fehlt der entscheidende Teil:
+&lt;em>&amp;ldquo;Control access from devices that aren&amp;rsquo;t compliant or joined to a domain&amp;rdquo;&lt;/em>
 oder auf deutsch:
 _&amp;ldquo;Zugriff von Geräten steuern, die nicht konform oder einer Domäne beigetreten sind&amp;rdquo;
 _Jetzt stellt sich die Frage warum? Mein Tenant ist auf “First Release”, also sollte es doch funktionieren. Eine kurze Recherche hat mich zum überraschenden Ergebnis geführt:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/60/a6/a0ab32d60f0b1ba4117644d161f6.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Quelle: Microsoft Support - &lt;a href=&#34;https://support.office.com/en-us/article/Control-access-from-unmanaged-devices-5ae550c4-bd20-4257-847b-5c20fb053622?ui=en-US&amp;amp;amp;rs=en-US&amp;amp;amp;ad=US&amp;amp;amp;fromAR=1&#34; target=&#34;_blank&#34;&gt;Control access from unmanaged devices&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Mein Tenant war tatsächlich für einen Test auf die Option “First release for selected users” eingestellt:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/45/dc/754fb60365a39769a1e4c673639a.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;h2 id=&#34;lösung&#34;&gt;Lösung&lt;/h2&gt;
-&lt;p&gt;Wie im Support Dokument beschrieben habe ich das Setting geändert auf die Option “First release for everyone”:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/71/99/e2bd1b48168c253805f8609aeeae.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Kurze Zeit später (es zieht nicht sofort), konnte ich über das SharePoint Admin Center die gewünschte &amp;ldquo;Device Access” Konfiguration abschließen.&lt;/p&gt;
-&lt;p&gt;Ich habe in der Vergangenheit immer nach den Unterschieden der beiden “First Release” Einstellungen gesucht. Dieser Fall ist der erste mir bekannte.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>The Future of SharePoint (Online)</title>
-      <link>https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/</link>
-      <pubDate>Sat, 21 May 2016 20:33:42 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/</guid>
-      <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;
-&lt;p&gt;Die Roadmap schließt somit eine Lücke, die überwiegend Hardcore
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/60/a6/a0ab32d60f0b1ba4117644d161f6.png" alt="image" />
+&lt;/p>
+&lt;p>Quelle: Microsoft Support - &lt;a href="https://support.office.com/en-us/article/Control-access-from-unmanaged-devices-5ae550c4-bd20-4257-847b-5c20fb053622?ui=en-US&amp;amp;amp;rs=en-US&amp;amp;amp;ad=US&amp;amp;amp;fromAR=1" target="_blank">Control access from unmanaged devices&lt;/a>&lt;/p>
+&lt;p>Mein Tenant war tatsächlich für einen Test auf die Option “First release for selected users” eingestellt:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/45/dc/754fb60365a39769a1e4c673639a.png" alt="image" />
+&lt;/p>
+&lt;h2 id="lösung">Lösung&lt;/h2>
+&lt;p>Wie im Support Dokument beschrieben habe ich das Setting geändert auf die Option “First release for everyone”:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/71/99/e2bd1b48168c253805f8609aeeae.png" alt="image" />
+&lt;/p>
+&lt;p>Kurze Zeit später (es zieht nicht sofort), konnte ich über das SharePoint Admin Center die gewünschte &amp;ldquo;Device Access” Konfiguration abschließen.&lt;/p>
+&lt;p>Ich habe in der Vergangenheit immer nach den Unterschieden der beiden “First Release” Einstellungen gesucht. Dieser Fall ist der erste mir bekannte.&lt;/p></description></item><item><title>The Future of SharePoint (Online)</title><link>https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/</link><pubDate>Sat, 21 May 2016 20:33:42 +0000</pubDate><guid>https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/</guid><description>&lt;h2 id="tldr">TL;DR&lt;/h2>
+&lt;p>Die Roadmap schließt somit eine Lücke, die überwiegend Hardcore
 SharePoint User (Publishing, echte Listen und Metadaten) betroffen hat und
-begeistern wird. Für den Rest wird es einfach einfacher und schöner.&lt;/p&gt;
-&lt;p&gt;Alle die Office 365 noch nicht verwenden können die Zeit bis Ende 2016 nutzen,
+begeistern wird. Für den Rest wird es einfach einfacher und schöner.&lt;/p>
+&lt;p>Alle die Office 365 noch nicht verwenden können die Zeit bis Ende 2016 nutzen,
 um eine solide Basis aufzubauen. Alle mit einer guten Office 365 Basis können
 die Zeit nutzen in ersten Gehversuchen mit Office 365 Groups eigene Erfahrungen
 zu sammeln. In nächsten Jahr (2017) können dann hoffentlich alle das volle
 Potential von SharePoint Online nutzen und über den Datei-Tellerrand schauen
-und den nächsten Level der modernen Teamräume ausnutzen.&lt;/p&gt;
-&lt;p&gt;Am 4.5.2016 hat Microsoft Details zur weiteren Roadmap von
+und den nächsten Level der modernen Teamräume ausnutzen.&lt;/p>
+&lt;p>Am 4.5.2016 hat Microsoft Details zur weiteren Roadmap von
 SharePoint in einem Online-Event vorgestellt. In den letzten Monaten
 hat man den Eindruck bekommen, dass SharePoint sich immer mehr auf das
 Verwalten von Dateien konzentriert und dies auch mit einem sehr rudimentären
@@ -62,64 +38,64 @@ Funktionsumfang. Woher kam die Vermutung? Meine persönliche Wahrnehmung
 als Berater im SharePoint Umfeld, Blogs aus der (MVP-)Community, die
 aktuelle (Stand Mai 2016) Implementierung der Office 365 Groups und nicht
 zuletzt der starte Fokus auf den OneDrive for Business Bereich (Next
-Gen Sync, &amp;hellip;).&lt;/p&gt;
-&lt;p&gt;Ich als SharePoint Berater bei der Glück &amp;amp; Kanja Consulting AG
+Gen Sync, &amp;hellip;).&lt;/p>
+&lt;p>Ich als SharePoint Berater bei der Glück &amp;amp; Kanja Consulting AG
 möchte ihnen gerne meine Wahrnehmung und Interpretation der Dinge schildern. Es
-ist keine 1:1 Zusammenfassung, denn die hat Microsoft selber hier geliefert:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/the-future-of-sharepoint/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/the-future-of-sharepoint/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/announcing-simple-and-powerful-file-sharing-and-collaboration-for-office-365/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/announcing-simple-and-powerful-file-sharing-and-collaboration-for-office-365/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/sharepoint-the-mobile-and-intelligent-intranet/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/sharepoint-the-mobile-and-intelligent-intranet/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/the-sharepoint-framework-an-open-and-connected-platform/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/the-sharepoint-framework-an-open-and-connected-platform/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/sharepoint-server-2016-your-foundation-for-the-future/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/sharepoint-server-2016-your-foundation-for-the-future/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;sites-heißt-jetzt-wieder-sharepoint--das-versteckspiel&#34;&gt;Sites heißt jetzt wieder SharePoint – Das Versteckspiel&lt;/h2&gt;
-&lt;p&gt;hat eine Ende&lt;/p&gt;
-&lt;p&gt;Meine
-erste Reaktion auf &lt;a href=&#34;https://twitter.com/marcoscheel/status/727924436754702336&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt;:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/a2/ca/be7806cc2be261912a0d60dd8bb3.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Persönlich bin ich mit dem Event sehr zufrieden. SharePoint
+ist keine 1:1 Zusammenfassung, denn die hat Microsoft selber hier geliefert:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/the-future-of-sharepoint/" target="_blank">https://blogs.office.com/2016/05/04/the-future-of-sharepoint/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/announcing-simple-and-powerful-file-sharing-and-collaboration-for-office-365/" target="_blank">https://blogs.office.com/2016/05/04/announcing-simple-and-powerful-file-sharing-and-collaboration-for-office-365/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/sharepoint-the-mobile-and-intelligent-intranet/" target="_blank">https://blogs.office.com/2016/05/04/sharepoint-the-mobile-and-intelligent-intranet/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/the-sharepoint-framework-an-open-and-connected-platform/" target="_blank">https://blogs.office.com/2016/05/04/the-sharepoint-framework-an-open-and-connected-platform/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/sharepoint-server-2016-your-foundation-for-the-future/" target="_blank">https://blogs.office.com/2016/05/04/sharepoint-server-2016-your-foundation-for-the-future/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="sites-heißt-jetzt-wieder-sharepoint--das-versteckspiel">Sites heißt jetzt wieder SharePoint – Das Versteckspiel&lt;/h2>
+&lt;p>hat eine Ende&lt;/p>
+&lt;p>Meine
+erste Reaktion auf &lt;a href="https://twitter.com/marcoscheel/status/727924436754702336" target="_blank">Twitter&lt;/a>:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/a2/ca/be7806cc2be261912a0d60dd8bb3.png" alt="image" />
+&lt;/p>
+&lt;p>Persönlich bin ich mit dem Event sehr zufrieden. SharePoint
 versucht sich nicht nur auf Dateien zu beschränken, sondern möchte auch in
 Office 365 als echtes Intranet wahrgenommen werden. Abseits von Groups und
 OneDrive gibt es ja noch Listen. Ein Feature das nur &amp;ldquo;Wenige&amp;rdquo; verwenden,
 aber eigentlich liegt dort der Teil der SharePoint definiert. Was hat Microsoft
-nun getan, um die traditionellen Wert wiederzubeleben?&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Moderne&lt;/strong&gt; Teamsites sehen
-gut aus und funktionieren im Browser und in einer neuen SharePoint Mobile App&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Moderne Teamsites bieten mehr als &lt;strong&gt;eine&lt;/strong&gt; Dokumentenbibliothek&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Moderne Teamsites fokussieren auf &amp;ldquo;&lt;strong&gt;Pages&lt;/strong&gt;&amp;rdquo; und &amp;ldquo;&lt;strong&gt;Webparts&lt;/strong&gt;&amp;rdquo; um Informationen aus der
-puren Existenz zum Benutzer zu führen&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Moderne Teamsites bieten **Discovery **ala Delve und zeigen
-Activities auf einer Zeitlinie ähnlich wie Yammer&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/0d/55/d264f822554470dcc013f3232c2d.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;ist-der-focus-auf-das-intranet-news-publishing-&#34;&gt;Ist der Focus auf das Intranet (News, Publishing, &amp;hellip;)&lt;/h2&gt;
-&lt;p&gt;und echte Listenfunktionalität die Lösung aller SharePoint (Online) Probleme?&lt;/p&gt;
-&lt;p&gt;Nein! Ich bin noch immer der Meinung, dass der Großteil meiner
+nun getan, um die traditionellen Wert wiederzubeleben?&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Moderne&lt;/strong> Teamsites sehen
+gut aus und funktionieren im Browser und in einer neuen SharePoint Mobile App&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Moderne Teamsites bieten mehr als &lt;strong>eine&lt;/strong> Dokumentenbibliothek&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Moderne Teamsites fokussieren auf &amp;ldquo;&lt;strong>Pages&lt;/strong>&amp;rdquo; und &amp;ldquo;&lt;strong>Webparts&lt;/strong>&amp;rdquo; um Informationen aus der
+puren Existenz zum Benutzer zu führen&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Moderne Teamsites bieten **Discovery **ala Delve und zeigen
+Activities auf einer Zeitlinie ähnlich wie Yammer&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/0d/55/d264f822554470dcc013f3232c2d.png" alt="image" />
+&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="ist-der-focus-auf-das-intranet-news-publishing-">Ist der Focus auf das Intranet (News, Publishing, &amp;hellip;)&lt;/h2>
+&lt;p>und echte Listenfunktionalität die Lösung aller SharePoint (Online) Probleme?&lt;/p>
+&lt;p>Nein! Ich bin noch immer der Meinung, dass der Großteil meiner
 Kunden primär eine grundsolide Lösung für das Arbeiten mit Dateien
 benötigt. Die Roadmap hierfür (OneDrive for Business Client) scheint klar. Wird
-die Zeitlinie gehalten, dann sehe ich hier keine Probleme.&lt;/p&gt;
-&lt;p&gt;Für was brauche ich jetzt aber Listen? Auch in internen Gesprächen
+die Zeitlinie gehalten, dann sehe ich hier keine Probleme.&lt;/p>
+&lt;p>Für was brauche ich jetzt aber Listen? Auch in internen Gesprächen
 wird den meisten Leuten nicht klar, warum man Listen benötigt. Selbst
 zusätzliche Metadaten an Dateien sind immer wieder ein Streitthema mit einem
 klaren Gewinner: Die Out-Of-The-Box Metadaten (Ersteller + Datum, Änderungshistorie,
@@ -137,56 +113,52 @@ Metadaten pflegen? Meine Meinung ist hier in 95% der Fälle ein
 &amp;ldquo;Nein&amp;rdquo;, da ich ohne Ordner zum Beispiel Offline ein Problem bekomme,
 wenn ich zum Beispiel 2000 Dateien in einer flachen Dateiliste bekomme. In
 solchen Situationen kann auch kein &amp;ldquo;selective Sync&amp;rdquo; helfen, wenn er mal
-implementiert wurde.&lt;/p&gt;
-&lt;p&gt;Die Demos von Microsoft
+implementiert wurde.&lt;/p>
+&lt;p>Die Demos von Microsoft
 zeigen die Modern Teamsites unter Verwendung der &amp;ldquo;neuen&amp;rdquo; Seiten und
 Webparts zum Aufbereiten multipler Informationen und Quellen. Sieht toll aus.
 Ich fand schon immer die Startseite einer Teamsite dafür geeignet, neben einem
 Dokumentenbaum (wie aus dem Dateisystem) auch andere relevanten Informationen
 aufzubereiten. Die Realität zeigt aber, dass sich so was gerade für Demos
-perfekt eignet, aber im echten Leben nur selten angewendet wird.&lt;/p&gt;
-&lt;h2 id=&#34;also-doch-alles-grütze&#34;&gt;Also doch alles Grütze?&lt;/h2&gt;
-&lt;p&gt;Nein, denn es gibt alleine durch die neue
+perfekt eignet, aber im echten Leben nur selten angewendet wird.&lt;/p>
+&lt;h2 id="also-doch-alles-grütze">Also doch alles Grütze?&lt;/h2>
+&lt;p>Nein, denn es gibt alleine durch die neue
 &amp;ldquo;Out-Of-The-Box&amp;rdquo; Funktionen so viele Vorteile, dass auch das normale
 Arbeiten unterstützt wird. Die neue SharePoint App funktioniert auch ohne
 zusätzliche Listen und Metadaten. Ein Delve ähnliches Discovery findet jetzt &amp;ldquo;überall&amp;rdquo;
 statt. Die &amp;ldquo;neue&amp;rdquo; Oberfläche kennen die User schon
-aus ihrem OneDrive for Business. Ergänzungen wie &lt;a href=&#34;https://powerapps.microsoft.com&#34; target=&#34;_blank&#34;&gt;PowerApps&lt;/a&gt; und &lt;a href=&#34;https://flow.microsoft.com&#34; target=&#34;_blank&#34;&gt;Flow&lt;/a&gt; können bei Bedarf
+aus ihrem OneDrive for Business. Ergänzungen wie &lt;a href="https://powerapps.microsoft.com" target="_blank">PowerApps&lt;/a> und &lt;a href="https://flow.microsoft.com" target="_blank">Flow&lt;/a> können bei Bedarf
 aktiviert und genutzt werden. Das neue SharePoint Framework erweitert und
-ergänzt die bestehenden Add-In basierenden Entwicklungen.&lt;/p&gt;
-&lt;p&gt;Es gibt noch einige nicht unwesentliche Unbekannte:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Wie integriert sich die Groups-Funktionalität in die neuen Teamsites und anderes herum&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Modern Teamsites für On-Premise (SP2016) gibt es wahrscheinlich erst 2017 in einem Feature Pack&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Wie überbrücken wir die Zeit bis Ende 2016 (da kommen das Gesamtpaket zusammen)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Die Roadmap schließt somit
+ergänzt die bestehenden Add-In basierenden Entwicklungen.&lt;/p>
+&lt;p>Es gibt noch einige nicht unwesentliche Unbekannte:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Wie integriert sich die Groups-Funktionalität in die neuen Teamsites und anderes herum&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Modern Teamsites für On-Premise (SP2016) gibt es wahrscheinlich erst 2017 in einem Feature Pack&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Wie überbrücken wir die Zeit bis Ende 2016 (da kommen das Gesamtpaket zusammen)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>Die Roadmap schließt somit
 eine Lücke, die überwiegend Hardcore SharePoint User (Publishing, echte Listen
 und Metadaten) betroffen hat und begeistern wird. Für den Rest wird es
-einfach einfacher und schöner.&lt;/p&gt;
-&lt;h2 id=&#34;planlos&#34;&gt;Planlos?&lt;/h2&gt;
-&lt;p&gt;Kein Grund nix zu tun. Nutzen Sie noch kein Office 365? Starten
+einfach einfacher und schöner.&lt;/p>
+&lt;h2 id="planlos">Planlos?&lt;/h2>
+&lt;p>Kein Grund nix zu tun. Nutzen Sie noch kein Office 365? Starten
 Sie einen Piloten und untersuchen Sie, was ihr Unternehmen der Cloud abgewinnen
 kann. Bevor es um SharePoint geht benötigen Sie solide Grundlagen/Planungen im
 Bereich Authentifizierung (Azure AD), eine eventuelle Verzeichnissynchronisation,
 Office Pro Plus (Client) Rolloutplanung, Mailmigration und mehr. Ist alles ready,
 dann ist es fast schon 2017 und mit all den wahrgewordenen SharePoint Funktionen
-kann auch hier solide ein Plan entwickelt werden.&lt;/p&gt;
-&lt;p&gt;Ihr Unternehmen hat schon die stabile
+kann auch hier solide ein Plan entwickelt werden.&lt;/p>
+&lt;p>Ihr Unternehmen hat schon die stabile
 Basis in Office 365 oder befindet sich in einem Proof-of-Concept? Diese Ausgangssituation
 ist ganz so einfach. Persönlich würde ich hier versuchen auf Basis der
 aktuellen Office 365 Groups Implementierung erste Gehversuche zu machen und so
 bis Ende 2016 die Grundlagen für eine erfolgreiche Modern SharePoint
-Implementierung vorzubereiten.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Wir von der &lt;a href=&#34;http://glueckkanja.com&#34; target=&#34;_blank&#34;&gt;Glück &amp;amp; Kanja&lt;/a&gt; haben vor kurzem die &lt;a href=&#34;http://www.glueckkanja.com/webcasts&#34; target=&#34;_blank&#34;&gt;GK WebcastFriday Serie&lt;/a&gt; gestartet. Im letzten Webcast haben meine Kollege &lt;a href=&#34;https://www.xing.com/profile/Jan_Geisbauer&#34; target=&#34;_blank&#34;&gt;Jan Geisbauer&lt;/a&gt; und ich das Thema &lt;a href=&#34;https://youtu.be/Lke1fKSamc0&#34; target=&#34;_blank&#34;&gt;SharePoint&lt;/a&gt; und im speziellen &lt;a href=&#34;https://youtu.be/Lke1fKSamc0?t=24m2s&#34; target=&#34;_blank&#34;&gt;The Futute of SharePoint&lt;/a&gt; betrachtet. Schaut doch mal rein.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+Implementierung vorzubereiten.&lt;/p>
+&lt;hr>
+&lt;p>Wir von der &lt;a href="http://glueckkanja.com" target="_blank">Glück &amp;amp; Kanja&lt;/a> haben vor kurzem die &lt;a href="http://www.glueckkanja.com/webcasts" target="_blank">GK WebcastFriday Serie&lt;/a> gestartet. Im letzten Webcast haben meine Kollege &lt;a href="https://www.xing.com/profile/Jan_Geisbauer" target="_blank">Jan Geisbauer&lt;/a> und ich das Thema &lt;a href="https://youtu.be/Lke1fKSamc0" target="_blank">SharePoint&lt;/a> und im speziellen &lt;a href="https://youtu.be/Lke1fKSamc0?t=24m2s" target="_blank">The Futute of SharePoint&lt;/a> betrachtet. Schaut doch mal rein.&lt;/p></description></item></channel></rss>

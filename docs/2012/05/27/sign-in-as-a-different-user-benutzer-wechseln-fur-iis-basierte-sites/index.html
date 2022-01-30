@@ -1,482 +1,302 @@
-<!DOCTYPE html>
-<html lang="de">
-
+<!doctype html><html lang=de>
 <head>
-    
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="HandheldFriendly" content="True" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.92.1" />
-
-
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-
-
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
 <title>Sign In As A Different User - Benutzer wechseln für IIS basierte Sites - Marco Scheel aka GeekDotNet</title>
-
-
-<meta name="author" content="marcoscheel" />
-
-
-<meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
-
-
-<meta name="keywords" content="xArchived" />
-
-
-<meta property="og:title" content="Sign In As A Different User - Benutzer wechseln für IIS basierte Sites" />
-<meta name="twitter:title" content="Sign In As A Different User - Benutzer wechseln für IIS basierte Sites" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/" /><meta property="og:description" content="Meine Kollege Karten Kleinschmidt und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.
-In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie SharePoint, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &ldquo;richtige&rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms)." />
-<meta name="twitter:description" content="Meine Kollege Karten Kleinschmidt und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.
-In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie SharePoint, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &ldquo;richtige&rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms)." /><meta property="og:image" content="https://marcoscheel.de/og.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2012-05-27T20:23:06+00:00" /><meta property="article:modified_time" content="2012-05-27T20:23:06+00:00" />
-
-
-<style>
-    @media (prefers-color-scheme: dark) {
-        body[data-theme='auto'] img {
-            filter: brightness(60%);
-        }
-    }
-
-    body[data-theme='dark'] img {
-        filter: brightness(60%);
-    }
-</style>
-
-
-
-
-<link rel="stylesheet" href="https://marcoscheel.de/assets/css/fuji.min.css" />
-
-
-
-
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-391088-7', {'anonymize_ip': true});
-</script>
+<meta name=author content="marcoscheel">
+<meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud">
+<meta name=keywords content="xArchived">
+<meta property="og:title" content="Sign In As A Different User - Benutzer wechseln für IIS basierte Sites">
+<meta name=twitter:title content="Sign In As A Different User - Benutzer wechseln für IIS basierte Sites">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/"><meta property="og:description" content="Meine Kollege Karten Kleinschmidt und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.
+In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie SharePoint, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &ldquo;richtige&rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms).">
+<meta name=twitter:description content="Meine Kollege Karten Kleinschmidt und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.
+In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie SharePoint, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &ldquo;richtige&rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms)."><meta property="og:image" content="https://marcoscheel.de/og.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="article:published_time" content="2012-05-27T20:23:06+00:00"><meta property="article:modified_time" content="2012-05-27T20:23:06+00:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-391088-7',{anonymize_ip:!0})</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
-
-
-
-
-<link rel="stylesheet" href="/css/custom.css">
-
-
+<link rel=stylesheet href=/css/custom.css>
 </head>
-
-<body
-  data-theme="auto"
-  data-theme-auto='false'
-  >
-    <script data-cfasync="false">
-  
-  var fujiThemeData = localStorage.getItem('fuji_data-theme');
-  
-  if (!fujiThemeData) {
-    localStorage.setItem('fuji_data-theme', 'auto');
-  } else {
-    
-    if (fujiThemeData !== 'auto') {
-      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
-    }
-  }
-</script>
-
-    <header>
-    <div class="container-lg clearfix">
-        <div class="col-12 header">
-            <h1><a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a></h1>
-            
-            <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
-            
-        </div>
-    </div>
+<body data-theme=auto data-theme-auto=false>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<h1><a class=title-main href=https://marcoscheel.de>Marco Scheel aka GeekDotNet</a></h1>
+<span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+</div>
+</div>
 </header>
-
-    <main>
-        <div class="container-lg clearfix">
-            
-            <div class="col-12 col-md-9 float-left content">
-                
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
 <article>
-    
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/">Sign In As A Different User - Benutzer wechseln für IIS basierte Sites</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2012-05-27</span>
-
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/>Sign In As A Different User - Benutzer wechseln für IIS basierte Sites</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2012-05-27</span>
 <span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;341 Wörter</span>
-
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    
-    <div class="post-content markdown-body">
-        <p>Meine Kollege <a href="http://blog.karstenkleinschmidt.de/" target="_blank">Karten Kleinschmidt</a> und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.</p>
-<p>In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie <a href="http://sharepoint.microsoft.com/en-us/" target="_blank">SharePoint</a>, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &ldquo;richtige&rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms). Ist man am PC mit dem normalen Account angemeldet und möchte nun den administrativen Account verwenden, dann muss man den ganzen Brower mit anderen Credentials starten, sich am PC ummelden oder per Terminal Services auf einem anderen Rechner anmelden. Anwendungen wie <a href="http://sharepoint.microsoft.com/en-us/" target="_blank">SharePoint</a> bieten solche Funktionen Out-Of-The-Box bereits an. Für Anwendungen, welche das nicht können, ist es für den normalen Mitarbeiter im Unternehmen kein leichtes Unterfangen, diese Aufgabe zu lösen.
-<a href="http://marcoscheel.files.wordpress.com/2012/05/sharepoint.png" target="_blank"><img class="img-zoomable" src="http://marcoscheel.files.wordpress.com/2012/05/sharepoint.png" alt="" />
-
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-content markdown-body">
+<p>Meine Kollege <a href=http://blog.karstenkleinschmidt.de/ target=_blank>Karten Kleinschmidt</a> und ich haben beim Kunden ein interessante kleine Aufgabe bekommen, in der es darum ging, den verwendeten Benutzer (Domainen Benutzer) an einer bestehenden Webseite zu wechseln.</p>
+<p>In einem Unternehmensnetzwerk mit integrierter Anmeldung an der Domain muss der User im Normalfall keine weiteren Anmeldeinformationen eingeben, um auf Websites zuzugreifen. Anwendungen wie <a href=http://sharepoint.microsoft.com/en-us/ target=_blank>SharePoint</a>, CRM und viele Eigenentwicklungen nutzen diese Funktion natürlich für Authentifizierung und Autorisierung aus. Es kommt aber immer mal wieder vor, dass der aktuelle Benutzer nicht der &ldquo;richtige&rdquo; Benutzer für die aktuelle Aufgabe ist. In vielen Unternehmen haben Benutzer neben dem eigenen Account einen administrativen Benutzer (gkms und gkadm_ms). Ist man am PC mit dem normalen Account angemeldet und möchte nun den administrativen Account verwenden, dann muss man den ganzen Brower mit anderen Credentials starten, sich am PC ummelden oder per Terminal Services auf einem anderen Rechner anmelden. Anwendungen wie <a href=http://sharepoint.microsoft.com/en-us/ target=_blank>SharePoint</a> bieten solche Funktionen Out-Of-The-Box bereits an. Für Anwendungen, welche das nicht können, ist es für den normalen Mitarbeiter im Unternehmen kein leichtes Unterfangen, diese Aufgabe zu lösen.
+<a href=http://marcoscheel.files.wordpress.com/2012/05/sharepoint.png target=_blank><img class=img-zoomable src=http://marcoscheel.files.wordpress.com/2012/05/sharepoint.png alt>
 </a></p>
-<p><a href="http://www.bing.com/search?q=karsten&#43;kleinschmidt&amp;src=IE-TopResult&amp;FORM=IE10TR" target="_blank">Karsten</a> (und damit irgendwann auch ich) hat nun die Aufgabe, für eine Website im Lync Umfeld so eine Funktion anzubieten. Eine kurze Recherche (<a href="http://www.bing.com/search?q=iis&#43;sign&#43;in&#43;as&#43;a&#43;different&#43;user&amp;src=IE-TopResult&amp;FORM=IE10TR" target="_blank">Bing</a> | <a href="https://www.google.com/#hl=en&amp;output=search&amp;sclient=psy-ab&amp;q=iis&#43;sign&#43;in&#43;as&#43;a&#43;different&#43;user&amp;oq=iis&#43;sign&#43;in&#43;as&#43;a&#43;different&#43;user" target="_blank">Google</a>) hat gezeigt, dass <a href="http://www.roelvanlisdonk.nl" target="_blank">Roel van Lisdonk</a> in seinem Blogpost <a href="http://www.roelvanlisdonk.nl/?p=825" target="_blank">ASP .NET – C# – How to “Sign in as Different User” like in Microsoft SharePoint with Windows Authentication</a> genau das beschreibt. Seine Lösung ist allerdings Page-basierend und ich wollte was allgemeineres. Ich habe dann einfach seine Code als Basis genommen, ein <a href="http://msdn.microsoft.com/en-us/library/zec9k340.aspx" target="_blank">HTTPModule</a> erstellt und das Ergebnis dann auf Codeplex veröffentlicht. Da nicht so viel Eigenleistung drin steckt, war es schnell klar, dass es nur &ldquo;fair&rdquo; ist es weiter zu teilen. Hier ist also das erste <a href="http://glueckkanja.com" target="_blank">Glück &amp; Kanja</a> <a href="http://www.codeplex.com" target="_blank">Codeplex</a> Projekt.</p>
-<p><a href="http://signinas.codeplex.com" target="_blank">http://signinas.codeplex.com</a> - Glück &amp; Kanja Consulting AG - Sign In As A Different User</p>
-<p><a href="http://marcoscheel.files.wordpress.com/2012/05/codeplex.png" target="_blank"><img class="img-zoomable" src="http://marcoscheel.files.wordpress.com/2012/05/codeplex.png" alt="" />
-
+<p><a href="http://www.bing.com/search?q=karsten+kleinschmidt&src=IE-TopResult&FORM=IE10TR" target=_blank>Karsten</a> (und damit irgendwann auch ich) hat nun die Aufgabe, für eine Website im Lync Umfeld so eine Funktion anzubieten. Eine kurze Recherche (<a href="http://www.bing.com/search?q=iis+sign+in+as+a+different+user&src=IE-TopResult&FORM=IE10TR" target=_blank>Bing</a> | <a href="https://www.google.com/#hl=en&output=search&sclient=psy-ab&q=iis+sign+in+as+a+different+user&oq=iis+sign+in+as+a+different+user" target=_blank>Google</a>) hat gezeigt, dass <a href=http://www.roelvanlisdonk.nl target=_blank>Roel van Lisdonk</a> in seinem Blogpost <a href="http://www.roelvanlisdonk.nl/?p=825" target=_blank>ASP .NET – C# – How to “Sign in as Different User” like in Microsoft SharePoint with Windows Authentication</a> genau das beschreibt. Seine Lösung ist allerdings Page-basierend und ich wollte was allgemeineres. Ich habe dann einfach seine Code als Basis genommen, ein <a href=http://msdn.microsoft.com/en-us/library/zec9k340.aspx target=_blank>HTTPModule</a> erstellt und das Ergebnis dann auf Codeplex veröffentlicht. Da nicht so viel Eigenleistung drin steckt, war es schnell klar, dass es nur &ldquo;fair&rdquo; ist es weiter zu teilen. Hier ist also das erste <a href=http://glueckkanja.com target=_blank>Glück & Kanja</a> <a href=http://www.codeplex.com target=_blank>Codeplex</a> Projekt.</p>
+<p><a href=http://signinas.codeplex.com target=_blank>http://signinas.codeplex.com</a> - Glück & Kanja Consulting AG - Sign In As A Different User</p>
+<p><a href=http://marcoscheel.files.wordpress.com/2012/05/codeplex.png target=_blank><img class=img-zoomable src=http://marcoscheel.files.wordpress.com/2012/05/codeplex.png alt>
 </a></p>
 <p>Das Projekt steckt sicher noch in den Kinderschuhen und kann deutlich erweitert werden, aber dafür gibt es ja Codeplex :-)</p>
-<p>Ich hatte übrigens viel <a href="https://twitter.com/marcoscheel/status/203496861250764803" target="_blank">&ldquo;Spaß&rdquo;</a> mit Codeplex, aber das ist ne andere Geschichte und die Schuld von TFS ;-)</p>
-
-    </div>
+<p>Ich hatte übrigens viel <a href=https://twitter.com/marcoscheel/status/203496861250764803 target=_blank>&ldquo;Spaß&rdquo;</a> mit Codeplex, aber das ist ne andere Geschichte und die Schuld von TFS ;-)</p>
+</div>
 </article>
-
-
 <div class="license markdown-body">
-    <blockquote>
-        <p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
-               target="_blank">CC BY 4.0</a>.</p>
-    </blockquote>
+<blockquote>
+<p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel=license href=https://creativecommons.org/licenses/by/4.0/ target=_blank>CC BY 4.0</a>.</p>
+</blockquote>
 </div>
-
-
-<div class="post-comment" data-comment="disqus">
-    <span class="post-comment-notloaded">
-        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
-    </span>
-    <div id="disqus_thread" style="display: none;"></div>
-    <script>
-        function loadComment() {
-            var commentArea = document.querySelector('.post-comment');
-            var disqus_config = function () {
-                this.page.url = 'https:\/\/marcoscheel.de\/2012\/05\/27\/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites\/';
-                this.page.identifier = '2012-05-27-sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites';
-            };
-            var s = document.createElement('script');
-            s.src = 'https://' + 'marcoscheel' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            document.querySelector('#disqus_thread').removeAttribute('style');
-            (document.body || document.head).appendChild(s);
-            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
-        }
-    </script>
+<div class=post-comment data-comment=disqus>
+<span class=post-comment-notloaded>
+<i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
+</span>
+<div id=disqus_thread style=display:none></div>
+<script>function loadComment(){var b=document.querySelector('.post-comment'),c=function(){this.page.url='https://marcoscheel.de/2012/05/27/sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites/',this.page.identifier='2012-05-27-sign-in-as-a-different-user-benutzer-wechseln-fur-iis-basierte-sites'},a=document.createElement('script');a.src='https://marcoscheel.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),document.querySelector('#disqus_thread').removeAttribute('style'),(document.body||document.head).appendChild(a),document.querySelector('span.post-comment-notloaded').setAttribute('style','display: none;')}</script>
 </div>
-
-
-
-            </div>
-            <aside class="col-12 col-md-3 float-left sidebar">
-    
-    <div class="sidebar-item sidebar-pages">
-        <sidebarh3>Seiten</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives/">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about/">About</a>
-            </li>
-            
-            <li>
-                <a href="/search/">Search</a>
-            </li>
-            
-            <li>
-                <a href="/impressum/">Impressum</a>
-            </li>
-            
-            <li>
-                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-links">
-        <sidebarh3>Links</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
-            </li>
-            
-            <li>
-                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
-            </li>
-            
-            <li>
-                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
-            </li>
-            
-            <li>
-                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-tags">
-        <sidebarh3>Tags</sidebarh3>
-        <div>
-            
-            <span>
-                <a href="/tags/azure-ad/">Azure AD</a>
-            </span>
-            
-            <span>
-                <a href="/tags/development/">Development</a>
-            </span>
-            
-            <span>
-                <a href="/tags/equipment/">Equipment</a>
-            </span>
-            
-            <span>
-                <a href="/tags/groups/">Groups</a>
-            </span>
-            
-            <span>
-                <a href="/tags/meta/">Meta</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-365/">Microsoft 365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mip/">MIP</a>
-            </span>
-            
-            <span>
-                <a href="/tags/office365/">Office365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/tools/">Tools</a>
-            </span>
-            
-            <span>
-                <a href="/tags/work/">Work</a>
-            </span>
-            
-            <span>
-                <a href="/tags/xarchived/">xArchived</a>
-            </span>
-            
-        </div>
-    </div>
-    <div class="sidebar-item sidebar">
-        <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-    <div class="sidebar-item sidebar-toc">
-        <sidebarh3>Inhalt</sidebarh3><nav id="TableOfContents"></nav></div>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar">
+<a class=twitter-timeline data-height=400 href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src=https://platform.twitter.com/widgets.js></script>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents></nav></div>
 </aside>
-        </div>
-        <div class="btn">
-    <div class="btn-menu" id="btn-menu">
-        <i class="iconfont icon-grid-sharp"></i>
-    </div>
-    <div class="btn-toggle-mode">
-        <i class="iconfont icon-contrast-sharp"></i>
-    </div>
-    <div class="btn-scroll-top">
-        <i class="iconfont icon-chevron-up-circle-sharp"></i>
-    </div>
 </div>
-<aside class="sidebar-mobile" style="display: none;">
-  <div class="sidebar-wrapper">
-    
-    <div class="sidebar-item sidebar-pages">
-        <sidebarh3>Seiten</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives/">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about/">About</a>
-            </li>
-            
-            <li>
-                <a href="/search/">Search</a>
-            </li>
-            
-            <li>
-                <a href="/impressum/">Impressum</a>
-            </li>
-            
-            <li>
-                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-links">
-        <sidebarh3>Links</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
-            </li>
-            
-            <li>
-                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
-            </li>
-            
-            <li>
-                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
-            </li>
-            
-            <li>
-                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-tags">
-        <sidebarh3>Tags</sidebarh3>
-        <div>
-            
-            <span>
-                <a href="/tags/azure-ad/">Azure AD</a>
-            </span>
-            
-            <span>
-                <a href="/tags/development/">Development</a>
-            </span>
-            
-            <span>
-                <a href="/tags/equipment/">Equipment</a>
-            </span>
-            
-            <span>
-                <a href="/tags/groups/">Groups</a>
-            </span>
-            
-            <span>
-                <a href="/tags/meta/">Meta</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-365/">Microsoft 365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mip/">MIP</a>
-            </span>
-            
-            <span>
-                <a href="/tags/office365/">Office365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/tools/">Tools</a>
-            </span>
-            
-            <span>
-                <a href="/tags/work/">Work</a>
-            </span>
-            
-            <span>
-                <a href="/tags/xarchived/">xArchived</a>
-            </span>
-            
-        </div>
-    </div>
-    
-    
-    
-    <div class="sidebar-item sidebar-toc">
-        <sidebarh3>Inhalt</sidebarh3>
-        <nav id="TableOfContents"></nav>
-    </div>
-    
-    
-  </div>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3>
+<nav id=TableOfContents></nav>
+</div>
+</div>
 </aside>
-    </main>
-
-    <footer>
-    <div class="container-lg clearfix">
-        <div class="col-12 footer">
-            
-            <span>&copy; 2021-2022
-                <a href="https://marcoscheel.de">Marco Scheel</a>
-                 | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
-                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
-                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
-                                                    target="_blank">Hugo</a> 
-            </span>
-        </div>
-    </div>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2021-2022
+<a href=https://marcoscheel.de>Marco Scheel</a>
+| <a href=https://github.com/marcoscheel/marcoscheel.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
 </footer>
-
-    
-<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
-
-
-<script defer src="/assets/js/fuji.min.js"></script>
-
-
-
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=/assets/js/fuji.min.js></script>
 </body>
-
 </html>

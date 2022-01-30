@@ -1,265 +1,230 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Azure AD on Marco Scheel aka GeekDotNet</title>
-    <link>https://marcoscheel.de/tags/azure-ad/</link>
-    <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>de</language>
-    <lastBuildDate>Mon, 25 Jan 2021 10:10:10 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/azure-ad/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Create your Azure AD application via script - M365.TeamsBackup</title>
-      <link>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</link>
-      <pubDate>Mon, 25 Jan 2021 10:10:10 +0100</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</guid>
-      <description>&lt;p&gt;If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;App registrations&amp;rdquo;&lt;/a&gt; part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.&lt;/p&gt;
-&lt;p&gt;This post provides you will all the needed information to create your own script. I&amp;rsquo;m using my &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34; target=&#34;_blank&#34;&gt;M365 Teams Backup&lt;/a&gt; solution as a reference. The key components are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Install the Azure CLI or the Azure AD Preview PowerShell module&lt;/li&gt;
-&lt;li&gt;The scripts to setup the app
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp-cli.ps1&lt;/a&gt; via Azure CLI&lt;/li&gt;
-&lt;li&gt;or &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp.ps1&lt;/a&gt; via PowerShell&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--title.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;h2 id=&#34;choose-a-scripting-environment-azure-cli-vs-azure-ad-ps&#34;&gt;Choose a scripting environment (Azure CLI vs Azure AD PS)&lt;/h2&gt;
-&lt;p&gt;During my day job I created some applications based on &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/overview&#34; target=&#34;_blank&#34;&gt;Microsoft Graph&lt;/a&gt; and I tried a few approaches to script the Azure AD app creation. It is important to understand that an Azure AD application consists of two parts. The application registration is like a blueprint for your app. The enterprise application is the implementation of your blueprint.&lt;/p&gt;
-&lt;p&gt;The application permissions are defined in the &amp;ldquo;App registration&amp;rdquo;. Here you select the permissions that your app will request from users in the tenant. Without a consent the permissions are not in effect. If your only have an app registered but not received consent the app will not be able to use the requested permissions. Check the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent&#34; target=&#34;_blank&#34;&gt;Microsoft documentation&lt;/a&gt; for a deeper look at the consent framework.&lt;/p&gt;
-&lt;p&gt;Most of my applications leverage &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#permission-types&#34; target=&#34;_blank&#34;&gt;application permissions&lt;/a&gt; or require admin consent for delegate permissions. The �M365.TeamsBackup� solution is using a bunch of Microsoft Graph permissions and some of them are pretty powerful. If you have an application with this kind of permission requirements it is needed to have &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#admin-restricted-permissions&#34; target=&#34;_blank&#34;&gt;admin consent&lt;/a&gt; given by a (best case) global administrator.&lt;/p&gt;
-&lt;p&gt;If your apps are like mine, it might be the best to use the Azure CLI because this is as of my knowledge the only way to script the admin consent. I am not a CLI guy. I am a PowerShell fan. I struggled in the past integrating the CLI and its output into my scripting flow. That is why I wanted to show you what and how it can be done. If you are OK with opening the portal to give admin consent or you don&amp;rsquo;t want to give admin consent during application setup, I also have an Azure AD PowerShell version of the script.&lt;/p&gt;
-&lt;h3 id=&#34;setup-azure-cli-and-connect&#34;&gt;Setup Azure CLI and connect&lt;/h3&gt;
-&lt;p&gt;The Azure CLI is not purely targeted at Azure AD. It is the other way around because the CLI is used to script all the Azure things available. There is great Microsoft docs on &lt;a href=&#34;https://docs.microsoft.com/en-us/cli/azure/install-azure-cli&#34; target=&#34;_blank&#34;&gt;installing the Azure CLI&lt;/a&gt;. I&amp;rsquo;m running on Windows, so I typically go the MSI route:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Download the release version of the MSI (that is what I&amp;rsquo;m running)&lt;/li&gt;
-&lt;li&gt;Install the MSI (bring some extra time because the installation is slow)&lt;/li&gt;
-&lt;li&gt;After the download open a new PowerShell (this ensured the path is set and available)&lt;/li&gt;
-&lt;li&gt;You can check if the installation worked using the &amp;lsquo;az &amp;ndash;version&amp;rsquo; command&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-cli.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;As you can see my version is not up to date. As with most tools you need to keep these tools at the latest version. The Azure CLI can be updated by installing the newest MSI or by running an admin command using this command &amp;lsquo;az upgrade&amp;rsquo;. The upgrade command will download the MSI and start the installation for you.&lt;/p&gt;
-&lt;p&gt;Installation is finish and now it is time to login to your tenant. The CLI is different from your normal &amp;ldquo;PowerShell Connect-SERVICE&amp;rdquo; (SharePoint, AD, Teams, &amp;hellip;) command. The Azure CLI will remember your last login. If you close and open your terminal you will still be logged in. If you use the Azure CLI just for the one-time setup, please consider a logout after you finish any script. But first lets login. I&amp;rsquo;m a big fan of &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code&#34; target=&#34;_blank&#34;&gt;device code authentication&lt;/a&gt; where possible. &lt;a href=&#34;https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#run-the-azure-cli&#34; target=&#34;_blank&#34;&gt;Azure CLI is supporting&lt;/a&gt; this flow so that is how I roll:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Login:
-&lt;ul&gt;
-&lt;li&gt;az login &amp;ndash;use-device-code &amp;ndash;allow-no-subscriptions&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Check current login:
-&lt;ul&gt;
-&lt;li&gt;az account show&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Logout:
-&lt;ul&gt;
-&lt;li&gt;az logout&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-cliaccount.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Check my script using the Azure CLI:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp-cli.ps1&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;setup-azure-ad-powershell-and-connect&#34;&gt;Setup Azure AD PowerShell and connect&lt;/h3&gt;
-&lt;p&gt;Azure AD PowerShell versioning is complicated. For my job (M365 Modern Collaboration) I am always using the AzureADPreview module and this is what I recommend in most cases. The AzureADPreview cannot be installed side by side with the &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0-preview&#34; target=&#34;_blank&#34;&gt;AzureADPreview&lt;/a&gt;, so at some point you will have to move to the AzureADPreview. As the Azure CLI is not PowerShell based I am using my Windows Terminal default that is PowerShell 7. The Azure AD modules are not yet ready for PowerShell 7 so you will need to open your old school PowerShell 5.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&#34; target=&#34;_blank&#34;&gt;Installing the Azure AD module&lt;/a&gt; is like most modern modules and relies on the Powershell gallery.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Open your PowerShell as an administrator and execute
-&lt;ul&gt;
-&lt;li&gt;Install-module AzureADPreview&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Check your version opening a non admin session
-&lt;ul&gt;
-&lt;li&gt;Get-Module AzureADPreview -ListAvailable&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-ps.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;If you are not on the latest version, you need to upgrade the module like any other module:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Open your PowerShell as an administrator and execute
-&lt;ul&gt;
-&lt;li&gt;Update-Module AzureADPreview&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-psupdate.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;To connect to Azure AD you cannot rely on device authentication and you will need to login directly on the script execution. If you need to execute multiple scripts, check if you want to disable the login command &amp;ldquo;Connect-AzureAD&amp;rdquo; in the script to prevent multiple logins (incl. MFA).&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Open your PowerShell and execute
-&lt;ul&gt;
-&lt;li&gt;Connect-AzureAD&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Check my script using the Azure CLI:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp.ps1&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;script-the-creation-process&#34;&gt;Script the creation process&lt;/h2&gt;
-&lt;p&gt;Now we are prepared, and we can create our application. The easy part is to create an &amp;ldquo;App registration&amp;rdquo;. If your app need permissions the trouble begins. There are two challenges:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Setting the permission in the two scripts&lt;/li&gt;
-&lt;li&gt;Getting the permission definition in the first place&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Getting the permission translated from the nice Azure AD portal UX to a script-ready solution is harder to research than expected. I&amp;rsquo;ve done a &lt;a href=&#34;https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/&#34; target=&#34;_blank&#34;&gt;blog post&lt;/a&gt; (in German) about this in the past. In the next section I will show you how to get the ID of the Microsoft Graph application and the IDs of the required permissions.&lt;/p&gt;
-&lt;p&gt;My Teams Backup solution requires many permissions from the Microsoft Graph (this time delegation because app permissions for &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-protected-apis&#34; target=&#34;_blank&#34;&gt;some require Microsoft approval&lt;/a&gt;) so let�s have a look at a non-error prone implementation that is also easy to read and extend.&lt;/p&gt;
-&lt;h3 id=&#34;azure-cli&#34;&gt;Azure CLI&lt;/h3&gt;
-&lt;p&gt;For reference: &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp-cli.ps1&lt;/a&gt;
-Microsoft docs: &lt;a href=&#34;https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest&#34; target=&#34;_blank&#34;&gt;az command overview&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Use the Azure CLI to query the Azure Active Directory for the service principal with the name of the Microsoft Graph.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalName = &amp;quot;Microsoft Graph&amp;quot;;
-$servicePrincipalId = az ad sp list --filter &amp;quot;displayname eq &#39;$servicePrincipalName&#39;&amp;quot; --query &#39;[0].appId&#39; | ConvertFrom-Json
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Using the query parameter we select the first result (there is only one Microsoft Graph) and &amp;ldquo;cast&amp;rdquo; the app ID. Using the ConvertFrom-JSON makes it easy to parse the result and we receive &amp;ldquo;00000003-0000-0000-c000-000000000000&amp;rdquo; as the value for the app id.&lt;/p&gt;
-&lt;p&gt;Next, we need to get the ID for each required permission. This info is part of the &amp;ldquo;oauth2Permissions&amp;rdquo; property from the MS Graph service principal:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalNameOauth2Permissions = @(&amp;quot;Channel.ReadBasic.All&amp;quot;, &amp;quot;ChannelMember.Read.All&amp;quot;, &amp;quot;ChannelMessage.Read.All&amp;quot;, &amp;quot;ChannelSettings.Read.All&amp;quot;, &amp;quot;Group.Read.All&amp;quot;, &amp;quot;GroupMember.Read.All&amp;quot;, &amp;quot;Team.ReadBasic.All&amp;quot;, &amp;quot;TeamMember.Read.All&amp;quot;, &amp;quot;TeamSettings.Read.All&amp;quot;, &amp;quot;TeamsTab.Read.All&amp;quot;);
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Azure AD on Marco Scheel aka GeekDotNet</title><link>https://marcoscheel.de/tags/azure-ad/</link><description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description><generator>Hugo -- gohugo.io</generator><language>de</language><lastBuildDate>Mon, 25 Jan 2021 10:10:10 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/azure-ad/index.xml" rel="self" type="application/rss+xml"/><item><title>Create your Azure AD application via script - M365.TeamsBackup</title><link>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</link><pubDate>Mon, 25 Jan 2021 10:10:10 +0100</pubDate><guid>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</guid><description>&lt;p>If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">&amp;ldquo;App registrations&amp;rdquo;&lt;/a> part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.&lt;/p>
+&lt;p>This post provides you will all the needed information to create your own script. I&amp;rsquo;m using my &lt;a href="https://github.com/marcoscheel/M365.TeamsBackup" target="_blank">M365 Teams Backup&lt;/a> solution as a reference. The key components are:&lt;/p>
+&lt;ul>
+&lt;li>Install the Azure CLI or the Azure AD Preview PowerShell module&lt;/li>
+&lt;li>The scripts to setup the app
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1" target="_blank">create-aadapp-cli.ps1&lt;/a> via Azure CLI&lt;/li>
+&lt;li>or &lt;a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1" target="_blank">create-aadapp.ps1&lt;/a> via PowerShell&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--title.jpg" alt="image" />
+&lt;/p>
+&lt;h2 id="choose-a-scripting-environment-azure-cli-vs-azure-ad-ps">Choose a scripting environment (Azure CLI vs Azure AD PS)&lt;/h2>
+&lt;p>During my day job I created some applications based on &lt;a href="https://docs.microsoft.com/en-us/graph/overview" target="_blank">Microsoft Graph&lt;/a> and I tried a few approaches to script the Azure AD app creation. It is important to understand that an Azure AD application consists of two parts. The application registration is like a blueprint for your app. The enterprise application is the implementation of your blueprint.&lt;/p>
+&lt;p>The application permissions are defined in the &amp;ldquo;App registration&amp;rdquo;. Here you select the permissions that your app will request from users in the tenant. Without a consent the permissions are not in effect. If your only have an app registered but not received consent the app will not be able to use the requested permissions. Check the &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent" target="_blank">Microsoft documentation&lt;/a> for a deeper look at the consent framework.&lt;/p>
+&lt;p>Most of my applications leverage &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#permission-types" target="_blank">application permissions&lt;/a> or require admin consent for delegate permissions. The �M365.TeamsBackup� solution is using a bunch of Microsoft Graph permissions and some of them are pretty powerful. If you have an application with this kind of permission requirements it is needed to have &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#admin-restricted-permissions" target="_blank">admin consent&lt;/a> given by a (best case) global administrator.&lt;/p>
+&lt;p>If your apps are like mine, it might be the best to use the Azure CLI because this is as of my knowledge the only way to script the admin consent. I am not a CLI guy. I am a PowerShell fan. I struggled in the past integrating the CLI and its output into my scripting flow. That is why I wanted to show you what and how it can be done. If you are OK with opening the portal to give admin consent or you don&amp;rsquo;t want to give admin consent during application setup, I also have an Azure AD PowerShell version of the script.&lt;/p>
+&lt;h3 id="setup-azure-cli-and-connect">Setup Azure CLI and connect&lt;/h3>
+&lt;p>The Azure CLI is not purely targeted at Azure AD. It is the other way around because the CLI is used to script all the Azure things available. There is great Microsoft docs on &lt;a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli" target="_blank">installing the Azure CLI&lt;/a>. I&amp;rsquo;m running on Windows, so I typically go the MSI route:&lt;/p>
+&lt;ul>
+&lt;li>Download the release version of the MSI (that is what I&amp;rsquo;m running)&lt;/li>
+&lt;li>Install the MSI (bring some extra time because the installation is slow)&lt;/li>
+&lt;li>After the download open a new PowerShell (this ensured the path is set and available)&lt;/li>
+&lt;li>You can check if the installation worked using the &amp;lsquo;az &amp;ndash;version&amp;rsquo; command&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-cli.png" alt="image" />
+&lt;/p>
+&lt;p>As you can see my version is not up to date. As with most tools you need to keep these tools at the latest version. The Azure CLI can be updated by installing the newest MSI or by running an admin command using this command &amp;lsquo;az upgrade&amp;rsquo;. The upgrade command will download the MSI and start the installation for you.&lt;/p>
+&lt;p>Installation is finish and now it is time to login to your tenant. The CLI is different from your normal &amp;ldquo;PowerShell Connect-SERVICE&amp;rdquo; (SharePoint, AD, Teams, &amp;hellip;) command. The Azure CLI will remember your last login. If you close and open your terminal you will still be logged in. If you use the Azure CLI just for the one-time setup, please consider a logout after you finish any script. But first lets login. I&amp;rsquo;m a big fan of &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code" target="_blank">device code authentication&lt;/a> where possible. &lt;a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#run-the-azure-cli" target="_blank">Azure CLI is supporting&lt;/a> this flow so that is how I roll:&lt;/p>
+&lt;ul>
+&lt;li>Login:
+&lt;ul>
+&lt;li>az login &amp;ndash;use-device-code &amp;ndash;allow-no-subscriptions&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Check current login:
+&lt;ul>
+&lt;li>az account show&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Logout:
+&lt;ul>
+&lt;li>az logout&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-cliaccount.png" alt="image" />
+&lt;/p>
+&lt;p>Check my script using the Azure CLI:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1" target="_blank">create-aadapp-cli.ps1&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="setup-azure-ad-powershell-and-connect">Setup Azure AD PowerShell and connect&lt;/h3>
+&lt;p>Azure AD PowerShell versioning is complicated. For my job (M365 Modern Collaboration) I am always using the AzureADPreview module and this is what I recommend in most cases. The AzureADPreview cannot be installed side by side with the &lt;a href="https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0-preview" target="_blank">AzureADPreview&lt;/a>, so at some point you will have to move to the AzureADPreview. As the Azure CLI is not PowerShell based I am using my Windows Terminal default that is PowerShell 7. The Azure AD modules are not yet ready for PowerShell 7 so you will need to open your old school PowerShell 5.&lt;/p>
+&lt;p>&lt;a href="https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview" target="_blank">Installing the Azure AD module&lt;/a> is like most modern modules and relies on the Powershell gallery.&lt;/p>
+&lt;ul>
+&lt;li>Open your PowerShell as an administrator and execute
+&lt;ul>
+&lt;li>Install-module AzureADPreview&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Check your version opening a non admin session
+&lt;ul>
+&lt;li>Get-Module AzureADPreview -ListAvailable&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-ps.png" alt="image" />
+&lt;/p>
+&lt;p>If you are not on the latest version, you need to upgrade the module like any other module:&lt;/p>
+&lt;ul>
+&lt;li>Open your PowerShell as an administrator and execute
+&lt;ul>
+&lt;li>Update-Module AzureADPreview&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-psupdate.png" alt="image" />
+&lt;/p>
+&lt;p>To connect to Azure AD you cannot rely on device authentication and you will need to login directly on the script execution. If you need to execute multiple scripts, check if you want to disable the login command &amp;ldquo;Connect-AzureAD&amp;rdquo; in the script to prevent multiple logins (incl. MFA).&lt;/p>
+&lt;ul>
+&lt;li>Open your PowerShell and execute
+&lt;ul>
+&lt;li>Connect-AzureAD&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>Check my script using the Azure CLI:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1" target="_blank">create-aadapp.ps1&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="script-the-creation-process">Script the creation process&lt;/h2>
+&lt;p>Now we are prepared, and we can create our application. The easy part is to create an &amp;ldquo;App registration&amp;rdquo;. If your app need permissions the trouble begins. There are two challenges:&lt;/p>
+&lt;ul>
+&lt;li>Setting the permission in the two scripts&lt;/li>
+&lt;li>Getting the permission definition in the first place&lt;/li>
+&lt;/ul>
+&lt;p>Getting the permission translated from the nice Azure AD portal UX to a script-ready solution is harder to research than expected. I&amp;rsquo;ve done a &lt;a href="https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/" target="_blank">blog post&lt;/a> (in German) about this in the past. In the next section I will show you how to get the ID of the Microsoft Graph application and the IDs of the required permissions.&lt;/p>
+&lt;p>My Teams Backup solution requires many permissions from the Microsoft Graph (this time delegation because app permissions for &lt;a href="https://docs.microsoft.com/en-us/graph/teams-protected-apis" target="_blank">some require Microsoft approval&lt;/a>) so let�s have a look at a non-error prone implementation that is also easy to read and extend.&lt;/p>
+&lt;h3 id="azure-cli">Azure CLI&lt;/h3>
+&lt;p>For reference: &lt;a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1" target="_blank">create-aadapp-cli.ps1&lt;/a>
+Microsoft docs: &lt;a href="https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest" target="_blank">az command overview&lt;/a>&lt;/p>
+&lt;p>Use the Azure CLI to query the Azure Active Directory for the service principal with the name of the Microsoft Graph.&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">$servicePrincipalName = &amp;quot;Microsoft Graph&amp;quot;;
+$servicePrincipalId = az ad sp list --filter &amp;quot;displayname eq '$servicePrincipalName'&amp;quot; --query '[0].appId' | ConvertFrom-Json
+&lt;/code>&lt;/pre>
+&lt;p>Using the query parameter we select the first result (there is only one Microsoft Graph) and &amp;ldquo;cast&amp;rdquo; the app ID. Using the ConvertFrom-JSON makes it easy to parse the result and we receive &amp;ldquo;00000003-0000-0000-c000-000000000000&amp;rdquo; as the value for the app id.&lt;/p>
+&lt;p>Next, we need to get the ID for each required permission. This info is part of the &amp;ldquo;oauth2Permissions&amp;rdquo; property from the MS Graph service principal:&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">$servicePrincipalNameOauth2Permissions = @(&amp;quot;Channel.ReadBasic.All&amp;quot;, &amp;quot;ChannelMember.Read.All&amp;quot;, &amp;quot;ChannelMessage.Read.All&amp;quot;, &amp;quot;ChannelSettings.Read.All&amp;quot;, &amp;quot;Group.Read.All&amp;quot;, &amp;quot;GroupMember.Read.All&amp;quot;, &amp;quot;Team.ReadBasic.All&amp;quot;, &amp;quot;TeamMember.Read.All&amp;quot;, &amp;quot;TeamSettings.Read.All&amp;quot;, &amp;quot;TeamsTab.Read.All&amp;quot;);
 (az ad sp show --id $servicePrincipalId --query oauth2Permissions | ConvertFrom-Json) | ? { $_.value -in $servicePrincipalNameOauth2Permissions} | % {
-    $permission = $_
-
-    $delPermission = @{
-        id = $permission.Id
-        type = &amp;quot;Scope&amp;quot;
-    }
-    $reqGraph.resourceAccess += $delPermission
+$permission = $_
+$delPermission = @{
+id = $permission.Id
+type = &amp;quot;Scope&amp;quot;
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Using the &amp;ldquo;-in&amp;rdquo; filter we receive all specified entries for the array we need. To use the IDs in the next command the script creates a hashtable that can be converted in the needed JSON file (correct a file). The permissions are added as &amp;ldquo;Scope&amp;rdquo; representing &amp;ldquo;Delegation&amp;rdquo; permission. The &amp;ldquo;az ad app create&amp;rdquo; command will require a file with the permissions.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Set-Content ./required_resource_accesses.json -Value (&amp;quot;[&amp;quot; + ($reqGraph | ConvertTo-Json) + &amp;quot;]&amp;quot;)
+$reqGraph.resourceAccess += $delPermission
+}
+&lt;/code>&lt;/pre>
+&lt;p>Using the &amp;ldquo;-in&amp;rdquo; filter we receive all specified entries for the array we need. To use the IDs in the next command the script creates a hashtable that can be converted in the needed JSON file (correct a file). The permissions are added as &amp;ldquo;Scope&amp;rdquo; representing &amp;ldquo;Delegation&amp;rdquo; permission. The &amp;ldquo;az ad app create&amp;rdquo; command will require a file with the permissions.&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">Set-Content ./required_resource_accesses.json -Value (&amp;quot;[&amp;quot; + ($reqGraph | ConvertTo-Json) + &amp;quot;]&amp;quot;)
 $newapp = az ad app create --display-name $appName --available-to-other-tenants false --native-app true --required-resource-accesses `@required_resource_accesses.json | ConvertFrom-Json
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This creates an app that is only valid in your tenant &amp;ldquo;&amp;ndash;available-to-other-tenants false&amp;rdquo; and allows the login as a public client &amp;ldquo;&amp;ndash;native-app true&amp;rdquo;. The result is a JSON representing the new application.&lt;/p&gt;
-&lt;p&gt;The benefit of using the Azure CLI is the possibility to grant admin consent for the newly created app&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission admin-consent --id $newapp.appId
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;powershell-with-azure-ad&#34;&gt;PowerShell with Azure AD&lt;/h3&gt;
-&lt;p&gt;For reference: &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp.ps1&lt;/a&gt;
-Microsoft docs: &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#applications&#34; target=&#34;_blank&#34;&gt;Azure AD Application command overview&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;To get the ID for the Microsoft Graph Service principal we query the current directory and filter to the display name.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalName = &amp;quot;Microsoft Graph&amp;quot;;
+&lt;/code>&lt;/pre>
+&lt;p>This creates an app that is only valid in your tenant &amp;ldquo;&amp;ndash;available-to-other-tenants false&amp;rdquo; and allows the login as a public client &amp;ldquo;&amp;ndash;native-app true&amp;rdquo;. The result is a JSON representing the new application.&lt;/p>
+&lt;p>The benefit of using the Azure CLI is the possibility to grant admin consent for the newly created app&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">az ad app permission admin-consent --id $newapp.appId
+&lt;/code>&lt;/pre>
+&lt;h3 id="powershell-with-azure-ad">PowerShell with Azure AD&lt;/h3>
+&lt;p>For reference: &lt;a href="https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1" target="_blank">create-aadapp.ps1&lt;/a>
+Microsoft docs: &lt;a href="https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#applications" target="_blank">Azure AD Application command overview&lt;/a>&lt;/p>
+&lt;p>To get the ID for the Microsoft Graph Service principal we query the current directory and filter to the display name.&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">$servicePrincipalName = &amp;quot;Microsoft Graph&amp;quot;;
 $servicePrincipal = Get-AzureADServicePrincipal -All $true | ? { $_.DisplayName -eq $servicePrincipalName };
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Where the Azure CLI requires a file to setup permission, the PowerShell version requires a .NET object. The Microsoft Graph service principal ID is the ResourceAppID.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$reqGraph = New-Object -TypeName &amp;quot;Microsoft.Open.AzureAD.Model.RequiredResourceAccess&amp;quot;;
+&lt;/code>&lt;/pre>
+&lt;p>Where the Azure CLI requires a file to setup permission, the PowerShell version requires a .NET object. The Microsoft Graph service principal ID is the ResourceAppID.&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">$reqGraph = New-Object -TypeName &amp;quot;Microsoft.Open.AzureAD.Model.RequiredResourceAccess&amp;quot;;
 $reqGraph.ResourceAppId = $servicePrincipal.AppId;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;From the returned object we can select the &amp;ldquo;Oauth2Permissions&amp;rdquo; property to filter on our array with the required permissions. For each permission another .NET object is created and added to the collection named &amp;ldquo;ResourceAccess&amp;rdquo;.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalNameOauth2Permissions = @(&amp;quot;Channel.ReadBasic.All&amp;quot;, &amp;quot;ChannelMember.Read.All&amp;quot;, &amp;quot;ChannelMessage.Read.All&amp;quot;, &amp;quot;ChannelSettings.Read.All&amp;quot;, &amp;quot;Group.Read.All&amp;quot;, &amp;quot;GroupMember.Read.All&amp;quot;, &amp;quot;Team.ReadBasic.All&amp;quot;, &amp;quot;TeamMember.Read.All&amp;quot;, &amp;quot;TeamSettings.Read.All&amp;quot;, &amp;quot;TeamsTab.Read.All&amp;quot;);
+&lt;/code>&lt;/pre>
+&lt;p>From the returned object we can select the &amp;ldquo;Oauth2Permissions&amp;rdquo; property to filter on our array with the required permissions. For each permission another .NET object is created and added to the collection named &amp;ldquo;ResourceAccess&amp;rdquo;.&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">$servicePrincipalNameOauth2Permissions = @(&amp;quot;Channel.ReadBasic.All&amp;quot;, &amp;quot;ChannelMember.Read.All&amp;quot;, &amp;quot;ChannelMessage.Read.All&amp;quot;, &amp;quot;ChannelSettings.Read.All&amp;quot;, &amp;quot;Group.Read.All&amp;quot;, &amp;quot;GroupMember.Read.All&amp;quot;, &amp;quot;Team.ReadBasic.All&amp;quot;, &amp;quot;TeamMember.Read.All&amp;quot;, &amp;quot;TeamSettings.Read.All&amp;quot;, &amp;quot;TeamsTab.Read.All&amp;quot;);
 $servicePrincipal.Oauth2Permissions | ? { $_.Value -in $servicePrincipalNameOauth2Permissions} | % {
-    $permission = $_
-    $delPermission = New-Object -TypeName &amp;quot;Microsoft.Open.AzureAD.Model.ResourceAccess&amp;quot; -ArgumentList $permission.Id,&amp;quot;Scope&amp;quot; #delegate permission (oauth) are always &amp;quot;Scope&amp;quot;
-    $reqGraph.ResourceAccess += $delPermission
+$permission = $_
+$delPermission = New-Object -TypeName &amp;quot;Microsoft.Open.AzureAD.Model.ResourceAccess&amp;quot; -ArgumentList $permission.Id,&amp;quot;Scope&amp;quot; #delegate permission (oauth) are always &amp;quot;Scope&amp;quot;
+$reqGraph.ResourceAccess += $delPermission
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now it is time to setup the application (only in this directory and as public client) and retrieve the ID of the new app:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;New-AzureADApplication -DisplayName $appName -AvailableToOtherTenants:$false -PublicClient:$true -RequiredResourceAccess $reqGraph;
+&lt;/code>&lt;/pre>
+&lt;p>Now it is time to setup the application (only in this directory and as public client) and retrieve the ID of the new app:&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">New-AzureADApplication -DisplayName $appName -AvailableToOtherTenants:$false -PublicClient:$true -RequiredResourceAccess $reqGraph;
 &amp;quot;ClientId: &amp;quot; + $newapp.AppId;
 &amp;quot;TenantId: &amp;quot; + (Get-AzureADTenantDetail).ObjectId;
 &amp;quot;Check AAD app: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/&amp;quot; + $newapp.AppId + &amp;quot;/objectId/&amp;quot; + $newapp.ObjectId + &amp;quot;/isMSAApp/&amp;quot;;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The last line creates a link to the Azure AD to grant admin consent.&lt;/p&gt;
-&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
-&lt;p&gt;You can check out my linked solution to get the full picture from the client code using the app to the setup required for authentication. I would recommend checking out the Azure CLI because it is the most complete solution even though it does not feel natural to me as a PowerShell guy. The example should give you an idea how to get the needed IDs and how to constructed the required objects/file to create the app. Let me know how you setup Azure AD apps and if there are other options. I&amp;rsquo;ve ignored the &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadapplication&#34; target=&#34;_blank&#34;&gt;PowerShell AZ module&lt;/a&gt; because you are not able to grant admin consent too and chances are higher you may have AzureAD PowerShell installed already.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Manage Microsoft Teams membership with Azure AD Access Review</title>
-      <link>https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/</link>
-      <pubDate>Fri, 02 Aug 2019 19:41:30 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/</guid>
-      <description>&lt;p&gt;This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).&lt;/p&gt;
-&lt;p&gt;&amp;lt;DE&amp;gt;Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&amp;lt;/DE&amp;gt;&lt;/p&gt;
-&lt;p&gt;Microsoft has great &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview&#34; target=&#34;_blank&#34;&gt;resources&lt;/a&gt; to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview&#34; target=&#34;_blank&#34;&gt;Identity Governance)&lt;/a&gt; on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.&lt;/p&gt;
-&lt;p&gt;Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;In our modern collaboration (Teams, SharePoint, &amp;hellip;) implementation we strongly recommend to leverage full self service group creation that is already built into the system. With this setup everyone is able to create and manage/own a group. Permanent user education is needed for everyone to understand the concept behind modern groups. Many organizations also have a strong set of internal rules that forces a so called information owner (could be equal to the owner of a group) to review who has access to their data. Most organization rely on the fact people are fulfilling their duties as demanded, but lets face it owners are just human beings that need to do their “real” job. With the introduction of Azure AD Access Review we can support these owner duties and make the process documented and easy to execute.&lt;/p&gt;
-&lt;p&gt;AAD Access Review can do the following to support an up to date group membership:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Setup an Access Review for an Azure AD Group&lt;/li&gt;
-&lt;li&gt;Specify the duration (start date, recurrence, duration, &amp;hellip;)&lt;/li&gt;
-&lt;li&gt;Specify who will do the review (owner, self, specific people, &amp;hellip;)&lt;/li&gt;
-&lt;li&gt;Specify who will be reviewed (all members, guests, &amp;hellip;)&lt;/li&gt;
-&lt;li&gt;Specify what will happen if the review is not executed (remove members, &amp;hellip;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Before we start we need to talk about licensing. It is obvious that M365 E5 is the best SKU to start with ;) but if you are not that lucky, you need at least an Azure AD P2 license. It is not a “very” common license as it was only part of the EMS E5 SKU, but Microsoft started some time ago &lt;a href=&#34;https://www.microsoft.com/en-us/microsoft-365/blog/2019/01/02/introducing-new-advanced-security-and-compliance-offerings-for-microsoft-365/&#34; target=&#34;_blank&#34;&gt;really attractive license bundles&lt;/a&gt;. Many orgs with strong security requirements will at some point hit a license SKU that will include AAD P2. For your trusty lab tenants start a EMS E5 trial to test these features today. To be precise only the accounts reviewing (executing the Access Review) need the license, at least this is my understanding and as always with licensing ask your usual licensing people to get the definitive answer.&lt;/p&gt;
-&lt;p&gt;The setup of an Access Review (if not automated through &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/accessreviews-root?view=graph-rest-beta&#34; target=&#34;_blank&#34;&gt;MS Graph&lt;/a&gt; Beta) is setup in the Azure Portal in the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview#onboard-access-reviews&#34; target=&#34;_blank&#34;&gt;identity governance blade&lt;/a&gt; of AAD. To create our first Access Review we need to on-board to this feature.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/a3/ad/cecc7fb97787e08c4f87f978dbc0.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Please note we are looking at Access Review in the context of modern collaboration (groups created by Teams, SharePoint, Outlook, &amp;hellip;). Access Review can be used to review any AAD group that you use to grant access to a specific resource or keep a list of trusted users for an infrastructure piece of tech in Azure. The following information might not always be valid for your scenario!&lt;/p&gt;
-&lt;p&gt;This is the first half of the screen we need to fill-out for a new Access Review:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/b8/37/a8885e7c2352530bc0dc64f242e6.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Review name&lt;/strong&gt;: This is a really important piece! The Review name will be the “only” visible clue for the reviewer once they get the email about the outstanding review. With self service setup and with the nature of how people name their groups we need to ensure people are understanding what they review. We try to automate the creation of the reviews so we put the review timing, the group name and the groups object id in the review name. The ID is helping during support if you send out 4000 Access Reviews and people ask why they got this email they can provide you with the ID and things get easier. For example: 2019-Q1 GRP New Order (af01a33c-df0b-4a97-a7de-c6954bd569ef)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Frequency&lt;/strong&gt;: Also very important! You have to understand that an Access Review is somehow static. You could do a recurring review, but some information will be out of sync. For example the group could be renamed, but the title will not be updated and people might get confused about misleading information in the email that is send out. If you choose to let the owner of a group do the review, the owners will be “copied” to the Access Review config and not updated for future reviews. Technically this could be fixed by Microsoft, but as of now we ran into problems in the context of modern collaboration.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/43/67/e83f0e7133dbdea25ad0ab293014.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Users&lt;/strong&gt;: &amp;ldquo;Members of a group” is our choice for collaboration. The other option is “Assigned to an application” and not our focus. For a group we have the option to do a guest only review or review everybody as a member of a group. Based on organizational needs and information like the confidentiality we can make a decision. As a starting point it could be a good option to go with guests only because guests are not very well controlled in most environments. An employee at least has a contract and the general trust level should be higher.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Group&lt;/strong&gt;: Select a group the review should apply to. The latest changes to the Access Review feature allowed to select multiple groups at once. From a collaboration perspective I would avoid it, because at the end of the creation process each group will have its own Access Review instance and the settings are no longer shared. Once again from a collab point of view we need some kind of automation because it is not feasible to create these reviews by an manual task in a foreseeable future.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Reviewers&lt;/strong&gt;: The natural choice for an Office 365 Group (Team) is to go with the “Group owners” option. Especially if we automate the process and don’t have an extra database to lookup who is the information owner. For static groups or highly confidential groups the option “Selected users” could make sense. An interesting option is also the last one called “Members (self)”. This option will &amp;ldquo;force” each member to take a decision if the user is any longer part of this project, team or group. We at &lt;a href=&#34;https://glueckkanja.com&#34; target=&#34;_blank&#34;&gt;Glück &amp;amp; Kanja&lt;/a&gt; are currently thinking about doing this for some of our internal clients teams. Most of our groups are public and accessible by most of the employee, but membership will document some kind of current involvement for the client represented by the group. This could also naturally reduce the number of teams that show up in your Microsoft Teams client app. As mentioned earlier at the moment it seems that the option “Group owners” will be resolved once the Access Review starts and the instance of the review is then fixed. So any owner change could be not reflected in future instances in recurring reviews. Hopefully this will be fixed by Microsoft.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Program&lt;/strong&gt;: This is a logical grouping of access reviews. For example we could add all collaboration related reviews to one program vs administration reviews with a more static route.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/81/2b/50d2ee022a8bf0412503f18d974d.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;More advanced settings are collapsed, but should definitely be reviews.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Upon completion settings&lt;/strong&gt;: Allows to automatically apply the review results. I would suggest to try this settings, because it will not only document the review but take the required action on the membership. If group owners are not aware what these Access Review email are, then we talk about potential loss of access for members not reviewed, but at the end that is what we want. People need to take this part of identity governance for real and take care of their data. Any change by the system is document (Audit log of the group) and can be reverse manually. If the system is not executing the results of the review, someone must look up results regularly and then ensure to remove the users based on the outcome. If you go for Access Review, I strongly recommend on automatically applying the results (after you own internal tests).&lt;/p&gt;
-&lt;p&gt;Lets take a look on the created Access Review.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/8c/9d/2372c6b805906d8da4d8cedad814.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Azure Portal&lt;/strong&gt;: This is an overview for the admin (non recurring access review).
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/28/60/d0b7362d036eb07d9b4310cbf592.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Email&lt;/strong&gt;: As you can see the prominent Review name is what is standing out to the user. The group name (also highlighted red) is buried within all other text.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/b4/b4/92ec7111904b2875457c90a4959f.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Click on “Start Review” from the email&lt;/strong&gt;: The user now can take action based on recommendations (missing in my lab tenant due to inactivity of my lab users).
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/c8/31/d612013164d7119004bbc1e078f5.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Take Review&lt;/strong&gt;: Accept 6 users.&lt;/p&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/b3/14/91e4c324a1df66f16ebb9bfed94d.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Review Summary&lt;/strong&gt;: This is the summary if the owner has taken all actions.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/1e/a2/61923832e72d07f5d077100ba3ee.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Azure Portal&lt;/strong&gt;: Audit log information for the group.&lt;/p&gt;
-&lt;p&gt;After the user completed the review the system didn’t make a change to the group. Based on the configuration if actions should be automatically applied the results apply at the end of the review process! Until this time the owners can change their mind. Once the review period is over the system will apply the needed changes.&lt;/p&gt;
-&lt;p&gt;I really love this feature in the context of modern collaboration. The process of keeping a current list of involved members in a team is a big benefit for productivity and security. The “need to know” principal is supported by a technical implementation “free of cost” (a mentioned everyone should have AAD P2 through some SKU 😎).&lt;/p&gt;
-&lt;p&gt;Our GK O365 Lifecycle tool was extended to allow the creation of Access Reviews through the Microsoft Graph based on the Group/Team classification. Once customers read or get a demo about this feature and own the license we immediately start a POC implementation. If our tool is already in place it is only a matter of some JSON configuration to be up and running.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>App Permissions für Microsoft Graph Calls automatisiert einrichten</title>
-      <link>https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</link>
-      <pubDate>Mon, 08 Jul 2019 11:47:21 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</guid>
-      <description>&lt;p&gt;Für unser Glück &amp;amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0&#34; target=&#34;_blank&#34;&gt;PowerShell AZ&lt;/a&gt; und die &lt;a href=&#34;https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest&#34; target=&#34;_blank&#34;&gt;Azure CLI&lt;/a&gt;. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.&lt;/p&gt;
-&lt;p&gt;Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview&#34; target=&#34;_blank&#34;&gt;Access Reviews&lt;/a&gt; Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
+&lt;/code>&lt;/pre>
+&lt;p>The last line creates a link to the Azure AD to grant admin consent.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>You can check out my linked solution to get the full picture from the client code using the app to the setup required for authentication. I would recommend checking out the Azure CLI because it is the most complete solution even though it does not feel natural to me as a PowerShell guy. The example should give you an idea how to get the needed IDs and how to constructed the required objects/file to create the app. Let me know how you setup Azure AD apps and if there are other options. I&amp;rsquo;ve ignored the &lt;a href="https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadapplication" target="_blank">PowerShell AZ module&lt;/a> because you are not able to grant admin consent too and chances are higher you may have AzureAD PowerShell installed already.&lt;/p></description></item><item><title>Manage Microsoft Teams membership with Azure AD Access Review</title><link>https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/</link><pubDate>Fri, 02 Aug 2019 19:41:30 +0000</pubDate><guid>https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/</guid><description>&lt;p>This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).&lt;/p>
+&lt;p>&amp;lt;DE&amp;gt;Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&amp;lt;/DE&amp;gt;&lt;/p>
+&lt;p>Microsoft has great &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">resources&lt;/a> to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview" target="_blank">Identity Governance)&lt;/a> on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.&lt;/p>
+&lt;p>Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png" alt="image" />
+&lt;/p>
+&lt;p>In our modern collaboration (Teams, SharePoint, &amp;hellip;) implementation we strongly recommend to leverage full self service group creation that is already built into the system. With this setup everyone is able to create and manage/own a group. Permanent user education is needed for everyone to understand the concept behind modern groups. Many organizations also have a strong set of internal rules that forces a so called information owner (could be equal to the owner of a group) to review who has access to their data. Most organization rely on the fact people are fulfilling their duties as demanded, but lets face it owners are just human beings that need to do their “real” job. With the introduction of Azure AD Access Review we can support these owner duties and make the process documented and easy to execute.&lt;/p>
+&lt;p>AAD Access Review can do the following to support an up to date group membership:&lt;/p>
+&lt;ul>
+&lt;li>Setup an Access Review for an Azure AD Group&lt;/li>
+&lt;li>Specify the duration (start date, recurrence, duration, &amp;hellip;)&lt;/li>
+&lt;li>Specify who will do the review (owner, self, specific people, &amp;hellip;)&lt;/li>
+&lt;li>Specify who will be reviewed (all members, guests, &amp;hellip;)&lt;/li>
+&lt;li>Specify what will happen if the review is not executed (remove members, &amp;hellip;)&lt;/li>
+&lt;/ul>
+&lt;p>Before we start we need to talk about licensing. It is obvious that M365 E5 is the best SKU to start with ;) but if you are not that lucky, you need at least an Azure AD P2 license. It is not a “very” common license as it was only part of the EMS E5 SKU, but Microsoft started some time ago &lt;a href="https://www.microsoft.com/en-us/microsoft-365/blog/2019/01/02/introducing-new-advanced-security-and-compliance-offerings-for-microsoft-365/" target="_blank">really attractive license bundles&lt;/a>. Many orgs with strong security requirements will at some point hit a license SKU that will include AAD P2. For your trusty lab tenants start a EMS E5 trial to test these features today. To be precise only the accounts reviewing (executing the Access Review) need the license, at least this is my understanding and as always with licensing ask your usual licensing people to get the definitive answer.&lt;/p>
+&lt;p>The setup of an Access Review (if not automated through &lt;a href="https://docs.microsoft.com/en-us/graph/api/resources/accessreviews-root?view=graph-rest-beta" target="_blank">MS Graph&lt;/a> Beta) is setup in the Azure Portal in the &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview#onboard-access-reviews" target="_blank">identity governance blade&lt;/a> of AAD. To create our first Access Review we need to on-board to this feature.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/a3/ad/cecc7fb97787e08c4f87f978dbc0.png" alt="image" />
+&lt;/p>
+&lt;p>Please note we are looking at Access Review in the context of modern collaboration (groups created by Teams, SharePoint, Outlook, &amp;hellip;). Access Review can be used to review any AAD group that you use to grant access to a specific resource or keep a list of trusted users for an infrastructure piece of tech in Azure. The following information might not always be valid for your scenario!&lt;/p>
+&lt;p>This is the first half of the screen we need to fill-out for a new Access Review:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/b8/37/a8885e7c2352530bc0dc64f242e6.png" alt="image" />
+&lt;/p>
+&lt;p>&lt;strong>Review name&lt;/strong>: This is a really important piece! The Review name will be the “only” visible clue for the reviewer once they get the email about the outstanding review. With self service setup and with the nature of how people name their groups we need to ensure people are understanding what they review. We try to automate the creation of the reviews so we put the review timing, the group name and the groups object id in the review name. The ID is helping during support if you send out 4000 Access Reviews and people ask why they got this email they can provide you with the ID and things get easier. For example: 2019-Q1 GRP New Order (af01a33c-df0b-4a97-a7de-c6954bd569ef)&lt;/p>
+&lt;p>&lt;strong>Frequency&lt;/strong>: Also very important! You have to understand that an Access Review is somehow static. You could do a recurring review, but some information will be out of sync. For example the group could be renamed, but the title will not be updated and people might get confused about misleading information in the email that is send out. If you choose to let the owner of a group do the review, the owners will be “copied” to the Access Review config and not updated for future reviews. Technically this could be fixed by Microsoft, but as of now we ran into problems in the context of modern collaboration.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/43/67/e83f0e7133dbdea25ad0ab293014.png" alt="image" />
+&lt;/p>
+&lt;p>&lt;strong>Users&lt;/strong>: &amp;ldquo;Members of a group” is our choice for collaboration. The other option is “Assigned to an application” and not our focus. For a group we have the option to do a guest only review or review everybody as a member of a group. Based on organizational needs and information like the confidentiality we can make a decision. As a starting point it could be a good option to go with guests only because guests are not very well controlled in most environments. An employee at least has a contract and the general trust level should be higher.&lt;/p>
+&lt;p>&lt;strong>Group&lt;/strong>: Select a group the review should apply to. The latest changes to the Access Review feature allowed to select multiple groups at once. From a collaboration perspective I would avoid it, because at the end of the creation process each group will have its own Access Review instance and the settings are no longer shared. Once again from a collab point of view we need some kind of automation because it is not feasible to create these reviews by an manual task in a foreseeable future.&lt;/p>
+&lt;p>&lt;strong>Reviewers&lt;/strong>: The natural choice for an Office 365 Group (Team) is to go with the “Group owners” option. Especially if we automate the process and don’t have an extra database to lookup who is the information owner. For static groups or highly confidential groups the option “Selected users” could make sense. An interesting option is also the last one called “Members (self)”. This option will &amp;ldquo;force” each member to take a decision if the user is any longer part of this project, team or group. We at &lt;a href="https://glueckkanja.com" target="_blank">Glück &amp;amp; Kanja&lt;/a> are currently thinking about doing this for some of our internal clients teams. Most of our groups are public and accessible by most of the employee, but membership will document some kind of current involvement for the client represented by the group. This could also naturally reduce the number of teams that show up in your Microsoft Teams client app. As mentioned earlier at the moment it seems that the option “Group owners” will be resolved once the Access Review starts and the instance of the review is then fixed. So any owner change could be not reflected in future instances in recurring reviews. Hopefully this will be fixed by Microsoft.&lt;/p>
+&lt;p>&lt;strong>Program&lt;/strong>: This is a logical grouping of access reviews. For example we could add all collaboration related reviews to one program vs administration reviews with a more static route.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/81/2b/50d2ee022a8bf0412503f18d974d.png" alt="image" />
+&lt;/p>
+&lt;p>More advanced settings are collapsed, but should definitely be reviews.&lt;/p>
+&lt;p>&lt;strong>Upon completion settings&lt;/strong>: Allows to automatically apply the review results. I would suggest to try this settings, because it will not only document the review but take the required action on the membership. If group owners are not aware what these Access Review email are, then we talk about potential loss of access for members not reviewed, but at the end that is what we want. People need to take this part of identity governance for real and take care of their data. Any change by the system is document (Audit log of the group) and can be reverse manually. If the system is not executing the results of the review, someone must look up results regularly and then ensure to remove the users based on the outcome. If you go for Access Review, I strongly recommend on automatically applying the results (after you own internal tests).&lt;/p>
+&lt;p>Lets take a look on the created Access Review.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/8c/9d/2372c6b805906d8da4d8cedad814.png" alt="image" />
+&lt;/p>
+&lt;p>&lt;strong>Azure Portal&lt;/strong>: This is an overview for the admin (non recurring access review).
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/28/60/d0b7362d036eb07d9b4310cbf592.png" alt="image" />
+&lt;/p>
+&lt;p>&lt;strong>Email&lt;/strong>: As you can see the prominent Review name is what is standing out to the user. The group name (also highlighted red) is buried within all other text.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/b4/b4/92ec7111904b2875457c90a4959f.png" alt="image" />
+&lt;/p>
+&lt;p>&lt;strong>Click on “Start Review” from the email&lt;/strong>: The user now can take action based on recommendations (missing in my lab tenant due to inactivity of my lab users).
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/c8/31/d612013164d7119004bbc1e078f5.png" alt="image" />
+&lt;/p>
+&lt;p>&lt;strong>Take Review&lt;/strong>: Accept 6 users.&lt;/p>
+&lt;p>&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/b3/14/91e4c324a1df66f16ebb9bfed94d.png" alt="image" />
+&lt;/p>
+&lt;p>&lt;strong>Review Summary&lt;/strong>: This is the summary if the owner has taken all actions.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/1e/a2/61923832e72d07f5d077100ba3ee.png" alt="image" />
+&lt;/p>
+&lt;p>&lt;strong>Azure Portal&lt;/strong>: Audit log information for the group.&lt;/p>
+&lt;p>After the user completed the review the system didn’t make a change to the group. Based on the configuration if actions should be automatically applied the results apply at the end of the review process! Until this time the owners can change their mind. Once the review period is over the system will apply the needed changes.&lt;/p>
+&lt;p>I really love this feature in the context of modern collaboration. The process of keeping a current list of involved members in a team is a big benefit for productivity and security. The “need to know” principal is supported by a technical implementation “free of cost” (a mentioned everyone should have AAD P2 through some SKU 😎).&lt;/p>
+&lt;p>Our GK O365 Lifecycle tool was extended to allow the creation of Access Reviews through the Microsoft Graph based on the Group/Team classification. Once customers read or get a demo about this feature and own the license we immediately start a POC implementation. If our tool is already in place it is only a matter of some JSON configuration to be up and running.&lt;/p></description></item><item><title>App Permissions für Microsoft Graph Calls automatisiert einrichten</title><link>https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</link><pubDate>Mon, 08 Jul 2019 11:47:21 +0000</pubDate><guid>https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</guid><description>&lt;p>Für unser Glück &amp;amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die &lt;a href="https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0" target="_blank">PowerShell AZ&lt;/a> und die &lt;a href="https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI&lt;/a>. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.&lt;/p>
+&lt;p>Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview" target="_blank">Access Reviews&lt;/a> Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
 az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 62a82d76-70ea-41e2-9197-370581804d09=Role #msgraph Group.ReadWrite.All
 az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions ef5f7d5c-338f-44b0-86c3-351f46c8bb5f=Role #msgraph AccessReview.ReadWrite.All
 az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 60a901ed-09f7-4aa5-a16e-7dd3d6f9de36=Role #msgraph ProgramControl.ReadWrite.All
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Die Azure CLI kann dann auch gleich noch den Admin Grant erledigen (wenn man nicht in der Azure Cloud Shell läuft!):&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission admin-consent --id $adapp.ApplicationId
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Hier ein Beispiel, wie das Ergebnis dann im Azure AD Portal aussieht:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/94/b8/3d8dde919b99d6647aa15d89d175.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Wer nun die Guid für seine Berechtigung sucht, kann ganz einfach mit diesem Befehlt (&lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0&#34; target=&#34;_blank&#34;&gt;Azure Active Directory PowerShell 2.0&lt;/a&gt;) auf das ständig wachsende Set an App Permissions zugreifen:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;(Get-AzureADServicePrincipal -filter &amp;quot;DisplayName eq &#39;Microsoft Graph&#39;&amp;quot;).AppRoles | Select Id, Value | Sort Value
-
-Id                                   Value
---                                   -----
+&lt;/code>&lt;/pre>
+&lt;p>Die Azure CLI kann dann auch gleich noch den Admin Grant erledigen (wenn man nicht in der Azure Cloud Shell läuft!):&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">az ad app permission admin-consent --id $adapp.ApplicationId
+&lt;/code>&lt;/pre>
+&lt;p>Hier ein Beispiel, wie das Ergebnis dann im Azure AD Portal aussieht:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/94/b8/3d8dde919b99d6647aa15d89d175.png" alt="image" />
+&lt;/p>
+&lt;p>Wer nun die Guid für seine Berechtigung sucht, kann ganz einfach mit diesem Befehlt (&lt;a href="https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0" target="_blank">Azure Active Directory PowerShell 2.0&lt;/a>) auf das ständig wachsende Set an App Permissions zugreifen:&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">(Get-AzureADServicePrincipal -filter &amp;quot;DisplayName eq 'Microsoft Graph'&amp;quot;).AppRoles | Select Id, Value | Sort Value
+Id Value
+-- -----
 d07a8cc0-3d51-4b77-b3b0-32704d1f69fa AccessReview.Read.All
 ef5f7d5c-338f-44b0-86c3-351f46c8bb5f AccessReview.ReadWrite.All
 18228521-a591-40f1-b215-5fad4488c117 AccessReview.ReadWrite.Membership
@@ -344,83 +309,61 @@ fff194f1-7dce-4428-8301-1badb5518201 TrustFrameworkKeySet.Read.All
 09850681-111b-4a89-9bed-3f2cae46d706 User.Invite.All
 df021288-bdef-4463-88db-98f22de89214 User.Read.All
 741f803b-c850-494e-b5df-cde7c675a1ca User.ReadWrite.All
-&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    
-    <item>
-      <title>Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</title>
-      <link>https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</link>
-      <pubDate>Mon, 01 Jul 2019 15:06:23 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</guid>
-      <description>&lt;p&gt;Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im &lt;a href=&#34;https://hairlessinthecloud.com&#34; target=&#34;_blank&#34;&gt;Hairless in the Cloud&lt;/a&gt; Podcast Nummer &lt;a href=&#34;https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff&#34; target=&#34;_blank&#34;&gt;18&lt;/a&gt; habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.&lt;/p&gt;
-&lt;p&gt;Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem &lt;a href=&#34;https://developer.microsoft.com/en-us/graph/blogs/postman-collections/&#34; target=&#34;_blank&#34;&gt;Graph Explorer in einer Collection für Postman&lt;/a&gt; zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.&lt;/p&gt;
-&lt;p&gt;In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/cd/ef/cad14ee0d8e93c6d3b12f08d7601.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Es gibt aber eine viel elegantere Version. Die MS Graph Postman Collection arbeitet mit dem Environment und Variablen. Eine Methode, die eigentlich dem Code in der eigene App (bei mir eine Azure Function) entspricht, ist aber auch mit an Bord. Postman bietet eine native OAuth Integration an. Man wählt einfach OAuth 2.0 aus und kann dann folgende Informationen aus seiner eigenen App hinterlegen:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/21/e1/721b47c47bd4e280e0ec33f5be11.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Grant Type: Client Credentials&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Access Token URL: h&lt;a href=&#34;https://login.microsoftonline.com/malachor.onmicrosoft.com/oauth2/v2.0/token&#34; target=&#34;_blank&#34;&gt;ttps://login.microsoftonline.com/malachor.onmicrosoft.com/oauth2/v2.0/token
-&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Client ID:  50641771-73ac-42fa-9b6f-f25e49ec6871&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Client Secret:  dvMR0c_&lt;em&gt;_RlxvV&lt;/em&gt;JQQZGDICH6N04ZT2/&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Scope : &lt;a href=&#34;https://graph.microsoft.com/.default&#34; target=&#34;_blank&#34;&gt;https://graph.microsoft.com/.default&lt;/a&gt;
-Wenn man immer alle Scopes/Berechtigungen möchte, dann ist dieser Scope der einfachste&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Hinweis&lt;/strong&gt;: Ich habe meine App schon wieder gelöscht. Sie ist nicht länger nutzbar, also ist das Secret im Code auch kein Geheimnis mehr.&lt;/p&gt;
-&lt;p&gt;Über “Request Token” kann ich dann ein Token holen und für alle weiteren Requests verwenden. Zum Prüfen des Token (hat der Scope geklappt) kann man einfach auf &lt;a href=&#34;https://jwt.io&#34; target=&#34;_blank&#34;&gt;jwt.io&lt;/a&gt; oder auf den Microsoft Service &lt;a href=&#34;https://jwt.ms&#34; target=&#34;_blank&#34;&gt;jwt.ms&lt;/a&gt; gehen.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hinweis&lt;/strong&gt;: Solche Token Decoder sind eine tolle Sache, aber bitte denkt dran, wenn ihr das mit produktiven Token macht, dann müsst ihr dem Service vertrauen, denn er hat in dem Moment eure Berechtigung! In meinem Fall könnten die beiden Websites das Token nehmen und gegen meinen Tenant einsetzen! Ich nutze hier mein LAB Tenant und ich glaube, dass ich weiß was ich tue :) Also alles gut!
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/80/c6/4831a031ee016dc13a15e68ab9cc.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Mit dem Token kann man dann zum Beispiel in meinem Fall die Azure AD Access Reviews einsehen.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/a4/93/1d391adb4162ec6255ed6d53579f.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Mein Debugging wurde extrem vereinfacht, da ich so einfach meine App Permissions testen kann.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</title>
-      <link>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</link>
-      <pubDate>Sun, 17 Sep 2017 21:11:09 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</guid>
-      <description>&lt;p&gt;In meinen Projekten (&lt;a href=&#34;https://www.glueckkanja.com/technologien/office-365/&#34; target=&#34;_blank&#34;&gt;Office 365&lt;/a&gt; / &lt;a href=&#34;https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/&#34; target=&#34;_blank&#34;&gt;100% Cloud&lt;/a&gt;) ist &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference&#34; target=&#34;_blank&#34;&gt;Conditional Access&lt;/a&gt; (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912&#34; target=&#34;_blank&#34;&gt;Blogpost&lt;/a&gt; beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827&#34; target=&#34;_blank&#34;&gt;einzelne Site Collections &lt;/a&gt;adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&amp;hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Eigentlich sollte der Dialog so aussehen:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Es fehlt der entscheidende Teil:
-&lt;em&gt;&amp;ldquo;Control access from devices that aren&amp;rsquo;t compliant or joined to a domain&amp;rdquo;&lt;/em&gt;
+&lt;/code>&lt;/pre></description></item><item><title>Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</title><link>https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</link><pubDate>Mon, 01 Jul 2019 15:06:23 +0000</pubDate><guid>https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/</guid><description>&lt;p>Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im &lt;a href="https://hairlessinthecloud.com" target="_blank">Hairless in the Cloud&lt;/a> Podcast Nummer &lt;a href="https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff" target="_blank">18&lt;/a> habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.&lt;/p>
+&lt;p>Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem &lt;a href="https://developer.microsoft.com/en-us/graph/blogs/postman-collections/" target="_blank">Graph Explorer in einer Collection für Postman&lt;/a> zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.&lt;/p>
+&lt;p>In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/cd/ef/cad14ee0d8e93c6d3b12f08d7601.png" alt="image" />
+&lt;/p>
+&lt;p>Es gibt aber eine viel elegantere Version. Die MS Graph Postman Collection arbeitet mit dem Environment und Variablen. Eine Methode, die eigentlich dem Code in der eigene App (bei mir eine Azure Function) entspricht, ist aber auch mit an Bord. Postman bietet eine native OAuth Integration an. Man wählt einfach OAuth 2.0 aus und kann dann folgende Informationen aus seiner eigenen App hinterlegen:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/21/e1/721b47c47bd4e280e0ec33f5be11.png" alt="image" />
+&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Grant Type: Client Credentials&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Access Token URL: h&lt;a href="https://login.microsoftonline.com/malachor.onmicrosoft.com/oauth2/v2.0/token" target="_blank">ttps://login.microsoftonline.com/malachor.onmicrosoft.com/oauth2/v2.0/token
+&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Client ID: 50641771-73ac-42fa-9b6f-f25e49ec6871&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Client Secret: dvMR0c_&lt;em>_RlxvV&lt;/em>JQQZGDICH6N04ZT2/&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Scope : &lt;a href="https://graph.microsoft.com/.default" target="_blank">https://graph.microsoft.com/.default&lt;/a>
+Wenn man immer alle Scopes/Berechtigungen möchte, dann ist dieser Scope der einfachste&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Hinweis&lt;/strong>: Ich habe meine App schon wieder gelöscht. Sie ist nicht länger nutzbar, also ist das Secret im Code auch kein Geheimnis mehr.&lt;/p>
+&lt;p>Über “Request Token” kann ich dann ein Token holen und für alle weiteren Requests verwenden. Zum Prüfen des Token (hat der Scope geklappt) kann man einfach auf &lt;a href="https://jwt.io" target="_blank">jwt.io&lt;/a> oder auf den Microsoft Service &lt;a href="https://jwt.ms" target="_blank">jwt.ms&lt;/a> gehen.&lt;/p>
+&lt;p>&lt;strong>Hinweis&lt;/strong>: Solche Token Decoder sind eine tolle Sache, aber bitte denkt dran, wenn ihr das mit produktiven Token macht, dann müsst ihr dem Service vertrauen, denn er hat in dem Moment eure Berechtigung! In meinem Fall könnten die beiden Websites das Token nehmen und gegen meinen Tenant einsetzen! Ich nutze hier mein LAB Tenant und ich glaube, dass ich weiß was ich tue :) Also alles gut!
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/80/c6/4831a031ee016dc13a15e68ab9cc.png" alt="image" />
+&lt;/p>
+&lt;p>Mit dem Token kann man dann zum Beispiel in meinem Fall die Azure AD Access Reviews einsehen.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/a4/93/1d391adb4162ec6255ed6d53579f.png" alt="image" />
+&lt;/p>
+&lt;p>Mein Debugging wurde extrem vereinfacht, da ich so einfach meine App Permissions testen kann.&lt;/p></description></item><item><title>SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</title><link>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</link><pubDate>Sun, 17 Sep 2017 21:11:09 +0000</pubDate><guid>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</guid><description>&lt;p>In meinen Projekten (&lt;a href="https://www.glueckkanja.com/technologien/office-365/" target="_blank">Office 365&lt;/a> / &lt;a href="https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/" target="_blank">100% Cloud&lt;/a>) ist &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference" target="_blank">Conditional Access&lt;/a> (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem &lt;a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912" target="_blank">Blogpost&lt;/a> beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern &lt;a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827" target="_blank">einzelne Site Collections &lt;/a>adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&amp;hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png" alt="image" />
+&lt;/p>
+&lt;p>Eigentlich sollte der Dialog so aussehen:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png" alt="image" />
+&lt;/p>
+&lt;p>Es fehlt der entscheidende Teil:
+&lt;em>&amp;ldquo;Control access from devices that aren&amp;rsquo;t compliant or joined to a domain&amp;rdquo;&lt;/em>
 oder auf deutsch:
 _&amp;ldquo;Zugriff von Geräten steuern, die nicht konform oder einer Domäne beigetreten sind&amp;rdquo;
 _Jetzt stellt sich die Frage warum? Mein Tenant ist auf “First Release”, also sollte es doch funktionieren. Eine kurze Recherche hat mich zum überraschenden Ergebnis geführt:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/60/a6/a0ab32d60f0b1ba4117644d161f6.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Quelle: Microsoft Support - &lt;a href=&#34;https://support.office.com/en-us/article/Control-access-from-unmanaged-devices-5ae550c4-bd20-4257-847b-5c20fb053622?ui=en-US&amp;amp;amp;rs=en-US&amp;amp;amp;ad=US&amp;amp;amp;fromAR=1&#34; target=&#34;_blank&#34;&gt;Control access from unmanaged devices&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Mein Tenant war tatsächlich für einen Test auf die Option “First release for selected users” eingestellt:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/45/dc/754fb60365a39769a1e4c673639a.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;h2 id=&#34;lösung&#34;&gt;Lösung&lt;/h2&gt;
-&lt;p&gt;Wie im Support Dokument beschrieben habe ich das Setting geändert auf die Option “First release for everyone”:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/71/99/e2bd1b48168c253805f8609aeeae.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Kurze Zeit später (es zieht nicht sofort), konnte ich über das SharePoint Admin Center die gewünschte &amp;ldquo;Device Access” Konfiguration abschließen.&lt;/p&gt;
-&lt;p&gt;Ich habe in der Vergangenheit immer nach den Unterschieden der beiden “First Release” Einstellungen gesucht. Dieser Fall ist der erste mir bekannte.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/60/a6/a0ab32d60f0b1ba4117644d161f6.png" alt="image" />
+&lt;/p>
+&lt;p>Quelle: Microsoft Support - &lt;a href="https://support.office.com/en-us/article/Control-access-from-unmanaged-devices-5ae550c4-bd20-4257-847b-5c20fb053622?ui=en-US&amp;amp;amp;rs=en-US&amp;amp;amp;ad=US&amp;amp;amp;fromAR=1" target="_blank">Control access from unmanaged devices&lt;/a>&lt;/p>
+&lt;p>Mein Tenant war tatsächlich für einen Test auf die Option “First release for selected users” eingestellt:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/45/dc/754fb60365a39769a1e4c673639a.png" alt="image" />
+&lt;/p>
+&lt;h2 id="lösung">Lösung&lt;/h2>
+&lt;p>Wie im Support Dokument beschrieben habe ich das Setting geändert auf die Option “First release for everyone”:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/71/99/e2bd1b48168c253805f8609aeeae.png" alt="image" />
+&lt;/p>
+&lt;p>Kurze Zeit später (es zieht nicht sofort), konnte ich über das SharePoint Admin Center die gewünschte &amp;ldquo;Device Access” Konfiguration abschließen.&lt;/p>
+&lt;p>Ich habe in der Vergangenheit immer nach den Unterschieden der beiden “First Release” Einstellungen gesucht. Dieser Fall ist der erste mir bekannte.&lt;/p></description></item></channel></rss>

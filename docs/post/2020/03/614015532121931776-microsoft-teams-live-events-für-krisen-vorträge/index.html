@@ -1,638 +1,461 @@
-<!DOCTYPE html>
-<html lang="de">
-
+<!doctype html><html lang=de>
 <head>
-    
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="HandheldFriendly" content="True" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.92.1" />
-
-
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-
-
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
 <title>Microsoft Teams Live Events für (Krisen-)Vorträge - Marco Scheel aka GeekDotNet</title>
-
-
-<meta name="author" content="Marco Scheel" />
-
-
-<meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
-
-
-<meta name="keywords" content="Microsoft 365, Microsoft Teams" />
-
-
-<meta property="og:title" content="Microsoft Teams Live Events für (Krisen-)Vorträge" />
-<meta name="twitter:title" content="Microsoft Teams Live Events für (Krisen-)Vorträge" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://marcoscheel.de/post/2020/03/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/" /><meta property="og:description" content="Online Meetings sind aus den heutigen Unternehmen nicht mehr wegzudenken. Microsoft Teams ist die Meeting-Lösung im Microsoft 365 Service. Ein Teams Meeting ermöglicht es allen Teilnehmern, aktiv an der Besprechung teilzunehmen. Es gibt nur wenig Kontrolle für den Besprechungsleiter. Die Teilnehmer müssen die Disziplin aufbringen und sich im Meeting “korrekt” verhalten. Durch die aktuelle Corona-Krise wird aber deutlich, dass sich viele Teilnehmer schwerer damit tun als gedacht. Besonders für Neulinge sind die verschiedenen Optionen in der Software ungewohnt und Grundregeln für ein gutes Meeting eventuell unbekannt. Es wäre toll, wenn die Software hier besser unterstützt, aber der aktuelle Stand (”Mute all”, &hellip;) wird sich kurzfristig nicht ändern.
-Ich möchte euch heute eine Alternative zum klassischen Meeting zeigen. Es wird nicht für jede Situation passen, aber ihr solltet es kennenlernen und selbst entscheiden. Ich wurde von einer Schule angesprochen, welche Optionen es gibt, die Schüler Online zu unterrichten. Die Zielgruppe ist nicht besonders gut ausgebildet, wenn es um eine gute Meeting-Kultur geht :) Die Eltern und die Schüler dürften oft Anfänger sein und da passieren automatisch Fehler. In dieser Situation kann es sin machen auf ein Microsoft Teams Live Event auszuweichen." />
-<meta name="twitter:description" content="Online Meetings sind aus den heutigen Unternehmen nicht mehr wegzudenken. Microsoft Teams ist die Meeting-Lösung im Microsoft 365 Service. Ein Teams Meeting ermöglicht es allen Teilnehmern, aktiv an der Besprechung teilzunehmen. Es gibt nur wenig Kontrolle für den Besprechungsleiter. Die Teilnehmer müssen die Disziplin aufbringen und sich im Meeting “korrekt” verhalten. Durch die aktuelle Corona-Krise wird aber deutlich, dass sich viele Teilnehmer schwerer damit tun als gedacht. Besonders für Neulinge sind die verschiedenen Optionen in der Software ungewohnt und Grundregeln für ein gutes Meeting eventuell unbekannt. Es wäre toll, wenn die Software hier besser unterstützt, aber der aktuelle Stand (”Mute all”, &hellip;) wird sich kurzfristig nicht ändern.
-Ich möchte euch heute eine Alternative zum klassischen Meeting zeigen. Es wird nicht für jede Situation passen, aber ihr solltet es kennenlernen und selbst entscheiden. Ich wurde von einer Schule angesprochen, welche Optionen es gibt, die Schüler Online zu unterrichten. Die Zielgruppe ist nicht besonders gut ausgebildet, wenn es um eine gute Meeting-Kultur geht :) Die Eltern und die Schüler dürften oft Anfänger sein und da passieren automatisch Fehler. In dieser Situation kann es sin machen auf ein Microsoft Teams Live Event auszuweichen." /><meta property="og:image" content="https://marcoscheel.de/og.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2020-03-30T12:20:42+00:00" /><meta property="article:modified_time" content="2020-03-30T12:20:42+00:00" />
-
-
-<style>
-    @media (prefers-color-scheme: dark) {
-        body[data-theme='auto'] img {
-            filter: brightness(60%);
-        }
-    }
-
-    body[data-theme='dark'] img {
-        filter: brightness(60%);
-    }
-</style>
-
-
-
-
-<link rel="stylesheet" href="https://marcoscheel.de/assets/css/fuji.min.css" />
-
-
-
-
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-391088-7', {'anonymize_ip': true});
-</script>
+<meta name=author content="Marco Scheel">
+<meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud">
+<meta name=keywords content="Microsoft 365,Microsoft Teams">
+<meta property="og:title" content="Microsoft Teams Live Events für (Krisen-)Vorträge">
+<meta name=twitter:title content="Microsoft Teams Live Events für (Krisen-)Vorträge">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://marcoscheel.de/post/2020/03/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/"><meta property="og:description" content="Online Meetings sind aus den heutigen Unternehmen nicht mehr wegzudenken. Microsoft Teams ist die Meeting-Lösung im Microsoft 365 Service. Ein Teams Meeting ermöglicht es allen Teilnehmern, aktiv an der Besprechung teilzunehmen. Es gibt nur wenig Kontrolle für den Besprechungsleiter. Die Teilnehmer müssen die Disziplin aufbringen und sich im Meeting “korrekt” verhalten. Durch die aktuelle Corona-Krise wird aber deutlich, dass sich viele Teilnehmer schwerer damit tun als gedacht. Besonders für Neulinge sind die verschiedenen Optionen in der Software ungewohnt und Grundregeln für ein gutes Meeting eventuell unbekannt. Es wäre toll, wenn die Software hier besser unterstützt, aber der aktuelle Stand (”Mute all”, &mldr;) wird sich kurzfristig nicht ändern.
+Ich möchte euch heute eine Alternative zum klassischen Meeting zeigen. Es wird nicht für jede Situation passen, aber ihr solltet es kennenlernen und selbst entscheiden. Ich wurde von einer Schule angesprochen, welche Optionen es gibt, die Schüler Online zu unterrichten. Die Zielgruppe ist nicht besonders gut ausgebildet, wenn es um eine gute Meeting-Kultur geht :) Die Eltern und die Schüler dürften oft Anfänger sein und da passieren automatisch Fehler. In dieser Situation kann es sin machen auf ein Microsoft Teams Live Event auszuweichen.">
+<meta name=twitter:description content="Online Meetings sind aus den heutigen Unternehmen nicht mehr wegzudenken. Microsoft Teams ist die Meeting-Lösung im Microsoft 365 Service. Ein Teams Meeting ermöglicht es allen Teilnehmern, aktiv an der Besprechung teilzunehmen. Es gibt nur wenig Kontrolle für den Besprechungsleiter. Die Teilnehmer müssen die Disziplin aufbringen und sich im Meeting “korrekt” verhalten. Durch die aktuelle Corona-Krise wird aber deutlich, dass sich viele Teilnehmer schwerer damit tun als gedacht. Besonders für Neulinge sind die verschiedenen Optionen in der Software ungewohnt und Grundregeln für ein gutes Meeting eventuell unbekannt. Es wäre toll, wenn die Software hier besser unterstützt, aber der aktuelle Stand (”Mute all”, &mldr;) wird sich kurzfristig nicht ändern.
+Ich möchte euch heute eine Alternative zum klassischen Meeting zeigen. Es wird nicht für jede Situation passen, aber ihr solltet es kennenlernen und selbst entscheiden. Ich wurde von einer Schule angesprochen, welche Optionen es gibt, die Schüler Online zu unterrichten. Die Zielgruppe ist nicht besonders gut ausgebildet, wenn es um eine gute Meeting-Kultur geht :) Die Eltern und die Schüler dürften oft Anfänger sein und da passieren automatisch Fehler. In dieser Situation kann es sin machen auf ein Microsoft Teams Live Event auszuweichen."><meta property="og:image" content="https://marcoscheel.de/og.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="article:published_time" content="2020-03-30T12:20:42+00:00"><meta property="article:modified_time" content="2020-03-30T12:20:42+00:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-391088-7',{anonymize_ip:!0})</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
-
-
-
-
-<link rel="stylesheet" href="/css/custom.css">
-
-
+<link rel=stylesheet href=/css/custom.css>
 </head>
-
-<body
-  data-theme="auto"
-  data-theme-auto='false'
-  >
-    <script data-cfasync="false">
-  
-  var fujiThemeData = localStorage.getItem('fuji_data-theme');
-  
-  if (!fujiThemeData) {
-    localStorage.setItem('fuji_data-theme', 'auto');
-  } else {
-    
-    if (fujiThemeData !== 'auto') {
-      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
-    }
-  }
-</script>
-
-    <header>
-    <div class="container-lg clearfix">
-        <div class="col-12 header">
-            <h1><a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a></h1>
-            
-            <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
-            
-        </div>
-    </div>
+<body data-theme=auto data-theme-auto=false>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<h1><a class=title-main href=https://marcoscheel.de>Marco Scheel aka GeekDotNet</a></h1>
+<span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+</div>
+</div>
 </header>
-
-    <main>
-        <div class="container-lg clearfix">
-            
-            <div class="col-12 col-md-9 float-left content">
-                
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
 <article>
-    
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/post/2020/03/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/">Microsoft Teams Live Events für (Krisen-)Vorträge</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-03-30</span>
-
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/post/2020/03/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/>Microsoft Teams Live Events für (Krisen-)Vorträge</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-03-30</span>
 <span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1881 Wörter</span>
-
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/microsoft-365">Microsoft 365</a>&nbsp;<a href="/tags/microsoft-teams">Microsoft Teams</a>&nbsp;</span>
-
-    </div>
-    
-    <div class="post-content markdown-body">
-        <p>Online Meetings sind aus den heutigen Unternehmen nicht mehr wegzudenken. Microsoft Teams ist die Meeting-Lösung im Microsoft 365 Service. Ein <strong>Teams Meeting</strong> ermöglicht es allen Teilnehmern, <strong>aktiv</strong> an der Besprechung teilzunehmen. Es gibt nur wenig Kontrolle für den Besprechungsleiter. Die Teilnehmer müssen die Disziplin aufbringen und sich im Meeting “korrekt” verhalten. Durch die aktuelle Corona-Krise wird aber deutlich, dass sich viele Teilnehmer schwerer damit tun als gedacht. <strong>Besonders für Neulinge sind die verschiedenen Optionen in der Software ungewohnt und Grundregeln für ein gutes Meeting eventuell unbekannt</strong>. Es wäre toll, wenn die Software hier besser unterstützt, aber der aktuelle Stand (”Mute all”, &hellip;) wird sich kurzfristig nicht ändern.</p>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/microsoft-365>Microsoft 365</a>&nbsp;<a href=/tags/microsoft-teams>Microsoft Teams</a>&nbsp;</span>
+</div>
+<div class="post-content markdown-body">
+<p>Online Meetings sind aus den heutigen Unternehmen nicht mehr wegzudenken. Microsoft Teams ist die Meeting-Lösung im Microsoft 365 Service. Ein <strong>Teams Meeting</strong> ermöglicht es allen Teilnehmern, <strong>aktiv</strong> an der Besprechung teilzunehmen. Es gibt nur wenig Kontrolle für den Besprechungsleiter. Die Teilnehmer müssen die Disziplin aufbringen und sich im Meeting “korrekt” verhalten. Durch die aktuelle Corona-Krise wird aber deutlich, dass sich viele Teilnehmer schwerer damit tun als gedacht. <strong>Besonders für Neulinge sind die verschiedenen Optionen in der Software ungewohnt und Grundregeln für ein gutes Meeting eventuell unbekannt</strong>. Es wäre toll, wenn die Software hier besser unterstützt, aber der aktuelle Stand (”Mute all”, &mldr;) wird sich kurzfristig nicht ändern.</p>
 <p>Ich möchte euch heute eine <strong>Alternative zum klassischen Meeting</strong> zeigen. Es wird nicht für jede Situation passen, aber ihr solltet es kennenlernen und selbst entscheiden. Ich wurde von einer Schule angesprochen, welche Optionen es gibt, die Schüler Online zu unterrichten. Die Zielgruppe ist nicht besonders gut ausgebildet, wenn es um eine gute Meeting-Kultur geht :) Die Eltern und die Schüler dürften oft Anfänger sein und da passieren automatisch Fehler. In dieser Situation kann es sin machen auf ein <strong>Microsoft Teams Live Event</strong> auszuweichen.</p>
-<h2 id="microsoft-teams-live-event">Microsoft Teams Live Event</h2>
+<h2 id=microsoft-teams-live-event>Microsoft Teams Live Event</h2>
 <p>Ein Live Event kann über den Teams Client geplant und durchgeführt werden. Anders als in einem normalen Meeting gibt es eine klare Trennung zwischen Meeting Organisator und Teilnehmern. Der Organisator wird zum <strong>Producer</strong> des Events (Meetings) und <strong>muss den Microsoft Team Client nutzen</strong>. Er kann weitere Personen als Producer einladen und das macht auch Sinn, damit man so ein Meeting professionelle über die Bühne bekommt. Die <strong>Teilnehmer verwenden den Browser</strong> (ohne Plugins oder ähnlicher) oder falls vorhanden den Teams Client. Im schulischen Szenario kann man sehr wenig Rückschlüsse über die technischen Möglichkeiten der Teilnehmer ziehen. Es ist also gut, dass die Lösung eigentlich mit allen Optionen zurechtkommt.</p>
 <p>Für die Teilnahme am Meeting gibt es zwei Links. Einmal der Link für den Producer (so ähnlich wie ein normaler Teams Meeting-Link) und <strong>nur über den Teams Client kommt man an den Teilnehmerlink</strong>. Das <strong>Meeting</strong> (besser Live Event) <strong>muss</strong> nach dem Beitritt des Producers nochmal über die Software <strong>gestartet werden</strong>, sonst sehen die Teilnehmer nichts.</p>
-<p>Das Meeting wird mit einem <strong>Zeitversatz</strong> (10-40 Sekunde) an die Teilnehmer gestreamt. Die Teilnehmer können nur über die eingebaute Frage und Antwort-Funktion (<strong>Q&amp;A</strong>) mit den Producern kommunizieren. Die Zuschauer können das Meeting jederzeit **pausieren <strong>und <strong>zurück spulen</strong>. Es stehen mehr als 50 Sprachen für optionalen</strong> <a href="https://support.microsoft.com/en-us/office/use-live-captions-in-a-live-event-1d6778d4-6c65-4189-ab13-e2d77beb9e2a?ui=en-us&amp;amp;rs=en-us&amp;amp;ad=us" target="_blank">Live-Untertitel</a> **zur Verfügung.</p>
+<p>Das Meeting wird mit einem <strong>Zeitversatz</strong> (10-40 Sekunde) an die Teilnehmer gestreamt. Die Teilnehmer können nur über die eingebaute Frage und Antwort-Funktion (<strong>Q&A</strong>) mit den Producern kommunizieren. Die Zuschauer können das Meeting jederzeit **pausieren <strong>und <strong>zurück spulen</strong>. Es stehen mehr als 50 Sprachen für optionalen</strong> <a href="https://support.microsoft.com/en-us/office/use-live-captions-in-a-live-event-1d6778d4-6c65-4189-ab13-e2d77beb9e2a?ui=en-us&amp;amp;rs=en-us&amp;amp;ad=us" target=_blank>Live-Untertitel</a> **zur Verfügung.</p>
 <p>Übersicht der Limits</p>
 <ul>
-<li><a href="https://docs.microsoft.com/en-us/microsoftteams/limits-specifications-teams#meetings-and-calls" target="_blank">Microsoft Teams Meeting</a></li>
-<li><a href="https://docs.microsoft.com/en-us/microsoftteams/limits-specifications-teams#teams-live-events" target="_blank">Microsoft Teams Live Events</a></li>
+<li><a href=https://docs.microsoft.com/en-us/microsoftteams/limits-specifications-teams#meetings-and-calls target=_blank>Microsoft Teams Meeting</a></li>
+<li><a href=https://docs.microsoft.com/en-us/microsoftteams/limits-specifications-teams#teams-live-events target=_blank>Microsoft Teams Live Events</a></li>
 </ul>
-<h2 id="live-event-vorbereiten">Live Event vorbereiten</h2>
+<h2 id=live-event-vorbereiten>Live Event vorbereiten</h2>
 <p>Der Benutzer benötigt eine Office 365 Lizenz (E1 oder höher, A3 oder höher) und der Administrator kann über eine Live Event Policy im Admin-Center festlegen, wer Events erstellen kann. <strong>Im Standard sind externe Benutzer nicht erlaubt</strong>. Für das Schul-Szenario ist es also wichtig, dass dieses Setting verändert wird.</p>
 <p>Teams Admin Center - Meetings - Live event policies - Global (Org-wide default)</p>
 <p>“Who can join scheduled live events” = “Everyone” statt “Everyone in your organization“.</p>
-<p><img class="img-zoomable" src="/tmblr/12/cd/0e8fd1eea5d55b533c6da1738237.png" alt="image" />
+<p><img class=img-zoomable src=/tmblr/12/cd/0e8fd1eea5d55b533c6da1738237.png alt=image>
 </p>
-<h2 id="live-event-planen">Live Event Planen</h2>
+<h2 id=live-event-planen>Live Event Planen</h2>
 <p>In der Teams App wechselt ihr auf den <strong>Kalender</strong> und könnt dann oben rechts das DropDown auslösen und “<strong>Live event</strong>” wählen:
-<img class="img-zoomable" src="/tmblr/a1/19/c38aec3a6450e52fd7b55ef4ebaf.png" alt="image" />
+<img class=img-zoomable src=/tmblr/a1/19/c38aec3a6450e52fd7b55ef4ebaf.png alt=image>
 </p>
 <p>Über <strong>Yammer</strong> kann man ebenfalls ein Live Event starten. Begebt euch in die entsprechende Gruppe/Community und dann findet ihr rechts im Bereich “<strong>Group Actions</strong>” die Möglichkeit ein Live Meeting zu planen.
-<img class="img-zoomable" src="/tmblr/99/39/ec8dd97721c1ca95f96869e94fab.png" alt="image" />
+<img class=img-zoomable src=/tmblr/99/39/ec8dd97721c1ca95f96869e94fab.png alt=image>
 </p>
 <p>Über <strong>Microsoft Stream</strong> kann man zwar Live Events starten, allerdings muss man hier spezielle Software verwenden und kann <strong>nicht Microsoft Teams als Producer</strong> wählen.
-<img class="img-zoomable" src="/tmblr/01/ab/c0ffb6ef6c35212ce9a01ea06579.png" alt="image" />
+<img class=img-zoomable src=/tmblr/01/ab/c0ffb6ef6c35212ce9a01ea06579.png alt=image>
 </p>
-<p>Wir wählen den Weg über Microsoft Teams und erstellen ein Live Event. <a href="https://support.microsoft.com/en-us/office/schedule-a-teams-live-event-7a9ce97c-e1cd-470f-acaf-e6dfc179a0e2" target="_blank">Hier findet ihr die Anleitung von Microsoft</a>. Es muss wie bei jedem Meeting ein **Titel **angegeben werden und die <strong>Start- sowie Endzeit</strong>. Die optionale <strong>Ortsangabe</strong> (Location) könnt ihr offenlassen, Microsoft Teams oder Online eintragen. An dieser Stelle ladet ihr auch die weiteren Presenter ein. Diese Personen stammen aus eurer Organisation und unterstützen euch später beim Erzeugen der Inhalte im Meeting.
-<img class="img-zoomable" src="/tmblr/15/a2/69ec01bfea48d8fd81a25abfd921.png" alt="image" />
+<p>Wir wählen den Weg über Microsoft Teams und erstellen ein Live Event. <a href=https://support.microsoft.com/en-us/office/schedule-a-teams-live-event-7a9ce97c-e1cd-470f-acaf-e6dfc179a0e2 target=_blank>Hier findet ihr die Anleitung von Microsoft</a>. Es muss wie bei jedem Meeting ein **Titel **angegeben werden und die <strong>Start- sowie Endzeit</strong>. Die optionale <strong>Ortsangabe</strong> (Location) könnt ihr offenlassen, Microsoft Teams oder Online eintragen. An dieser Stelle ladet ihr auch die weiteren Presenter ein. Diese Personen stammen aus eurer Organisation und unterstützen euch später beim Erzeugen der Inhalte im Meeting.
+<img class=img-zoomable src=/tmblr/15/a2/69ec01bfea48d8fd81a25abfd921.png alt=image>
 </p>
 <p>Auf der nächsten Seite werdet ihr nach den **Berechtigungen **gefragt. Wenn euer Administrator die richtigen Voreinstellungen getroffen hat, dann könnt ihr “Public” (Öffentlich) auswählen. Für das Scenario Schule ist **Public **zwingend erforderlich. Setzt ihr ein Live Event für eure Kollegen auf, dann könnt ihr natürlich auch <strong>Org-wide</strong> oder <strong>einzelne Personen</strong> auswählen. In beiden letzten Fällen wird ein Login des Unternehmens benötigt. <strong>Wichtig:</strong> Hier geht es um Berechtigungen und nicht darum, wer eingeladen wird. Teilnehmen kann an einem Org-wide Meeting nur wer auch den Teilnahme-Link erhalten hat!
-<img class="img-zoomable" src="/tmblr/ad/84/5e0862a87850aebbb5d4a20ce1ce.png" alt="image" />
+<img class=img-zoomable src=/tmblr/ad/84/5e0862a87850aebbb5d4a20ce1ce.png alt=image>
 </p>
-<p>Das Live Event ist bereits als Teams Event gekennzeichnet und erlaubt so auch nur die Teams relevanten Einstellungen. Trefft eure Entscheidung, ob die <strong>Aufzeichnung</strong> für alle Teilnehmer verfügbar gemacht werden soll. Je nach Publikum bietet es sich an, dass “Live-<strong>Untertitel</strong>” angeboten werden. Es stehen mehr als 50 Sprachen zur Verfügung, aber ein Event kann immer nur 6 gleichzeitig anbieten. Ihr müsst hier entscheiden, welche Sprache gesprochen wird und in welche Sprache übersetzt werden kann. Die Konfiguration des <strong>Teilnehmer-Berichtes</strong> erlaubt es nach dem Meeting zu sehen (CSV), wer teilgenommen hat sowie wann und wie oft beigetreten wurde. Die Option für die “<strong>Frage&amp;Antwort</strong>” Funktion (Q&amp;A) sollte immer gewählt sein, damit Teilnehmer und Producer interagieren können.
-<img class="img-zoomable" src="/tmblr/e2/ac/dbdc19ff8afd1c60238ef4593312.png" alt="image" />
+<p>Das Live Event ist bereits als Teams Event gekennzeichnet und erlaubt so auch nur die Teams relevanten Einstellungen. Trefft eure Entscheidung, ob die <strong>Aufzeichnung</strong> für alle Teilnehmer verfügbar gemacht werden soll. Je nach Publikum bietet es sich an, dass “Live-<strong>Untertitel</strong>” angeboten werden. Es stehen mehr als 50 Sprachen zur Verfügung, aber ein Event kann immer nur 6 gleichzeitig anbieten. Ihr müsst hier entscheiden, welche Sprache gesprochen wird und in welche Sprache übersetzt werden kann. Die Konfiguration des <strong>Teilnehmer-Berichtes</strong> erlaubt es nach dem Meeting zu sehen (CSV), wer teilgenommen hat sowie wann und wie oft beigetreten wurde. Die Option für die “<strong>Frage&Antwort</strong>” Funktion (Q&A) sollte immer gewählt sein, damit Teilnehmer und Producer interagieren können.
+<img class=img-zoomable src=/tmblr/e2/ac/dbdc19ff8afd1c60238ef4593312.png alt=image>
 </p>
 <p>Das Erstellen des Live Events ist abgeschlossen und wird angezeigt.
-<img class="img-zoomable" src="/tmblr/9f/63/e157dc99df45f2541d3a16fc2f2d.png" alt="image" />
+<img class=img-zoomable src=/tmblr/9f/63/e157dc99df45f2541d3a16fc2f2d.png alt=image>
 </p>
-<p>Über die Anzeige kann man dann auch den <strong>Teilnehmerlink kopieren</strong>. Dieser link muss dann an alle externen (oder internen) Teilnehmer weitergeleitet werden. Am besten wählt man hier den üblichen Kommunikationskanal (Teams, Email, WhatsApp, &hellip;) für die Teilnehmergruppe.
-<img class="img-zoomable" src="/tmblr/c8/51/26662fe8c7adfa060bd2ef468b8a.png" alt="image" />
+<p>Über die Anzeige kann man dann auch den <strong>Teilnehmerlink kopieren</strong>. Dieser link muss dann an alle externen (oder internen) Teilnehmer weitergeleitet werden. Am besten wählt man hier den üblichen Kommunikationskanal (Teams, Email, WhatsApp, &mldr;) für die Teilnehmergruppe.
+<img class=img-zoomable src=/tmblr/c8/51/26662fe8c7adfa060bd2ef468b8a.png alt=image>
 </p>
 <p>Der Link zum Teilnehmen sieht ungefähr so aus wie jeder andere Meeting Link:
-<a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting" target="_blank">https://teams.microsoft.com/l/meetup-join/19%3ameeting</a>_&hellip;
+<a href=https://teams.microsoft.com/l/meetup-join/19%3ameeting target=_blank>https://teams.microsoft.com/l/meetup-join/19%3ameeting</a>_&mldr;
 aber für die Teilnehmer-Links endet der Link mit
 <strong>IsBroadcastMeeting</strong>=true</p>
-<h2 id="live-event-produzieren">Live Event produzieren</h2>
+<h2 id=live-event-produzieren>Live Event produzieren</h2>
 <p><strong>Rechtzeitig vor Beginn</strong> des eigentlichen Live Events sollten sich alle Producer ins Meeting einwählen und die nötigen Vorbereitungen zum Start des Events durchführen. Für den Producer sieht der Beitritt so aus wie bei jeden anderen Meeting (Abweichung über dem Titel: “Als Produzent teilnehmen”). Wollt ihr euer Video übermitteln, so müsst ihr natürlich die Webcam aktivieren. <strong>Hinweis</strong>: Leider gibt es kein Background-Blur in Live Meetings. Achtet also auf eure Umgebung!
-<img class="img-zoomable" src="/tmblr/5a/e6/2ec4b8f34ef6c1ac50f6d00d6a07.png" alt="image" />
+<img class=img-zoomable src=/tmblr/5a/e6/2ec4b8f34ef6c1ac50f6d00d6a07.png alt=image>
 </p>
 <p>Über die **Einstellungen **(Zahnrad mit dem aktuellen Audiogerät als Name) könnt ihr das passende Audiogerät verwenden. Es ist extrem wichtig hier die hochwertigsten Komponenten zu verwenden. Laptop Mikrophone und Lautsprecher erzeugen in der Regel das schlechteste Ergebnis. Ein Kopfhörer mit entsprechendem Mikro macht es für alle einfacher und reduzieren Nebengeräusche. Der Auditorium-Modus sollte in Zeiten von Social Distancing nicht relevant sein, aber eventuell für zukünftige Ereignisse von Interesse sein, um Publikum nicht durch Teams rausrechnen zu lassen. <strong>Hinweis</strong>: Wenn ihr unsicher seid, dann testet eure Optionen mit einem <strong>Testanruf</strong>!
-<img class="img-zoomable" src="/tmblr/08/d6/493410c5dba950089f99105152df.png" alt="image" />
+<img class=img-zoomable src=/tmblr/08/d6/493410c5dba950089f99105152df.png alt=image>
 </p>
 <p>Seid ihr dem Live Event beigetreten, dann seht ihr die <strong>Producer Oberfläche</strong> und spätestens jetzt wird klar, dass es kein normales Meeting ist und warum ihr das vorher üben solltet :) Es gibt zwei Inhaltsanzeigen. Links befindet sich der Inhalt, der noch nicht Live gesendet wird. Hier bereitet ihr die Szene vor, welche dann Live geschaltet wird. Rechts seht ihr, was die Teilnehmer sehen werden und sich gerade “On-Air” befindet. Mit dem Beitritt zum Live Event wird das Meeting also noch nicht gestartet! Hierfür muss man erstmal die Inhalte anordnen.</p>
-<p><img class="img-zoomable" src="/tmblr/8f/80/b37c08f4851dc6bcb5e558522363.png" alt="image" />
+<p><img class=img-zoomable src=/tmblr/8f/80/b37c08f4851dc6bcb5e558522363.png alt=image>
 </p>
 <p>Wenn ihr eure Webcam übertragen wollt, dann schaltet auf das entsprechende <strong>Layout</strong> unten links um.
-<img class="img-zoomable" src="/tmblr/75/b9/fd3d944c6a0fb2c94ac2c0ad0c00.png" alt="image" />
+<img class=img-zoomable src=/tmblr/75/b9/fd3d944c6a0fb2c94ac2c0ad0c00.png alt=image>
 </p>
 <p>Jetzt könnt ihr aus dem unteren Bereich eure <strong>Webcam</strong> nach oben in den kleinen Bereich des linken Fensters ziehen. Genau so geht das auch mit den Inhalten, die ihr teilen wollt. Ihr könnt ein einzelnes <strong>Fenster</strong> freigeben oder den ganzen Desktop. Ich empfehle immer den **Desktop **freizugeben, da es kompliziert wird, wenn man auch andere Dinge zeigen möchte. Es kommt schneller als man denkt.
-<img class="img-zoomable" src="/tmblr/35/e9/5da2fde2a6104c4129e822ff9e68.png" alt="image" />
+<img class=img-zoomable src=/tmblr/35/e9/5da2fde2a6104c4129e822ff9e68.png alt=image>
 </p>
 <p>Oben: Fenster freigeben | Unten: Desktop freigeben
-<img class="img-zoomable" src="/tmblr/18/a8/6487e7f59f61630649bbaa034222.png" alt="image" />
+<img class=img-zoomable src=/tmblr/18/a8/6487e7f59f61630649bbaa034222.png alt=image>
 </p>
 <p>Wie in jedem anderen Meeting wird nun das geteilte Element <strong>rot umrandet</strong> und es gibt im oberen Bereich die Möglichkeit weitere <strong>Kontrollen</strong> einzustellen oder abzubrechen.
-<img class="img-zoomable" src="/tmblr/ec/23/f3444702dc0b0756ea6471e993be.png" alt="image" />
+<img class=img-zoomable src=/tmblr/ec/23/f3444702dc0b0756ea6471e993be.png alt=image>
 </p>
 <p>In der Producer-Ansicht habt ihr nun Video und Inhalt ausgerichtet. Wenn die Zeit gekommen ist, dann muss man die Inhalte “<strong>Live schalten</strong>”.
-<img class="img-zoomable" src="/tmblr/02/6b/3c0af6296cc2238f0d3826036ad1.png" alt="image" />
+<img class=img-zoomable src=/tmblr/02/6b/3c0af6296cc2238f0d3826036ad1.png alt=image>
 </p>
-<p>Das Live Event ist aber noch immer nicht für die Teilnehmer sichtbar. Erst mit einem weiteren Klick auf “<strong>Start</strong>” werden die Inhalte (Audio und Video) an die Teilnehmer übermittelt. Auf der linken Seite, kann zum Beispiel ein weiterer Producer das nächste Layout (Speaker, Speaker-Runde, &hellip;) vorbereitet und gegebenenfalls sofort “<strong>Live schalten</strong>&quot;
-<img class="img-zoomable" src="/tmblr/a2/fa/147c2b90b4108d23cb856c8dad5d.png" alt="image" />
+<p>Das Live Event ist aber noch immer nicht für die Teilnehmer sichtbar. Erst mit einem weiteren Klick auf “<strong>Start</strong>” werden die Inhalte (Audio und Video) an die Teilnehmer übermittelt. Auf der linken Seite, kann zum Beispiel ein weiterer Producer das nächste Layout (Speaker, Speaker-Runde, &mldr;) vorbereitet und gegebenenfalls sofort “<strong>Live schalten</strong>"
+<img class=img-zoomable src=/tmblr/a2/fa/147c2b90b4108d23cb856c8dad5d.png alt=image>
 </p>
 <p>Es ist ein Microsoft Produkt also wird nochmal nachgefragt!
-<img class="img-zoomable" src="/tmblr/2f/6a/a705c1b8892e7a0189edbc404cb3.png" alt="image" />
+<img class=img-zoomable src=/tmblr/2f/6a/a705c1b8892e7a0189edbc404cb3.png alt=image>
 </p>
 <p>In der Producer-Ansicht wird der sichtbare Teil für die Teilnehmer rot umrandet.
-<img class="img-zoomable" src="/tmblr/c2/24/f994f58473ce0a26d189d97d77f2.png" alt="image" />
+<img class=img-zoomable src=/tmblr/c2/24/f994f58473ce0a26d189d97d77f2.png alt=image>
 </p>
 <p>Stoppt der aktuelle Benutzer seine Freigabe, dann wird sein Video in Vollbilddarstellung gebracht.
-<img class="img-zoomable" src="/tmblr/70/0c/62202478af0c9e3ac54f47dc6c60.png" alt="image" />
+<img class=img-zoomable src=/tmblr/70/0c/62202478af0c9e3ac54f47dc6c60.png alt=image>
 </p>
 <p>In der rechten Leiste der Produceransicht gibt es verschiedene Reiter mit Informationen zum Meeting.</p>
 <p><strong>Staus und Leistung</strong>
-<img class="img-zoomable" src="/tmblr/f7/b4/682e83895ce9f200ab5ac39ac71a.png" alt="image" />
+<img class=img-zoomable src=/tmblr/f7/b4/682e83895ce9f200ab5ac39ac71a.png alt=image>
 </p>
 <p><strong>Frage und Antwort</strong>
-<img class="img-zoomable" src="/tmblr/a1/7f/0480d1a4803275ff6bf54c33ee7d.png" alt="image" />
+<img class=img-zoomable src=/tmblr/a1/7f/0480d1a4803275ff6bf54c33ee7d.png alt=image>
 </p>
 <p>Teilnehmer können hier Fragen stellen und Producer können diese privat beantworten. ist eine Frage/Antwort für alle Teilnehmer interessant, dann kann der Producer die Frage (samt Antwort) veröffentlichen und so allen zugänglich machen.</p>
 <p><strong>Besprechungsnotizen</strong>
-<img class="img-zoomable" src="/tmblr/fd/e0/e32cf8e417e651d169c58429f096.png" alt="image" />
+<img class=img-zoomable src=/tmblr/fd/e0/e32cf8e417e651d169c58429f096.png alt=image>
 </p>
 <p>Die Notizen werden wie aus Meetings bekannt, über die <strong>Wiki</strong>-Funktion abgewickelt.
-<img class="img-zoomable" src="/tmblr/3b/8d/b3586959ca1eae5b1ac8e13fbd28.png" alt="image" />
+<img class=img-zoomable src=/tmblr/3b/8d/b3586959ca1eae5b1ac8e13fbd28.png alt=image>
 </p>
 <p>Es gibt eine rudimentäre Struktur und Formatierung der Inhalte für die Teilnehmer. Die Notizen können nur vom Producer erstellt werde und sind sofort für die Teilnehmer sichtbar.</p>
 <p><strong>Besprechungschat (nur Producer)</strong>
-<img class="img-zoomable" src="/tmblr/0f/70/9958f28b3b7097bb4ab90c9bdea9.png" alt="image" />
+<img class=img-zoomable src=/tmblr/0f/70/9958f28b3b7097bb4ab90c9bdea9.png alt=image>
 </p>
-<p>Der Chat ist nur für Producer und kann nicht von Teilnehmern eingesehen werden. Teilnehmer können nur über die Frage&amp;Antwort Funktion interagieren. Eine Interaktion unter Teilnehmern ist ausgeschlossen.</p>
+<p>Der Chat ist nur für Producer und kann nicht von Teilnehmern eingesehen werden. Teilnehmer können nur über die Frage&Antwort Funktion interagieren. Eine Interaktion unter Teilnehmern ist ausgeschlossen.</p>
 <p><strong>Kontakte</strong>
-<img class="img-zoomable" src="/tmblr/ea/82/37c4fed8fd46d385cb147ff2beea.png" alt="image" />
+<img class=img-zoomable src=/tmblr/ea/82/37c4fed8fd46d385cb147ff2beea.png alt=image>
 </p>
 <p>Hier werden alle Producer aufgelistet. Teilnehmer sind hier nicht sichtbar.</p>
 <p><strong>Geräteeinstellungen</strong>
-<img class="img-zoomable" src="/tmblr/7c/96/72cda81685fc537748743d3c728b.png" alt="image" />
+<img class=img-zoomable src=/tmblr/7c/96/72cda81685fc537748743d3c728b.png alt=image>
 </p>
 <p>Hier kann das Audio und Webcam Setup (Producer) verändert werden. Es können auch nachträglich die Live-Untertitel abgeschaltet werden.</p>
 <p><strong>Besprechungsdetails</strong>
-<img class="img-zoomable" src="/tmblr/ae/91/35229cd210d3e0a78c1d85c86fdc.png" alt="image" />
+<img class=img-zoomable src=/tmblr/ae/91/35229cd210d3e0a78c1d85c86fdc.png alt=image>
 </p>
 <p>Wie in jedem Meeting werden auch hier die Einwahlinformationen für das Meeting angezeigt. <strong>Hinweis</strong>: Diese Einladung ist nur für Producer und nicht für Teilnehmer geeignet!</p>
-<h2 id="live-event-teilnehmen">Live Event teilnehmen</h2>
-<p>Die Teilnahme an einem Live Event kann mit einem Browser oder Microsoft Teams Client durchgeführt werden. <a href="https://support.office.com/en-us/article/get-started-with-microsoft-teams-live-events-d077fec2-a058-483e-9ab5-1494afda578a#bkmk_systemreq" target="_blank">Hier findet ihr die Systemanforderungen</a>. Mit dem Teilnehmerlink kommt man auf eine Website, welcher dem normalen Meeting Beitritt sehr ähnelt. Über “Watch on the web instead” kann man über alle modernen Browser teilnehmen, <strong>ohne extra Software</strong> zu installieren.
-<img class="img-zoomable" src="/tmblr/e8/35/6dff415f591f0826a8bf5079af22.png" alt="image" />
+<h2 id=live-event-teilnehmen>Live Event teilnehmen</h2>
+<p>Die Teilnahme an einem Live Event kann mit einem Browser oder Microsoft Teams Client durchgeführt werden. <a href=https://support.office.com/en-us/article/get-started-with-microsoft-teams-live-events-d077fec2-a058-483e-9ab5-1494afda578a#bkmk_systemreq target=_blank>Hier findet ihr die Systemanforderungen</a>. Mit dem Teilnehmerlink kommt man auf eine Website, welcher dem normalen Meeting Beitritt sehr ähnelt. Über “Watch on the web instead” kann man über alle modernen Browser teilnehmen, <strong>ohne extra Software</strong> zu installieren.
+<img class=img-zoomable src=/tmblr/e8/35/6dff415f591f0826a8bf5079af22.png alt=image>
 </p>
 <p>Wenn man über ein Teams Account (Azure AD) verfügt, dann kann dieser genutzt werden oder ihr tretet anonym bei.
-<img class="img-zoomable" src="/tmblr/72/c8/8f25cd3f1b5709a4ccd1c67a5662.png" alt="image" />
+<img class=img-zoomable src=/tmblr/72/c8/8f25cd3f1b5709a4ccd1c67a5662.png alt=image>
 </p>
 <p>Nach dem Beitritt seht ihr den aktuell geteilten Inhalt. Die Ansicht ähnelt einem normalen Meeting. Der Teilnehmer kann aber jederzeit Pause machen oder sogar zurückspulen.</p>
-<p><img class="img-zoomable" src="/tmblr/05/44/08f69ff629f49bb9575a3e8b9877.png" alt="image" />
+<p><img class=img-zoomable src=/tmblr/05/44/08f69ff629f49bb9575a3e8b9877.png alt=image>
 </p>
 <p>Über die Einstellungen im Wiedergabefenster können die optionalen Untertitel eingeschaltet werden.
-<img class="img-zoomable" src="/tmblr/7a/b0/faa02c02b5954f419add7b4062ed.png" alt="image" />
+<img class=img-zoomable src=/tmblr/7a/b0/faa02c02b5954f419add7b4062ed.png alt=image>
 </p>
 <p>Die Auswahl entspricht den Einstellungen, welche zum Setup des Live Events gemacht wurden.
-<img class="img-zoomable" src="/tmblr/6b/23/64d506172093d1d548651e196cf7.png" alt="image" />
+<img class=img-zoomable src=/tmblr/6b/23/64d506172093d1d548651e196cf7.png alt=image>
 </p>
 <p>Hier sehen wir den englischen Untertitel.
-<img class="img-zoomable" src="/tmblr/3e/06/7ed21732fddde7c957f6f80546f8.png" alt="image" />
+<img class=img-zoomable src=/tmblr/3e/06/7ed21732fddde7c957f6f80546f8.png alt=image>
 </p>
-<p><strong>Frage &amp; Antwort</strong></p>
-<p>Hier haben wir die Teilnehmersicht der Q&amp;A Funktion. Der Teilnehmer kann seine Fragen stellen und bekommt gegebenenfalls Antworten vom Producer Team. Der Teilnehmer kann sich für die Frage einen Namen geben oder aber anonym schreiben.
-<img class="img-zoomable" src="/tmblr/c0/a4/e6b5913a66625c2c1694ba79a45f.png" alt="image" />
+<p><strong>Frage & Antwort</strong></p>
+<p>Hier haben wir die Teilnehmersicht der Q&A Funktion. Der Teilnehmer kann seine Fragen stellen und bekommt gegebenenfalls Antworten vom Producer Team. Der Teilnehmer kann sich für die Frage einen Namen geben oder aber anonym schreiben.
+<img class=img-zoomable src=/tmblr/c0/a4/e6b5913a66625c2c1694ba79a45f.png alt=image>
 </p>
 <p>Die Fragen können weiter “verfeinert” werden.
-<img class="img-zoomable" src="/tmblr/c0/4c/b88e37179c72e0a7061ba2cc30e1.png" alt="image" />
+<img class=img-zoomable src=/tmblr/c0/4c/b88e37179c72e0a7061ba2cc30e1.png alt=image>
 </p>
 <p>Hier sehen wir die <strong>Producer Ansicht</strong> für die gestellt Frage. Die Frage kann ignoriert oder veröffentlicht werden (sichtbar für alle Teilnehmer).
-<img class="img-zoomable" src="/tmblr/4a/98/1319962eff3a9e5bfe035142986e.png" alt="image" />
+<img class=img-zoomable src=/tmblr/4a/98/1319962eff3a9e5bfe035142986e.png alt=image>
 </p>
 <p>Wird die Frage (inclusive Antwort) veröffentlicht, dann wird sie im Bereich “Featured” angezeigt. Hier gibt es die Möglichkeit für die Teilnehmer eine Frage zu “liken” und damit Feedback in die Runde zu geben.
-<img class="img-zoomable" src="/tmblr/04/16/bb6555a4643831bcce9978389962.png" alt="image" />
+<img class=img-zoomable src=/tmblr/04/16/bb6555a4643831bcce9978389962.png alt=image>
 </p>
 <p>Ist das Live Event beendet, dann wird es entsprechend im Stream angezeigt.
-<img class="img-zoomable" src="/tmblr/d5/0e/b3240338b8edccf309afc95a562d.png" alt="image" />
+<img class=img-zoomable src=/tmblr/d5/0e/b3240338b8edccf309afc95a562d.png alt=image>
 </p>
-<h2 id="zusammenfassung">Zusammenfassung</h2>
-<p>Live Events sind eine sehr spezielle Form von Meetings in Microsoft 365. Der Einsatz macht nur in wenigen Szenarien Sinn, aber es ist wichtig, diese Option zu kennen. Besonders mit vielen “Meeting” Anfängern kann es die Situation vereinfachen, wenn eventuell zwei Meetings aufgesetzt werden. Ein Live Meeting für den Transport der Inhalte mit absoluter Kontrolle über die Präsentation ohne störende Zwischenrufe und ein anschließendes Ad-Hoc Q&amp;A Meeting im normalen Teams Meeting Modus, damit jeder sprechen kann und sich auch per Video präsentiert.</p>
-    </div>
+<h2 id=zusammenfassung>Zusammenfassung</h2>
+<p>Live Events sind eine sehr spezielle Form von Meetings in Microsoft 365. Der Einsatz macht nur in wenigen Szenarien Sinn, aber es ist wichtig, diese Option zu kennen. Besonders mit vielen “Meeting” Anfängern kann es die Situation vereinfachen, wenn eventuell zwei Meetings aufgesetzt werden. Ein Live Meeting für den Transport der Inhalte mit absoluter Kontrolle über die Präsentation ohne störende Zwischenrufe und ein anschließendes Ad-Hoc Q&A Meeting im normalen Teams Meeting Modus, damit jeder sprechen kann und sich auch per Video präsentiert.</p>
+</div>
 </article>
-
-
 <div class="license markdown-body">
-    <blockquote>
-        <p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
-               target="_blank">CC BY 4.0</a>.</p>
-    </blockquote>
+<blockquote>
+<p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel=license href=https://creativecommons.org/licenses/by/4.0/ target=_blank>CC BY 4.0</a>.</p>
+</blockquote>
 </div>
-
-
-<div class="post-comment" data-comment="disqus">
-    <span class="post-comment-notloaded">
-        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
-    </span>
-    <div id="disqus_thread" style="display: none;"></div>
-    <script>
-        function loadComment() {
-            var commentArea = document.querySelector('.post-comment');
-            var disqus_config = function () {
-                this.page.url = 'https:\/\/marcoscheel.de\/post\/2020\/03\/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge\/';
-                this.page.identifier = '614015532121931776-microsoft-teams-live-events-für-krisen-vorträge';
-            };
-            var s = document.createElement('script');
-            s.src = 'https://' + 'marcoscheel' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            document.querySelector('#disqus_thread').removeAttribute('style');
-            (document.body || document.head).appendChild(s);
-            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
-        }
-    </script>
+<div class=post-comment data-comment=disqus>
+<span class=post-comment-notloaded>
+<i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
+</span>
+<div id=disqus_thread style=display:none></div>
+<script>function loadComment(){var b=document.querySelector('.post-comment'),c=function(){this.page.url='https://marcoscheel.de/post/2020/03/614015532121931776-microsoft-teams-live-events-f%C3%BCr-krisen-vortr%C3%A4ge/',this.page.identifier='614015532121931776-microsoft-teams-live-events-für-krisen-vorträge'},a=document.createElement('script');a.src='https://marcoscheel.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),document.querySelector('#disqus_thread').removeAttribute('style'),(document.body||document.head).appendChild(a),document.querySelector('span.post-comment-notloaded').setAttribute('style','display: none;')}</script>
 </div>
-
-
-
-            </div>
-            <aside class="col-12 col-md-3 float-left sidebar">
-    
-    <div class="sidebar-item sidebar-pages">
-        <sidebarh3>Seiten</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives/">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about/">About</a>
-            </li>
-            
-            <li>
-                <a href="/search/">Search</a>
-            </li>
-            
-            <li>
-                <a href="/impressum/">Impressum</a>
-            </li>
-            
-            <li>
-                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-links">
-        <sidebarh3>Links</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
-            </li>
-            
-            <li>
-                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
-            </li>
-            
-            <li>
-                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
-            </li>
-            
-            <li>
-                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-tags">
-        <sidebarh3>Tags</sidebarh3>
-        <div>
-            
-            <span>
-                <a href="/tags/azure-ad/">Azure AD</a>
-            </span>
-            
-            <span>
-                <a href="/tags/development/">Development</a>
-            </span>
-            
-            <span>
-                <a href="/tags/equipment/">Equipment</a>
-            </span>
-            
-            <span>
-                <a href="/tags/groups/">Groups</a>
-            </span>
-            
-            <span>
-                <a href="/tags/meta/">Meta</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-365/">Microsoft 365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mip/">MIP</a>
-            </span>
-            
-            <span>
-                <a href="/tags/office365/">Office365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/tools/">Tools</a>
-            </span>
-            
-            <span>
-                <a href="/tags/work/">Work</a>
-            </span>
-            
-            <span>
-                <a href="/tags/xarchived/">xArchived</a>
-            </span>
-            
-        </div>
-    </div>
-    <div class="sidebar-item sidebar">
-        <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-    <div class="sidebar-item sidebar-toc">
-        <sidebarh3>Inhalt</sidebarh3><nav id="TableOfContents">
-  <ul>
-    <li><a href="#microsoft-teams-live-event">Microsoft Teams Live Event</a></li>
-    <li><a href="#live-event-vorbereiten">Live Event vorbereiten</a></li>
-    <li><a href="#live-event-planen">Live Event Planen</a></li>
-    <li><a href="#live-event-produzieren">Live Event produzieren</a></li>
-    <li><a href="#live-event-teilnehmen">Live Event teilnehmen</a></li>
-    <li><a href="#zusammenfassung">Zusammenfassung</a></li>
-  </ul>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar">
+<a class=twitter-timeline data-height=400 href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src=https://platform.twitter.com/widgets.js></script>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents>
+<ul>
+<li><a href=#microsoft-teams-live-event>Microsoft Teams Live Event</a></li>
+<li><a href=#live-event-vorbereiten>Live Event vorbereiten</a></li>
+<li><a href=#live-event-planen>Live Event Planen</a></li>
+<li><a href=#live-event-produzieren>Live Event produzieren</a></li>
+<li><a href=#live-event-teilnehmen>Live Event teilnehmen</a></li>
+<li><a href=#zusammenfassung>Zusammenfassung</a></li>
+</ul>
 </nav></div>
 </aside>
-        </div>
-        <div class="btn">
-    <div class="btn-menu" id="btn-menu">
-        <i class="iconfont icon-grid-sharp"></i>
-    </div>
-    <div class="btn-toggle-mode">
-        <i class="iconfont icon-contrast-sharp"></i>
-    </div>
-    <div class="btn-scroll-top">
-        <i class="iconfont icon-chevron-up-circle-sharp"></i>
-    </div>
 </div>
-<aside class="sidebar-mobile" style="display: none;">
-  <div class="sidebar-wrapper">
-    
-    <div class="sidebar-item sidebar-pages">
-        <sidebarh3>Seiten</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives/">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about/">About</a>
-            </li>
-            
-            <li>
-                <a href="/search/">Search</a>
-            </li>
-            
-            <li>
-                <a href="/impressum/">Impressum</a>
-            </li>
-            
-            <li>
-                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-links">
-        <sidebarh3>Links</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
-            </li>
-            
-            <li>
-                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
-            </li>
-            
-            <li>
-                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
-            </li>
-            
-            <li>
-                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-tags">
-        <sidebarh3>Tags</sidebarh3>
-        <div>
-            
-            <span>
-                <a href="/tags/azure-ad/">Azure AD</a>
-            </span>
-            
-            <span>
-                <a href="/tags/development/">Development</a>
-            </span>
-            
-            <span>
-                <a href="/tags/equipment/">Equipment</a>
-            </span>
-            
-            <span>
-                <a href="/tags/groups/">Groups</a>
-            </span>
-            
-            <span>
-                <a href="/tags/meta/">Meta</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-365/">Microsoft 365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mip/">MIP</a>
-            </span>
-            
-            <span>
-                <a href="/tags/office365/">Office365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/tools/">Tools</a>
-            </span>
-            
-            <span>
-                <a href="/tags/work/">Work</a>
-            </span>
-            
-            <span>
-                <a href="/tags/xarchived/">xArchived</a>
-            </span>
-            
-        </div>
-    </div>
-    
-    
-    
-    <div class="sidebar-item sidebar-toc">
-        <sidebarh3>Inhalt</sidebarh3>
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#microsoft-teams-live-event">Microsoft Teams Live Event</a></li>
-    <li><a href="#live-event-vorbereiten">Live Event vorbereiten</a></li>
-    <li><a href="#live-event-planen">Live Event Planen</a></li>
-    <li><a href="#live-event-produzieren">Live Event produzieren</a></li>
-    <li><a href="#live-event-teilnehmen">Live Event teilnehmen</a></li>
-    <li><a href="#zusammenfassung">Zusammenfassung</a></li>
-  </ul>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#microsoft-teams-live-event>Microsoft Teams Live Event</a></li>
+<li><a href=#live-event-vorbereiten>Live Event vorbereiten</a></li>
+<li><a href=#live-event-planen>Live Event Planen</a></li>
+<li><a href=#live-event-produzieren>Live Event produzieren</a></li>
+<li><a href=#live-event-teilnehmen>Live Event teilnehmen</a></li>
+<li><a href=#zusammenfassung>Zusammenfassung</a></li>
+</ul>
 </nav>
-    </div>
-    
-    
-  </div>
+</div>
+</div>
 </aside>
-    </main>
-
-    <footer>
-    <div class="container-lg clearfix">
-        <div class="col-12 footer">
-            
-            <span>&copy; 2021-2022
-                <a href="https://marcoscheel.de">Marco Scheel</a>
-                 | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
-                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
-                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
-                                                    target="_blank">Hugo</a> 
-            </span>
-        </div>
-    </div>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2021-2022
+<a href=https://marcoscheel.de>Marco Scheel</a>
+| <a href=https://github.com/marcoscheel/marcoscheel.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
 </footer>
-
-    
-<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
-
-
-<script defer src="/assets/js/fuji.min.js"></script>
-
-
-
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=/assets/js/fuji.min.js></script>
 </body>
-
 </html>

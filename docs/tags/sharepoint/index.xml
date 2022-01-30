@@ -1,174 +1,140 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>SharePoint on Marco Scheel aka GeekDotNet</title>
-    <link>https://marcoscheel.de/tags/sharepoint/</link>
-    <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>de</language>
-    <lastBuildDate>Sat, 24 Oct 2020 12:35:35 +0200</lastBuildDate><atom:link href="https://marcoscheel.de/tags/sharepoint/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream</title>
-      <link>https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/</link>
-      <pubDate>Sat, 24 Oct 2020 12:35:35 +0200</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/</guid>
-      <description>&lt;p&gt;Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream &lt;del&gt;einstellen&lt;/del&gt; neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:&lt;/p&gt;
-&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;de&#34; dir=&#34;ltr&#34;&gt;Migration vom &lt;a href=&#34;https://twitter.com/SharePoint?ref_src=twsrc%5Etfw&#34;&gt;@SharePoint&lt;/a&gt; Video Portal schon begonnen? Alle Videos in &lt;a href=&#34;https://twitter.com/MicrosoftStream?ref_src=twsrc%5Etfw&#34;&gt;@MicrosoftStream&lt;/a&gt; angekommen?  Jetzt geht&amp;#39;s wieder zurück 🤣 Aber ich finde das super. Endlich eine Video API natürlich mit &lt;a href=&#34;https://twitter.com/microsoftgraph?ref_src=twsrc%5Etfw&#34;&gt;@microsoftgraph&lt;/a&gt;! Und Meetingrecording von &lt;a href=&#34;https://twitter.com/MicrosoftTeams?ref_src=twsrc%5Etfw&#34;&gt;@MicrosoftTeams&lt;/a&gt;!  &lt;a href=&#34;https://t.co/ZKZsjWaDhP&#34;&gt;https://t.co/ZKZsjWaDhP&lt;/a&gt;&lt;/p&gt;&amp;mdash; Marco Scheel (@marcoscheel) &lt;a href=&#34;https://twitter.com/marcoscheel/status/1308496002761056259?ref_src=twsrc%5Etfw&#34;&gt;September 22, 2020&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;Den Microsoft Blogpost mit allen Details &lt;a href=&#34;https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304&#34; target=&#34;_blank&#34;&gt;findet ihr hier&lt;/a&gt;. Heute wollen wir uns die Auswirkungen auf die Meeting Recordings in Microsoft Teams anschauen. In der &amp;ldquo;Vergangenheit&amp;rdquo; hatten wir folgende Probleme mit der Ablage in Microsoft Stream:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Externe Teilnehmer konnte nie auf die Aufnahmen zugreifen, da Microsoft Steam (&lt;a href=&#34;https://docs.microsoft.com/en-us/stream/&#34; target=&#34;_blank&#34;&gt;Classic&lt;/a&gt;) keinen &lt;a href=&#34;https://docs.microsoft.com/en-us/stream/portal-share-video#external-sharing&#34; target=&#34;_blank&#34;&gt;Zugang für externe ermöglicht&lt;/a&gt; und es immer ein Konto aus dem Unternehmen für den Zugriff brauchte.&lt;/li&gt;
-&lt;li&gt;Wer die Aufnahme starten wollte, brauchte nicht nur die &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/meeting-policies-in-teams#allow-cloud-recording&#34; target=&#34;_blank&#34;&gt;Teams Meeting Policy&lt;/a&gt; dazu, sondern auch das &lt;a href=&#34;https://docs.microsoft.com/en-us/stream/restrict-uploaders&#34; target=&#34;_blank&#34;&gt;Recht Videos in Stream hochzuladen&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Es gibt keine offizielle API&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und es werden noch viele Funktionen in der nahen Zukunft ergänzt. Zum Start bekommen wir aber eine sehr rudimentäre Implementierung mit ihren eigenen Problemen. Wir schauen einmal auf die entsprechende Implementierung Stand Oktober 2020. Microsoft hat zur Ignite eine &lt;a href=&#34;https://myignite.microsoft.com/sessions/087d135a-64ae-41ab-8b15-f0a965223d5b&#34; target=&#34;_blank&#34;&gt;dedizierte Session zum Thema Besprechungsaufzeichnung&lt;/a&gt; erstellt in der ihr viele Details findet.&lt;/p&gt;
-&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--title.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;h2 id=&#34;im-meeting&#34;&gt;Im Meeting&lt;/h2&gt;
-&lt;p&gt;Ich habe für euch ein Meeting dokumentiert und zeige wo die Unterschiede liegen. Im Microsoft Teams Client bleibt während der Besprechung alles beim Alten. Über die erweiterten Funktionen (&amp;hellip;) kann jeder Moderator aus dem einladenden Unternehmen das Recording starten &amp;ldquo;Start recording&amp;rdquo;:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-start-recording.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Im Meeting sehen wir:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Luke (Meeting Organizer) - luke ät gkmm.org&lt;/li&gt;
-&lt;li&gt;Leia - leia ät gkmm.org&lt;/li&gt;
-&lt;li&gt;Rey - rey ät gkmm.org&lt;/li&gt;
-&lt;li&gt;Kylo - kylo ät gkmm.org&lt;/li&gt;
-&lt;li&gt;Marco (Gast) - marco.scheel ät glueckkanja.com&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Die Benutzer werden wie üblich mit einem Banner über den Start der Aufnahme informiert:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--meeting-recording-started.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Wird die Aufzeichnung während des Meetings beendet, dann werden die Benutzer über das Speichern informiert:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--meeting-recording-saved.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Die Aufzeichnung wird im Meeting Chat verlinkt.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--meeting-recording-completed.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;h2 id=&#34;recording-ansehen&#34;&gt;Recording ansehen&lt;/h2&gt;
-&lt;p&gt;Hier kommt die erste Neuerung! Das Video ist deutlich schneller verfügbar. Microsoft Teams erzeugt das Video als MP4 in der Cloud und hat es in der Vergangenheit an Microsoft Steam übergeben. Stream hat dann die &lt;a href=&#34;https://azure.microsoft.com/de-de/services/media-services/&#34; target=&#34;_blank&#34;&gt;Azure Media Services&lt;/a&gt; bemüht, um das Video aufzubereiten und für ein &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-portal-vod-get-started&#34; target=&#34;_blank&#34;&gt;adaptives Streaming&lt;/a&gt; auszuliefern. Simple gesagt: Stream hat das Video in verschiedenen Auflösungen gerechnet und kann nahtlos zwischen den Bitraten hin und her wechseln. Das neue Stream wirft einfach das MP4 in SharePoint (oder OneDrive for Business) und stellt es dann über einen einfachen HTML Player zur Verfügung. Es sollte klar werden, dass ohne die Integration der Azure Media Services in dieser ersten Version einige Funktionen entfallen:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Wiedergabegeschwindigkeit. Nicht jeder redet so schnell wie ich und dann kann man schon ein 60 Minuten Video auf 45 Minuten reduzieren, wenn man es in 1,5x wiedergibt.&lt;/li&gt;
-&lt;li&gt;Transkription (Sprache zu Text). Für ein Meeting Recording ziemlich relevant, um zum Beispiel im 2 Stunden Meeting den Moment zu finden, als es um Produkt X ging.&lt;/li&gt;
-&lt;li&gt;Bandbreiten- und Performanceabhängiges Adaptives Streaming (wechseln von 1.1 Mbps bis 58Kbps). Für ein Meeting Recording nicht besonders relevant.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Anfang 2020 hatten unsere Video Recordings in Stream noch alle Bitraten. Aktuell sind auch alle Stream Videos (Meeting Recording) nur in der Original 1.1 Mbps (1080p) Auflösung verfügbar und macht somit kein adaptives Streaming. Corona lässt grüßen?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Der folgende Screenshot zeigt Lukes Browser bei der Wiedergabe, nachdem er im Chat auf &amp;ldquo;Open in OneDrive&amp;rdquo; klickt.
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-recording-access.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Genau so wird heute bereits jedes andere Video in SharePoint und OneDrive dargestellt. In der Zukunft wird der Content Typ für Video im SharePoint aufgewertet und die Darstellung, die Metadaten und der Lifecycle werden optimiert.&lt;/p&gt;
-&lt;p&gt;Für alle Meeting Teilnehmer aus der einladenden Organisation wird das Sharing der Datei automatisch eingerichtet:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-recording-manage-access.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Teams vergibt immer zwei Berechtigungen für die Video Datei. Es wird unterschieden in &lt;a href=&#34;https://support.microsoft.com/de-de/office/rollen-in-einer-teams-besprechung-c16fa7d0-1666-4dde-8686-0a0bfe16e019&#34; target=&#34;_blank&#34;&gt;Moderator und Teilnehmer&lt;/a&gt;. Moderatoren erhalten Edit Berechtigungen. Teilnehmer des Meetings erhalten nur View Berechtigungen.&lt;/p&gt;
-&lt;p&gt;Gäste werden nicht berücksichtig. Für mich als Gast endet der Versuch das Recording anzusehen so:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--guest-noaccess.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;In diesem Blogpost gehe ich auf den &lt;a href=&#34;https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/&#34;&gt;richtig Umgang mit Gästen und dem Recording ein&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;die-videodatei&#34;&gt;Die Videodatei&lt;/h2&gt;
-&lt;p&gt;Es bleibt zu beantworten, wo die Datei dann eigentlich liegt! Wenn man im Chat ein Video angeklickt, dann öffnet sich in Teams die Video Datei und wird abgespielt. Keine gute Idee, denn jede Interaktion mit Teams führt zum Abbruch der Wiedergabe und man muss von vorne anfangen. Also am besten gleich die &amp;ldquo;&amp;hellip;&amp;rdquo; anklicken und &amp;ldquo;Open in OneDrive&amp;rdquo; auswählen:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-access-file.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Die Datei liegt also im OneDrive und wird in einem Ordner mit dem Namen &amp;ldquo;Recordings&amp;rdquo; (bestimmt auch irgendwo &amp;ldquo;Aufzeichungen&amp;rdquo; oder &amp;ldquo;grabación&amp;rdquo;). OneDrive ist immer eine persönliche Ablage. Sie gehört einem Benutzer! Keine schöne Lösung. Also ein &amp;ldquo;Meet now&amp;rdquo; oder ein geplanter Termin landen im OneDrive eines Benutzers. Welcher Benutzer? Meeting Organizer oder der Benutzer der &amp;ldquo;Start recording&amp;rdquo; klickt. Es ist tatsächlich das OneDrive des Benutzers, der am schnellsten Klicken kann. Ich hätte den Meeting Organizer bevorzugt, da er auch der Besitzer des Termins ist. Hier hatte Stream mit seiner &amp;ldquo;neutralen&amp;rdquo; Ablageplattform klare Vorteile. Verlässt ein Benutzer das Unternehmen und sein OneDrive wird gelöscht, verschwinden alle Meeting Recordings mit seinem OneDrive! Microsoft hat angekündigt, dass es Mechanismen geben wird, welche automatisch &amp;ldquo;alte&amp;rdquo; Aufzeichnungen löschen wird. Der Speicherverbrauch auf SharePoint soll so reduziert werden. Eventuell kommen hier Retention Policies zum Einsatz. Diese Policies können nicht nur Dateien löschen, sondern auch für einen bestimmten Zeitraum garantiert Vorhalten. Es kann also sein, dass es hier auch eine Lösung für das Löschen eines OneDrives geben wird.&lt;/p&gt;
-&lt;p&gt;Meetings können aber auch alternativ in einem &lt;a href=&#34;https://support.microsoft.com/en-us/office/tip-meet-in-a-channel-519ad2a0-9b74-49bb-97ee-0d4c4494a7c5&#34; target=&#34;_blank&#34;&gt;Teams Kanal geplant&lt;/a&gt; werden. Diese Channel-Meetings speichern ihr Recording in dem entsprechenden Ordner im Kanal. Wenn ich also im &amp;ldquo;General&amp;rdquo; Kanal aufzeichne, dann liegt die Datei hier &amp;ldquo;/sites/YOURTEAMSITE/Shared Documents/General/Recordings&amp;rdquo;. Ich bin semi-zufrieden. Die Ablage im Team löst die Probleme beim Zugriff und die Frage wem die Datei gehört. Solltet ihr aber zum Beispiel den Ordner General per OneDrive Client auf eurem Rechner syncen und immer alles Offline wollen&amp;hellip; dann kommen jetzt auch größere Videodateien mit. Aber man kann nicht alles haben und ich hoffe, dass Microsoft in Zukunft diese Szenarien weiter optimiert.&lt;/p&gt;
-&lt;p&gt;Das Label der Schaltfläche im Meeting Chat heißt immer &amp;ldquo;Open in OneDrive&amp;rdquo; und ändert sich für ein Channel Meeting NICHT in &amp;ldquo;Open in SharePoint&amp;rdquo;. Auch hier gibt es die Chance auf Besserung in der Zukunft.&lt;/p&gt;
-&lt;p&gt;Schauen wir mal direkt auf die Datei. Hier ein Screenshot der erweiterten MP4 Eigenschaften:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--mp4-details.jpg&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Die Aufzeichnung ist etwas unter 5 Minuten lang und verbraucht ca. 25 MB. Das Video besitzt eine FullHD (1080p) Auflösung. Wenn ich mir den Dateinamen anschaue, dann bin ich super happy. In Stream waren besonders die Titel der Channel Meetings oft Nichtssagend z.B. &amp;ldquo;Meeting in General&amp;rdquo;. So baut sich der Dateiname im neuen Stream auf:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Demo Luke and Leia-20201024_152149-Meeting Recording.mp4
-&lt;ul&gt;
-&lt;li&gt;TitelDesMeeting-yyyyMMdd_HHmmss-Meeting Recording&lt;/li&gt;
-&lt;li&gt;TitelDesMeeting = Demo Luke and Leia&lt;/li&gt;
-&lt;li&gt;yyyyMMdd_HHmmss = Start der Aufnahme (Lokale Zeit und nicht UTC), also der Moment in dem &amp;ldquo;Start recording&amp;rdquo; geklickt wird&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Meeting in _Workplace_-20201023_100348-Meeting Recording.mp4
-&lt;ul&gt;
-&lt;li&gt;MeetingInKanal&amp;ndash;yyyyMMdd_HHmmss-Meeting Recording&lt;/li&gt;
-&lt;li&gt;MeetingInKanal = Der Kanal heißt Workplace und in dem Fall wurde leider der Titel des Meetings nicht übernommen.&lt;/li&gt;
-&lt;li&gt;yyyyMMdd_HHmmss = Start der Aufnahme (Lokale Zeit und nicht UTC), also der Moment in dem &amp;ldquo;Start recording&amp;rdquo; geklickt wird&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;einschalten-im-tenant&#34;&gt;Einschalten im Tenant&lt;/h2&gt;
-&lt;p&gt;Microsoft hat &lt;a href=&#34;https://docs.microsoft.com/en-us/MicrosoftTeams/tmr-meeting-recording-change&#34; target=&#34;_blank&#34;&gt;aktuelle Dokumentation&lt;/a&gt; wann es wie weiter geht. Aktuell kann ein Tenant Admin den Opt-In durchführen und in wenigen Stunden ist der Tenant bereit und alle neuen Meeting Recordings landen direkt im OneDrive/SharePoint. Wenn der Admin kein Opt-In oder Opt-Out macht, dann wird ab Mitte Q4 2020 die Funktion für den Tenant konfiguriert. Habt ihr für euren Tenant ein Opt-Out konfiguriert, dann ist trotzdem im Q1 2021 Schluss und das Recording auf OneDrive/SharePoint wird auch für euren Tenant umgestellt. Bedeutet, dass mit Start Q2 2021 alle Meeting Recordings nur noch im neuen Microsoft Stream (aka SharePoint) laden.&lt;/p&gt;
-&lt;p&gt;Für den &lt;a href=&#34;https://docs.microsoft.com/en-us/MicrosoftTeams/tmr-meeting-recording-change#set-up-the-meeting-recording-option-for-onedrive-for-business-and-sharepoint&#34; target=&#34;_blank&#34;&gt;Opt-In&lt;/a&gt; braucht ihr die Skype for Business PowerShell, um die entsprechende Meeting Policy zu setzen. Seit der Ignite 2020 sind die CommandLets aber auch in das Microsoft Teams PowerShell Modul integriert.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Import-Module SkypeOnlineConnector
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SharePoint on Marco Scheel aka GeekDotNet</title><link>https://marcoscheel.de/tags/sharepoint/</link><description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description><generator>Hugo -- gohugo.io</generator><language>de</language><lastBuildDate>Sat, 24 Oct 2020 12:35:35 +0200</lastBuildDate><atom:link href="https://marcoscheel.de/tags/sharepoint/index.xml" rel="self" type="application/rss+xml"/><item><title>Microsoft Teams Recording jetzt in SharePoint statt Microsoft Stream</title><link>https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/</link><pubDate>Sat, 24 Oct 2020 12:35:35 +0200</pubDate><guid>https://marcoscheel.de/post/2020/10/20201020-microsoftteams-recording-onedrive/</guid><description>&lt;p>Auf der Ignite 2020 wurde angekündigt, dass man Microsoft Stream &lt;del>einstellen&lt;/del> neu erfinden wird. Ich bin Feuer und Flamme für die Idee, wie ihr hier sehen könnt:&lt;/p>
+&lt;blockquote class="twitter-tweet">&lt;p lang="de" dir="ltr">Migration vom &lt;a href="https://twitter.com/SharePoint?ref_src=twsrc%5Etfw">@SharePoint&lt;/a> Video Portal schon begonnen? Alle Videos in &lt;a href="https://twitter.com/MicrosoftStream?ref_src=twsrc%5Etfw">@MicrosoftStream&lt;/a> angekommen? Jetzt geht&amp;#39;s wieder zurück 🤣 Aber ich finde das super. Endlich eine Video API natürlich mit &lt;a href="https://twitter.com/microsoftgraph?ref_src=twsrc%5Etfw">@microsoftgraph&lt;/a>! Und Meetingrecording von &lt;a href="https://twitter.com/MicrosoftTeams?ref_src=twsrc%5Etfw">@MicrosoftTeams&lt;/a>! &lt;a href="https://t.co/ZKZsjWaDhP">https://t.co/ZKZsjWaDhP&lt;/a>&lt;/p>&amp;mdash; Marco Scheel (@marcoscheel) &lt;a href="https://twitter.com/marcoscheel/status/1308496002761056259?ref_src=twsrc%5Etfw">September 22, 2020&lt;/a>&lt;/blockquote>
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>Den Microsoft Blogpost mit allen Details &lt;a href="https://techcommunity.microsoft.com/t5/microsoft-stream-blog/a-new-vision-for-microsoft-stream/ba-p/1686304" target="_blank">findet ihr hier&lt;/a>. Heute wollen wir uns die Auswirkungen auf die Meeting Recordings in Microsoft Teams anschauen. In der &amp;ldquo;Vergangenheit&amp;rdquo; hatten wir folgende Probleme mit der Ablage in Microsoft Stream:&lt;/p>
+&lt;ul>
+&lt;li>Externe Teilnehmer konnte nie auf die Aufnahmen zugreifen, da Microsoft Steam (&lt;a href="https://docs.microsoft.com/en-us/stream/" target="_blank">Classic&lt;/a>) keinen &lt;a href="https://docs.microsoft.com/en-us/stream/portal-share-video#external-sharing" target="_blank">Zugang für externe ermöglicht&lt;/a> und es immer ein Konto aus dem Unternehmen für den Zugriff brauchte.&lt;/li>
+&lt;li>Wer die Aufnahme starten wollte, brauchte nicht nur die &lt;a href="https://docs.microsoft.com/en-us/microsoftteams/meeting-policies-in-teams#allow-cloud-recording" target="_blank">Teams Meeting Policy&lt;/a> dazu, sondern auch das &lt;a href="https://docs.microsoft.com/en-us/stream/restrict-uploaders" target="_blank">Recht Videos in Stream hochzuladen&lt;/a>.&lt;/li>
+&lt;li>Es gibt keine offizielle API&lt;/li>
+&lt;/ul>
+&lt;p>Mit dem neuen Microsoft Stream gehören diese Probleme der Vergangenheit an und es werden noch viele Funktionen in der nahen Zukunft ergänzt. Zum Start bekommen wir aber eine sehr rudimentäre Implementierung mit ihren eigenen Problemen. Wir schauen einmal auf die entsprechende Implementierung Stand Oktober 2020. Microsoft hat zur Ignite eine &lt;a href="https://myignite.microsoft.com/sessions/087d135a-64ae-41ab-8b15-f0a965223d5b" target="_blank">dedizierte Session zum Thema Besprechungsaufzeichnung&lt;/a> erstellt in der ihr viele Details findet.&lt;/p>
+&lt;p>&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--title.jpg" alt="image" />
+&lt;/p>
+&lt;h2 id="im-meeting">Im Meeting&lt;/h2>
+&lt;p>Ich habe für euch ein Meeting dokumentiert und zeige wo die Unterschiede liegen. Im Microsoft Teams Client bleibt während der Besprechung alles beim Alten. Über die erweiterten Funktionen (&amp;hellip;) kann jeder Moderator aus dem einladenden Unternehmen das Recording starten &amp;ldquo;Start recording&amp;rdquo;:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-start-recording.jpg" alt="image" />
+&lt;/p>
+&lt;p>Im Meeting sehen wir:&lt;/p>
+&lt;ul>
+&lt;li>Luke (Meeting Organizer) - luke ät gkmm.org&lt;/li>
+&lt;li>Leia - leia ät gkmm.org&lt;/li>
+&lt;li>Rey - rey ät gkmm.org&lt;/li>
+&lt;li>Kylo - kylo ät gkmm.org&lt;/li>
+&lt;li>Marco (Gast) - marco.scheel ät glueckkanja.com&lt;/li>
+&lt;/ul>
+&lt;p>Die Benutzer werden wie üblich mit einem Banner über den Start der Aufnahme informiert:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--meeting-recording-started.jpg" alt="image" />
+&lt;/p>
+&lt;p>Wird die Aufzeichnung während des Meetings beendet, dann werden die Benutzer über das Speichern informiert:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--meeting-recording-saved.jpg" alt="image" />
+&lt;/p>
+&lt;p>Die Aufzeichnung wird im Meeting Chat verlinkt.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--meeting-recording-completed.jpg" alt="image" />
+&lt;/p>
+&lt;h2 id="recording-ansehen">Recording ansehen&lt;/h2>
+&lt;p>Hier kommt die erste Neuerung! Das Video ist deutlich schneller verfügbar. Microsoft Teams erzeugt das Video als MP4 in der Cloud und hat es in der Vergangenheit an Microsoft Steam übergeben. Stream hat dann die &lt;a href="https://azure.microsoft.com/de-de/services/media-services/" target="_blank">Azure Media Services&lt;/a> bemüht, um das Video aufzubereiten und für ein &lt;a href="https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-portal-vod-get-started" target="_blank">adaptives Streaming&lt;/a> auszuliefern. Simple gesagt: Stream hat das Video in verschiedenen Auflösungen gerechnet und kann nahtlos zwischen den Bitraten hin und her wechseln. Das neue Stream wirft einfach das MP4 in SharePoint (oder OneDrive for Business) und stellt es dann über einen einfachen HTML Player zur Verfügung. Es sollte klar werden, dass ohne die Integration der Azure Media Services in dieser ersten Version einige Funktionen entfallen:&lt;/p>
+&lt;ul>
+&lt;li>Wiedergabegeschwindigkeit. Nicht jeder redet so schnell wie ich und dann kann man schon ein 60 Minuten Video auf 45 Minuten reduzieren, wenn man es in 1,5x wiedergibt.&lt;/li>
+&lt;li>Transkription (Sprache zu Text). Für ein Meeting Recording ziemlich relevant, um zum Beispiel im 2 Stunden Meeting den Moment zu finden, als es um Produkt X ging.&lt;/li>
+&lt;li>Bandbreiten- und Performanceabhängiges Adaptives Streaming (wechseln von 1.1 Mbps bis 58Kbps). Für ein Meeting Recording nicht besonders relevant.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Anfang 2020 hatten unsere Video Recordings in Stream noch alle Bitraten. Aktuell sind auch alle Stream Videos (Meeting Recording) nur in der Original 1.1 Mbps (1080p) Auflösung verfügbar und macht somit kein adaptives Streaming. Corona lässt grüßen?&lt;/p>
+&lt;/blockquote>
+&lt;p>Der folgende Screenshot zeigt Lukes Browser bei der Wiedergabe, nachdem er im Chat auf &amp;ldquo;Open in OneDrive&amp;rdquo; klickt.
+&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-recording-access.jpg" alt="image" />
+&lt;/p>
+&lt;p>Genau so wird heute bereits jedes andere Video in SharePoint und OneDrive dargestellt. In der Zukunft wird der Content Typ für Video im SharePoint aufgewertet und die Darstellung, die Metadaten und der Lifecycle werden optimiert.&lt;/p>
+&lt;p>Für alle Meeting Teilnehmer aus der einladenden Organisation wird das Sharing der Datei automatisch eingerichtet:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-recording-manage-access.jpg" alt="image" />
+&lt;/p>
+&lt;p>Teams vergibt immer zwei Berechtigungen für die Video Datei. Es wird unterschieden in &lt;a href="https://support.microsoft.com/de-de/office/rollen-in-einer-teams-besprechung-c16fa7d0-1666-4dde-8686-0a0bfe16e019" target="_blank">Moderator und Teilnehmer&lt;/a>. Moderatoren erhalten Edit Berechtigungen. Teilnehmer des Meetings erhalten nur View Berechtigungen.&lt;/p>
+&lt;p>Gäste werden nicht berücksichtig. Für mich als Gast endet der Versuch das Recording anzusehen so:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--guest-noaccess.jpg" alt="image" />
+&lt;/p>
+&lt;p>In diesem Blogpost gehe ich auf den &lt;a href="https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/">richtig Umgang mit Gästen und dem Recording ein&lt;/a>.&lt;/p>
+&lt;h2 id="die-videodatei">Die Videodatei&lt;/h2>
+&lt;p>Es bleibt zu beantworten, wo die Datei dann eigentlich liegt! Wenn man im Chat ein Video angeklickt, dann öffnet sich in Teams die Video Datei und wird abgespielt. Keine gute Idee, denn jede Interaktion mit Teams führt zum Abbruch der Wiedergabe und man muss von vorne anfangen. Also am besten gleich die &amp;ldquo;&amp;hellip;&amp;rdquo; anklicken und &amp;ldquo;Open in OneDrive&amp;rdquo; auswählen:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--host-access-file.jpg" alt="image" />
+&lt;/p>
+&lt;p>Die Datei liegt also im OneDrive und wird in einem Ordner mit dem Namen &amp;ldquo;Recordings&amp;rdquo; (bestimmt auch irgendwo &amp;ldquo;Aufzeichungen&amp;rdquo; oder &amp;ldquo;grabación&amp;rdquo;). OneDrive ist immer eine persönliche Ablage. Sie gehört einem Benutzer! Keine schöne Lösung. Also ein &amp;ldquo;Meet now&amp;rdquo; oder ein geplanter Termin landen im OneDrive eines Benutzers. Welcher Benutzer? Meeting Organizer oder der Benutzer der &amp;ldquo;Start recording&amp;rdquo; klickt. Es ist tatsächlich das OneDrive des Benutzers, der am schnellsten Klicken kann. Ich hätte den Meeting Organizer bevorzugt, da er auch der Besitzer des Termins ist. Hier hatte Stream mit seiner &amp;ldquo;neutralen&amp;rdquo; Ablageplattform klare Vorteile. Verlässt ein Benutzer das Unternehmen und sein OneDrive wird gelöscht, verschwinden alle Meeting Recordings mit seinem OneDrive! Microsoft hat angekündigt, dass es Mechanismen geben wird, welche automatisch &amp;ldquo;alte&amp;rdquo; Aufzeichnungen löschen wird. Der Speicherverbrauch auf SharePoint soll so reduziert werden. Eventuell kommen hier Retention Policies zum Einsatz. Diese Policies können nicht nur Dateien löschen, sondern auch für einen bestimmten Zeitraum garantiert Vorhalten. Es kann also sein, dass es hier auch eine Lösung für das Löschen eines OneDrives geben wird.&lt;/p>
+&lt;p>Meetings können aber auch alternativ in einem &lt;a href="https://support.microsoft.com/en-us/office/tip-meet-in-a-channel-519ad2a0-9b74-49bb-97ee-0d4c4494a7c5" target="_blank">Teams Kanal geplant&lt;/a> werden. Diese Channel-Meetings speichern ihr Recording in dem entsprechenden Ordner im Kanal. Wenn ich also im &amp;ldquo;General&amp;rdquo; Kanal aufzeichne, dann liegt die Datei hier &amp;ldquo;/sites/YOURTEAMSITE/Shared Documents/General/Recordings&amp;rdquo;. Ich bin semi-zufrieden. Die Ablage im Team löst die Probleme beim Zugriff und die Frage wem die Datei gehört. Solltet ihr aber zum Beispiel den Ordner General per OneDrive Client auf eurem Rechner syncen und immer alles Offline wollen&amp;hellip; dann kommen jetzt auch größere Videodateien mit. Aber man kann nicht alles haben und ich hoffe, dass Microsoft in Zukunft diese Szenarien weiter optimiert.&lt;/p>
+&lt;p>Das Label der Schaltfläche im Meeting Chat heißt immer &amp;ldquo;Open in OneDrive&amp;rdquo; und ändert sich für ein Channel Meeting NICHT in &amp;ldquo;Open in SharePoint&amp;rdquo;. Auch hier gibt es die Chance auf Besserung in der Zukunft.&lt;/p>
+&lt;p>Schauen wir mal direkt auf die Datei. Hier ein Screenshot der erweiterten MP4 Eigenschaften:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/img/20201020-microsoftteams-recording-onedrive--mp4-details.jpg" alt="image" />
+&lt;/p>
+&lt;p>Die Aufzeichnung ist etwas unter 5 Minuten lang und verbraucht ca. 25 MB. Das Video besitzt eine FullHD (1080p) Auflösung. Wenn ich mir den Dateinamen anschaue, dann bin ich super happy. In Stream waren besonders die Titel der Channel Meetings oft Nichtssagend z.B. &amp;ldquo;Meeting in General&amp;rdquo;. So baut sich der Dateiname im neuen Stream auf:&lt;/p>
+&lt;ul>
+&lt;li>Demo Luke and Leia-20201024_152149-Meeting Recording.mp4
+&lt;ul>
+&lt;li>TitelDesMeeting-yyyyMMdd_HHmmss-Meeting Recording&lt;/li>
+&lt;li>TitelDesMeeting = Demo Luke and Leia&lt;/li>
+&lt;li>yyyyMMdd_HHmmss = Start der Aufnahme (Lokale Zeit und nicht UTC), also der Moment in dem &amp;ldquo;Start recording&amp;rdquo; geklickt wird&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Meeting in _Workplace_-20201023_100348-Meeting Recording.mp4
+&lt;ul>
+&lt;li>MeetingInKanal&amp;ndash;yyyyMMdd_HHmmss-Meeting Recording&lt;/li>
+&lt;li>MeetingInKanal = Der Kanal heißt Workplace und in dem Fall wurde leider der Titel des Meetings nicht übernommen.&lt;/li>
+&lt;li>yyyyMMdd_HHmmss = Start der Aufnahme (Lokale Zeit und nicht UTC), also der Moment in dem &amp;ldquo;Start recording&amp;rdquo; geklickt wird&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="einschalten-im-tenant">Einschalten im Tenant&lt;/h2>
+&lt;p>Microsoft hat &lt;a href="https://docs.microsoft.com/en-us/MicrosoftTeams/tmr-meeting-recording-change" target="_blank">aktuelle Dokumentation&lt;/a> wann es wie weiter geht. Aktuell kann ein Tenant Admin den Opt-In durchführen und in wenigen Stunden ist der Tenant bereit und alle neuen Meeting Recordings landen direkt im OneDrive/SharePoint. Wenn der Admin kein Opt-In oder Opt-Out macht, dann wird ab Mitte Q4 2020 die Funktion für den Tenant konfiguriert. Habt ihr für euren Tenant ein Opt-Out konfiguriert, dann ist trotzdem im Q1 2021 Schluss und das Recording auf OneDrive/SharePoint wird auch für euren Tenant umgestellt. Bedeutet, dass mit Start Q2 2021 alle Meeting Recordings nur noch im neuen Microsoft Stream (aka SharePoint) laden.&lt;/p>
+&lt;p>Für den &lt;a href="https://docs.microsoft.com/en-us/MicrosoftTeams/tmr-meeting-recording-change#set-up-the-meeting-recording-option-for-onedrive-for-business-and-sharepoint" target="_blank">Opt-In&lt;/a> braucht ihr die Skype for Business PowerShell, um die entsprechende Meeting Policy zu setzen. Seit der Ignite 2020 sind die CommandLets aber auch in das Microsoft Teams PowerShell Modul integriert.&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">Import-Module SkypeOnlineConnector
 $sfbSession = New-CsOnlineSession
 Import-PSSession $sfbSession
 Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &amp;quot;OneDriveForBusiness&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Da es eine Meeting Policy ist, kann man das Feature auch erstmal nur für einzelne Benutzer freischalten.&lt;/p&gt;
-&lt;p&gt;Für den Op-Out setzt ihr den Wert einfach auf &amp;ldquo;Stream&amp;rdquo;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &amp;quot;Stream&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;zusammenfassung&#34;&gt;Zusammenfassung&lt;/h2&gt;
-&lt;p&gt;Microsoft Teams läutet eine neue Video Ära in Microsoft 365 ein. Die Meeting Recordings können ab sofort für all oder einzelne Benutzer nach SharePoint/OneDrive umgeleitet werden. Der Funktionsverlust ist angesichts der neuen Freiheit beim Teilen der Aufzeichnungen zu verschmerzen. Folgende Punkte sind also zu beachten:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Aufzeichnungen im Benutzer OneDrive können verloren gehen, wenn das OneDrive gelöscht wird (Mitarbeiter verlässt das Unternehmen)&lt;/li&gt;
-&lt;li&gt;Kein x-fache Wiedergabegeschwindigkeit&lt;/li&gt;
-&lt;li&gt;Keine adaptive Bandbreitenanpassung (aktuell auch in Stream nicht gegeben)&lt;/li&gt;
-&lt;li&gt;Keine Integration in die aktuelle Stream Mobile App&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Wird eine Datei umbenannt, verschoben oder gelöscht, dann geht der Link im Meeting Chat kaputt&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Das richtige Teilen mit Externen erfordert einige Klicks (&lt;a href=&#34;https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/&#34;&gt;Blogpost&lt;/a&gt; &lt;del&gt;coming soon&lt;/del&gt;)&lt;/li&gt;
-&lt;li&gt;Keine Möglichkeit alle Meeting Recordings auf einen Blick zu sehen, man muss jedes Mal den Meeting Chat suchen&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</title>
-      <link>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</link>
-      <pubDate>Sun, 17 Sep 2017 21:11:09 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</guid>
-      <description>&lt;p&gt;In meinen Projekten (&lt;a href=&#34;https://www.glueckkanja.com/technologien/office-365/&#34; target=&#34;_blank&#34;&gt;Office 365&lt;/a&gt; / &lt;a href=&#34;https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/&#34; target=&#34;_blank&#34;&gt;100% Cloud&lt;/a&gt;) ist &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference&#34; target=&#34;_blank&#34;&gt;Conditional Access&lt;/a&gt; (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912&#34; target=&#34;_blank&#34;&gt;Blogpost&lt;/a&gt; beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern &lt;a href=&#34;https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827&#34; target=&#34;_blank&#34;&gt;einzelne Site Collections &lt;/a&gt;adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&amp;hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Eigentlich sollte der Dialog so aussehen:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Es fehlt der entscheidende Teil:
-&lt;em&gt;&amp;ldquo;Control access from devices that aren&amp;rsquo;t compliant or joined to a domain&amp;rdquo;&lt;/em&gt;
+&lt;/code>&lt;/pre>
+&lt;p>Da es eine Meeting Policy ist, kann man das Feature auch erstmal nur für einzelne Benutzer freischalten.&lt;/p>
+&lt;p>Für den Op-Out setzt ihr den Wert einfach auf &amp;ldquo;Stream&amp;rdquo;:&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">Set-CsTeamsMeetingPolicy -Identity Global -RecordingStorageMode &amp;quot;Stream&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h2 id="zusammenfassung">Zusammenfassung&lt;/h2>
+&lt;p>Microsoft Teams läutet eine neue Video Ära in Microsoft 365 ein. Die Meeting Recordings können ab sofort für all oder einzelne Benutzer nach SharePoint/OneDrive umgeleitet werden. Der Funktionsverlust ist angesichts der neuen Freiheit beim Teilen der Aufzeichnungen zu verschmerzen. Folgende Punkte sind also zu beachten:&lt;/p>
+&lt;ul>
+&lt;li>Aufzeichnungen im Benutzer OneDrive können verloren gehen, wenn das OneDrive gelöscht wird (Mitarbeiter verlässt das Unternehmen)&lt;/li>
+&lt;li>Kein x-fache Wiedergabegeschwindigkeit&lt;/li>
+&lt;li>Keine adaptive Bandbreitenanpassung (aktuell auch in Stream nicht gegeben)&lt;/li>
+&lt;li>Keine Integration in die aktuelle Stream Mobile App&lt;/li>
+&lt;li>&lt;strong>Wird eine Datei umbenannt, verschoben oder gelöscht, dann geht der Link im Meeting Chat kaputt&lt;/strong>&lt;/li>
+&lt;li>Das richtige Teilen mit Externen erfordert einige Klicks (&lt;a href="https://marcoscheel.de/post/2020/11/20201101-microsoftteams-recording-sharing/">Blogpost&lt;/a> &lt;del>coming soon&lt;/del>)&lt;/li>
+&lt;li>Keine Möglichkeit alle Meeting Recordings auf einen Blick zu sehen, man muss jedes Mal den Meeting Chat suchen&lt;/li>
+&lt;/ul></description></item><item><title>SharePoint Online Device Access Option fehlt - Lösung: First Release for everyone</title><link>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</link><pubDate>Sun, 17 Sep 2017 21:11:09 +0000</pubDate><guid>https://marcoscheel.de/post/2017/09/165449521992-sharepoint-online-device-access-option-fehlt/</guid><description>&lt;p>In meinen Projekten (&lt;a href="https://www.glueckkanja.com/technologien/office-365/" target="_blank">Office 365&lt;/a> / &lt;a href="https://www.glueckkanja.com/blog/microsoft/ems/award/2017/06/gk-partner-of-the-year/" target="_blank">100% Cloud&lt;/a>) ist &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference" target="_blank">Conditional Access&lt;/a> (CA) nicht mehr wegzudenken. Für uns “SharePoint“ Leute hat CA eine spezielle Geschmacksrichtung. Eine der ersten Session-Based CA Policies arbeitet mit SharePoint und ermöglicht so zusätzliche Kontrollen beim Zugriff auf SharePoint. Microsoft hat das ganze in einem &lt;a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Conditional-Access-Policies-Rolling-out-to-First/ba-p/51912" target="_blank">Blogpost&lt;/a> beschrieben. Jetzt wurde angekündigt, dass es in die nächste Runde geht und die Konfiguration nicht mehr auf den ganzen Tenant zieht, sondern &lt;a href="https://techcommunity.microsoft.com/t5/SharePoint-Blog/Device-based-Policies-Updates-with-SharePoint-and-OneDrive/ba-p/101827" target="_blank">einzelne Site Collections &lt;/a>adressiert. In diesem Zuge wollte ich mal wieder meine AAD + SPO Konfiguration gerade ziehen, aber siehe da&amp;hellip; es fehlt was! So sieht es im SharePoint Admin Center unter dem Punkt “Device Access” aus:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/44/60/b19d1309eb9d2f84b06d45a2bcd3.png" alt="image" />
+&lt;/p>
+&lt;p>Eigentlich sollte der Dialog so aussehen:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/f5/a7/e82673d65fdeb9ee1164a68a30ac.png" alt="image" />
+&lt;/p>
+&lt;p>Es fehlt der entscheidende Teil:
+&lt;em>&amp;ldquo;Control access from devices that aren&amp;rsquo;t compliant or joined to a domain&amp;rdquo;&lt;/em>
 oder auf deutsch:
 _&amp;ldquo;Zugriff von Geräten steuern, die nicht konform oder einer Domäne beigetreten sind&amp;rdquo;
 _Jetzt stellt sich die Frage warum? Mein Tenant ist auf “First Release”, also sollte es doch funktionieren. Eine kurze Recherche hat mich zum überraschenden Ergebnis geführt:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/60/a6/a0ab32d60f0b1ba4117644d161f6.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Quelle: Microsoft Support - &lt;a href=&#34;https://support.office.com/en-us/article/Control-access-from-unmanaged-devices-5ae550c4-bd20-4257-847b-5c20fb053622?ui=en-US&amp;amp;amp;rs=en-US&amp;amp;amp;ad=US&amp;amp;amp;fromAR=1&#34; target=&#34;_blank&#34;&gt;Control access from unmanaged devices&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Mein Tenant war tatsächlich für einen Test auf die Option “First release for selected users” eingestellt:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/45/dc/754fb60365a39769a1e4c673639a.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;h2 id=&#34;lösung&#34;&gt;Lösung&lt;/h2&gt;
-&lt;p&gt;Wie im Support Dokument beschrieben habe ich das Setting geändert auf die Option “First release for everyone”:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/71/99/e2bd1b48168c253805f8609aeeae.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Kurze Zeit später (es zieht nicht sofort), konnte ich über das SharePoint Admin Center die gewünschte &amp;ldquo;Device Access” Konfiguration abschließen.&lt;/p&gt;
-&lt;p&gt;Ich habe in der Vergangenheit immer nach den Unterschieden der beiden “First Release” Einstellungen gesucht. Dieser Fall ist der erste mir bekannte.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>The Future of SharePoint (Online)</title>
-      <link>https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/</link>
-      <pubDate>Sat, 21 May 2016 20:33:42 +0000</pubDate>
-      
-      <guid>https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/</guid>
-      <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;
-&lt;p&gt;Die Roadmap schließt somit eine Lücke, die überwiegend Hardcore
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/60/a6/a0ab32d60f0b1ba4117644d161f6.png" alt="image" />
+&lt;/p>
+&lt;p>Quelle: Microsoft Support - &lt;a href="https://support.office.com/en-us/article/Control-access-from-unmanaged-devices-5ae550c4-bd20-4257-847b-5c20fb053622?ui=en-US&amp;amp;amp;rs=en-US&amp;amp;amp;ad=US&amp;amp;amp;fromAR=1" target="_blank">Control access from unmanaged devices&lt;/a>&lt;/p>
+&lt;p>Mein Tenant war tatsächlich für einen Test auf die Option “First release for selected users” eingestellt:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/45/dc/754fb60365a39769a1e4c673639a.png" alt="image" />
+&lt;/p>
+&lt;h2 id="lösung">Lösung&lt;/h2>
+&lt;p>Wie im Support Dokument beschrieben habe ich das Setting geändert auf die Option “First release for everyone”:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/71/99/e2bd1b48168c253805f8609aeeae.png" alt="image" />
+&lt;/p>
+&lt;p>Kurze Zeit später (es zieht nicht sofort), konnte ich über das SharePoint Admin Center die gewünschte &amp;ldquo;Device Access” Konfiguration abschließen.&lt;/p>
+&lt;p>Ich habe in der Vergangenheit immer nach den Unterschieden der beiden “First Release” Einstellungen gesucht. Dieser Fall ist der erste mir bekannte.&lt;/p></description></item><item><title>The Future of SharePoint (Online)</title><link>https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/</link><pubDate>Sat, 21 May 2016 20:33:42 +0000</pubDate><guid>https://marcoscheel.de/post/2016/05/144716486707-the-future-of-sharepoint-online/</guid><description>&lt;h2 id="tldr">TL;DR&lt;/h2>
+&lt;p>Die Roadmap schließt somit eine Lücke, die überwiegend Hardcore
 SharePoint User (Publishing, echte Listen und Metadaten) betroffen hat und
-begeistern wird. Für den Rest wird es einfach einfacher und schöner.&lt;/p&gt;
-&lt;p&gt;Alle die Office 365 noch nicht verwenden können die Zeit bis Ende 2016 nutzen,
+begeistern wird. Für den Rest wird es einfach einfacher und schöner.&lt;/p>
+&lt;p>Alle die Office 365 noch nicht verwenden können die Zeit bis Ende 2016 nutzen,
 um eine solide Basis aufzubauen. Alle mit einer guten Office 365 Basis können
 die Zeit nutzen in ersten Gehversuchen mit Office 365 Groups eigene Erfahrungen
 zu sammeln. In nächsten Jahr (2017) können dann hoffentlich alle das volle
 Potential von SharePoint Online nutzen und über den Datei-Tellerrand schauen
-und den nächsten Level der modernen Teamräume ausnutzen.&lt;/p&gt;
-&lt;p&gt;Am 4.5.2016 hat Microsoft Details zur weiteren Roadmap von
+und den nächsten Level der modernen Teamräume ausnutzen.&lt;/p>
+&lt;p>Am 4.5.2016 hat Microsoft Details zur weiteren Roadmap von
 SharePoint in einem Online-Event vorgestellt. In den letzten Monaten
 hat man den Eindruck bekommen, dass SharePoint sich immer mehr auf das
 Verwalten von Dateien konzentriert und dies auch mit einem sehr rudimentären
@@ -176,64 +142,64 @@ Funktionsumfang. Woher kam die Vermutung? Meine persönliche Wahrnehmung
 als Berater im SharePoint Umfeld, Blogs aus der (MVP-)Community, die
 aktuelle (Stand Mai 2016) Implementierung der Office 365 Groups und nicht
 zuletzt der starte Fokus auf den OneDrive for Business Bereich (Next
-Gen Sync, &amp;hellip;).&lt;/p&gt;
-&lt;p&gt;Ich als SharePoint Berater bei der Glück &amp;amp; Kanja Consulting AG
+Gen Sync, &amp;hellip;).&lt;/p>
+&lt;p>Ich als SharePoint Berater bei der Glück &amp;amp; Kanja Consulting AG
 möchte ihnen gerne meine Wahrnehmung und Interpretation der Dinge schildern. Es
-ist keine 1:1 Zusammenfassung, denn die hat Microsoft selber hier geliefert:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/the-future-of-sharepoint/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/the-future-of-sharepoint/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/announcing-simple-and-powerful-file-sharing-and-collaboration-for-office-365/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/announcing-simple-and-powerful-file-sharing-and-collaboration-for-office-365/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/sharepoint-the-mobile-and-intelligent-intranet/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/sharepoint-the-mobile-and-intelligent-intranet/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/the-sharepoint-framework-an-open-and-connected-platform/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/the-sharepoint-framework-an-open-and-connected-platform/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blogs.office.com/2016/05/04/sharepoint-server-2016-your-foundation-for-the-future/&#34; target=&#34;_blank&#34;&gt;https://blogs.office.com/2016/05/04/sharepoint-server-2016-your-foundation-for-the-future/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;sites-heißt-jetzt-wieder-sharepoint--das-versteckspiel&#34;&gt;Sites heißt jetzt wieder SharePoint – Das Versteckspiel&lt;/h2&gt;
-&lt;p&gt;hat eine Ende&lt;/p&gt;
-&lt;p&gt;Meine
-erste Reaktion auf &lt;a href=&#34;https://twitter.com/marcoscheel/status/727924436754702336&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt;:
-&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/a2/ca/be7806cc2be261912a0d60dd8bb3.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Persönlich bin ich mit dem Event sehr zufrieden. SharePoint
+ist keine 1:1 Zusammenfassung, denn die hat Microsoft selber hier geliefert:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/the-future-of-sharepoint/" target="_blank">https://blogs.office.com/2016/05/04/the-future-of-sharepoint/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/announcing-simple-and-powerful-file-sharing-and-collaboration-for-office-365/" target="_blank">https://blogs.office.com/2016/05/04/announcing-simple-and-powerful-file-sharing-and-collaboration-for-office-365/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/sharepoint-the-mobile-and-intelligent-intranet/" target="_blank">https://blogs.office.com/2016/05/04/sharepoint-the-mobile-and-intelligent-intranet/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/the-sharepoint-framework-an-open-and-connected-platform/" target="_blank">https://blogs.office.com/2016/05/04/the-sharepoint-framework-an-open-and-connected-platform/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://blogs.office.com/2016/05/04/sharepoint-server-2016-your-foundation-for-the-future/" target="_blank">https://blogs.office.com/2016/05/04/sharepoint-server-2016-your-foundation-for-the-future/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="sites-heißt-jetzt-wieder-sharepoint--das-versteckspiel">Sites heißt jetzt wieder SharePoint – Das Versteckspiel&lt;/h2>
+&lt;p>hat eine Ende&lt;/p>
+&lt;p>Meine
+erste Reaktion auf &lt;a href="https://twitter.com/marcoscheel/status/727924436754702336" target="_blank">Twitter&lt;/a>:
+&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/a2/ca/be7806cc2be261912a0d60dd8bb3.png" alt="image" />
+&lt;/p>
+&lt;p>Persönlich bin ich mit dem Event sehr zufrieden. SharePoint
 versucht sich nicht nur auf Dateien zu beschränken, sondern möchte auch in
 Office 365 als echtes Intranet wahrgenommen werden. Abseits von Groups und
 OneDrive gibt es ja noch Listen. Ein Feature das nur &amp;ldquo;Wenige&amp;rdquo; verwenden,
 aber eigentlich liegt dort der Teil der SharePoint definiert. Was hat Microsoft
-nun getan, um die traditionellen Wert wiederzubeleben?&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Moderne&lt;/strong&gt; Teamsites sehen
-gut aus und funktionieren im Browser und in einer neuen SharePoint Mobile App&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Moderne Teamsites bieten mehr als &lt;strong&gt;eine&lt;/strong&gt; Dokumentenbibliothek&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Moderne Teamsites fokussieren auf &amp;ldquo;&lt;strong&gt;Pages&lt;/strong&gt;&amp;rdquo; und &amp;ldquo;&lt;strong&gt;Webparts&lt;/strong&gt;&amp;rdquo; um Informationen aus der
-puren Existenz zum Benutzer zu führen&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Moderne Teamsites bieten **Discovery **ala Delve und zeigen
-Activities auf einer Zeitlinie ähnlich wie Yammer&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/0d/55/d264f822554470dcc013f3232c2d.png&#34; alt=&#34;image&#34; /&gt;
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;ist-der-focus-auf-das-intranet-news-publishing-&#34;&gt;Ist der Focus auf das Intranet (News, Publishing, &amp;hellip;)&lt;/h2&gt;
-&lt;p&gt;und echte Listenfunktionalität die Lösung aller SharePoint (Online) Probleme?&lt;/p&gt;
-&lt;p&gt;Nein! Ich bin noch immer der Meinung, dass der Großteil meiner
+nun getan, um die traditionellen Wert wiederzubeleben?&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Moderne&lt;/strong> Teamsites sehen
+gut aus und funktionieren im Browser und in einer neuen SharePoint Mobile App&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Moderne Teamsites bieten mehr als &lt;strong>eine&lt;/strong> Dokumentenbibliothek&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Moderne Teamsites fokussieren auf &amp;ldquo;&lt;strong>Pages&lt;/strong>&amp;rdquo; und &amp;ldquo;&lt;strong>Webparts&lt;/strong>&amp;rdquo; um Informationen aus der
+puren Existenz zum Benutzer zu führen&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Moderne Teamsites bieten **Discovery **ala Delve und zeigen
+Activities auf einer Zeitlinie ähnlich wie Yammer&lt;img class="img-zoomable" src="https://marcoscheel.de/tmblr/0d/55/d264f822554470dcc013f3232c2d.png" alt="image" />
+&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="ist-der-focus-auf-das-intranet-news-publishing-">Ist der Focus auf das Intranet (News, Publishing, &amp;hellip;)&lt;/h2>
+&lt;p>und echte Listenfunktionalität die Lösung aller SharePoint (Online) Probleme?&lt;/p>
+&lt;p>Nein! Ich bin noch immer der Meinung, dass der Großteil meiner
 Kunden primär eine grundsolide Lösung für das Arbeiten mit Dateien
 benötigt. Die Roadmap hierfür (OneDrive for Business Client) scheint klar. Wird
-die Zeitlinie gehalten, dann sehe ich hier keine Probleme.&lt;/p&gt;
-&lt;p&gt;Für was brauche ich jetzt aber Listen? Auch in internen Gesprächen
+die Zeitlinie gehalten, dann sehe ich hier keine Probleme.&lt;/p>
+&lt;p>Für was brauche ich jetzt aber Listen? Auch in internen Gesprächen
 wird den meisten Leuten nicht klar, warum man Listen benötigt. Selbst
 zusätzliche Metadaten an Dateien sind immer wieder ein Streitthema mit einem
 klaren Gewinner: Die Out-Of-The-Box Metadaten (Ersteller + Datum, Änderungshistorie,
@@ -251,56 +217,52 @@ Metadaten pflegen? Meine Meinung ist hier in 95% der Fälle ein
 &amp;ldquo;Nein&amp;rdquo;, da ich ohne Ordner zum Beispiel Offline ein Problem bekomme,
 wenn ich zum Beispiel 2000 Dateien in einer flachen Dateiliste bekomme. In
 solchen Situationen kann auch kein &amp;ldquo;selective Sync&amp;rdquo; helfen, wenn er mal
-implementiert wurde.&lt;/p&gt;
-&lt;p&gt;Die Demos von Microsoft
+implementiert wurde.&lt;/p>
+&lt;p>Die Demos von Microsoft
 zeigen die Modern Teamsites unter Verwendung der &amp;ldquo;neuen&amp;rdquo; Seiten und
 Webparts zum Aufbereiten multipler Informationen und Quellen. Sieht toll aus.
 Ich fand schon immer die Startseite einer Teamsite dafür geeignet, neben einem
 Dokumentenbaum (wie aus dem Dateisystem) auch andere relevanten Informationen
 aufzubereiten. Die Realität zeigt aber, dass sich so was gerade für Demos
-perfekt eignet, aber im echten Leben nur selten angewendet wird.&lt;/p&gt;
-&lt;h2 id=&#34;also-doch-alles-grütze&#34;&gt;Also doch alles Grütze?&lt;/h2&gt;
-&lt;p&gt;Nein, denn es gibt alleine durch die neue
+perfekt eignet, aber im echten Leben nur selten angewendet wird.&lt;/p>
+&lt;h2 id="also-doch-alles-grütze">Also doch alles Grütze?&lt;/h2>
+&lt;p>Nein, denn es gibt alleine durch die neue
 &amp;ldquo;Out-Of-The-Box&amp;rdquo; Funktionen so viele Vorteile, dass auch das normale
 Arbeiten unterstützt wird. Die neue SharePoint App funktioniert auch ohne
 zusätzliche Listen und Metadaten. Ein Delve ähnliches Discovery findet jetzt &amp;ldquo;überall&amp;rdquo;
 statt. Die &amp;ldquo;neue&amp;rdquo; Oberfläche kennen die User schon
-aus ihrem OneDrive for Business. Ergänzungen wie &lt;a href=&#34;https://powerapps.microsoft.com&#34; target=&#34;_blank&#34;&gt;PowerApps&lt;/a&gt; und &lt;a href=&#34;https://flow.microsoft.com&#34; target=&#34;_blank&#34;&gt;Flow&lt;/a&gt; können bei Bedarf
+aus ihrem OneDrive for Business. Ergänzungen wie &lt;a href="https://powerapps.microsoft.com" target="_blank">PowerApps&lt;/a> und &lt;a href="https://flow.microsoft.com" target="_blank">Flow&lt;/a> können bei Bedarf
 aktiviert und genutzt werden. Das neue SharePoint Framework erweitert und
-ergänzt die bestehenden Add-In basierenden Entwicklungen.&lt;/p&gt;
-&lt;p&gt;Es gibt noch einige nicht unwesentliche Unbekannte:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Wie integriert sich die Groups-Funktionalität in die neuen Teamsites und anderes herum&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Modern Teamsites für On-Premise (SP2016) gibt es wahrscheinlich erst 2017 in einem Feature Pack&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Wie überbrücken wir die Zeit bis Ende 2016 (da kommen das Gesamtpaket zusammen)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Die Roadmap schließt somit
+ergänzt die bestehenden Add-In basierenden Entwicklungen.&lt;/p>
+&lt;p>Es gibt noch einige nicht unwesentliche Unbekannte:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Wie integriert sich die Groups-Funktionalität in die neuen Teamsites und anderes herum&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Modern Teamsites für On-Premise (SP2016) gibt es wahrscheinlich erst 2017 in einem Feature Pack&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Wie überbrücken wir die Zeit bis Ende 2016 (da kommen das Gesamtpaket zusammen)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>Die Roadmap schließt somit
 eine Lücke, die überwiegend Hardcore SharePoint User (Publishing, echte Listen
 und Metadaten) betroffen hat und begeistern wird. Für den Rest wird es
-einfach einfacher und schöner.&lt;/p&gt;
-&lt;h2 id=&#34;planlos&#34;&gt;Planlos?&lt;/h2&gt;
-&lt;p&gt;Kein Grund nix zu tun. Nutzen Sie noch kein Office 365? Starten
+einfach einfacher und schöner.&lt;/p>
+&lt;h2 id="planlos">Planlos?&lt;/h2>
+&lt;p>Kein Grund nix zu tun. Nutzen Sie noch kein Office 365? Starten
 Sie einen Piloten und untersuchen Sie, was ihr Unternehmen der Cloud abgewinnen
 kann. Bevor es um SharePoint geht benötigen Sie solide Grundlagen/Planungen im
 Bereich Authentifizierung (Azure AD), eine eventuelle Verzeichnissynchronisation,
 Office Pro Plus (Client) Rolloutplanung, Mailmigration und mehr. Ist alles ready,
 dann ist es fast schon 2017 und mit all den wahrgewordenen SharePoint Funktionen
-kann auch hier solide ein Plan entwickelt werden.&lt;/p&gt;
-&lt;p&gt;Ihr Unternehmen hat schon die stabile
+kann auch hier solide ein Plan entwickelt werden.&lt;/p>
+&lt;p>Ihr Unternehmen hat schon die stabile
 Basis in Office 365 oder befindet sich in einem Proof-of-Concept? Diese Ausgangssituation
 ist ganz so einfach. Persönlich würde ich hier versuchen auf Basis der
 aktuellen Office 365 Groups Implementierung erste Gehversuche zu machen und so
 bis Ende 2016 die Grundlagen für eine erfolgreiche Modern SharePoint
-Implementierung vorzubereiten.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Wir von der &lt;a href=&#34;http://glueckkanja.com&#34; target=&#34;_blank&#34;&gt;Glück &amp;amp; Kanja&lt;/a&gt; haben vor kurzem die &lt;a href=&#34;http://www.glueckkanja.com/webcasts&#34; target=&#34;_blank&#34;&gt;GK WebcastFriday Serie&lt;/a&gt; gestartet. Im letzten Webcast haben meine Kollege &lt;a href=&#34;https://www.xing.com/profile/Jan_Geisbauer&#34; target=&#34;_blank&#34;&gt;Jan Geisbauer&lt;/a&gt; und ich das Thema &lt;a href=&#34;https://youtu.be/Lke1fKSamc0&#34; target=&#34;_blank&#34;&gt;SharePoint&lt;/a&gt; und im speziellen &lt;a href=&#34;https://youtu.be/Lke1fKSamc0?t=24m2s&#34; target=&#34;_blank&#34;&gt;The Futute of SharePoint&lt;/a&gt; betrachtet. Schaut doch mal rein.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+Implementierung vorzubereiten.&lt;/p>
+&lt;hr>
+&lt;p>Wir von der &lt;a href="http://glueckkanja.com" target="_blank">Glück &amp;amp; Kanja&lt;/a> haben vor kurzem die &lt;a href="http://www.glueckkanja.com/webcasts" target="_blank">GK WebcastFriday Serie&lt;/a> gestartet. Im letzten Webcast haben meine Kollege &lt;a href="https://www.xing.com/profile/Jan_Geisbauer" target="_blank">Jan Geisbauer&lt;/a> und ich das Thema &lt;a href="https://youtu.be/Lke1fKSamc0" target="_blank">SharePoint&lt;/a> und im speziellen &lt;a href="https://youtu.be/Lke1fKSamc0?t=24m2s" target="_blank">The Futute of SharePoint&lt;/a> betrachtet. Schaut doch mal rein.&lt;/p></description></item></channel></rss>

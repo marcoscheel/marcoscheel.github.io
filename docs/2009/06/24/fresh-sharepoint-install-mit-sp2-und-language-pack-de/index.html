@@ -1,143 +1,65 @@
-<!DOCTYPE html>
-<html lang="de">
-
+<!doctype html><html lang=de>
 <head>
-    
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="HandheldFriendly" content="True" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.92.1" />
-
-
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-
-
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
 <title>Fresh SharePoint Install mit SP2 und Language Pack DE - Marco Scheel aka GeekDotNet</title>
-
-
-<meta name="author" content="marcoscheel" />
-
-
-<meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
-
-
-<meta name="keywords" content="xArchived" />
-
-
-<meta property="og:title" content="Fresh SharePoint Install mit SP2 und Language Pack DE" />
-<meta name="twitter:title" content="Fresh SharePoint Install mit SP2 und Language Pack DE" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://marcoscheel.de/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/" /><meta property="og:description" content="Nachdem in letzter Zeit viel Maintenance an bestehenden Systemen betrieben wurde, gab es auch mal wieder eine Initialinstallation bei einem Kunden. Es wurde sich für ein Single Box Deployment entschieden. Folgende Details (sehr übliche Konfiguration und von mir empfohlene Konfiguration):
-1. Windows Server 2008 Standard – X64 – SP2 – EN 2. Microsoft SQL Server 2008 Standard – X64 – SP1 – EN 3. Microsoft SharePoint Server 2007 Standard – X64 – SP2 – EN – Language Pack German  Ich hab mich an meine übliche Installationsreihenfolge gehalten und das Setup lief Weitestgehends reibungslos. Als einer der letzten Schritte kommt das Erstellen der Haupt-Portal-Applikation (in der Regel das Intranet Portal) an die Reihe." />
-<meta name="twitter:description" content="Nachdem in letzter Zeit viel Maintenance an bestehenden Systemen betrieben wurde, gab es auch mal wieder eine Initialinstallation bei einem Kunden. Es wurde sich für ein Single Box Deployment entschieden. Folgende Details (sehr übliche Konfiguration und von mir empfohlene Konfiguration):
-1. Windows Server 2008 Standard – X64 – SP2 – EN 2. Microsoft SQL Server 2008 Standard – X64 – SP1 – EN 3. Microsoft SharePoint Server 2007 Standard – X64 – SP2 – EN – Language Pack German  Ich hab mich an meine übliche Installationsreihenfolge gehalten und das Setup lief Weitestgehends reibungslos. Als einer der letzten Schritte kommt das Erstellen der Haupt-Portal-Applikation (in der Regel das Intranet Portal) an die Reihe." /><meta property="og:image" content="https://marcoscheel.de/og.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2009-06-24T14:07:41+00:00" /><meta property="article:modified_time" content="2009-06-24T14:07:41+00:00" />
-
-
-<style>
-    @media (prefers-color-scheme: dark) {
-        body[data-theme='auto'] img {
-            filter: brightness(60%);
-        }
-    }
-
-    body[data-theme='dark'] img {
-        filter: brightness(60%);
-    }
-</style>
-
-
-
-
-<link rel="stylesheet" href="https://marcoscheel.de/assets/css/fuji.min.css" />
-
-
-
-
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-391088-7', {'anonymize_ip': true});
-</script>
+<meta name=author content="marcoscheel">
+<meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud">
+<meta name=keywords content="xArchived">
+<meta property="og:title" content="Fresh SharePoint Install mit SP2 und Language Pack DE">
+<meta name=twitter:title content="Fresh SharePoint Install mit SP2 und Language Pack DE">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://marcoscheel.de/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/"><meta property="og:description" content="Nachdem in letzter Zeit viel Maintenance an bestehenden Systemen betrieben wurde, gab es auch mal wieder eine Initialinstallation bei einem Kunden. Es wurde sich für ein Single Box Deployment entschieden. Folgende Details (sehr übliche Konfiguration und von mir empfohlene Konfiguration):
+1. Windows Server 2008 Standard – X64 – SP2 – EN 2. Microsoft SQL Server 2008 Standard – X64 – SP1 – EN 3. Microsoft SharePoint Server 2007 Standard – X64 – SP2 – EN – Language Pack German  Ich hab mich an meine übliche Installationsreihenfolge gehalten und das Setup lief Weitestgehends reibungslos. Als einer der letzten Schritte kommt das Erstellen der Haupt-Portal-Applikation (in der Regel das Intranet Portal) an die Reihe.">
+<meta name=twitter:description content="Nachdem in letzter Zeit viel Maintenance an bestehenden Systemen betrieben wurde, gab es auch mal wieder eine Initialinstallation bei einem Kunden. Es wurde sich für ein Single Box Deployment entschieden. Folgende Details (sehr übliche Konfiguration und von mir empfohlene Konfiguration):
+1. Windows Server 2008 Standard – X64 – SP2 – EN 2. Microsoft SQL Server 2008 Standard – X64 – SP1 – EN 3. Microsoft SharePoint Server 2007 Standard – X64 – SP2 – EN – Language Pack German  Ich hab mich an meine übliche Installationsreihenfolge gehalten und das Setup lief Weitestgehends reibungslos. Als einer der letzten Schritte kommt das Erstellen der Haupt-Portal-Applikation (in der Regel das Intranet Portal) an die Reihe."><meta property="og:image" content="https://marcoscheel.de/og.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="article:published_time" content="2009-06-24T14:07:41+00:00"><meta property="article:modified_time" content="2009-06-24T14:07:41+00:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-391088-7',{anonymize_ip:!0})</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
-
-
-
-
-<link rel="stylesheet" href="/css/custom.css">
-
-
+<link rel=stylesheet href=/css/custom.css>
 </head>
-
-<body
-  data-theme="auto"
-  data-theme-auto='false'
-  >
-    <script data-cfasync="false">
-  
-  var fujiThemeData = localStorage.getItem('fuji_data-theme');
-  
-  if (!fujiThemeData) {
-    localStorage.setItem('fuji_data-theme', 'auto');
-  } else {
-    
-    if (fujiThemeData !== 'auto') {
-      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
-    }
-  }
-</script>
-
-    <header>
-    <div class="container-lg clearfix">
-        <div class="col-12 header">
-            <h1><a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a></h1>
-            
-            <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
-            
-        </div>
-    </div>
+<body data-theme=auto data-theme-auto=false>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<h1><a class=title-main href=https://marcoscheel.de>Marco Scheel aka GeekDotNet</a></h1>
+<span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+</div>
+</div>
 </header>
-
-    <main>
-        <div class="container-lg clearfix">
-            
-            <div class="col-12 col-md-9 float-left content">
-                
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
 <article>
-    
-    <h2 class="post-item post-title">
-        <a href="https://marcoscheel.de/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/">Fresh SharePoint Install mit SP2 und Language Pack DE</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-06-24</span>
-
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/>Fresh SharePoint Install mit SP2 und Language Pack DE</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-06-24</span>
 <span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;501 Wörter</span>
-
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
-
-    </div>
-    
-    <div class="post-content markdown-body">
-        <p>Nachdem in letzter Zeit viel Maintenance an bestehenden Systemen betrieben wurde, gab es auch mal wieder eine Initialinstallation bei einem Kunden. Es wurde sich für ein Single Box Deployment entschieden. Folgende Details (sehr übliche Konfiguration und von mir empfohlene Konfiguration):</p>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-content markdown-body">
+<p>Nachdem in letzter Zeit viel Maintenance an bestehenden Systemen betrieben wurde, gab es auch mal wieder eine Initialinstallation bei einem Kunden. Es wurde sich für ein Single Box Deployment entschieden. Folgende Details (sehr übliche Konfiguration und von mir empfohlene Konfiguration):</p>
 <pre><code>1. Windows Server 2008 Standard – X64 – SP2 – EN       2. Microsoft SQL Server 2008 Standard – X64 – SP1 – EN       3. Microsoft SharePoint Server 2007 Standard – X64 – SP2 – EN – Language Pack German   
 </code></pre>
-<p><a href="http://marcoscheel.de/files/2010/09/fresh.png" target="_blank"><img class="img-zoomable" src="http://marcoscheel.de/files/2010/09/fresh_thumb.png" alt="fresh" />
-
-</a>Ich hab mich an meine übliche Installationsreihenfolge gehalten und das Setup lief Weitestgehends reibungslos. Als einer der letzten Schritte kommt das Erstellen der Haupt-Portal-Applikation (in der Regel das Intranet Portal) an die Reihe. Ich installiere wann immer möglich ein englischen Basis SharePoint, damit man die Central Administration in Englisch bekommt. Für die Enduser muss es dann aber ein deutsches Portal sein, damit die Fachbereiche damit arbeiten können. Und was soll ich sagen… beim Erstellen der SiteCollection fehlt der DropDown für die Sprachauswahl :-S Für die Installation hatte ich einen alten Blog Post als Spickzettel verwendet: <a href="http://marcoscheel.de/sharepoint/wie-installiere-ich-sharepoint-in-einer-farm/" target="_blank">Wie installiere ICH SharePoint in einer Farm?</a></p>
+<p><a href=http://marcoscheel.de/files/2010/09/fresh.png target=_blank><img class=img-zoomable src=http://marcoscheel.de/files/2010/09/fresh_thumb.png alt=fresh>
+</a>Ich hab mich an meine übliche Installationsreihenfolge gehalten und das Setup lief Weitestgehends reibungslos. Als einer der letzten Schritte kommt das Erstellen der Haupt-Portal-Applikation (in der Regel das Intranet Portal) an die Reihe. Ich installiere wann immer möglich ein englischen Basis SharePoint, damit man die Central Administration in Englisch bekommt. Für die Enduser muss es dann aber ein deutsches Portal sein, damit die Fachbereiche damit arbeiten können. Und was soll ich sagen… beim Erstellen der SiteCollection fehlt der DropDown für die Sprachauswahl :-S Für die Installation hatte ich einen alten Blog Post als Spickzettel verwendet: <a href=http://marcoscheel.de/sharepoint/wie-installiere-ich-sharepoint-in-einer-farm/ target=_blank>Wie installiere ICH SharePoint in einer Farm?</a></p>
 <p>Ich hatte wie folgt installiert:</p>
 <pre><code>1. MOSS x64 mit SP1 (Splistream Trial Download von MS)       2. Language Pack DE x64 (gibt es nicht als SP1, also Download aus dem MSDN Sub.)       3. WSS SP2 + WSS SP2 Language Pack (das Setup des Language Pack bracht ab und sagt es wäre nicht passend für das System)       4. MOSS SP2 + MOSS SP2 Language Pack       5. April CU WSS       6. April CU MOSS       7. PSCONFIG Wizard und erstellen einer neuen Farm   
 </code></pre>
@@ -150,342 +72,241 @@
 </code></pre>
 <p>Anlegen einer neuen Website im Central Admin und siehe da… ein Language DropDown :-)</p>
 <p>Mir ist nicht klar, warum das Verhalten von SP1 Fresh Install zu SP2 Fresh Install sich unterscheidet, oder ob sich meine Install Sources geändert haben, aber Microsoft macht es uns nicht wirklich einfach, mit all den Versionen. Bei einer Single Box Installation kann man fast auf das Splipstreamen verzichten und gleich mit der nackten Version beginnen, was allerdings unter Windows Server 2008 zu einem Warnhinweis führt (Kompatibilitätshinweis, der ignoriert werden kann solange man ein SP1 oder höher nach installiert).</p>
-<p>Ich habe nach den Problemen meine Installationsanleitung aktualisiert:   <br>
-<a href="http://marcoscheel.de/sharepoint/wie-installiere-ich-sharepoint-in-einer-farm/" target="_blank">Wie installiere ICH SharePoint in einer Farm?</a></p>
+<p>Ich habe nach den Problemen meine Installationsanleitung aktualisiert: <br>
+<a href=http://marcoscheel.de/sharepoint/wie-installiere-ich-sharepoint-in-einer-farm/ target=_blank>Wie installiere ICH SharePoint in einer Farm?</a></p>
 <p>Ciao Marco</p>
-
-    </div>
+</div>
 </article>
-
-
 <div class="license markdown-body">
-    <blockquote>
-        <p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
-               target="_blank">CC BY 4.0</a>.</p>
-    </blockquote>
+<blockquote>
+<p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel=license href=https://creativecommons.org/licenses/by/4.0/ target=_blank>CC BY 4.0</a>.</p>
+</blockquote>
 </div>
-
-
-<div class="post-comment" data-comment="disqus">
-    <span class="post-comment-notloaded">
-        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
-    </span>
-    <div id="disqus_thread" style="display: none;"></div>
-    <script>
-        function loadComment() {
-            var commentArea = document.querySelector('.post-comment');
-            var disqus_config = function () {
-                this.page.url = 'https:\/\/marcoscheel.de\/2009\/06\/24\/fresh-sharepoint-install-mit-sp2-und-language-pack-de\/';
-                this.page.identifier = '2009-06-24-fresh-sharepoint-install-mit-sp2-und-language-pack-de';
-            };
-            var s = document.createElement('script');
-            s.src = 'https://' + 'marcoscheel' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            document.querySelector('#disqus_thread').removeAttribute('style');
-            (document.body || document.head).appendChild(s);
-            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
-        }
-    </script>
+<div class=post-comment data-comment=disqus>
+<span class=post-comment-notloaded>
+<i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
+</span>
+<div id=disqus_thread style=display:none></div>
+<script>function loadComment(){var b=document.querySelector('.post-comment'),c=function(){this.page.url='https://marcoscheel.de/2009/06/24/fresh-sharepoint-install-mit-sp2-und-language-pack-de/',this.page.identifier='2009-06-24-fresh-sharepoint-install-mit-sp2-und-language-pack-de'},a=document.createElement('script');a.src='https://marcoscheel.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),document.querySelector('#disqus_thread').removeAttribute('style'),(document.body||document.head).appendChild(a),document.querySelector('span.post-comment-notloaded').setAttribute('style','display: none;')}</script>
 </div>
-
-
-
-            </div>
-            <aside class="col-12 col-md-3 float-left sidebar">
-    
-    <div class="sidebar-item sidebar-pages">
-        <sidebarh3>Seiten</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives/">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about/">About</a>
-            </li>
-            
-            <li>
-                <a href="/search/">Search</a>
-            </li>
-            
-            <li>
-                <a href="/impressum/">Impressum</a>
-            </li>
-            
-            <li>
-                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-links">
-        <sidebarh3>Links</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
-            </li>
-            
-            <li>
-                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
-            </li>
-            
-            <li>
-                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
-            </li>
-            
-            <li>
-                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-tags">
-        <sidebarh3>Tags</sidebarh3>
-        <div>
-            
-            <span>
-                <a href="/tags/azure-ad/">Azure AD</a>
-            </span>
-            
-            <span>
-                <a href="/tags/development/">Development</a>
-            </span>
-            
-            <span>
-                <a href="/tags/equipment/">Equipment</a>
-            </span>
-            
-            <span>
-                <a href="/tags/groups/">Groups</a>
-            </span>
-            
-            <span>
-                <a href="/tags/meta/">Meta</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-365/">Microsoft 365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mip/">MIP</a>
-            </span>
-            
-            <span>
-                <a href="/tags/office365/">Office365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/tools/">Tools</a>
-            </span>
-            
-            <span>
-                <a href="/tags/work/">Work</a>
-            </span>
-            
-            <span>
-                <a href="/tags/xarchived/">xArchived</a>
-            </span>
-            
-        </div>
-    </div>
-    <div class="sidebar-item sidebar">
-        <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-    <div class="sidebar-item sidebar-toc">
-        <sidebarh3>Inhalt</sidebarh3><nav id="TableOfContents"></nav></div>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar">
+<a class=twitter-timeline data-height=400 href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src=https://platform.twitter.com/widgets.js></script>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents></nav></div>
 </aside>
-        </div>
-        <div class="btn">
-    <div class="btn-menu" id="btn-menu">
-        <i class="iconfont icon-grid-sharp"></i>
-    </div>
-    <div class="btn-toggle-mode">
-        <i class="iconfont icon-contrast-sharp"></i>
-    </div>
-    <div class="btn-scroll-top">
-        <i class="iconfont icon-chevron-up-circle-sharp"></i>
-    </div>
 </div>
-<aside class="sidebar-mobile" style="display: none;">
-  <div class="sidebar-wrapper">
-    
-    <div class="sidebar-item sidebar-pages">
-        <sidebarh3>Seiten</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives/">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about/">About</a>
-            </li>
-            
-            <li>
-                <a href="/search/">Search</a>
-            </li>
-            
-            <li>
-                <a href="/impressum/">Impressum</a>
-            </li>
-            
-            <li>
-                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-links">
-        <sidebarh3>Links</sidebarh3>
-        <ul>
-            
-            <li>
-                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
-            </li>
-            
-            <li>
-                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
-            </li>
-            
-            <li>
-                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
-            </li>
-            
-            <li>
-                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-tags">
-        <sidebarh3>Tags</sidebarh3>
-        <div>
-            
-            <span>
-                <a href="/tags/azure-ad/">Azure AD</a>
-            </span>
-            
-            <span>
-                <a href="/tags/development/">Development</a>
-            </span>
-            
-            <span>
-                <a href="/tags/equipment/">Equipment</a>
-            </span>
-            
-            <span>
-                <a href="/tags/groups/">Groups</a>
-            </span>
-            
-            <span>
-                <a href="/tags/meta/">Meta</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-365/">Microsoft 365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
-            </span>
-            
-            <span>
-                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mip/">MIP</a>
-            </span>
-            
-            <span>
-                <a href="/tags/office365/">Office365</a>
-            </span>
-            
-            <span>
-                <a href="/tags/sharepoint/">SharePoint</a>
-            </span>
-            
-            <span>
-                <a href="/tags/tools/">Tools</a>
-            </span>
-            
-            <span>
-                <a href="/tags/work/">Work</a>
-            </span>
-            
-            <span>
-                <a href="/tags/xarchived/">xArchived</a>
-            </span>
-            
-        </div>
-    </div>
-    
-    
-    
-    <div class="sidebar-item sidebar-toc">
-        <sidebarh3>Inhalt</sidebarh3>
-        <nav id="TableOfContents"></nav>
-    </div>
-    
-    
-  </div>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3>
+<nav id=TableOfContents></nav>
+</div>
+</div>
 </aside>
-    </main>
-
-    <footer>
-    <div class="container-lg clearfix">
-        <div class="col-12 footer">
-            
-            <span>&copy; 2021-2022
-                <a href="https://marcoscheel.de">Marco Scheel</a>
-                 | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
-                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
-                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
-                                                    target="_blank">Hugo</a> 
-            </span>
-        </div>
-    </div>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2021-2022
+<a href=https://marcoscheel.de>Marco Scheel</a>
+| <a href=https://github.com/marcoscheel/marcoscheel.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
 </footer>
-
-    
-<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
-
-
-<script defer src="/assets/js/fuji.min.js"></script>
-
-
-
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=/assets/js/fuji.min.js></script>
 </body>
-
 </html>
