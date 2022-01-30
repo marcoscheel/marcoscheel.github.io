@@ -1,0 +1,334 @@
+<!doctype html><html lang=de>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
+<title>Microsoft Graph, Postman und Wie bekomme ich ein App Only Token? - Marco Scheel aka GeekDotNet</title>
+<meta name=author content="Marco Scheel">
+<meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud">
+<meta name=keywords content="Microsoft 365,Azure AD,Microsoft Graph,Tools">
+<meta property="og:title" content="Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?">
+<meta name=twitter:title content="Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/"><meta property="og:description" content="Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im Hairless in the Cloud Podcast Nummer 18 habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.
+Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem Graph Explorer in einer Collection für Postman zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.
+In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
+
+">
+<meta name=twitter:description content="Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im Hairless in the Cloud Podcast Nummer 18 habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.
+Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem Graph Explorer in einer Collection für Postman zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.
+In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
+
+"><meta property="og:image" content="https://marcoscheel.de/og.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="article:published_time" content="2019-07-01T15:06:23+00:00"><meta property="article:modified_time" content="2019-07-01T15:06:23+00:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-391088-7',{anonymize_ip:!0})</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
+<link rel=stylesheet href=/css/custom.css>
+</head>
+<body data-theme=auto data-theme-auto=false>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<h1><a class=title-main href=https://marcoscheel.de>Marco Scheel aka GeekDotNet</a></h1>
+<span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+</div>
+</div>
+</header>
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
+<article>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/>Microsoft Graph, Postman und Wie bekomme ich ein App Only Token?</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-07-01</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;424 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/microsoft-365>Microsoft 365</a>&nbsp;<a href=/tags/azure-ad>Azure AD</a>&nbsp;<a href=/tags/microsoft-graph>Microsoft Graph</a>&nbsp;<a href=/tags/tools>Tools</a>&nbsp;</span>
+</div>
+<div class="post-content markdown-body">
+<p>Der Microsoft Graph ist das “Schweizer Taschenmesser” für alle im Microsoft 365 Umfeld. Eine API für “alle” Dienste und noch besser immer das gleiche Authentifizierungsmodel. Im <a href=https://hairlessinthecloud.com target=_blank>Hairless in the Cloud</a> Podcast Nummer <a href=https://anchor.fm/hairlessinthecloud/episodes/018---Wir-kennen-die-Passwrter-Eurer-User-und-Microsoft-Graph-e42di4/a-aff2ff target=_blank>18</a> habe ich meine Eindrücke zum Microsoft Graph schon geschildert. Der Graph Explorer auf der Website ist eine gute Methode den Graph kennenzulernen. Ich für meinen Teil bewege mich aber überwiegend ohne Benutzerinteraktion im Graph und somit nutze ich in meinen Anwendungen die Application Permissions. Die meisten APIs (vgl. Teams) kommen allerdings erstmal ohne App Permissions daher. Die Enttäuschung ist groß, wenn man über den Graph Explorer sein Research gemacht hat und dann feststellt, dass die Calls als App Permission scheitern.</p>
+<p>Jeremy Thake aus dem Microsoft Graph Team hat vor einigen Monaten angefangen, die Samples (und mehr) aus dem <a href=https://developer.microsoft.com/en-us/graph/blogs/postman-collections/ target=_blank>Graph Explorer in einer Collection für Postman</a> zu veröffentlichen. Diese Collection vereinfacht das Testen der eigenen Calls und gibt Anregung für neue Szenarien.</p>
+<p>In der Vergangenheit habe ich mir aus meiner Azure Function das Token “geklaut” und dann im Postman als Bearer Token direkt hinterlegt:
+<img class=img-zoomable src=/tmblr/cd/ef/cad14ee0d8e93c6d3b12f08d7601.png alt=image>
+</p>
+<p>Es gibt aber eine viel elegantere Version. Die MS Graph Postman Collection arbeitet mit dem Environment und Variablen. Eine Methode, die eigentlich dem Code in der eigene App (bei mir eine Azure Function) entspricht, ist aber auch mit an Bord. Postman bietet eine native OAuth Integration an. Man wählt einfach OAuth 2.0 aus und kann dann folgende Informationen aus seiner eigenen App hinterlegen:
+<img class=img-zoomable src=/tmblr/21/e1/721b47c47bd4e280e0ec33f5be11.png alt=image>
+</p>
+<ul>
+<li>
+<p>Grant Type: Client Credentials</p>
+</li>
+<li>
+<p>Access Token URL: h<a href=https://login.microsoftonline.com/malachor.onmicrosoft.com/oauth2/v2.0/token target=_blank>ttps://login.microsoftonline.com/malachor.onmicrosoft.com/oauth2/v2.0/token
+</a></p>
+</li>
+<li>
+<p>Client ID: 50641771-73ac-42fa-9b6f-f25e49ec6871</p>
+</li>
+<li>
+<p>Client Secret: dvMR0c_<em>_RlxvV</em>JQQZGDICH6N04ZT2/</p>
+</li>
+<li>
+<p>Scope : <a href=https://graph.microsoft.com/.default target=_blank>https://graph.microsoft.com/.default</a>
+Wenn man immer alle Scopes/Berechtigungen möchte, dann ist dieser Scope der einfachste</p>
+</li>
+</ul>
+<p><strong>Hinweis</strong>: Ich habe meine App schon wieder gelöscht. Sie ist nicht länger nutzbar, also ist das Secret im Code auch kein Geheimnis mehr.</p>
+<p>Über “Request Token” kann ich dann ein Token holen und für alle weiteren Requests verwenden. Zum Prüfen des Token (hat der Scope geklappt) kann man einfach auf <a href=https://jwt.io target=_blank>jwt.io</a> oder auf den Microsoft Service <a href=https://jwt.ms target=_blank>jwt.ms</a> gehen.</p>
+<p><strong>Hinweis</strong>: Solche Token Decoder sind eine tolle Sache, aber bitte denkt dran, wenn ihr das mit produktiven Token macht, dann müsst ihr dem Service vertrauen, denn er hat in dem Moment eure Berechtigung! In meinem Fall könnten die beiden Websites das Token nehmen und gegen meinen Tenant einsetzen! Ich nutze hier mein LAB Tenant und ich glaube, dass ich weiß was ich tue :) Also alles gut!
+<img class=img-zoomable src=/tmblr/80/c6/4831a031ee016dc13a15e68ab9cc.png alt=image>
+</p>
+<p>Mit dem Token kann man dann zum Beispiel in meinem Fall die Azure AD Access Reviews einsehen.
+<img class=img-zoomable src=/tmblr/a4/93/1d391adb4162ec6255ed6d53579f.png alt=image>
+</p>
+<p>Mein Debugging wurde extrem vereinfacht, da ich so einfach meine App Permissions testen kann.</p>
+</div>
+</article>
+<div class="license markdown-body">
+<blockquote>
+<p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel=license href=https://creativecommons.org/licenses/by/4.0/ target=_blank>CC BY 4.0</a>.</p>
+</blockquote>
+</div>
+<div class=post-comment data-comment=disqus>
+<span class=post-comment-notloaded>
+<i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
+</span>
+<div id=disqus_thread style=display:none></div>
+<script>function loadComment(){var b=document.querySelector('.post-comment'),c=function(){this.page.url='https://marcoscheel.de/post/2019/07/185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein/',this.page.identifier='185978935612-microsoft-graph-postman-und-wie-bekomme-ich-ein'},a=document.createElement('script');a.src='https://marcoscheel.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),document.querySelector('#disqus_thread').removeAttribute('style'),(document.body||document.head).appendChild(a),document.querySelector('span.post-comment-notloaded').setAttribute('style','display: none;')}</script>
+</div>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar">
+<a class=twitter-timeline data-height=400 href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src=https://platform.twitter.com/widgets.js></script>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents></nav></div>
+</aside>
+</div>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3>
+<nav id=TableOfContents></nav>
+</div>
+</div>
+</aside>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2021-2022
+<a href=https://marcoscheel.de>Marco Scheel</a>
+| <a href=https://github.com/marcoscheel/marcoscheel.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
+</footer>
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=/assets/js/fuji.min.js></script>
+</body>
+</html>

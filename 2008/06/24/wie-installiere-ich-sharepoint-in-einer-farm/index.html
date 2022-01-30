@@ -1,0 +1,310 @@
+<!doctype html><html lang=de>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
+<title>Wie installiere ICH SharePoint in einer Farm? - Marco Scheel aka GeekDotNet</title>
+<meta name=author content="marcoscheel">
+<meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud">
+<meta name=keywords content="xArchived">
+<meta property="og:title" content="Wie installiere ICH SharePoint in einer Farm?">
+<meta name=twitter:title content="Wie installiere ICH SharePoint in einer Farm?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://marcoscheel.de/2008/06/24/wie-installiere-ich-sharepoint-in-einer-farm/"><meta property="og:description" content="Version 0.1 - 2008-05-07 Version 0.2 - 2008-06-24 Version 0.3 - 2009-06-24 (SP2, CU, IIS7, SQL2K8)
+Vorbedingungen:
+* Betriebssystem und alles weitere Software ist in der Hauptsprache Englisch * OS und Software ist 64-Bit * Alle Server haben min. 4 GB RAM * Der Datenbankserver hat 8 GB RAM und min. 2 CPU's mit 2 Cores * Min. 2 Partitionen mit zwei getrennten Plattensystemen * PowerShell auf allen Sharepoint Servern für Scripting  Über die Punkte oben kann man streiten, aber das Sizing ist für mich min. wenn ein Kunde ein Farm mit zwei SharePoint und einem DB Server aufbaut. Die Hardware ist so oder so 64-bit fähig und 8 GB RAM sind heute günstig zu erwerben.">
+<meta name=twitter:description content="Version 0.1 - 2008-05-07 Version 0.2 - 2008-06-24 Version 0.3 - 2009-06-24 (SP2, CU, IIS7, SQL2K8)
+Vorbedingungen:
+* Betriebssystem und alles weitere Software ist in der Hauptsprache Englisch * OS und Software ist 64-Bit * Alle Server haben min. 4 GB RAM * Der Datenbankserver hat 8 GB RAM und min. 2 CPU's mit 2 Cores * Min. 2 Partitionen mit zwei getrennten Plattensystemen * PowerShell auf allen Sharepoint Servern für Scripting  Über die Punkte oben kann man streiten, aber das Sizing ist für mich min. wenn ein Kunde ein Farm mit zwei SharePoint und einem DB Server aufbaut. Die Hardware ist so oder so 64-bit fähig und 8 GB RAM sind heute günstig zu erwerben."><meta property="og:image" content="https://marcoscheel.de/og.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="article:published_time" content="2008-06-24T07:28:27+00:00"><meta property="article:modified_time" content="2008-06-24T07:28:27+00:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-391088-7',{anonymize_ip:!0})</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
+<link rel=stylesheet href=/css/custom.css>
+</head>
+<body data-theme=auto data-theme-auto=false>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<h1><a class=title-main href=https://marcoscheel.de>Marco Scheel aka GeekDotNet</a></h1>
+<span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+</div>
+</div>
+</header>
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
+<article>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/06/24/wie-installiere-ich-sharepoint-in-einer-farm/>Wie installiere ICH SharePoint in einer Farm?</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-24</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1164 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-content markdown-body">
+<p>Version 0.1 - 2008-05-07 <br>
+Version 0.2 - 2008-06-24 <br>
+Version 0.3 - 2009-06-24 (SP2, CU, IIS7, SQL2K8)</p>
+<p>Vorbedingungen:</p>
+<pre><code>* Betriebssystem und alles weitere Software ist in der Hauptsprache Englisch       * OS und Software ist 64-Bit       * Alle Server haben min. 4 GB RAM       * Der Datenbankserver hat 8 GB RAM und min. 2 CPU's mit 2 Cores       * Min. 2 Partitionen mit zwei getrennten Plattensystemen       * PowerShell auf allen Sharepoint Servern für Scripting   
+</code></pre>
+<p>Über die Punkte oben kann man streiten, aber das Sizing ist für mich min. wenn ein Kunde ein Farm mit zwei SharePoint und einem DB Server aufbaut. Die Hardware ist so oder so 64-bit fähig und 8 GB RAM sind heute günstig zu erwerben. Der Erfolg einer SharePoint Anwendung steht und fällt mit der Performance des SQL Servers. Also sind das meine Wunschrahmenparameter. Beim SQL mache ich nur Zugeständnisse, was die Platten angeht. Für alle Datentypen (SystemDB&rsquo;s, tempdb, Datafiles und Logfiles) eigene getrennte Plattensystem zu haben, ist wünschenswert, aber das kann heute gerade bei großen Datenmengen teuer werden, besonders, da ich bisher auch nur wenige schnelle SAN Implementierungen gesehen habe :-)</p>
+<p><a href=http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/WieinstalliereICHSharePointineinerFarm_10760/image3.png target=_blank><img class=img-zoomable src=http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/WieinstalliereICHSharePointineinerFarm_10760/image3_thumb.png alt=image3>
+</a></p>
+<pre><code>1. Deaktivierung der Virenscanner für die Installation = Beschleunigung des Setup (besonders wichtig beim Ausführen von PSCONFIG)       2. IIS Default Site stoppen und IIS Logsettings (Pfad und Details) konfigurieren       3. Installation &lt;strike&gt;MS SQL Server 2005 SP2&lt;/strike&gt; MS SQL Server 2008 SP1                  1. Konfiguration der Default Datenbankpfade auf die entsprechenden Laufwerke             2. Einstellung für ein sinnvolle Defaultgröße (min. 100 MB Daten und 50 MB Log)             3. Wachstumsraten anpassen (min. 100 MB Daten und 50 MB Log)             4. Die Größen richten Sich nach dem geschätzten Volumen, je mehr man ausgeben darf desto besser. Ich habe auch schon Konfigurationen mit 20 GB (ja GB) Initialgröße gemacht, so verhindert man die Fragmentation auf der Platte und erhöht die Wahrscheinlichkeit, die Anwendung schnell zu halten               4. Installation MOSS 2007 mit SP1       5. Installation Language Packs falls notwendig                 1. Install WSS Language Pack (e.g. x64, German)            2. Install MOSS Language Pack (e.g. x64, German)            3. &lt;strike&gt;Installation WSS/MOSS SP1 Language Packs &lt;/strike&gt;              6. &lt;strike&gt;Installation Post SP1 Rollups (&lt;/strike&gt;[&lt;strike&gt;http://www.harbar.net/articles/postsp1.aspx&lt;/strike&gt;](http://www.harbar.net/articles/postsp1.aspx)&lt;strike&gt;)          
+</code></pre>
+<p></strike>Installation SP2 (<a href=http://marcoscheel.de/sharepoint/office-2007-und-office-server-2007-sharepoint-sp2-ist-da-und-wie-und-was-ich-installieren-muss-hellip/ target=_blank>siehe auch mein SP2 Artikel</a>) 1. WSS SP2 + WSS Language Pack SP2 2. MOSS SP2 + MOSS Language Pack SP2 7. Installation des letzten Cumulative Update (CU) 8. IIS Logverzichnis von Laufwerk C um konfigurieren auf ein anderes Laufwerk 9. (Optional) Für weitere Server in der Farm alle Schritte bis hier her wiederholen 10. DNS einrichten 1. Portal: portal.domain.local 2. MySite: my.domain.local 3. SSP: moss-prod-ssp.domain.local 4. Admin: moss-prod-admin.domain.local 11. Einrichten der Service Accounts 1. Farm: svcMossProd 2. SQL: svcMossProdSql 3. Crawl: svcMossProdCrawl 4. Content Access: svcMossProdContentAccess (Achtung: Innerhalb von SharePoint mur dann der Netbiosname verwendet werden, also die ersten 20 Zeichen = svcMossProdContentAc) 5. SSP: svcMossProdSsp 6. MySite + Portal: svcMossProdApp 12. Einrichten der Security Gruppen 1. Farm Admins: sec-MossProdFarmAdmin <br>
+Alle User die Sharepoint administrieren sollen 2. Service Accounts: sec-MossProdSvcAccounts <br>
+Alle Service Accounts svcMossProd* 13. Konfiguration der DCOM Config für alle AppPool und Service Accounts (sec-MossProdSvcAccounts) mit &ldquo;Local Launch&rdquo; und &ldquo;Local Activation&rdquo; für &ldquo;IIS WAMREG admin service&rdquo; und &ldquo;OSearch&rdquo; auf allen Servern (ohne SQL) 14. (Optional) Service Principal Names (SPN) und Delegation pflegen 1. Entscheidung für oder gegen <a href=http://marcoscheel.de/windows-server/windows-server-2008-iis7-kerberos-kernel-mode-authentication/ target=_blank>IIS7 Kernelmode Authentication</a> (Wenn NLB für die WFE geplant ist, dann auf jeden Fall gegen Kernelmode AUth entscheiden) 2. Setzen der SPN’s auf die Maschine(n) oder die Service Accounts (Kernelmode Auth = Off) 15. Erstellen einer Farm auf dem Applikationsserver (Crawl, Central Admin) 16. Joinen der Server (1 WebFrontEnd Server oder zwei bei Load Balancing bevorzugt Windows NLB) 17. Konfiguration der Rollen (WFE = WebApplication, Query / APP = CentralAmin, Index) 18. Konfiguration des Shared Service Provider 1. Anlegen einer eigene Applikation für den SSP (moss-ssp.domain.local) 2. Anlegen einer eigene Applikation für die MySite (my.domain.local) 3. Alle Applikationen bekommen einen eigene extra Domain User als AppPool Account (falls wir Kerberos machen wollen) 4. Alle Anwendungen werden mit HostHeader angelegt (unterstützt den Einsatz von Kerberos und vermeidet kryptische URL&rsquo;s mit Port am Ende) 19. Alle Datenbanken, die angelegt werden, bekommen eindeutige Namen. Ausnahmen sind ConfigDB (bleibt beim Standard) und ContentDB der Central Administration (weil -> keine Relation zu Aufwand und Nutzen). In der Regel Kennzeichnung des Systembetriebs im Namen (MOSS_PROD_Portal_00). 20. Konfiguration des Operations Tab. Wichtige Optionen: 1. &ldquo;Diagnostic logging&rdquo;: Pfad vom Standard auf C umbiegen auf ein anderes Laufwerk. Wichtig: Dieses Setting wird in der Farm genutzt und alle beteiligten Server die SharePoint Software installiert haben, müssen über das Laufwerk und den Ordner verfügen. Es kann sonst zu unverständlichen Fehlern wie &ldquo;Access Denied&rdquo; kommen. 2. &ldquo;Update farm administrator&rsquo;s group&rdquo;: Farm Administrators durch eine AD Gruppe für die MOSS Administration erweitern. Diese Gruppe verwenden wir auch weiter, da der Setup Account sonst der einzige ist der alle Rechte hat und die Pflege so sehr umständlich wird. 21. Konfiguration des Application Management Tabs. Wichtige Optionen: 1. &ldquo;Create or extend Web application&rdquo;: Erstellen er Anwendung für die Portal Applikation. Auch hier HostHeader für die URL, eigener AppPool Account (Alternative: Pool der MySite mitbenutzen), Pfad auf anderes Verzeichnis als C setzen, DB Namen vergeben. 2. &ldquo;Web application general settings&rdquo;: Einstellen der default Zeitzone für MySite und Portal 3. &ldquo;Content databases&rdquo;: Bei Anwendungen mit hohen userzahlen und vielen SiteCollection (MySite -> User = SiteCollection) erzeuge ich eine sinnvolle Anzahl an Datenbanken. Beim Anlegen von SiteCollections kannverteilt sich so die Datenmenge auf x Datenbanken was für Backup- und Restore Operatione gut ist. Es kann auch sinnvoll sein, dass wir die Portal CM
+S SiteCollection in eine eigene Content DB legen, diese dann offline nehmen, damit wir in der Datenbank nur eine SiteCollection haben. Der Rest an SiteCollections verteilt sich dann entsprechend. 4. &ldquo;Self-service site management&rdquo;: Für MySite einschalten 5. &ldquo;Policy for Web application&rdquo;: An dieser Stelle mache ich es so, dass ich auf alle Applications die Farm Administrator Group (sec-MossProdFarmAdmins) aus de AD mit Full Control berechtige. Es sollten sowieso nur hoch previligierte Accounts enthalten sein. 22. Konfiguration des Shared Service Provider. Wichtige Punkte: 1. &ldquo;Site Settings - Advanced permissions&rdquo;: Farm Admin AD Gruppe mit Full Control berechtigen (ist zwar per Policy auch schon drin, aber der Vollständigkeit halber sollte das pasieren) 2. &ldquo;Personalization services permissions&rdquo;: Farm Admin AD Gruppe auf alle Optionen berechtigen (ist bisher nicht durch Policy abgedeckt) 3. &ldquo;User profiles and properties&rdquo;: Import und Schedule konfigurieren 4. &ldquo;Search settings&rdquo;: Schedule konfigurieren 23. SQL Datenbanksettings 1. Check der MOSS Datenbanken auf: Initialgrösse, Wachstumsraten, Recovery Model (Simple oder Full) 2. Backup der Datenbanken. Wichtig: Bei Recovery Full müssen die Logs gebackuped werden, sonst läuft die Platte voll 3. Wartungsplan: Index Rebuild/Reorg nach MS Whitepapaer und Anforderungen 24. Backupscripte für IIS Metabase Schedulen 25. 12 Hive - BIN in den Enviroment Variables in den Pfad aufnehmen 26. STSADM PowerShell Kombi für Speichern der Ergebnisse von STSADM - o enumsites -URL &lt;portal + mysite url> für Restore und Reportingzwecke 27. Screenshots nicht vergessen :-) Zur Orientierung: Bei mir wird es in der Regel ein Dokument mit ca. 150 Screenshots 28. (Optional) Bierchen trinken, Frau anrufen, dass es später geworden ist und tief Luft holen</p>
+<p>Ciao Marco</p>
+</div>
+</article>
+<div class="license markdown-body">
+<blockquote>
+<p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel=license href=https://creativecommons.org/licenses/by/4.0/ target=_blank>CC BY 4.0</a>.</p>
+</blockquote>
+</div>
+<div class=post-comment data-comment=disqus>
+<span class=post-comment-notloaded>
+<i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
+</span>
+<div id=disqus_thread style=display:none></div>
+<script>function loadComment(){var b=document.querySelector('.post-comment'),c=function(){this.page.url='https://marcoscheel.de/2008/06/24/wie-installiere-ich-sharepoint-in-einer-farm/',this.page.identifier='2008-06-24-wie-installiere-ich-sharepoint-in-einer-farm'},a=document.createElement('script');a.src='https://marcoscheel.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),document.querySelector('#disqus_thread').removeAttribute('style'),(document.body||document.head).appendChild(a),document.querySelector('span.post-comment-notloaded').setAttribute('style','display: none;')}</script>
+</div>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar">
+<a class=twitter-timeline data-height=400 href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src=https://platform.twitter.com/widgets.js></script>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents></nav></div>
+</aside>
+</div>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3>
+<nav id=TableOfContents></nav>
+</div>
+</div>
+</aside>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2021-2022
+<a href=https://marcoscheel.de>Marco Scheel</a>
+| <a href=https://github.com/marcoscheel/marcoscheel.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
+</footer>
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=/assets/js/fuji.min.js></script>
+</body>
+</html>

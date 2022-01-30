@@ -1,0 +1,345 @@
+<!doctype html><html lang=de>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
+<title>ADO.NET Data Services, Entity Framework und SQL/HTTP Timeouts - Marco Scheel aka GeekDotNet</title>
+<meta name=author content="marcoscheel">
+<meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud">
+<meta name=keywords content="xArchived">
+<meta property="og:title" content="ADO.NET Data Services, Entity Framework und SQL/HTTP Timeouts">
+<meta name=twitter:title content="ADO.NET Data Services, Entity Framework und SQL/HTTP Timeouts">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://marcoscheel.de/2009/06/13/ado-net-data-services-entity-framework-und-sqlhttp-timeouts/"><meta property="og:description" content="Beim Arbeiten mit den ADO.NET Data Services (aka Astoria) kommt man irgendwann an den Punkt, dass die Aufgaben komplizierter werden oder die Last auf die Server steigt. In solchen Situationen ist man mit potentiellen Timeouts in allen Ebenen konfrontiert. In diesem Post zeige ich welche Timeouts es gibt, aber speziell will ich zeigen wie ich das Timeout des Entity Frameworks (SQL) in Kombination mit der MS REST Schicht ADO.NET Data Services anpassen kann.
+Es bleibt anzumerken, dass in der aktuellen Version V1 ein Bug existiert. Die Serverkomponente wirft bei einem Timeout eine NullReferenceException anstatt die eigentliche Fehlermeldung, was leider nicht wirklich weiter hilft.">
+<meta name=twitter:description content="Beim Arbeiten mit den ADO.NET Data Services (aka Astoria) kommt man irgendwann an den Punkt, dass die Aufgaben komplizierter werden oder die Last auf die Server steigt. In solchen Situationen ist man mit potentiellen Timeouts in allen Ebenen konfrontiert. In diesem Post zeige ich welche Timeouts es gibt, aber speziell will ich zeigen wie ich das Timeout des Entity Frameworks (SQL) in Kombination mit der MS REST Schicht ADO.NET Data Services anpassen kann.
+Es bleibt anzumerken, dass in der aktuellen Version V1 ein Bug existiert. Die Serverkomponente wirft bei einem Timeout eine NullReferenceException anstatt die eigentliche Fehlermeldung, was leider nicht wirklich weiter hilft."><meta property="og:image" content="https://marcoscheel.de/og.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="article:published_time" content="2009-06-13T19:12:00+00:00"><meta property="article:modified_time" content="2009-06-13T19:12:00+00:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-391088-7',{anonymize_ip:!0})</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
+<link rel=stylesheet href=/css/custom.css>
+</head>
+<body data-theme=auto data-theme-auto=false>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<h1><a class=title-main href=https://marcoscheel.de>Marco Scheel aka GeekDotNet</a></h1>
+<span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+</div>
+</div>
+</header>
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
+<article>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2009/06/13/ado-net-data-services-entity-framework-und-sqlhttp-timeouts/>ADO.NET Data Services, Entity Framework und SQL/HTTP Timeouts</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-06-13</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;489 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-content markdown-body">
+<p><a href=http://marcoscheel.de/files/2010/09/timeouts.png target=_blank><img class=img-zoomable src=http://marcoscheel.de/files/2010/09/timeouts_thumb.png alt=timeouts>
+</a> Beim Arbeiten mit den <a href=http://msdn.microsoft.com/en-us/data/bb931106.aspx target=_blank>ADO.NET Data Services</a> (aka Astoria) kommt man irgendwann an den Punkt, dass die Aufgaben komplizierter werden oder die Last auf die Server steigt. In solchen Situationen ist man mit potentiellen Timeouts in allen Ebenen konfrontiert. In diesem Post zeige ich welche Timeouts es gibt, aber speziell will ich zeigen wie ich das Timeout des Entity Frameworks (SQL) in Kombination mit der MS REST Schicht ADO.NET Data Services anpassen kann.</p>
+<p>Es bleibt anzumerken, dass in der aktuellen Version V1 ein Bug existiert. Die Serverkomponente wirft bei einem Timeout eine NullReferenceException anstatt die eigentliche Fehlermeldung, was leider nicht wirklich weiter hilft.</p>
+<p>Welche Timeouts gibt es also und was sind die Defaults:</p>
+<pre><code>1. **HTTP Client Timeout – Browser**         
+</code></pre>
+<p>Leider habe ich hier kaum Informationen gefunden… nichts was ich hier schreiben möchte. 2. <strong>HTTP Client Timeout - ADO.NET Data Services Client Library</strong> <br>
+Wo: Code <br>
+Default: 100.000 Millisekunden (100 Sekunden) vererbt von <a href=http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest.timeout.aspx target=_blank>HttpWebRequest.Timeout</a> <br>
+Mehr: <a href=http://msdn.microsoft.com/en-us/library/system.data.services.client.dataservicecontext.timeout.aspx target=_blank>MSDN - System.Data.Services.Client.DataServiceContext.Timeout</a> <br>
+Mehr: <a href=http://support.microsoft.com/kb/962933 target=_blank>Microsoft KB 962933: Client Timeout Bug</a> <br>
+Mehr: <a href=http://blogs.msdn.com/astoriateam/archive/2009/01/13/timeout-workaround.aspx target=_blank>ADO.NET Data Services Team Blog: Client Timeout Bug</a> 3. <strong>HTTP Server ExecutionTimeout</strong> <br>
+Wo: web.config <br>
+Default: 110 Sekunden (wenn Debug=False, dann unendlich) <br>
+Mehr: <a href=http://msdn.microsoft.com/en-us/library/e1f13641.aspx target=_blank>httpRuntime Element (ASP.NET Settings Schema)</a> 4. **ADO.NET Data Services Server Library <br>
+**Hier gibt es kein extra Timeout. Die unterliegende Connection (zum Beispiel SQL) bestimmt die Dauer. 5. <strong>Entity Framework Connection/Command Timeout (SQL)</strong> <br>
+Wo: Code <br>
+Default: 30 Sekunden <a href=http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.commandtimeout.aspx target=_blank>CommandTimeout</a> <br>
+Default: 15 Sekunden <a href=http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.connectiontimeout.aspx target=_blank>SqlConnection</a></p>
+<p>Wenn wir uns nun um ein Timeout kümmern müssen wir also immer checken, ob wir damit gegen ein anderes rennen. Angenommen wir wollen unseren Sql Queries 5 Minuten Zeit geben (nur für das Beispiel!), dann müssen wir folgendes tun:</p>
+<pre><code>1. Entity Framework Timeout = 5*60 = 300 Sekunden       2. HttpServer Timeout = 5*60 + 10 (Puffer) = 310 Sekunden       3. ADO.NET Data Services Client Timeout = 5*60*1000 + 20*1000 (Puffer) = 320.000 Millisekunden (320 Sekunden)   
+</code></pre>
+<p>Wichtig: Wir brauchen überall ein wenig Puffer, sonst kann es sein, dass uns die Gesamtgeschwindigkeit der Maschine (da kann ja noch mehr Code dazwischen laufen) dazwischenkommt.</p>
+<p>Jetzt zum eigentlichen Inhalt des Posts ;-) Wie kann ich überhaupt das Timeout des Entity Frameworks erhöhen. Die ADO.NET Data Service Website nutzt das Entity Framework und stellt so die Tabellen und Views zur Verfügung. Der <a href=http://msdn.microsoft.com/en-us/library/cc907912.aspx target=_blank>Default Code</a> in den SVC Dateien erlaubt es nicht die Connection zu beeinflussen:</p>
+<pre><code> using System;
+using System.Web;
+using System.Collections.Generic;
+using System.ServiceModel.Web;
+using System.Linq;
+using System.Data.Services;
+using NorthwindModel;
+namespace SimpleDataService
+{
+public class Northwind : DataService&lt;NorthwindEntities&gt;
+{
+public static void InitializeService(IDataServiceConfiguration config)
+{
+config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.All);
+}
+}
+}
+</code></pre>
+<p>Die Klasse DataService<t> bietet nun eine Methode <a href=http://msdn.microsoft.com/en-us/library/cc646746.aspx target=_blank>CreateDataSource</a> mit der ich von Hand die EntityConnection erzeugen kann und somit auch den Command Timeout setzen kann:</p>
+<pre><code>protected override NorthwindEntities CreateDataSource()
+{
+var dbcon = new NorthwindEntities();
+dbcon.CommandTimeout = Core.Config.Application.TimeoutSql; //Core is my helper library
+return dbcon;
+}
+</code></pre>
+<p>Ich hoffe ich kann dem einen oder anderen weiter helfen :-) Mir weiter geholfen bei der Lösung hat folgender Blogpost:</p>
+<p><a href="http://www.catchx.com/blogs/ArtDetailPage.aspx?artID=315" target=_blank>Timeout in ADO.Net Entity Framework and ADO.Net Data Services</a></p>
+<p>Ciao Marco</p>
+</div>
+</article>
+<div class="license markdown-body">
+<blockquote>
+<p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel=license href=https://creativecommons.org/licenses/by/4.0/ target=_blank>CC BY 4.0</a>.</p>
+</blockquote>
+</div>
+<div class=post-comment data-comment=disqus>
+<span class=post-comment-notloaded>
+<i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
+</span>
+<div id=disqus_thread style=display:none></div>
+<script>function loadComment(){var b=document.querySelector('.post-comment'),c=function(){this.page.url='https://marcoscheel.de/2009/06/13/ado-net-data-services-entity-framework-und-sqlhttp-timeouts/',this.page.identifier='2009-06-13-ado-net-data-services-entity-framework-und-sqlhttp-timeouts'},a=document.createElement('script');a.src='https://marcoscheel.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),document.querySelector('#disqus_thread').removeAttribute('style'),(document.body||document.head).appendChild(a),document.querySelector('span.post-comment-notloaded').setAttribute('style','display: none;')}</script>
+</div>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar">
+<a class=twitter-timeline data-height=400 href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src=https://platform.twitter.com/widgets.js></script>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents></nav></div>
+</aside>
+</div>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3>
+<nav id=TableOfContents></nav>
+</div>
+</div>
+</aside>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2021-2022
+<a href=https://marcoscheel.de>Marco Scheel</a>
+| <a href=https://github.com/marcoscheel/marcoscheel.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
+</footer>
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=/assets/js/fuji.min.js></script>
+</body>
+</html>

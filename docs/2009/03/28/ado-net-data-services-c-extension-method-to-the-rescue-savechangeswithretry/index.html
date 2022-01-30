@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.92.1" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+<title>ADO.NET Data Services – C# Extension Method to the rescue – SaveChangesWithRetry - Marco Scheel aka GeekDotNet</title>
+
+
+<meta name="author" content="marcoscheel" />
+
+
+<meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
+
+
+<meta name="keywords" content="xArchived" />
+
+
+<meta property="og:title" content="ADO.NET Data Services – C# Extension Method to the rescue – SaveChangesWithRetry" />
+<meta name="twitter:title" content="ADO.NET Data Services – C# Extension Method to the rescue – SaveChangesWithRetry" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcoscheel.de/2009/03/28/ado-net-data-services-c-extension-method-to-the-rescue-savechangeswithretry/" /><meta property="og:description" content="Ich habe mich diese Woche wieder mit den Core Funktionen der ADO.NET Data Services beschäftigt. Wir nutzen aktuell das Microsoft Ex-Astoria Projekt, um eine SQL 2008 Datenbank (läuft mit SQL Mirroring) über das Internet an eine Applikation zu binden. An sich eine tolle Sache, aber immer wieder gibt es “neue” Situationen auf die man reagieren muss. In der klassischen Programmierung (C#, SQL über TCP 1433, …) kommt es recht selten vor, dass die Verbindung zur Datenschicht (SqlNativeClient, OLEDB, ODBC, …) unterbrochen wird. In unserem Szenario steckt viel “Cloud” in der Lösung und somit müssen wir mit dem “nicht immer” funktionierenden Internet rechnen." />
+<meta name="twitter:description" content="Ich habe mich diese Woche wieder mit den Core Funktionen der ADO.NET Data Services beschäftigt. Wir nutzen aktuell das Microsoft Ex-Astoria Projekt, um eine SQL 2008 Datenbank (läuft mit SQL Mirroring) über das Internet an eine Applikation zu binden. An sich eine tolle Sache, aber immer wieder gibt es “neue” Situationen auf die man reagieren muss. In der klassischen Programmierung (C#, SQL über TCP 1433, …) kommt es recht selten vor, dass die Verbindung zur Datenschicht (SqlNativeClient, OLEDB, ODBC, …) unterbrochen wird. In unserem Szenario steckt viel “Cloud” in der Lösung und somit müssen wir mit dem “nicht immer” funktionierenden Internet rechnen." /><meta property="og:image" content="https://marcoscheel.de/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2009-03-28T21:24:55+00:00" /><meta property="article:modified_time" content="2009-03-28T21:24:55+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://marcoscheel.de/assets/css/fuji.min.css" />
+
+
+
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-391088-7', {'anonymize_ip': true});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
+
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <h1><a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a></h1>
+            
+            <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2009/03/28/ado-net-data-services-c-extension-method-to-the-rescue-savechangeswithretry/">ADO.NET Data Services – C# Extension Method to the rescue – SaveChangesWithRetry</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-03-28</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;615 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p><a href="http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/ADO.NETDataServicesCExtensionMethodtothe_13D6A/image_2.png" target="_blank"><img class="img-zoomable" src="http://cloudfront.gkdatacenter.net/marco/WindowsLiveWriter/ADO.NETDataServicesCExtensionMethodtothe_13D6A/image_thumb.png" alt="image" />
+
+</a>Ich habe mich diese Woche wieder mit den Core Funktionen der ADO.NET Data Services beschäftigt. Wir nutzen aktuell das Microsoft Ex-Astoria Projekt, um eine SQL 2008 Datenbank (läuft mit SQL Mirroring) über das Internet an eine Applikation zu binden. An sich eine tolle Sache, aber immer wieder gibt es “neue” Situationen auf die man reagieren muss. In der klassischen Programmierung (C#, SQL über TCP 1433, …) kommt es recht selten vor, dass die Verbindung zur Datenschicht (SqlNativeClient, OLEDB, ODBC, …) unterbrochen wird. In unserem Szenario steckt viel “Cloud” in der Lösung und somit müssen wir mit dem “nicht immer” funktionierenden Internet rechnen. Aktuelle Implementierungen von Microsoft im Cloud-Umfeld, haben für solche Probleme im Code meist die Möglichkeit anzugeben, wie oft der Request wiederholt werden soll. <a href="http://msdn.microsoft.com/en-us/library/system.data.services.client.dataservicecontext.savechanges.aspx" target="_blank">Die ADO.NET Data Services haben so was noch nicht</a>. Also was machen? Wir haben uns für den Weg der Extension Method entschieden. Und so sieht das dann aus (erste Tests waren sehr vielversprechend):</p>
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data.Services.Client;
+using System.Diagnostics;
+ 
+namespace Core.ExtensionMethods
+{
+    public static class DataServiceContextExtension
+    {
+        public static DataServiceResponse SaveChangesWithRetry(this DataServiceContext ctx, int retryCount)
+        {
+            for (int i = 0; i &lt; retryCount; i++)
+            {
+                try
+                {
+                    return ctx.SaveChanges();
+                }
+                catch (System.Data.Services.Client.DataServiceRequestException ex)
+                {
+                    #region Deeper analysis, disabled
+                    //foreach (ChangeOperationResponse cor in ex.Response)
+                    //{
+                    //    if (cor.Descriptor is EntityDescriptor)
+                    //    {
+                    //        EntityDescriptor ed = (EntityDescriptor)cor.Descriptor;
+                    //        Trace.WriteLine(ed.State);
+                    //    }
+                    //    else if (cor.Descriptor is LinkDescriptor)
+                    //    {
+                    //        LinkDescriptor ld = (LinkDescriptor)cor.Descriptor;
+                    //        Trace.WriteLine(ld.State);
+                    //    }
+                    //} 
+                    #endregion
+                    if (i + 1 &gt;= retryCount)
+                    {
+                        throw;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (i + 1 &gt;= retryCount)
+                    {
+                        throw;
+                    }
+                }
+            }
+            throw new ApplicationException(&quot;Loop must be wrong in retry SaveChanges&quot;);
+        }
+ 
+        public static DataServiceResponse SaveChangesWithRetry(this DataServiceContext ctx, SaveChangesOptions options, int retryCount)
+        {
+            for (int i = 0; i &lt; retryCount; i++)
+            {
+                try
+                {
+                    return ctx.SaveChanges(options);
+                }
+                catch (System.Data.Services.Client.DataServiceRequestException ex)
+                {
+                    #region Deeper analysis, disabled
+                    //foreach (ChangeOperationResponse cor in ex.Response)
+                    //{
+                    //    if (cor.Descriptor is EntityDescriptor)
+                    //    {
+                    //        EntityDescriptor ed = (EntityDescriptor)cor.Descriptor;
+                    //        Trace.WriteLine(ed.State);
+                    //    }
+                    //    else if (cor.Descriptor is LinkDescriptor)
+                    //    {
+                    //        LinkDescriptor ld = (LinkDescriptor)cor.Descriptor;
+                    //        Trace.WriteLine(ld.State);
+                    //    }
+                    //} 
+                    #endregion
+                    if (i + 1 &gt;= retryCount)
+                    {
+                        throw;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (i + 1 &gt;= retryCount)
+                    {
+                        throw;
+                    }
+                }
+            }
+            throw new ApplicationException(&quot;Loop must be wrong in retry SaveChanges Batch&quot;);
+        }
+    }
+}
+</code></pre>
+<p>Wir haben das ganze nun in einer Library verpackt. Wenn es dann daran geht, den Code in einem anderen Projekt zu nutzen, das den oben gezeigten Code als Assemly einbindet, dann muss man, wie in der MSDN beschrieben, den Namespace als Using angeben. In unserem Fall also:</p>
+<pre><code>using Core.ExtensionMethods;
+</code></pre>
+<p><a href="http://msdn.microsoft.com/en-us/library/bb311042.aspx" target="_blank">How to: Implement and Call a Custom Extension Method (C# Programming Guide)</a></p>
+<blockquote>
+<blockquote>
+<p>This topic shows how to implement your own extension methods for any type in the <a href="http://msdn.microsoft.com/en-us/library/ms229335.aspx" target="_blank">.NET Framework Class Library</a>, or any other .NET type that you want to extend. Client code can use your extension methods by adding a reference to the DLL that contains them, and adding a <a href="http://msdn.microsoft.com/en-us/library/sf0df423.aspx" target="_blank">using</a> directive that specifies the namespace in which the extension methods are defined.</p>
+</blockquote>
+</blockquote>
+<p>Der aufrufende Code sieht also in etwas so aus:</p>
+<pre><code>var ctxMaster = Core.Data.Context.GetMaster(); //Wrapper around setting url and credentials
+var query = from ts in ctxMaster.TStuff
+                       where ts.StuffId == someGuidkey
+                        &amp;&amp; ts.IsDeleted == false
+                       select ts;
+ 
+var firstStuff = query.First();
+firstStuff.IsDeleted = true;
+ctxMaster.UpdateObject(firstStuff);
+ 
+//ctxMaster.SaveChanges(); //Old: save and pray
+ctxMaster.SaveChangesWithRetry(3); //New: with retry!
+</code></pre>
+<p>Der Post bringt hoffentlich zwei Dinge: 1.) Wie einfach es ist ein Retry auf einem “MS-REST” Context funktioniert und 2.) Was man tun muss, um die Extension Method auch in einem anderen Projekt oder Namespace nutzen zu können.</p>
+<p>Ciao Marco</p>
+
+    </div>
+</article>
+
+
+<div class="license markdown-body">
+    <blockquote>
+        <p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
+               target="_blank">CC BY 4.0</a>.</p>
+    </blockquote>
+</div>
+
+
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = 'https:\/\/marcoscheel.de\/2009\/03\/28\/ado-net-data-services-c-extension-method-to-the-rescue-savechangeswithretry\/';
+                this.page.identifier = '2009-03-28-ado-net-data-services-c-extension-method-to-the-rescue-savechangeswithretry';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'marcoscheel' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <sidebarh3>Seiten</sidebarh3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/impressum/">Impressum</a>
+            </li>
+            
+            <li>
+                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <sidebarh3>Links</sidebarh3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+            <li>
+                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <sidebarh3>Tags</sidebarh3>
+        <div>
+            
+            <span>
+                <a href="/tags/azure-ad/">Azure AD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/development/">Development</a>
+            </span>
+            
+            <span>
+                <a href="/tags/equipment/">Equipment</a>
+            </span>
+            
+            <span>
+                <a href="/tags/groups/">Groups</a>
+            </span>
+            
+            <span>
+                <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-365/">Microsoft 365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mip/">MIP</a>
+            </span>
+            
+            <span>
+                <a href="/tags/office365/">Office365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sharepoint/">SharePoint</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">Tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/work/">Work</a>
+            </span>
+            
+            <span>
+                <a href="/tags/xarchived/">xArchived</a>
+            </span>
+            
+        </div>
+    </div>
+    <div class="sidebar-item sidebar">
+        <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="sidebar-item sidebar-toc">
+        <sidebarh3>Inhalt</sidebarh3><nav id="TableOfContents"></nav></div>
+</aside>
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <sidebarh3>Seiten</sidebarh3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/impressum/">Impressum</a>
+            </li>
+            
+            <li>
+                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <sidebarh3>Links</sidebarh3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+            <li>
+                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <sidebarh3>Tags</sidebarh3>
+        <div>
+            
+            <span>
+                <a href="/tags/azure-ad/">Azure AD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/development/">Development</a>
+            </span>
+            
+            <span>
+                <a href="/tags/equipment/">Equipment</a>
+            </span>
+            
+            <span>
+                <a href="/tags/groups/">Groups</a>
+            </span>
+            
+            <span>
+                <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-365/">Microsoft 365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mip/">MIP</a>
+            </span>
+            
+            <span>
+                <a href="/tags/office365/">Office365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sharepoint/">SharePoint</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">Tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/work/">Work</a>
+            </span>
+            
+            <span>
+                <a href="/tags/xarchived/">xArchived</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <sidebarh3>Inhalt</sidebarh3>
+        <nav id="TableOfContents"></nav>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2021-2022
+                <a href="https://marcoscheel.de">Marco Scheel</a>
+                 | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>

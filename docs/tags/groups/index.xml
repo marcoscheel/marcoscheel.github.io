@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Groups on Marco Scheel aka GeekDotNet</title>
+    <link>https://marcoscheel.de/tags/groups/</link>
+    <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de</language>
+    <lastBuildDate>Tue, 21 Jul 2020 16:13:19 +0000</lastBuildDate><atom:link href="https://marcoscheel.de/tags/groups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beware of the Teams Admin center to create new teams (and assign owners)</title>
+      <link>https://marcoscheel.de/post/2020/07/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</link>
+      <pubDate>Tue, 21 Jul 2020 16:13:19 +0000</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2020/07/624267623460454400-beware-of-the-teams-admin-center-to-create-new/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://admin.teams.microsoft.com/teams/manage&#34; target=&#34;_blank&#34;&gt;Microsoft Teams Admin Center&lt;/a&gt; can be used to create a new Team. The initial dialog allows you to set multiple owners for the Team. This feature was added over time and is a welcome addition to make the life of an administrator easier. But the implementation has a big shortcoming: The specified owners in this dialog will not become a member of the underlying Microsoft 365 Group in Azure Active Directory. As a result all Microsoft 365 group services checking for members will not behave as expected. For example: These owners will not be able to access Planner. Other services like Teams and SharePoint work by accident.
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/2a/8a/ee93247423d6326e5e728bed8116.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Let’s start with some basic information. &lt;strike&gt;Office &lt;/strike&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide&#34; target=&#34;_blank&#34;&gt;Microsoft 365 Groups&lt;/a&gt; use a special AAD group type. But it is still a group in Azure Active Directory. A group in &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal&#34; target=&#34;_blank&#34;&gt;AAD&lt;/a&gt; is very similar to the &lt;a href=&#34;https://docs.microsoft.com/en-us/windows/security/identity-protection/access-control/active-directory-security-groups&#34; target=&#34;_blank&#34;&gt;old-school AD&lt;/a&gt; group in our on-premises directories. The group is made of members. In most on-premises cases these groups are managed by your directory admins. But also in AD you can specify owners of a group that will then be able to manage these groups&amp;hellip; if they have the right tool (dsa.msc, &amp;hellip;). In the cloud Microsoft (and myself) is pushing towards self-service for group management. This “self-service-first approach” is obvious since the introduction of now &lt;strike&gt;Office&lt;/strike&gt; Microsoft 365 Groups. Teams being one of the most famous M365 Group services is also pushing to the owner/member model where end users are owners of a Team (therefor an AAD group). All end user facing UX from Microsoft is abstracting away how the underlying AAD group is managed. Teams for example will group owners and members in two sections:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/91/0e/616b767aa86b3b6963ac6a5582c6.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;But if you look at the underlying AAD group you will find, that every owner is also a member:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/37/d7/447064c0fbe9e64a2dff09972fb4.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;And the Azure AD portal shows a dedicated section to manage owners of the group:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/01/2e/048040cbe43ce2d0a828c47629ef.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;The Microsoft Admin portal also has dedicated sections for members and owners:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/9c/25/5cace9e88c2498b9ea0189259af0.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;In general it is important that your administrative staff is aware how group membership (including ownership) is working. The problem with the Teams Admin portal as mentioned in the beginning is the result of this initial dialog leaving the group in an inconsistent state without making that admin aware of this misalignment. Lets check the group created in the initial screenshot using the Teams admin center. We specified 5 admin users and one member after the initial dialog. Non of the admin users was added as a member in AAD (Microsoft 365 Admin portal screenshot):
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/f5/da/ce8a12184ab61762d188d83a1098.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;But looking at the teams Admin center won’t show this “misconfiguration”:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/28/05/d1b21d2dbbaa8b5afb97780cb423.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;If Leia wants to access the associated Planner service for this Team/Group the following error will show:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/5e/9f/bd402486dfaa834994758b729245.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Planner is checking against group membership. Only is the user is a member Planner (and other services) will check if the user is also an owner and then show administrative controls. Teams itself looks ok. In SharePoint implemented a hack and the owners of the AAD group are granted Site Collection Admin permission so every item is accessible, because that is what Site Collection Admins are for. If your users are reporting problem like this and based on the Teams Admin center everything looks ok, go check “a better” portal like AAD.&lt;/p&gt;
+&lt;p&gt;To fix the problem in the Teams Admin center the owner has to be demoted to member state and then promoted to being a owner again.&lt;/p&gt;
+&lt;p&gt;A quick test with the SharePoint admin center shows that the system is managing membership as intended and every owner will also be a member. SharePoint requires one owner (Leia) in the first dialog and the second dialog allows additional owners and members:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/c9/a7/42afe4c28f1853faaf2e59d921a0.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;The result for members in AAD is correct as all owners are also added as members:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/74/16/01df708d5a5c8dc340788cefe576.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Until this &lt;strike&gt;bug&lt;/strike&gt; design flaw is fixed we recommend to not add more owners in the initial dialog. The currently logged-in admin user will be added as the only owner of the created group. In the next step remove your admin and add the requested users as members and promote them to owners. If you rely on self-service this should is not a problem. If you have a custom creation process automated hopefully you add all owner as member, but you should be good most of the time. We at glueckkanja-gab are supporting many customers with our custom lifecycle solution. We are adding a option to report this problem and a optional config switch to fix any detected misalignments.&lt;/p&gt;
+&lt;p&gt;I’ve created a UserVoice “idea” for this “bug”. So please lets go: vote!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://microsoftteams.uservoice.com/forums/555103-public/suggestions/40951714-add-owners-also-as-members-aad-group-in-the-init&#34; target=&#34;_blank&#34;&gt;https://microsoftteams.uservoice.com/forums/555103-public/suggestions/40951714-add-owners-also-as-members-aad-group-in-the-init&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,443 @@
+<!doctype html><html lang=de>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
+<title>Marco Scheel aka GeekDotNet - Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</title>
+<meta name=author content="Marco Scheel">
+<meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud">
+<link rel=alternate type=application/rss+xml href=http://feeds.marcoscheel.de/marcoscheel title="Marco Scheel aka GeekDotNet">
+<meta property="og:title" content="Marco Scheel aka GeekDotNet">
+<meta name=twitter:title content="Marco Scheel aka GeekDotNet">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marcoscheel.de/"><meta property="og:image" content="https://marcoscheel.de/og.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="og:updated_time" content="2021-01-27T08:08:08+01:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-391088-7',{anonymize_ip:!0})</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
+<link rel=stylesheet href=/css/custom.css>
+</head>
+<body data-theme=auto data-theme-auto=false>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<h1><a class=title-main href=https://marcoscheel.de>Marco Scheel aka GeekDotNet</a></h1>
+<span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+</div>
+</div>
+</header>
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/06/02/contenttypes-und-was-passiert-bei-nderungen/>ContentTypes und was passiert bei Änderungen</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-06-02</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;264 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Ich wollte jetzt einmal kurz (auch für mich als reminder) runter schreiben, was passiert, wenn ich verschiedene Dinge an einem ContentType ändere: 1. **Vorbedingung
+**
+Alle folgenden Aktionen haben eine Einstellung für die Aktualisierungsweitergabe )&ldquo;Update List and Site Content Types&rdquo;). Ob bestehende Listen aktualisiert, werden hängt von der Wahl der entsprecheden Option ab. Alle folgenden Aktionen werden auf dem ContentType gemacht! 2. Hinzufügen einer Spalte
+Beim Einfügen werden alle Listen, die den ContentType verwendet, entsprechend der Einstellung aktualisiert. Der Liste wird eine neue Spalte hinzugefügt. Der Wert der Spalte für bestehende Einträge wird **nicht **auf den definierten Default-Wert gesetzt! Die neue Spalte ist also ungefüllt.
+<a href=https://marcoscheel.de/2008/06/02/contenttypes-und-was-passiert-bei-nderungen/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/05/30/sharepoint-und-microsoft-sql-server-2008-reporting-add-in-installation/>SharePoint und Microsoft SQL Server 2008 Reporting Add-in Installation</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-30</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;133 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Ich habe eben versucht die Reporting Integration für den SQL2008 auf dem MOSS Server zu aktivieren. Die Installation ist ohne Fehler abgebrochen. Die Lösung gibt es in der Readme von MS zum Add-In:
+Readme:
+http://download.microsoft.com/download/0/9/4/09438108-4f1d-4734-8100-4ff73d549082/Readme_rsaddin.htm
+Download aus dem February CTP Feature Pack des SQL 2008:
+http://www.microsoft.com/downloads/details.aspx?FamilyId=D68DE3C9-60A9-49C9-A28C-5C46BBC3356F&displaylang=en
+Die Installation läuft anders als das Add-In aus dem SQL 2005 SP2 Feature Pack. Es muss kein Cab per STSADM registriert werden, sondern das MSI erledigt die ganze Arbeit. Mein Testenviroment hat wenig RAM, da alles auf meinem Lenovo x61T mit 4 GB unter Vista läuft. Das Setup schlägt fehl und die Readme hat mir dann weiter geholfen.
+<a href=https://marcoscheel.de/2008/05/30/sharepoint-und-microsoft-sql-server-2008-reporting-add-in-installation/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/05/30/windows-server-2008-und-fehlender-pop-service/>Windows Server 2008 und fehlender POP Service</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-30</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;129 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Ich beschäftige mich gerade mit dem Windows Server 2008 (wird ja auch Zeit) und schaue mir speziell den IIS an. Einen Post dazu wird es sicher in Zukunft geben. Meinem Interesse am W2K8 Server gilt natürlich auch speziell der SharePoint-Fähigkeit. Erstes Fazit ist toll, aber auch dazu später mehr. Negativ aufgefallen ist nun der fehlende POP3 Service. Ob die Mehrheit ihn benötigt, ist jetzt nicht die Frage. Für ein (schlanke) SharePoint Testumgebung war es allerdings die einfachste Möglichkeit, eine Szenario samt Mail zu realisieren.
+Ich bin natürlich nicht der einzige, der ihn vermißt:
+http://patrickyong.net/2008/05/15/pop3-server-for-windows-server-2008/
+Die Lösung habe ich nicht getestet, da ich überlege, ob ich nicht den hMailServer für so was nehme.
+<a href=https://marcoscheel.de/2008/05/30/windows-server-2008-und-fehlender-pop-service/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/05/16/sharepoint-moss-und-kerberos/>SharePoint (MOSS) und Kerberos</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-16</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;282 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Ich mache viele reine Intranet-Konfigurationen/Installationen. Einen grossen Teil davon versuche ich, mit Kerberos Authentifizierung zu realisieren. Es ist etwas an Vorarbeit nötigt, aber der Mehrwert, wenn es um mehr als reinen CMS Content geht, ist doch recht gross. Szenarien sind folgende: * Zugreifen auf die Mailbox der Users (Unread-Items, Kalenderabfragen, &mldr;) * Zugreifen auf Datenbanken (der Loginname steht für personalisierte Abfragen zur Verfügung, etablierte Security auf dem SQL Server kann genutzt werden, &mldr;) * Zugreifen auf KPI&rsquo;s aus dem Analysis Server (MS SQL 2005) * Zugreifen auf dem Fileserver aus SharePoint Code * RSA Authentifizierung ohne Passwort (nur mit Contrained Kerberos Delegation) * &mldr;
+<a href=https://marcoscheel.de/2008/05/16/sharepoint-moss-und-kerberos/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/05/13/move-sql-server-database-files/>Move SQL Server Database Files</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-13</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;41 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Ich komme immer wieder in die Situation, dass ich die System oder zumindest die tempdb einer MS SQL Server Installation umlegen muss. Anweisungen für das Vorgehen findet man hier:
+http://support.microsoft.com/kb/224071/en-us
+Am einfachsten und wichtigsten ist das Umkonfigurieren der tempb.
+Ciao Marco
+<a href=https://marcoscheel.de/2008/05/13/move-sql-server-database-files/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/05/13/interessante-links/>Interessante Links</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-13</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;32 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Einfach mal so in den Raum gestellt: * Chris O&rsquo;Brien&rsquo;s blog: Using CustomAction to modify system pages * Free SQL Server tools that might make your life a little easier
+Ciao Marco
+<a href=https://marcoscheel.de/2008/05/13/interessante-links/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/05/13/eigene-style-informationen-im-wysiwyg-editor-von-sharepoint/>Eigene Style Informationen im WYSIWYG-Editor von SharePoint</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;27 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Das Tool der Wahl heißt SharePoint Designer und wie es geht erklärt MS selbst:
+Create HTML Editor styles - SharePoint Designer - Microsoft Office Online
+Ciao Marco
+<a href=https://marcoscheel.de/2008/05/13/eigene-style-informationen-im-wysiwyg-editor-von-sharepoint/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/05/13/fehler-beim-erstellen-eines-zeitplans-im-ssp/>Fehler beim Erstellen eines Zeitplans im SSP</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;204 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Ich habe jetzt schon einige Installation mit dem Microsoft Office SharePoint Server 2007 (MOSS) gemacht. In der Regel sind es komplexere Installationen. Es sind also neben dem SQL Server noch zwei weitere Server in der SharePoint Farm.
+Bei der Konfiguration gehe ich immer Schritt für Schritt vor. Installation der Software, Konfiguration auf dem Server &ldquo;Application Server&rdquo; für Central Admin Host, den Rest der Farm joinen, SSP anlegen (SSP Application und MySite Application anlegen), alle Optionen unter &ldquo;Operations&rdquo;, alle Optionen unter &ldquo;Application Management&rdquo; und zum Schluss alle Optionen des SSP. So weit hat sich Routine eingestellt und es ist mit keiner Komplikation zu rechnen.
+<a href=https://marcoscheel.de/2008/05/13/fehler-beim-erstellen-eines-zeitplans-im-ssp/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/05/13/sharepoint-coding-und-speicherverwaltung/>SharePoint (Coding) und Speicherverwaltung</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;408 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Folgende Artikel behandeln das Thema oder die Auswirkung: * Best Practices: Using Disposable Windows SharePoint Services Objects
+http://msdn2.microsoft.com/en-us/library/aa973248.aspx * Best Practices: Common Coding Issues When Using the SharePoint Object Model
+http://msdn2.microsoft.com/en-us/library/bb687949.aspx * Stefan Gossner: Troubleshooting SPSite/SPWeb leaks in WSS v3 and MOSS 2007
+http://blogs.technet.com/stefan_gossner/archive/2008/05/07/troubleshooting-spsite-spweb-leaks-in-wss-v3-and-moss-2007.aspx
+Es ist leider noch immer so, dass hinter den .NET Schichten eine Menge (D)COM(+) liegt. In der .NET Welt ist man &ldquo;leider&rdquo; ja nicht mehr gezwungen, sich gezielt um speicher zu kümmern. Leider wird das unerfahrenen aber auch erfahrenen Entwicklern immer wieder zum Stolperstein. Genau wie beim Zugriff auf Datenbanken (Thema: Connection Pool Limit) und beim Lesen und Schreiben von Dateien, kommt es immer wieder zu Problemen.
+<a href=https://marcoscheel.de/2008/05/13/sharepoint-coding-und-speicherverwaltung/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=post>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/2008/05/13/sharepoint-und-permissions/>SharePoint und Permissions</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2008-05-12</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;81 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/xarchived>xArchived</a>&nbsp;</span>
+</div>
+<div class="post-item post-summary markdown-body">
+Zum Nachschlagen für die Rechte, die ein User haben kann, die für Filterung von Elementen (z.B. Navigationspunkten in Systemmenüs) zuständig sind (Audience Targeting):
+http://office.microsoft.com/en-us/sharepointtechnology/HA101001491033.aspx
+Hintergrund ist das Ein- und Ausblenden von Controls, wenn der User zum Beispiel Listen erstellen kann. Ein Beispiel in dem MS das selber macht ist die MasterPage des Intranet Collaboration Portals. Hier wird der Punkt &ldquo;View all site content&rdquo; für User ohne entsprechende Rechte versteckt. Somit ist es für eigene Solutions und Menüeinträge ebenfalls relevant.
+Ciao Marco
+<a href=https://marcoscheel.de/2008/05/13/sharepoint-und-permissions/>>> continue reading | weiter lesen</a>
+</div>
+</div>
+<div class=pagination><div class=pag-first>
+<a href=/><i class="iconfont icon-caret-back-circle-sharp"></i></a>
+</div><div class=pag-previous>
+<a href=/page/11/><i class="iconfont icon-chevron-back-circle-sharp"></i></a>
+</div><div class=pag-item>
+<a href=/page/9/>9</a>
+</div><div class=pag-item>
+<a href=/page/10/>10</a>
+</div><div class=pag-item>
+<a href=/page/11/>11</a>
+</div><div class="pag-item pag-current">
+<a href=/page/12/>12</a>
+</div><div class=pag-item>
+<a href=/page/13/>13</a>
+</div><div class=pag-next>
+<a href=/page/13/><i class="iconfont icon-chevron-forward-circle-sharp"></i></a>
+</div><div class=pag-last>
+<a href=/page/13/><i class="iconfont icon-caret-forward-circle-sharp"></i></a>
+</div></div>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar">
+<a class=twitter-timeline data-height=400 href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src=https://platform.twitter.com/widgets.js></script>
+</div>
+</aside>
+</div>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2021-2022
+<a href=https://marcoscheel.de>Marco Scheel</a>
+| <a href=https://github.com/marcoscheel/marcoscheel.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
+</footer>
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=/assets/js/fuji.min.js></script>
+</body>
+</html>

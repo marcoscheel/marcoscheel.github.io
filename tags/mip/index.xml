@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MIP on Marco Scheel aka GeekDotNet</title><link>https://marcoscheel.de/tags/mip/</link><description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description><generator>Hugo -- gohugo.io</generator><language>de</language><lastBuildDate>Mon, 17 Aug 2020 08:31:05 +0000</lastBuildDate><atom:link href="https://marcoscheel.de/tags/mip/index.xml" rel="self" type="application/rss+xml"/><item><title>Enable Unified Labeling for Microsoft 365 Groups (and Teams) in your tenant via PowerShell script</title><link>https://marcoscheel.de/post/2020/08/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</link><pubDate>Mon, 17 Aug 2020 08:31:05 +0000</pubDate><guid>https://marcoscheel.de/post/2020/08/626684661029044224-enable-unified-labeling-for-microsoft-365-groups/</guid><description>&lt;p>Microsoft announced end of June 2020 the “General Availability” of the Microsoft Information Protection integration for Group labeling. Unified labeling is now available für all Microsoft 365 Groups (Teams, SharePoint, &amp;hellip;).&lt;/p>
+&lt;blockquote>
+&lt;p>Microsoft Information Protection is a built-in, intelligent, unified, and extensible solution to protect sensitive data across your enterprise – in Microsoft 365 cloud services, on-premises, third-party SaaS applications, and more. Microsoft Information Protection provides a unified set of capabilities to know your data, protect your data, and prevent data loss across Microsoft 365 apps (e.g. Word, PowerPoint, Excel, Outlook) and services (e.g. Teams, SharePoint, and Exchange).&lt;/p>
+&lt;/blockquote>
+&lt;p>Source: &lt;a href="https://techcommunity.microsoft.com/t5/microsoft-security-and/general-availability-microsoft-information-protection/ba-p/1497769" target="_blank">https://techcommunity.microsoft.com/t5/microsoft-security-and/general-availability-microsoft-information-protection/ba-p/1497769&lt;/a>&lt;/p>
+&lt;p>The feature is currently an opt-in solution. The previous Azure AD based group classification is still available and supported. If you want to switch to the new solution to apply sensitivity labels to your groups you need to run some lines of PowerShell. This is the Microsoft documentation:&lt;/p>
+&lt;p>&lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-assign-sensitivity-labels#enable-sensitivity-label-support-in-powershell" target="_blank">https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-assign-sensitivity-labels#enable-sensitivity-label-support-in-powershell&lt;/a>&lt;/p>
+&lt;p>The feature is configured with the same commands as the AAD based classification. You have to set the value for “EnableMIPLabels“ to true.The documentation is expecting that you already have Azure AD directory settings for the template “Group.Unified“. If this is not the case you can also follow the instructions on the Azure AD directory settings for Groups:&lt;/p>
+&lt;p>&lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-settings-cmdlets#create-settings-at-the-directory-level" target="_blank">https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-settings-cmdlets#create-settings-at-the-directory-level&lt;/a>&lt;/p>
+&lt;p>To make it easier for my customers and for you, I’ve created a PowerShell that will help and work in any configuration. Check out the latest version of my script in this GitHub repository:&lt;/p>
+&lt;p>&lt;a href="https://github.com/marcoscheel/snippets/blob/master/m365-enable-ul-groups/enable-ulclassification.ps1" target="_blank">https://github.com/marcoscheel/snippets/blob/master/m365-enable-ul-groups/enable-ulclassification.ps1&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-PowerShell">$tenantdetail = $null;
+$tenantdetail = Get-AzureADTenantDetail -ErrorAction SilentlyContinue;
+if ($null -eq $tenantdetail)
+{
+#connect as gloabl admin
+Connect-AzureAD
+$tenantdetail = Get-AzureADTenantDetail -ErrorAction SilentlyContinue;
+}
+if ($null -eq $tenantdetail)
+{
+Write-Host &amp;quot;Error connecting to tenant&amp;quot; -ForegroundColor Red;
+Exit
+}
+$settingIsNew = $false;
+$setting = Get-AzureADDirectorySetting | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot;};
+if ($null -eq $setting){
+Write-Host &amp;quot;Not directory settings for Group.Unified found. Create new!&amp;quot; -ForegroundColor Green;
+$settingIsNew = $true;
+$aaddirtempid = (Get-AzureADDirectorySettingTemplate | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot; }).Id;
+$template = Get-AzureADDirectorySettingTemplate -Id $aaddirtempid;
+$setting = $template.CreateDirectorySetting();
+}
+else{
+Write-Host &amp;quot;Directory settings for Group.Unified found. Current value for EnableMIPLabels:&amp;quot; -ForegroundColor Green;
+Write-Host $setting[&amp;quot;EnableMIPLabels&amp;quot;];
+}
+$setting[&amp;quot;EnableMIPLabels&amp;quot;] = &amp;quot;true&amp;quot;;
+if (-not $settingIsNew){
+#Reset AAD based classsification?
+#$setting[&amp;quot;ClassificationList&amp;quot;] = &amp;quot;&amp;quot;;
+#$setting[&amp;quot;DefaultClassification&amp;quot;] = &amp;quot;&amp;quot;;
+#$setting[&amp;quot;ClassificationDescriptions&amp;quot;] = &amp;quot;&amp;quot;;
+}
+if ($settingIsNew){
+New-AzureADDirectorySetting -DirectorySetting $setting;
+Write-Host &amp;quot;New directory settings for Group.Unified applied.&amp;quot; -ForegroundColor Green;
+$setting = Get-AzureADDirectorySetting | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot;};
+}
+else{
+Set-AzureADDirectorySetting -Id $setting.Id -DirectorySetting $setting;
+Write-Host &amp;quot;Updated directory settings for Group.Unified.&amp;quot; -ForegroundColor Green;
+$setting = Get-AzureADDirectorySetting | Where-Object { $_.DisplayName -eq &amp;quot;Group.Unified&amp;quot;};
+}
+$setting.Values;
+&lt;/code>&lt;/pre></description></item></channel></rss>

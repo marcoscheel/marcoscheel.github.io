@@ -1,0 +1,398 @@
+<!doctype html><html lang=de>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
+<title>Microsoft Teams backup your channel messages with Microsoft Graph - Marco Scheel aka GeekDotNet</title>
+<meta name=author content="Marco Scheel">
+<meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud">
+<meta name=keywords content="Microsoft 365,Microsoft Teams,Development,Microsoft Graph">
+<meta property="og:title" content="Microsoft Teams backup your channel messages with Microsoft Graph">
+<meta name=twitter:title content="Microsoft Teams backup your channel messages with Microsoft Graph">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/"><meta property="og:description" content="I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:
+
+I wanted to save all images from a beautiful Teams channel message. Teams is saving these inline images not to SharePoint. The only way to download is to click on each image.
+We are doing a Tenant to Tenant migration at glueckkanja-gab after our merger. Most of the migration tools will support the migration of Teams chat, but not all tools are available, and some implementations are lacking features for a more flexible approach.
+
+I started my career as a developer and my heart is still thinking Visual Basic. Do not be afraid, I migrated my dev skills to C# a long time ago and my array starts at 0 not 1.
+
+
+I really wanted to try a few things regarding Microsoft Graph, the Microsoft Graph SDK and Microsoft Teams. The Microsoft Teamwork part of the API has a solid starting point (if you look at the beta version). The API is getting very mature set of capabilities. I&rsquo;m a huge fan of Azure Functions and I&rsquo;ve done quite a few projects that are talking to the Microsoft Graph using Application Permissions. I&rsquo;ve checked the documentation and if I wanted to go this route I would have to request special permissions from Microsoft to access the content without a real user. For now I decided to go with a console application and a Azure AD Device Code flow.
+I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &mldr;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)
+https://github.com/marcoscheel/M365.TeamsBackup
+In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself.">
+<meta name=twitter:description content="I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:
+
+I wanted to save all images from a beautiful Teams channel message. Teams is saving these inline images not to SharePoint. The only way to download is to click on each image.
+We are doing a Tenant to Tenant migration at glueckkanja-gab after our merger. Most of the migration tools will support the migration of Teams chat, but not all tools are available, and some implementations are lacking features for a more flexible approach.
+
+I started my career as a developer and my heart is still thinking Visual Basic. Do not be afraid, I migrated my dev skills to C# a long time ago and my array starts at 0 not 1.
+
+
+I really wanted to try a few things regarding Microsoft Graph, the Microsoft Graph SDK and Microsoft Teams. The Microsoft Teamwork part of the API has a solid starting point (if you look at the beta version). The API is getting very mature set of capabilities. I&rsquo;m a huge fan of Azure Functions and I&rsquo;ve done quite a few projects that are talking to the Microsoft Graph using Application Permissions. I&rsquo;ve checked the documentation and if I wanted to go this route I would have to request special permissions from Microsoft to access the content without a real user. For now I decided to go with a console application and a Azure AD Device Code flow.
+I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &mldr;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)
+https://github.com/marcoscheel/M365.TeamsBackup
+In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself."><meta property="og:image" content="https://marcoscheel.de/og.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="article:published_time" content="2020-12-13T00:21:00+01:00"><meta property="article:modified_time" content="2020-12-13T00:21:00+01:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-391088-7',{anonymize_ip:!0})</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
+<link rel=stylesheet href=/css/custom.css>
+</head>
+<body data-theme=auto data-theme-auto=false>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<h1><a class=title-main href=https://marcoscheel.de>Marco Scheel aka GeekDotNet</a></h1>
+<span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+</div>
+</div>
+</header>
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
+<article>
+<h2 class="post-item post-title">
+<a href=https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/>Microsoft Teams backup your channel messages with Microsoft Graph</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-13</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2363 Wörter</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/microsoft-365>Microsoft 365</a>&nbsp;<a href=/tags/microsoft-teams>Microsoft Teams</a>&nbsp;<a href=/tags/development>Development</a>&nbsp;<a href=/tags/microsoft-graph>Microsoft Graph</a>&nbsp;</span>
+</div>
+<div class="post-content markdown-body">
+<p>I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:</p>
+<ul>
+<li>I wanted to save all images from a beautiful Teams channel message. Teams is saving these inline images not to SharePoint. The only way to download is to click on each image.</li>
+<li>We are doing a Tenant to Tenant migration at <a href=https://glueckkanja-gab.com/en/ target=_blank>glueckkanja-gab</a> after our merger. Most of the migration tools will support the migration of Teams chat, but not all tools are available, and some implementations are lacking features for a more flexible approach.</li>
+</ul>
+<p>I started my career as a developer and my heart is still thinking Visual Basic. Do not be afraid, I migrated my dev skills to C# a long time ago and my array starts at 0 not 1.</p>
+<p><img class=img-zoomable src=/img/20201130-m365teamsbackup--title.png alt=image>
+</p>
+<p>I really wanted to try a few things regarding Microsoft Graph, the Microsoft Graph SDK and Microsoft Teams. The Microsoft Teamwork part of the API has a solid starting point (if you look at the beta version). The API is getting <a href=https://docs.microsoft.com/en-us/graph/teams-concept-overview target=_blank>very mature set of capabilities</a>. I&rsquo;m a huge fan of <a href=https://azure.microsoft.com/en-us/services/functions/ target=_blank>Azure Functions</a> and I&rsquo;ve done quite a few projects that are talking to the Microsoft Graph using <a href=https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions target=_blank>Application Permissions</a>. I&rsquo;ve checked the documentation and if I wanted to go this route I would have to request <a href=https://docs.microsoft.com/en-us/graph/teams-protected-apis target=_blank>special permissions</a> from Microsoft to access the content without a real user. For now I decided to go with a console application and a <a href=https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code target=_blank>Azure AD Device Code flow</a>.</p>
+<p>I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &mldr;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)</p>
+<p><a href=https://github.com/marcoscheel/M365.TeamsBackup target=_blank>https://github.com/marcoscheel/M365.TeamsBackup</a></p>
+<p>In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself.</p>
+<h2 id=check-your-migration-vendor-of-choice-first>Check your migration vendor of choice first!</h2>
+<p>I have only limited experience with the following tools. But these vendors are the big players, and you can easily get in touch with them to get a demo or further information.</p>
+<ul>
+<li><a href=https://www.avepoint.com/products/hybrid/office-365-migration/fly target=_blank>AvePoint</a></li>
+<li><a href=https://www.quest.com/solutions/teams/ target=_blank>Quest</a></li>
+<li><a href=https://sharegate.com/products/sharegate-desktop/teams-migration target=_blank>ShareGate</a></li>
+</ul>
+<p>It is ok if you stop here if your migration needs are satisfied by one of these vendors. If you are interested in my approach it might still be worth reading on ;)</p>
+<h2 id=my-goal>My goal</h2>
+<p>Since the beginning of the first lockdown in April we at Glück & Kanja did a cooking event for a social online gathering. We are still doing it and we created a lot of content since the first meeting. The event is hosted on Microsoft Teams Channel meeting every Monday. Check out our <a href=https://www.glueckkanja.com/blog/gk/homeoffice/collaboration/2020/04/kochen-mit-zeba/ target=_blank>blog post (german)</a>. The event created a ton of beautifully pictures but they were stuck inside a Teams thread without easy access like SharePoint (if you consider SharePoint an easy access method). The backup should save all the attachments to the file system. Sneak preview of the result:
+<img class=img-zoomable src=/img/20201130-m365teamsbackup--backupimages.jpg alt=image>
+</p>
+<p>For our migration to the new tenant, we are running a set of tools. The tooling we have at hand has some limits regarding channel message migration. We wanted to preserve that chat messages for a Team without polluting the new target team. In some cases, we also want to archive the Team to a central location (a single SharePoint site collection) for archiving purposes. For this case we would need to export the chat to some readable and searchable format preserving most of the content.</p>
+<p>My goal is not to provide a ready to use backup solution. For some of your scenarios this could work. I wanted to also provide a code base to accommodate your more specific requirements. We don&rsquo;t rely on extensive app integration in our teams, so handling the <a href="https://docs.microsoft.com/en-us/graph/api/resources/chatmessageattachment?view=graph-rest-1.0" target=_blank>adaptive cards in a chat message</a> is not really a part of the HTML generation solution. But the JSON from the Microsoft Graph will have all or some information included. If you need to handle adaptive card content this solution could be a great kickstart so you don&rsquo;t have to write a lot of boilerplate code to get to the message attachment properties.</p>
+<p>The solution will try to preserve as much information as needed from the Microsoft Graph and dump it to disk. From this data you can run multiple HTML conversions to address the need for the content representation. The HTML generation is no longer interacting with the Microsoft Graph and could be reparsed month after the original content was deleted (decommissioning of the old tenant).</p>
+<p>My current focus is on the following data:</p>
+<ul>
+<li>Basic team metadata including members</li>
+<li>Channel metadata including members for private channels</li>
+<li>Messages and replies with author and dates</li>
+<li>Message body and inline pictures (hosted content)</li>
+</ul>
+<h2 id=my-approach>My approach</h2>
+<p>I mentioned it a few times. I split the solution in two parts. The first part is talking to the Microsoft Graph and storing the response to a JSON file. For every Team I create a folder with the ID of the group. The response of the <a href="https://docs.microsoft.com/en-us/graph/api/resources/team?view=graph-rest-beta" target=_blank>team request</a> will be stored in the folder with the name &ldquo;team.json&rdquo;. For every channel I create a folder with the channel ID and the <a href="https://docs.microsoft.com/en-us/graph/api/resources/channel?view=graph-rest-beta" target=_blank>channel response</a> will be stored as &ldquo;channel.json&rdquo;. For every message (entry point of a thread if replies are available) I create a folder with the message ID and the <a href="https://docs.microsoft.com/en-us/graph/api/resources/chatmessage?view=graph-rest-beta" target=_blank>message response</a> will be stored as &ldquo;message.json&rdquo;. For every reply to a message I create another file with the pattern &ldquo;message.{messageid}.json&rdquo;. Every message will be checked if inline content is available. This is called <a href="https://docs.microsoft.com/en-us/graph/api/resources/chatmessagehostedcontent?view=graph-rest-beta" target=_blank>hosted content</a> and I treat every item as an inline image represented as an PNG-file. Because the ID for a hosted content item is very long, I decided to use an MD5 hash of the ID to use in the filename. For the root message the file is named &ldquo;hostedcontent.{hostedcontenidMD5}.png&rdquo; and for replies &ldquo;hostedcontent.{messageid}.{hostedcontenidMD5}.png&rdquo;</p>
+<p><img class=img-zoomable src=/img/20201130-m365teamsbackup--jsonfiles.png alt=image>
+</p>
+<p>Of cause all this needs to happen with some kind of authentication. As mentioned, I&rsquo;m big fan of application permission because there is no user involved. But the current graph implementation only offers access to chat messages if you apply for an app with protected API access. Read more about this <a href=https://docs.microsoft.com/en-us/graph/teams-protected-apis target=_blank>here</a>. I tried to apply but 4 weeks later I still don&rsquo;t have feedback for my request (single tenant app should be easy) and I implemented the access using delegate permission based on the device flow. Based on this approach I made this into a feature. The tool will backup (by default) all teams the account is a member of. This way you can add the account to a Team as an admin or even the owner of Team can do this to &ldquo;request&rdquo; chat backup.</p>
+<p>The other console application is taking care of building the HTML from the JSON files. Because all the heavy lifting is already done in the first part, the generation of HTML is really fast. The application needs the source directory and the HTML template for the output. The HTML templates currently has some inline styles to make it easy to move around and keep the dependencies low. The application is creating a HTML file for each channel and optionally a HTML file for every thread. Based on the configuration the HTML file will contain all <a href=https://www.w3docs.com/snippets/html/how-to-display-base64-images-in-html.html target=_blank>images inline</a> or as a separate file. If you go with the inline images you get a very portable version of the backup, but also a big file if you have many images or a long chat history. The combination of inline images and every thread as an HTML file will give you a great choice out of the box. If you would like to customize the HTML look and feel have a peak at the <a href=https://github.com/marcoscheel/M365.TeamsBackup/blob/main/template/template.html target=_blank>template file</a>. With a few tweaks in the CSS styles you can enhance readability and change it to your preferences. I hopefully selected some easy-to-understand selectors.</p>
+<p><img class=img-zoomable src=/img/20201130-m365teamsbackup--htmltemplate.png alt=image>
+</p>
+<h2 id=the-code>The code</h2>
+<p>Let’s have a quick look at the code and what it takes to get it compiled, if you pull it from GitHub. I am doing all my development in Visual Studio &ldquo;proper&rdquo;. The solution was created with <a href=https://visualstudio.microsoft.com/vs/preview/ target=_blank>Visual Studio 2019 Enterprise (Preview)</a> but the community non preview version should also be fine. I write most of my code in C# and so is this code. As <a href=https://devblogs.microsoft.com/dotnet/announcing-net-5-0/ target=_blank>.NET 5 is now available</a> this is my first solution using this version, but I think you can get it running on .NET Core 3.1 if you downgrade the solution and packages. The final solution is hosted on GitHub and you are welcome to open an issue or create a pull request. Just have a little bit of patience as this is just a side hustle for me.</p>
+<p>Normally I write Azure Functions and dependency injection is not yet in my DNA. If you look at the code this might feel a little awkward. I spend way too much time to get the <a href=https://docs.microsoft.com/en-us/dotnet/core/extensions/generic-host target=_blank>console app make use of the DI concepts</a>. For a start it feels OK and I had a lot of fun learning to code this, but I&rsquo;m not sure this is 100% correct. Let’s put it this way: It works! Also, a thing I love about Azure Functions is the native Microsoft Extension Logging integration. So, it was natural to also rely on my normal code to write logs. In the cloud logging to a file on disk is not really a thing and that might be the reason why Microsoft does not have an out of the box solution for that. That’s my excuse why all of my logs are only on the console for the moment. I am looking into NLog or Serilog. The biggest benefit is to configure the <a href=https://docs.microsoft.com/en-us/dotnet/core/extensions/logging target=_blank>logs levels</a> very easy. Check out the application.json for a sample. The configuration system is also based on Microsoft standards. The console is loading the application.json settings and during development an argument can be passed in to respected the correct JSON file. A Special thanks to <a href=https://dfederm.com/building-a-console-app-with-.net-generic-host/ target=_blank>David Feldman for his blog post</a> which got me started on the console DI thing.</p>
+<p>As of now we didn&rsquo;t write any business relevant code (developer love to write non relevant code 😁) so let’s get our hands dirty. Getting the data from Microsoft Teams is done via the Microsoft Graph. I&rsquo;m using the <a href="https://docs.microsoft.com/en-us/graph/sdks/use-beta?tabs=CS" target=_blank>beta SDK</a> because for the Teams workload some feature are only available in the non-production endpoint. Also, I like to play with fire. The authentication (as mentioned: I had to go with the device code) is provided by the MSAL libraries. For my &ldquo;daemon apps” (Azure Functions) I rely on the pure MSAL implementation, but for this application I tried something new and used the <a href=https://github.com/microsoftgraph/msgraph-sdk-dotnet-auth target=_blank>Microsoft Graph Auth</a> libraries. The NuGet is still in preview, but this was the easiest solution to get the device code up and running in minutes. I plan to use this library in the future for my other projects. One thing was missing and was really annoying: I had to authenticate on every debug run, so I copied some code to <a href=https://github.com/marcoscheel/M365.TeamsBackup/blob/main/src/Core/Services/Util/TokenCacheHelper.cs target=_blank>persist the token</a> to a file. This code is also standard Microsoft code, and it will put the token in a locally protected file. For the generation of the HTML file I visited an old friend: <a href=https://html-agility-pack.net/ target=_blank>HTML Agility Pack (HAP)</a>. This is an awesome library and working with the HTML DOM is a breeze! The HTML from the Teams chat message can contain images (hosted content) pointing to the Microsoft Graph endpoint. Using the HTML Agility Pack, I search the images and replace the src with as base64 encoded version or a local file reference.</p>
+<p><img class=img-zoomable src=/img/20201130-m365teamsbackup--nuget.png alt=image>
+</p>
+<h2 id=the-result>The result</h2>
+<p>Here is a side-by-side comparison. The original channel in Microsoft Teams and the HTML backup generated from the Microsoft Graph API.</p>
+<p><img class=img-zoomable src=/img/20201130-m365teamsbackup--originalvsbackup.png alt=image>
+</p>
+<p>The HTML file will contain the Team name, creation date and the member count. The Channel name is also part of every file and if it is a private channel also the member count. Every post will contain the creation (+ edit if available) time, the author and the body including images. Links to documents are not modified and the file will not be downloaded. The content of an adaptive card is available in the JSON, but currently the output is not rendered in HTML. The adaptive cards rendering will be added later.</p>
+<p>After the complete run you have a set of JSON files representing Microsoft Graph SDK classes. I recommend putting them in to a ZIP file (there are a lot of files) and place them next to the HTML output. Based on your data and configuration the output can be stored in a SharePoint library or on a file based archive.</p>
+<h2 id=your-setup>Your setup</h2>
+<p>Currently the setup is not download and ready to run. First I don&rsquo;t want to offer a <a href=https://docs.microsoft.com/en-us/azure/active-directory/develop/single-and-multi-tenant-apps target=_blank>multi-tenant application in my Azure AD</a>. Therefor you need to talk to your admin to register the application in the first place. Based on the permission the app needs the admin consent in any way. Please check out the project <a href=https://github.com/marcoscheel/M365.TeamsBackup target=_blank>Readme.md</a> to get the needed permissions and put the needed details in the application settings file. The binaries can be downloaded from the <a href=https://github.com/marcoscheel/M365.TeamsBackup/releases target=_blank>release page</a> of the GitHub project. You will need to have the <a href="https://dotnet.microsoft.com/download/dotnet-core/5.0/runtime/?utm_source=getdotnetcore&utm_medium=referral" target=_blank>.NET 5 runtime</a> installed.</p>
+<p><img class=img-zoomable src=/img/20201130-m365teamsbackup--run.png alt=image>
+</p>
+<h2 id=summary>Summary</h2>
+<p>I had a blast writing the solution from start to end. I will tweak the solution in the near future. These are the next ideas I want to code:</p>
+<ul>
+<li>Save images with the date in the name and add EXIF data with the author information</li>
+<li>Allow the use of a non-interactive AAD login (confidential client)</li>
+<li>Integrate features in an Azure Function and maybe trigger from a Teams Message Extension for an ad-hoc export for every user</li>
+</ul>
+<p>I created the solution for a very specific use case (our tenant migration), but I hope in making the source code available you will be able to solve your problems. If you have feedback, please let me know. Create an issue, hit me up on <a href=https://twitter.com/marcoscheel target=_blank>Twitter</a> or <a href=https://www.linkedin.com/in/marcoscheel target=_blank>LinkedIn</a>.</p>
+</div>
+</article>
+<div class="license markdown-body">
+<blockquote>
+<p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel=license href=https://creativecommons.org/licenses/by/4.0/ target=_blank>CC BY 4.0</a>.</p>
+</blockquote>
+</div>
+<div class=post-comment data-comment=disqus>
+<span class=post-comment-notloaded>
+<i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
+</span>
+<div id=disqus_thread style=display:none></div>
+<script>function loadComment(){var b=document.querySelector('.post-comment'),c=function(){this.page.url='https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/',this.page.identifier='20201130-m365teamsbackup'},a=document.createElement('script');a.src='https://marcoscheel.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),document.querySelector('#disqus_thread').removeAttribute('style'),(document.body||document.head).appendChild(a),document.querySelector('span.post-comment-notloaded').setAttribute('style','display: none;')}</script>
+</div>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar">
+<a class=twitter-timeline data-height=400 href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src=https://platform.twitter.com/widgets.js></script>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents>
+<ul>
+<li><a href=#check-your-migration-vendor-of-choice-first>Check your migration vendor of choice first!</a></li>
+<li><a href=#my-goal>My goal</a></li>
+<li><a href=#my-approach>My approach</a></li>
+<li><a href=#the-code>The code</a></li>
+<li><a href=#the-result>The result</a></li>
+<li><a href=#your-setup>Your setup</a></li>
+<li><a href=#summary>Summary</a></li>
+</ul>
+</nav></div>
+</aside>
+</div>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<sidebarh3>Seiten</sidebarh3>
+<ul>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/archives/>Archives</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+<li>
+<a href=/search/>Search</a>
+</li>
+<li>
+<a href=/impressum/>Impressum</a>
+</li>
+<li>
+<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<sidebarh3>Links</sidebarh3>
+<ul>
+<li>
+<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
+</li>
+<li>
+<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
+</li>
+<li>
+<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
+</li>
+<li>
+<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<sidebarh3>Tags</sidebarh3>
+<div>
+<span>
+<a href=/tags/azure-ad/>Azure AD</a>
+</span>
+<span>
+<a href=/tags/development/>Development</a>
+</span>
+<span>
+<a href=/tags/equipment/>Equipment</a>
+</span>
+<span>
+<a href=/tags/groups/>Groups</a>
+</span>
+<span>
+<a href=/tags/meta/>Meta</a>
+</span>
+<span>
+<a href=/tags/microsoft-365/>Microsoft 365</a>
+</span>
+<span>
+<a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span>
+<span>
+<a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span>
+<span>
+<a href=/tags/mip/>MIP</a>
+</span>
+<span>
+<a href=/tags/office365/>Office365</a>
+</span>
+<span>
+<a href=/tags/sharepoint/>SharePoint</a>
+</span>
+<span>
+<a href=/tags/tools/>Tools</a>
+</span>
+<span>
+<a href=/tags/work/>Work</a>
+</span>
+<span>
+<a href=/tags/xarchived/>xArchived</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar-toc">
+<sidebarh3>Inhalt</sidebarh3>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#check-your-migration-vendor-of-choice-first>Check your migration vendor of choice first!</a></li>
+<li><a href=#my-goal>My goal</a></li>
+<li><a href=#my-approach>My approach</a></li>
+<li><a href=#the-code>The code</a></li>
+<li><a href=#the-result>The result</a></li>
+<li><a href=#your-setup>Your setup</a></li>
+<li><a href=#summary>Summary</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</aside>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2021-2022
+<a href=https://marcoscheel.de>Marco Scheel</a>
+| <a href=https://github.com/marcoscheel/marcoscheel.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
+</footer>
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=/assets/js/fuji.min.js></script>
+</body>
+</html>

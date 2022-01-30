@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Development on Marco Scheel aka GeekDotNet</title>
+    <link>https://marcoscheel.de/tags/development/</link>
+    <description>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de</language>
+    <lastBuildDate>Wed, 27 Jan 2021 08:08:08 +0100</lastBuildDate><atom:link href="https://marcoscheel.de/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microsoft Teams Incoming Webhook update required</title>
+      <link>https://marcoscheel.de/post/2021/01/20210127-microsoftteams-webhookupdate/</link>
+      <pubDate>Wed, 27 Jan 2021 08:08:08 +0100</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2021/01/20210127-microsoftteams-webhookupdate/</guid>
+      <description>&lt;p&gt;With the &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34; target=&#34;_blank&#34;&gt;Message Center Notification MC234048&lt;/a&gt; Microsoft announced a change to the Microsoft Teams App &amp;ldquo;Incoming Webhook&amp;rdquo;. The URL currently used will be deprecated by mid of April 2021. The exact wording is:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We will begin transitioning to the new webhook URLs on Monday January 11, 2021; however, existing webhooks URLs will continue to work for three (3) months to allow for migration time
+Source (as of 2021-01-26): &lt;a href=&#34;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&#34; target=&#34;_blank&#34;&gt;https://admin.microsoft.com/Adminportal/Home?#/MessageCenter/:/messages/MC234048&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;If you created a webhook prior January 11, 2021 you will need to update your existing connector configuration!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This app is in regular use by most companies, if not disabled by a Teams App permission policy in the tenant. The app is a very easy option to post a message to a team. The URI of a webhook is cryptic and the only security in place. If you send a well-crafted HTTP message to the endpoint, you will create a Teams post in the channel the app is connected to. Here is the &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook&#34; target=&#34;_blank&#34;&gt;Microsoft documentation&lt;/a&gt; and a great &lt;a href=&#34;https://d365dotblog.com/2021/01/18/post-message-to-teams-using-incoming-webhook/&#34; target=&#34;_blank&#34;&gt;community article&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Currently Microsoft is using a non-tenant specific URI (outlook.office.com). The new URI will be tenant related (YOURTENANT.webhook.office.com).&lt;/p&gt;
+&lt;p&gt;This feature is communicated for Microsoft Teams, but it is also a Microsoft 365 Group Connector feature so these might also affected.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--title.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;check-if-the-app-is-used&#34;&gt;Check if the app is used&lt;/h2&gt;
+&lt;p&gt;It could be a good idea to check, if the app is active in your tenant. As a Teams administrator you can &lt;a href=&#34;https://admin.teams.microsoft.com/policies/manage-apps/203a1e2c-26cc-47ca-83ae-be98f960b6b2/&#34; target=&#34;_blank&#34;&gt;check the application in your admin center&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--app.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Even if you checked the app and the Teams App Permission policy you could still have the app installed prior this configuration. It is easy to check if the application is installed in a Microsoft Team. To query for installed apps we will need to use the &lt;a href=&#34;https://www.powershellgallery.com/packages/MicrosoftTeams/&#34; target=&#34;_blank&#34;&gt;preview version of the MicrosoftTeams module (as of writing 1.1.10-preview)&lt;/a&gt;. Using the Teams PowerShell you can get a list of Teams the app is installed in.&lt;/p&gt;
+&lt;p&gt;Get the application ID and more details:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Get-TeamsApp | Where-Object { $_.DisplayName -eq &amp;quot;Incoming Webhook&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Result:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ExternalId Id                                   DisplayName      DistributionMethod
+---------- --                                   -----------      ------------------
+           203a1e2c-26cc-47ca-83ae-be98f960b6b2 Incoming Webhook store
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With the application id we now can query all teams and check if the app is installed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Get-Team | ForEach-Object {
+    $team = $_;
+    $apps = Get-TeamsAppInstallation -TeamId $team.GroupId | Where-Object { $_.TeamsAppId -eq &amp;quot;203a1e2c-26cc-47ca-83ae-be98f960b6b2&amp;quot;};
+    if ($apps -ne $null){
+        $team;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Result for my two teams with the app installed:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GroupId                              DisplayName        Visibility  Archived  MailNickName       Description
+-------                              -----------        ----------  --------  ------------       -----------
+a6687ed4-c1a6-4c7b-9171-2d625a60b76e GK Malachor MSDN   Public      False     GKMalachorMSDN     Check here for or…
+75366f42-6fc6-4857-90d1-3283236789b6 20200906 Demo Acc… Private     False     20200906DemoAcces… 20200906 Demo Acc…
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Based on this information we now can contact the owners/members of a team and make them check if they use the app and need to update the URI. Currently I am not aware of a method to get the specific channel the webhook is attached to. The user needs to check all the channels to find the connectors.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-fix-the-problem&#34;&gt;How to fix the problem&lt;/h2&gt;
+&lt;p&gt;The user needs to navigate to the team and check for the connector of all channels:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--channel.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--channel-configure.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Open the &amp;ldquo;x configured&amp;rdquo; (1) if available and click on the &amp;ldquo;Manage&amp;rdquo; (2) button for the specific implementation:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--channel-configured.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;This will show you the current configuration of the webhook:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--fix.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;You need to click on &amp;ldquo;Update URL&amp;rdquo; and you will receive a new URI with the tenant specific part. The connector page did not refresh automatically. I quite the page and reopened the dialog. Now the page is not complaining about a required update and I could copy the new webhook URI:&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--fixed.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Now you just need to remember and find the app you integrated the webhook in :)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; I was not able to update the incoming webhook, if the account that created the webhook is not the account updating the webhook. You can see the account that did the setup in the connector list and you will notice the &amp;ldquo;Save&amp;rdquo; button is disabled. In this case an easy option is to delete webhook and recreate it with the same name.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--unfixable.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Check your tenant (admin) or teams (power users) for the configuration of incoming webhook. Remember as soon as you update the URL the webhook for this will stop working and not accept messages. Updating the URL is only solving 50% of the problem. You also need to update your Power Automate flows, Azure Functions, Azure Automation Runbooks or your PowerShell scripts in your on-prem servers task scheduler.&lt;/p&gt;
+&lt;h2 id=&#34;bonus&#34;&gt;Bonus&lt;/h2&gt;
+&lt;p&gt;Get the owners of the groups to send an email:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Get-Team | ForEach-Object {
+    $team = $_;
+    $apps = Get-TeamsAppInstallation -TeamId $team.GroupId | Where-Object { $_.TeamsAppId -eq &amp;quot;203a1e2c-26cc-47ca-83ae-be98f960b6b2&amp;quot;};
+    if ($apps -ne $null){
+        Get-TeamUser -GroupId $team.GroupId -Role Owner | ForEach-Object {
+            $owner = $_;
+            $fields = @{
+                Team = $team.DisplayName
+                OwnerEmail = $owner.User
+            }
+            New-Object -TypeName PSObject -Property $fields;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Result:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210127-microsoftteams-webhookupdate--owneremail.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Create your Azure AD application via script - M365.TeamsBackup</title>
+      <link>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</link>
+      <pubDate>Mon, 25 Jan 2021 10:10:10 +0100</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2021/01/20210124-m365teamsbackup-aadapp/</guid>
+      <description>&lt;p&gt;If you are using Azure AD authentication for your scripts, apps, or other scenarios at some point you will end up creating your own application in your directory. Normally you open the Azure portal and navigate to the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;App registrations&amp;rdquo;&lt;/a&gt; part of AAD. This is fine during development, but if you want to share the solution or a customer wants to run the software in their own tenant, things get complicated and error prone. For my Microsoft Teams backup solution this is very real because you need to hit all required permissions and configure the public client part otherwise the solution will not run.&lt;/p&gt;
+&lt;p&gt;This post provides you will all the needed information to create your own script. I&amp;rsquo;m using my &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34; target=&#34;_blank&#34;&gt;M365 Teams Backup&lt;/a&gt; solution as a reference. The key components are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install the Azure CLI or the Azure AD Preview PowerShell module&lt;/li&gt;
+&lt;li&gt;The scripts to setup the app
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp-cli.ps1&lt;/a&gt; via Azure CLI&lt;/li&gt;
+&lt;li&gt;or &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp.ps1&lt;/a&gt; via PowerShell&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--title.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;choose-a-scripting-environment-azure-cli-vs-azure-ad-ps&#34;&gt;Choose a scripting environment (Azure CLI vs Azure AD PS)&lt;/h2&gt;
+&lt;p&gt;During my day job I created some applications based on &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/overview&#34; target=&#34;_blank&#34;&gt;Microsoft Graph&lt;/a&gt; and I tried a few approaches to script the Azure AD app creation. It is important to understand that an Azure AD application consists of two parts. The application registration is like a blueprint for your app. The enterprise application is the implementation of your blueprint.&lt;/p&gt;
+&lt;p&gt;The application permissions are defined in the &amp;ldquo;App registration&amp;rdquo;. Here you select the permissions that your app will request from users in the tenant. Without a consent the permissions are not in effect. If your only have an app registered but not received consent the app will not be able to use the requested permissions. Check the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent&#34; target=&#34;_blank&#34;&gt;Microsoft documentation&lt;/a&gt; for a deeper look at the consent framework.&lt;/p&gt;
+&lt;p&gt;Most of my applications leverage &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#permission-types&#34; target=&#34;_blank&#34;&gt;application permissions&lt;/a&gt; or require admin consent for delegate permissions. The �M365.TeamsBackup� solution is using a bunch of Microsoft Graph permissions and some of them are pretty powerful. If you have an application with this kind of permission requirements it is needed to have &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#admin-restricted-permissions&#34; target=&#34;_blank&#34;&gt;admin consent&lt;/a&gt; given by a (best case) global administrator.&lt;/p&gt;
+&lt;p&gt;If your apps are like mine, it might be the best to use the Azure CLI because this is as of my knowledge the only way to script the admin consent. I am not a CLI guy. I am a PowerShell fan. I struggled in the past integrating the CLI and its output into my scripting flow. That is why I wanted to show you what and how it can be done. If you are OK with opening the portal to give admin consent or you don&amp;rsquo;t want to give admin consent during application setup, I also have an Azure AD PowerShell version of the script.&lt;/p&gt;
+&lt;h3 id=&#34;setup-azure-cli-and-connect&#34;&gt;Setup Azure CLI and connect&lt;/h3&gt;
+&lt;p&gt;The Azure CLI is not purely targeted at Azure AD. It is the other way around because the CLI is used to script all the Azure things available. There is great Microsoft docs on &lt;a href=&#34;https://docs.microsoft.com/en-us/cli/azure/install-azure-cli&#34; target=&#34;_blank&#34;&gt;installing the Azure CLI&lt;/a&gt;. I&amp;rsquo;m running on Windows, so I typically go the MSI route:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download the release version of the MSI (that is what I&amp;rsquo;m running)&lt;/li&gt;
+&lt;li&gt;Install the MSI (bring some extra time because the installation is slow)&lt;/li&gt;
+&lt;li&gt;After the download open a new PowerShell (this ensured the path is set and available)&lt;/li&gt;
+&lt;li&gt;You can check if the installation worked using the &amp;lsquo;az &amp;ndash;version&amp;rsquo; command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-cli.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;As you can see my version is not up to date. As with most tools you need to keep these tools at the latest version. The Azure CLI can be updated by installing the newest MSI or by running an admin command using this command &amp;lsquo;az upgrade&amp;rsquo;. The upgrade command will download the MSI and start the installation for you.&lt;/p&gt;
+&lt;p&gt;Installation is finish and now it is time to login to your tenant. The CLI is different from your normal &amp;ldquo;PowerShell Connect-SERVICE&amp;rdquo; (SharePoint, AD, Teams, &amp;hellip;) command. The Azure CLI will remember your last login. If you close and open your terminal you will still be logged in. If you use the Azure CLI just for the one-time setup, please consider a logout after you finish any script. But first lets login. I&amp;rsquo;m a big fan of &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code&#34; target=&#34;_blank&#34;&gt;device code authentication&lt;/a&gt; where possible. &lt;a href=&#34;https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#run-the-azure-cli&#34; target=&#34;_blank&#34;&gt;Azure CLI is supporting&lt;/a&gt; this flow so that is how I roll:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Login:
+&lt;ul&gt;
+&lt;li&gt;az login &amp;ndash;use-device-code &amp;ndash;allow-no-subscriptions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Check current login:
+&lt;ul&gt;
+&lt;li&gt;az account show&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Logout:
+&lt;ul&gt;
+&lt;li&gt;az logout&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-cliaccount.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Check my script using the Azure CLI:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp-cli.ps1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;setup-azure-ad-powershell-and-connect&#34;&gt;Setup Azure AD PowerShell and connect&lt;/h3&gt;
+&lt;p&gt;Azure AD PowerShell versioning is complicated. For my job (M365 Modern Collaboration) I am always using the AzureADPreview module and this is what I recommend in most cases. The AzureADPreview cannot be installed side by side with the &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0-preview&#34; target=&#34;_blank&#34;&gt;AzureADPreview&lt;/a&gt;, so at some point you will have to move to the AzureADPreview. As the Azure CLI is not PowerShell based I am using my Windows Terminal default that is PowerShell 7. The Azure AD modules are not yet ready for PowerShell 7 so you will need to open your old school PowerShell 5.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&#34; target=&#34;_blank&#34;&gt;Installing the Azure AD module&lt;/a&gt; is like most modern modules and relies on the Powershell gallery.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open your PowerShell as an administrator and execute
+&lt;ul&gt;
+&lt;li&gt;Install-module AzureADPreview&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Check your version opening a non admin session
+&lt;ul&gt;
+&lt;li&gt;Get-Module AzureADPreview -ListAvailable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-ps.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;If you are not on the latest version, you need to upgrade the module like any other module:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open your PowerShell as an administrator and execute
+&lt;ul&gt;
+&lt;li&gt;Update-Module AzureADPreview&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20210124-m365teamsbackup-aadapp--setup-psupdate.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;To connect to Azure AD you cannot rely on device authentication and you will need to login directly on the script execution. If you need to execute multiple scripts, check if you want to disable the login command &amp;ldquo;Connect-AzureAD&amp;rdquo; in the script to prevent multiple logins (incl. MFA).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open your PowerShell and execute
+&lt;ul&gt;
+&lt;li&gt;Connect-AzureAD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Check my script using the Azure CLI:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp.ps1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;script-the-creation-process&#34;&gt;Script the creation process&lt;/h2&gt;
+&lt;p&gt;Now we are prepared, and we can create our application. The easy part is to create an &amp;ldquo;App registration&amp;rdquo;. If your app need permissions the trouble begins. There are two challenges:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Setting the permission in the two scripts&lt;/li&gt;
+&lt;li&gt;Getting the permission definition in the first place&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Getting the permission translated from the nice Azure AD portal UX to a script-ready solution is harder to research than expected. I&amp;rsquo;ve done a &lt;a href=&#34;https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/&#34; target=&#34;_blank&#34;&gt;blog post&lt;/a&gt; (in German) about this in the past. In the next section I will show you how to get the ID of the Microsoft Graph application and the IDs of the required permissions.&lt;/p&gt;
+&lt;p&gt;My Teams Backup solution requires many permissions from the Microsoft Graph (this time delegation because app permissions for &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-protected-apis&#34; target=&#34;_blank&#34;&gt;some require Microsoft approval&lt;/a&gt;) so let�s have a look at a non-error prone implementation that is also easy to read and extend.&lt;/p&gt;
+&lt;h3 id=&#34;azure-cli&#34;&gt;Azure CLI&lt;/h3&gt;
+&lt;p&gt;For reference: &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp-cli.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp-cli.ps1&lt;/a&gt;
+Microsoft docs: &lt;a href=&#34;https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest&#34; target=&#34;_blank&#34;&gt;az command overview&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Use the Azure CLI to query the Azure Active Directory for the service principal with the name of the Microsoft Graph.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalName = &amp;quot;Microsoft Graph&amp;quot;;
+$servicePrincipalId = az ad sp list --filter &amp;quot;displayname eq &#39;$servicePrincipalName&#39;&amp;quot; --query &#39;[0].appId&#39; | ConvertFrom-Json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using the query parameter we select the first result (there is only one Microsoft Graph) and &amp;ldquo;cast&amp;rdquo; the app ID. Using the ConvertFrom-JSON makes it easy to parse the result and we receive &amp;ldquo;00000003-0000-0000-c000-000000000000&amp;rdquo; as the value for the app id.&lt;/p&gt;
+&lt;p&gt;Next, we need to get the ID for each required permission. This info is part of the &amp;ldquo;oauth2Permissions&amp;rdquo; property from the MS Graph service principal:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalNameOauth2Permissions = @(&amp;quot;Channel.ReadBasic.All&amp;quot;, &amp;quot;ChannelMember.Read.All&amp;quot;, &amp;quot;ChannelMessage.Read.All&amp;quot;, &amp;quot;ChannelSettings.Read.All&amp;quot;, &amp;quot;Group.Read.All&amp;quot;, &amp;quot;GroupMember.Read.All&amp;quot;, &amp;quot;Team.ReadBasic.All&amp;quot;, &amp;quot;TeamMember.Read.All&amp;quot;, &amp;quot;TeamSettings.Read.All&amp;quot;, &amp;quot;TeamsTab.Read.All&amp;quot;);
+(az ad sp show --id $servicePrincipalId --query oauth2Permissions | ConvertFrom-Json) | ? { $_.value -in $servicePrincipalNameOauth2Permissions} | % {
+    $permission = $_
+
+    $delPermission = @{
+        id = $permission.Id
+        type = &amp;quot;Scope&amp;quot;
+    }
+    $reqGraph.resourceAccess += $delPermission
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using the &amp;ldquo;-in&amp;rdquo; filter we receive all specified entries for the array we need. To use the IDs in the next command the script creates a hashtable that can be converted in the needed JSON file (correct a file). The permissions are added as &amp;ldquo;Scope&amp;rdquo; representing &amp;ldquo;Delegation&amp;rdquo; permission. The &amp;ldquo;az ad app create&amp;rdquo; command will require a file with the permissions.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Set-Content ./required_resource_accesses.json -Value (&amp;quot;[&amp;quot; + ($reqGraph | ConvertTo-Json) + &amp;quot;]&amp;quot;)
+$newapp = az ad app create --display-name $appName --available-to-other-tenants false --native-app true --required-resource-accesses `@required_resource_accesses.json | ConvertFrom-Json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This creates an app that is only valid in your tenant &amp;ldquo;&amp;ndash;available-to-other-tenants false&amp;rdquo; and allows the login as a public client &amp;ldquo;&amp;ndash;native-app true&amp;rdquo;. The result is a JSON representing the new application.&lt;/p&gt;
+&lt;p&gt;The benefit of using the Azure CLI is the possibility to grant admin consent for the newly created app&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission admin-consent --id $newapp.appId
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;powershell-with-azure-ad&#34;&gt;PowerShell with Azure AD&lt;/h3&gt;
+&lt;p&gt;For reference: &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/deploy/create-aadapp.ps1&#34; target=&#34;_blank&#34;&gt;create-aadapp.ps1&lt;/a&gt;
+Microsoft docs: &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#applications&#34; target=&#34;_blank&#34;&gt;Azure AD Application command overview&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To get the ID for the Microsoft Graph Service principal we query the current directory and filter to the display name.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalName = &amp;quot;Microsoft Graph&amp;quot;;
+$servicePrincipal = Get-AzureADServicePrincipal -All $true | ? { $_.DisplayName -eq $servicePrincipalName };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Where the Azure CLI requires a file to setup permission, the PowerShell version requires a .NET object. The Microsoft Graph service principal ID is the ResourceAppID.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$reqGraph = New-Object -TypeName &amp;quot;Microsoft.Open.AzureAD.Model.RequiredResourceAccess&amp;quot;;
+$reqGraph.ResourceAppId = $servicePrincipal.AppId;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;From the returned object we can select the &amp;ldquo;Oauth2Permissions&amp;rdquo; property to filter on our array with the required permissions. For each permission another .NET object is created and added to the collection named &amp;ldquo;ResourceAccess&amp;rdquo;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;$servicePrincipalNameOauth2Permissions = @(&amp;quot;Channel.ReadBasic.All&amp;quot;, &amp;quot;ChannelMember.Read.All&amp;quot;, &amp;quot;ChannelMessage.Read.All&amp;quot;, &amp;quot;ChannelSettings.Read.All&amp;quot;, &amp;quot;Group.Read.All&amp;quot;, &amp;quot;GroupMember.Read.All&amp;quot;, &amp;quot;Team.ReadBasic.All&amp;quot;, &amp;quot;TeamMember.Read.All&amp;quot;, &amp;quot;TeamSettings.Read.All&amp;quot;, &amp;quot;TeamsTab.Read.All&amp;quot;);
+$servicePrincipal.Oauth2Permissions | ? { $_.Value -in $servicePrincipalNameOauth2Permissions} | % {
+    $permission = $_
+    $delPermission = New-Object -TypeName &amp;quot;Microsoft.Open.AzureAD.Model.ResourceAccess&amp;quot; -ArgumentList $permission.Id,&amp;quot;Scope&amp;quot; #delegate permission (oauth) are always &amp;quot;Scope&amp;quot;
+    $reqGraph.ResourceAccess += $delPermission
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now it is time to setup the application (only in this directory and as public client) and retrieve the ID of the new app:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;New-AzureADApplication -DisplayName $appName -AvailableToOtherTenants:$false -PublicClient:$true -RequiredResourceAccess $reqGraph;
+&amp;quot;ClientId: &amp;quot; + $newapp.AppId;
+&amp;quot;TenantId: &amp;quot; + (Get-AzureADTenantDetail).ObjectId;
+&amp;quot;Check AAD app: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/&amp;quot; + $newapp.AppId + &amp;quot;/objectId/&amp;quot; + $newapp.ObjectId + &amp;quot;/isMSAApp/&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The last line creates a link to the Azure AD to grant admin consent.&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You can check out my linked solution to get the full picture from the client code using the app to the setup required for authentication. I would recommend checking out the Azure CLI because it is the most complete solution even though it does not feel natural to me as a PowerShell guy. The example should give you an idea how to get the needed IDs and how to constructed the required objects/file to create the app. Let me know how you setup Azure AD apps and if there are other options. I&amp;rsquo;ve ignored the &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadapplication&#34; target=&#34;_blank&#34;&gt;PowerShell AZ module&lt;/a&gt; because you are not able to grant admin consent too and chances are higher you may have AzureAD PowerShell installed already.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Teams backup your channel messages with Microsoft Graph</title>
+      <link>https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/</link>
+      <pubDate>Sun, 13 Dec 2020 00:21:00 +0100</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2020/12/20201130-m365teamsbackup/</guid>
+      <description>&lt;p&gt;I have sat down for four weekends in a row to come up with a solution for two problem I encountered in the past:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I wanted to save all images from a beautiful Teams channel message. Teams is saving these inline images not to SharePoint. The only way to download is to click on each image.&lt;/li&gt;
+&lt;li&gt;We are doing a Tenant to Tenant migration at &lt;a href=&#34;https://glueckkanja-gab.com/en/&#34; target=&#34;_blank&#34;&gt;glueckkanja-gab&lt;/a&gt; after our merger. Most of the migration tools will support the migration of Teams chat, but not all tools are available, and some implementations are lacking features for a more flexible approach.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I started my career as a developer and my heart is still thinking Visual Basic. Do not be afraid, I migrated my dev skills to C# a long time ago and my array starts at 0 not 1.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--title.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;I really wanted to try a few things regarding Microsoft Graph, the Microsoft Graph SDK and Microsoft Teams. The Microsoft Teamwork part of the API has a solid starting point (if you look at the beta version). The API is getting &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-concept-overview&#34; target=&#34;_blank&#34;&gt;very mature set of capabilities&lt;/a&gt;. I&amp;rsquo;m a huge fan of &lt;a href=&#34;https://azure.microsoft.com/en-us/services/functions/&#34; target=&#34;_blank&#34;&gt;Azure Functions&lt;/a&gt; and I&amp;rsquo;ve done quite a few projects that are talking to the Microsoft Graph using &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions&#34; target=&#34;_blank&#34;&gt;Application Permissions&lt;/a&gt;. I&amp;rsquo;ve checked the documentation and if I wanted to go this route I would have to request &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-protected-apis&#34; target=&#34;_blank&#34;&gt;special permissions&lt;/a&gt; from Microsoft to access the content without a real user. For now I decided to go with a console application and a &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code&#34; target=&#34;_blank&#34;&gt;Azure AD Device Code flow&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have published the source code at GitHub. Maybe this will get your own solution a kickstart. Just a quick disclaimer: A lot of this stuff is first time code for me (DI in a console, Graph Auth provider, logging, &amp;hellip;). I think at some points I over-engineered the solution and I got distracted from my real business problems ;)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34; target=&#34;_blank&#34;&gt;https://github.com/marcoscheel/M365.TeamsBackup&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In the following sections I will show you how I approached the problem, how the result of the backup looks, how to setup and how to run it for yourself.&lt;/p&gt;
+&lt;h2 id=&#34;check-your-migration-vendor-of-choice-first&#34;&gt;Check your migration vendor of choice first!&lt;/h2&gt;
+&lt;p&gt;I have only limited experience with the following tools. But these vendors are the big players, and you can easily get in touch with them to get a demo or further information.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.avepoint.com/products/hybrid/office-365-migration/fly&#34; target=&#34;_blank&#34;&gt;AvePoint&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quest.com/solutions/teams/&#34; target=&#34;_blank&#34;&gt;Quest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sharegate.com/products/sharegate-desktop/teams-migration&#34; target=&#34;_blank&#34;&gt;ShareGate&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is ok if you stop here if your migration needs are satisfied by one of these vendors. If you are interested in my approach it might still be worth reading on ;)&lt;/p&gt;
+&lt;h2 id=&#34;my-goal&#34;&gt;My goal&lt;/h2&gt;
+&lt;p&gt;Since the beginning of the first lockdown in April we at Glück &amp;amp; Kanja did a cooking event for a social online gathering. We are still doing it and we created a lot of content since the first meeting. The event is hosted on Microsoft Teams Channel meeting every Monday. Check out our &lt;a href=&#34;https://www.glueckkanja.com/blog/gk/homeoffice/collaboration/2020/04/kochen-mit-zeba/&#34; target=&#34;_blank&#34;&gt;blog post (german)&lt;/a&gt;. The event created a ton of beautifully pictures but they were stuck inside a Teams thread without easy access like SharePoint (if you consider SharePoint an easy access method). The backup should save all the attachments to the file system. Sneak preview of the result:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--backupimages.jpg&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;For our migration to the new tenant, we are running a set of tools. The tooling we have at hand has some limits regarding channel message migration. We wanted to preserve that chat messages for a Team without polluting the new target team. In some cases, we also want to archive the Team to a central location (a single SharePoint site collection) for archiving purposes. For this case we would need to export the chat to some readable and searchable format preserving most of the content.&lt;/p&gt;
+&lt;p&gt;My goal is not to provide a ready to use backup solution. For some of your scenarios this could work. I wanted to also provide a code base to accommodate your more specific requirements. We don&amp;rsquo;t rely on extensive app integration in our teams, so handling the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/chatmessageattachment?view=graph-rest-1.0&#34; target=&#34;_blank&#34;&gt;adaptive cards in a chat message&lt;/a&gt; is not really a part of the HTML generation solution. But the JSON from the Microsoft Graph will have all or some information included. If you need to handle adaptive card content this solution could be a great kickstart so you don&amp;rsquo;t have to write a lot of boilerplate code to get to the message attachment properties.&lt;/p&gt;
+&lt;p&gt;The solution will try to preserve as much information as needed from the Microsoft Graph and dump it to disk. From this data you can run multiple HTML conversions to address the need for the content representation. The HTML generation is no longer interacting with the Microsoft Graph and could be reparsed month after the original content was deleted (decommissioning of the old tenant).&lt;/p&gt;
+&lt;p&gt;My current focus is on the following data:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic team metadata including members&lt;/li&gt;
+&lt;li&gt;Channel metadata including members for private channels&lt;/li&gt;
+&lt;li&gt;Messages and replies with author and dates&lt;/li&gt;
+&lt;li&gt;Message body and inline pictures (hosted content)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;my-approach&#34;&gt;My approach&lt;/h2&gt;
+&lt;p&gt;I mentioned it a few times. I split the solution in two parts. The first part is talking to the Microsoft Graph and storing the response to a JSON file. For every Team I create a folder with the ID of the group. The response of the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/team?view=graph-rest-beta&#34; target=&#34;_blank&#34;&gt;team request&lt;/a&gt; will be stored in the folder with the name &amp;ldquo;team.json&amp;rdquo;. For every channel I create a folder with the channel ID and the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/channel?view=graph-rest-beta&#34; target=&#34;_blank&#34;&gt;channel response&lt;/a&gt; will be stored as &amp;ldquo;channel.json&amp;rdquo;. For every message (entry point of a thread if replies are available) I create a folder with the message ID and the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/chatmessage?view=graph-rest-beta&#34; target=&#34;_blank&#34;&gt;message response&lt;/a&gt; will be stored as &amp;ldquo;message.json&amp;rdquo;. For every reply to a message I create another file with the pattern &amp;ldquo;message.{messageid}.json&amp;rdquo;. Every message will be checked if inline content is available. This is called &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/api/resources/chatmessagehostedcontent?view=graph-rest-beta&#34; target=&#34;_blank&#34;&gt;hosted content&lt;/a&gt; and I treat every item as an inline image represented as an PNG-file. Because the ID for a hosted content item is very long, I decided to use an MD5 hash of the ID to use in the filename. For the root message the file is named &amp;ldquo;hostedcontent.{hostedcontenidMD5}.png&amp;rdquo; and for replies &amp;ldquo;hostedcontent.{messageid}.{hostedcontenidMD5}.png&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--jsonfiles.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Of cause all this needs to happen with some kind of authentication. As mentioned, I&amp;rsquo;m big fan of application permission because there is no user involved. But the current graph implementation only offers access to chat messages if you apply for an app with protected API access. Read more about this &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/teams-protected-apis&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;. I tried to apply but 4 weeks later I still don&amp;rsquo;t have feedback for my request (single tenant app should be easy) and I implemented the access using delegate permission based on the device flow. Based on this approach I made this into a feature. The tool will backup (by default) all teams the account is a member of. This way you can add the account to a Team as an admin or even the owner of Team can do this to &amp;ldquo;request&amp;rdquo; chat backup.&lt;/p&gt;
+&lt;p&gt;The other console application is taking care of building the HTML from the JSON files. Because all the heavy lifting is already done in the first part, the generation of HTML is really fast. The application needs the source directory and the HTML template for the output. The HTML templates currently has some inline styles to make it easy to move around and keep the dependencies low. The application is creating a HTML file for each channel and optionally a HTML file for every thread. Based on the configuration the HTML file will contain all &lt;a href=&#34;https://www.w3docs.com/snippets/html/how-to-display-base64-images-in-html.html&#34; target=&#34;_blank&#34;&gt;images inline&lt;/a&gt; or as a separate file. If you go with the inline images you get a very portable version of the backup, but also a big file if you have many images or a long chat history. The combination of inline images and every thread as an HTML file will give you a great choice out of the box. If you would like to customize the HTML look and feel have a peak at the &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/template/template.html&#34; target=&#34;_blank&#34;&gt;template file&lt;/a&gt;. With a few tweaks in the CSS styles you can enhance readability and change it to your preferences. I hopefully selected some easy-to-understand selectors.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--htmltemplate.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;the-code&#34;&gt;The code&lt;/h2&gt;
+&lt;p&gt;Let’s have a quick look at the code and what it takes to get it compiled, if you pull it from GitHub. I am doing all my development in Visual Studio &amp;ldquo;proper&amp;rdquo;. The solution was created with &lt;a href=&#34;https://visualstudio.microsoft.com/vs/preview/&#34; target=&#34;_blank&#34;&gt;Visual Studio 2019 Enterprise (Preview)&lt;/a&gt; but the community non preview version should also be fine. I write most of my code in C# and so is this code. As &lt;a href=&#34;https://devblogs.microsoft.com/dotnet/announcing-net-5-0/&#34; target=&#34;_blank&#34;&gt;.NET 5 is now available&lt;/a&gt; this is my first solution using this version, but I think you can get it running on .NET Core 3.1 if you downgrade the solution and packages. The final solution is hosted on GitHub and you are welcome to open an issue or create a pull request. Just have a little bit of patience as this is just a side hustle for me.&lt;/p&gt;
+&lt;p&gt;Normally I write Azure Functions and dependency injection is not yet in my DNA. If you look at the code this might feel a little awkward. I spend way too much time to get the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/core/extensions/generic-host&#34; target=&#34;_blank&#34;&gt;console app make use of the DI concepts&lt;/a&gt;. For a start it feels OK and I had a lot of fun learning to code this, but I&amp;rsquo;m not sure this is 100% correct. Let’s put it this way: It works! Also, a thing I love about Azure Functions is the native Microsoft Extension Logging integration. So, it was natural to also rely on my normal code to write logs. In the cloud logging to a file on disk is not really a thing and that might be the reason why Microsoft does not have an out of the box solution for that. That’s my excuse why all of my logs are only on the console for the moment. I am looking into NLog or Serilog. The biggest benefit is to configure the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/core/extensions/logging&#34; target=&#34;_blank&#34;&gt;logs levels&lt;/a&gt; very easy. Check out the application.json for a sample. The configuration system is also based on Microsoft standards. The console is loading the application.json settings and during development an argument can be passed in to respected the correct JSON file. A Special thanks to &lt;a href=&#34;https://dfederm.com/building-a-console-app-with-.net-generic-host/&#34; target=&#34;_blank&#34;&gt;David Feldman for his blog post&lt;/a&gt; which got me started on the console DI thing.&lt;/p&gt;
+&lt;p&gt;As of now we didn&amp;rsquo;t write any business relevant code (developer love to write non relevant code 😁) so let’s get our hands dirty. Getting the data from Microsoft Teams is done via the Microsoft Graph. I&amp;rsquo;m using the &lt;a href=&#34;https://docs.microsoft.com/en-us/graph/sdks/use-beta?tabs=CS&#34; target=&#34;_blank&#34;&gt;beta SDK&lt;/a&gt; because for the Teams workload some feature are only available in the non-production endpoint. Also, I like to play with fire. The authentication (as mentioned: I had to go with the device code) is provided by the MSAL libraries. For my &amp;ldquo;daemon apps” (Azure Functions) I rely on the pure MSAL implementation, but for this application I tried something new and used the &lt;a href=&#34;https://github.com/microsoftgraph/msgraph-sdk-dotnet-auth&#34; target=&#34;_blank&#34;&gt;Microsoft Graph Auth&lt;/a&gt; libraries. The NuGet is still in preview, but this was the easiest solution to get the device code up and running in minutes. I plan to use this library in the future for my other projects. One thing was missing and was really annoying: I had to authenticate on every debug run, so I copied some code to &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/blob/main/src/Core/Services/Util/TokenCacheHelper.cs&#34; target=&#34;_blank&#34;&gt;persist the token&lt;/a&gt; to a file. This code is also standard Microsoft code, and it will put the token in a locally protected file. For the generation of the HTML file I visited an old friend: &lt;a href=&#34;https://html-agility-pack.net/&#34; target=&#34;_blank&#34;&gt;HTML Agility Pack (HAP)&lt;/a&gt;. This is an awesome library and working with the HTML DOM is a breeze! The HTML from the Teams chat message can contain images (hosted content) pointing to the Microsoft Graph endpoint. Using the HTML Agility Pack, I search the images and replace the src with as base64 encoded version or a local file reference.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--nuget.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;the-result&#34;&gt;The result&lt;/h2&gt;
+&lt;p&gt;Here is a side-by-side comparison. The original channel in Microsoft Teams and the HTML backup generated from the Microsoft Graph API.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--originalvsbackup.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;The HTML file will contain the Team name, creation date and the member count. The Channel name is also part of every file and if it is a private channel also the member count. Every post will contain the creation (+ edit if available) time, the author and the body including images. Links to documents are not modified and the file will not be downloaded. The content of an adaptive card is available in the JSON, but currently the output is not rendered in HTML. The adaptive cards rendering will be added later.&lt;/p&gt;
+&lt;p&gt;After the complete run you have a set of JSON files representing Microsoft Graph SDK classes. I recommend putting them in to a ZIP file (there are a lot of files) and place them next to the HTML output. Based on your data and configuration the output can be stored in a SharePoint library or on a file based archive.&lt;/p&gt;
+&lt;h2 id=&#34;your-setup&#34;&gt;Your setup&lt;/h2&gt;
+&lt;p&gt;Currently the setup is not download and ready to run. First I don&amp;rsquo;t want to offer a &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/single-and-multi-tenant-apps&#34; target=&#34;_blank&#34;&gt;multi-tenant application in my Azure AD&lt;/a&gt;. Therefor you need to talk to your admin to register the application in the first place. Based on the permission the app needs the admin consent in any way. Please check out the project &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup&#34; target=&#34;_blank&#34;&gt;Readme.md&lt;/a&gt; to get the needed permissions and put the needed details in the application settings file. The binaries can be downloaded from the &lt;a href=&#34;https://github.com/marcoscheel/M365.TeamsBackup/releases&#34; target=&#34;_blank&#34;&gt;release page&lt;/a&gt; of the GitHub project. You will need to have the &lt;a href=&#34;https://dotnet.microsoft.com/download/dotnet-core/5.0/runtime/?utm_source=getdotnetcore&amp;amp;utm_medium=referral&#34; target=&#34;_blank&#34;&gt;.NET 5 runtime&lt;/a&gt; installed.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/img/20201130-m365teamsbackup--run.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;I had a blast writing the solution from start to end. I will tweak the solution in the near future. These are the next ideas I want to code:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Save images with the date in the name and add EXIF data with the author information&lt;/li&gt;
+&lt;li&gt;Allow the use of a non-interactive AAD login (confidential client)&lt;/li&gt;
+&lt;li&gt;Integrate features in an Azure Function and maybe trigger from a Teams Message Extension for an ad-hoc export for every user&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I created the solution for a very specific use case (our tenant migration), but I hope in making the source code available you will be able to solve your problems. If you have feedback, please let me know. Create an issue, hit me up on &lt;a href=&#34;https://twitter.com/marcoscheel&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt; or &lt;a href=&#34;https://www.linkedin.com/in/marcoscheel&#34; target=&#34;_blank&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>App Permissions für Microsoft Graph Calls automatisiert einrichten</title>
+      <link>https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</link>
+      <pubDate>Mon, 08 Jul 2019 11:47:21 +0000</pubDate>
+      
+      <guid>https://marcoscheel.de/post/2019/07/186138885112-app-permissions-f%C3%BCr-microsoft-graph-calls/</guid>
+      <description>&lt;p&gt;Für unser Glück &amp;amp; Kanja Lifecycle Tool setze ich im Schwerpunkt auf Microsoft Graph Calls. Für ein sauberes Setup habe ich mittlerweile ein Script. Es nutzt die &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.0.0&#34; target=&#34;_blank&#34;&gt;PowerShell AZ&lt;/a&gt; und die &lt;a href=&#34;https://docs.microsoft.com/en-US/cli/azure/install-azure-cli?view=azure-cli-latest&#34; target=&#34;_blank&#34;&gt;Azure CLI&lt;/a&gt;. Besonders beim Erstellen einer Azure AD App (genauer Berechtigen und Granten) ist die Azure CLI noch ein Stück besser bzw. umfangreicher als die AZ PowerShell.&lt;/p&gt;
+&lt;p&gt;Die Lifecycle App arbeitet mit AD Settings und Groups. Erweiterte Funktionen setzen auf &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview&#34; target=&#34;_blank&#34;&gt;Access Reviews&lt;/a&gt; Feature aus dem AAD P2 Lizenzset. Diese Graph Berechtigungen setze ich direkt per CLI Script:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 19dbc75e-c2e2-444c-a770-ec69d8559fc7=Role #msgraph Directory.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 62a82d76-70ea-41e2-9197-370581804d09=Role #msgraph Group.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions ef5f7d5c-338f-44b0-86c3-351f46c8bb5f=Role #msgraph AccessReview.ReadWrite.All
+az ad app permission add --id $adapp.ApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions 60a901ed-09f7-4aa5-a16e-7dd3d6f9de36=Role #msgraph ProgramControl.ReadWrite.All
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Die Azure CLI kann dann auch gleich noch den Admin Grant erledigen (wenn man nicht in der Azure Cloud Shell läuft!):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;az ad app permission admin-consent --id $adapp.ApplicationId
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Hier ein Beispiel, wie das Ergebnis dann im Azure AD Portal aussieht:
+&lt;img class=&#34;img-zoomable&#34; src=&#34;https://marcoscheel.de/tmblr/94/b8/3d8dde919b99d6647aa15d89d175.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Wer nun die Guid für seine Berechtigung sucht, kann ganz einfach mit diesem Befehlt (&lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0&#34; target=&#34;_blank&#34;&gt;Azure Active Directory PowerShell 2.0&lt;/a&gt;) auf das ständig wachsende Set an App Permissions zugreifen:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;(Get-AzureADServicePrincipal -filter &amp;quot;DisplayName eq &#39;Microsoft Graph&#39;&amp;quot;).AppRoles | Select Id, Value | Sort Value
+
+Id                                   Value
+--                                   -----
+d07a8cc0-3d51-4b77-b3b0-32704d1f69fa AccessReview.Read.All
+ef5f7d5c-338f-44b0-86c3-351f46c8bb5f AccessReview.ReadWrite.All
+18228521-a591-40f1-b215-5fad4488c117 AccessReview.ReadWrite.Membership
+134fd756-38ce-4afd-ba33-e9623dbe66c2 AdministrativeUnit.Read.All
+5eb59dd3-1da2-4329-8733-9dabdc435916 AdministrativeUnit.ReadWrite.All
+1bfefb4e-e0b5-418b-a88f-73c46d2cc8e9 Application.ReadWrite.All
+18a4783c-866b-4cc7-a460-3d5e5662c884 Application.ReadWrite.OwnedBy
+b0afded3-3588-46d8-8b3d-9842eff778da AuditLog.Read.All
+798ee544-9d2d-430c-a058-570e29e34338 Calendars.Read
+ef54d2bf-783f-4e0f-bca1-3210c0444d99 Calendars.ReadWrite
+a7a681dc-756e-4909-b988-f160edc6655f Calls.AccessMedia.All
+284383ee-7f6e-4e40-a2a8-e85dcb029101 Calls.Initiate.All
+4c277553-8a09-487b-8023-29ee378d8324 Calls.InitiateGroupCall.All
+f6b49018-60ab-4f81-83bd-22caeabfed2d Calls.JoinGroupCall.All
+fd7ccf6b-3d28-418b-9701-cd10f5cd2fd4 Calls.JoinGroupCallAsGuest.All
+7b2449af-6ccd-4f4d-9f78-e550c193f0d1 ChannelMessage.Read.All
+4d02b0cc-d90b-441f-8d82-4fb55c34d6bb ChannelMessage.UpdatePolicyViolation.All
+6b7d71aa-70aa-4810-a8d9-5d9fb2830017 Chat.Read.All
+294ce7c9-31ba-490a-ad7d-97a7d075e4ed Chat.ReadWrite.All
+7e847308-e030-4183-9899-5235d7270f58 Chat.UpdatePolicyViolation.All
+089fe4d0-434a-44c5-8827-41ba8a0b17f5 Contacts.Read
+6918b873-d17a-4dc1-b314-35f528134491 Contacts.ReadWrite
+1138cb37-bd11-4084-a2b7-9f71582aeddb Device.ReadWrite.All
+7a6ee1e7-141e-4cec-ae74-d9db155731ff DeviceManagementApps.Read.All
+dc377aa6-52d8-4e23-b271-2a7ae04cedf3 DeviceManagementConfiguration.Read.All
+2f51be20-0bb4-4fed-bf7b-db946066c75e DeviceManagementManagedDevices.Read.All
+58ca0d9a-1575-47e1-a3cb-007ef2e4583b DeviceManagementRBAC.Read.All
+06a5fe6d-c49d-46a7-b082-56b1b14103c7 DeviceManagementServiceConfig.Read.All
+7ab1d382-f21e-4acd-a863-ba3e13f7da61 Directory.Read.All
+19dbc75e-c2e2-444c-a770-ec69d8559fc7 Directory.ReadWrite.All
+7e05723c-0bb0-42da-be95-ae9f08a6e53c Domain.ReadWrite.All
+7c9db06a-ec2d-4e7b-a592-5a1e30992566 EduAdministration.Read.All
+9bc431c3-b8bc-4a8d-a219-40f10f92eff6 EduAdministration.ReadWrite.All
+4c37e1b6-35a1-43bf-926a-6f30f2cdf585 EduAssignments.Read.All
+6e0a958b-b7fc-4348-b7c4-a6ab9fd3dd0e EduAssignments.ReadBasic.All
+0d22204b-6cad-4dd0-8362-3e3f2ae699d9 EduAssignments.ReadWrite.All
+f431cc63-a2de-48c4-8054-a34bc093af84 EduAssignments.ReadWriteBasic.All
+e0ac9e1b-cb65-4fc5-87c5-1a8bc181f648 EduRoster.Read.All
+0d412a8c-a06c-439f-b3ec-8abcf54d2f96 EduRoster.ReadBasic.All
+d1808e82-ce13-47af-ae0d-f9b254e6d58a EduRoster.ReadWrite.All
+38c3d6ee-69ee-422f-b954-e17819665354 ExternalItem.ReadWrite.All
+01d4889c-1287-42c6-ac1f-5d1e02578ef6 Files.Read.All
+75359482-378d-4052-8f01-80520e7db3cd Files.ReadWrite.All
+5b567255-7703-4780-807c-7be8301ae99b Group.Read.All
+62a82d76-70ea-41e2-9197-370581804d09 Group.ReadWrite.All
+e321f0bb-e7f7-481e-bb28-e3b0b32d4bd0 IdentityProvider.Read.All
+90db2b9a-d928-4d33-a4dd-8442ae3d41e4 IdentityProvider.ReadWrite.All
+6e472fd1-ad78-48da-a0f0-97ab2c6b769e IdentityRiskEvent.Read.All
+db06fb33-1953-4b7b-a2ac-f1e2c854f7ae IdentityRiskEvent.ReadWrite.All
+dc5007c0-2d7d-4c42-879c-2dab87571379 IdentityRiskyUser.Read.All
+656f6061-f9fe-4807-9708-6a2e0934df76 IdentityRiskyUser.ReadWrite.All
+19da66cb-0fb0-4390-b071-ebc76a349482 InformationProtectionPolicy.Read.All
+810c84a8-4a9e-49e6-bf7d-12d183f40d01 Mail.Read
+e2a3a72e-5f79-4c64-b1b1-878b674786c9 Mail.ReadWrite
+b633e1c5-b582-4048-a93e-9f11b44c7e96 Mail.Send
+40f97065-369a-49f4-947c-6a255697ae91 MailboxSettings.Read
+6931bccd-447a-43d1-b442-00a195474933 MailboxSettings.ReadWrite
+658aa5d8-239f-45c4-aa12-864f4fc7e490 Member.Read.Hidden
+3aeca27b-ee3a-4c2b-8ded-80376e2134a4 Notes.Read.All
+0c458cef-11f3-48c2-a568-c66751c238c0 Notes.ReadWrite.All
+c1684f21-1984-47fa-9d61-2dc8c296bb70 OnlineMeetings.Read.All
+b8bb2037-6e08-44ac-a4ea-4674e010e2a4 OnlineMeetings.ReadWrite.All
+0b57845e-aa49-4e6f-8109-ce654fffa618 OnPremisesPublishingProfiles.ReadWrite.All
+b528084d-ad10-4598-8b93-929746b4d7d6 People.Read.All
+246dd0d5-5bd0-4def-940b-0421030a5b68 Policy.Read.All
+79a677f7-b79d-40d0-a36a-3e6f8688dd7a Policy.ReadWrite.TrustFramework
+eedb7fdd-7539-4345-a38b-4839e4a84cbd ProgramControl.Read.All
+60a901ed-09f7-4aa5-a16e-7dd3d6f9de36 ProgramControl.ReadWrite.All
+230c1aed-a721-4c5d-9cb4-a90514e508ef Reports.Read.All
+5e0edab9-c148-49d0-b423-ac253e121825 SecurityActions.Read.All
+f2bf083f-0179-402a-bedb-b2784de8a49b SecurityActions.ReadWrite.All
+bf394140-e372-4bf9-a898-299cfc7564e5 SecurityEvents.Read.All
+d903a879-88e0-4c09-b0c9-82f6a1333f84 SecurityEvents.ReadWrite.All
+a82116e5-55eb-4c41-a434-62fe8a61c773 Sites.FullControl.All
+0c0bf378-bf22-4481-8f81-9e89a9b4960a Sites.Manage.All
+332a536c-c7ef-4017-ab91-336970924f0d Sites.Read.All
+9492366f-7969-46a4-8d15-ed1a20078fff Sites.ReadWrite.All
+21792b6c-c986-4ffc-85de-df9da54b52fa ThreatIndicators.ReadWrite.OwnedBy
+fff194f1-7dce-4428-8301-1badb5518201 TrustFrameworkKeySet.Read.All
+4a771c9a-1cf2-4609-b88e-3d3e02d539cd TrustFrameworkKeySet.ReadWrite.All
+405a51b5-8d8d-430b-9842-8be4b0e9f324 User.Export.All
+09850681-111b-4a89-9bed-3f2cae46d706 User.Invite.All
+df021288-bdef-4463-88db-98f22de89214 User.Read.All
+741f803b-c850-494e-b5df-cde7c675a1ca User.ReadWrite.All
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

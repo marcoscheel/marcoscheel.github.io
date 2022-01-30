@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.92.1" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+<title>SharePoint, FQDN, ServiceAccounts und SSP Provisioning failed - Marco Scheel aka GeekDotNet</title>
+
+
+<meta name="author" content="marcoscheel" />
+
+
+<meta name="description" content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud" />
+
+
+<meta name="keywords" content="xArchived" />
+
+
+<meta property="og:title" content="SharePoint, FQDN, ServiceAccounts und SSP Provisioning failed" />
+<meta name="twitter:title" content="SharePoint, FQDN, ServiceAccounts und SSP Provisioning failed" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcoscheel.de/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/" /><meta property="og:description" content="In meiner letzten SharePoint Installation wurde ich mit einem Active Directory mit Windows NT 4.0 Wurzeln begrüßt. Die Domäne wurde von “kunde.de” auf “neu.kunde.de” upgegraded. Der NETBIOS Name der Domain ist somit “kunde.de” und der Full Qualified Domain Name (FQDN) ist “neu.kunde.de”. In der Vergangenheit hatte ich keine gute Erfahrung mit FQDN’s im Bezug auf den SQL Server gemacht. Mein Versuch den Server über den vollen Namen anzusprechend, ist gescheitert (Pre SP1 Erfahrung).
+Im aktuellen Fall haben wir versucht, den FQDN für die Angabe der Domain Accounts in der Form “neu.kunde.deaccountname” zu verwenden. Bis zur Provisionierung des Shared Service Provider hat das auch super funktioniert." />
+<meta name="twitter:description" content="In meiner letzten SharePoint Installation wurde ich mit einem Active Directory mit Windows NT 4.0 Wurzeln begrüßt. Die Domäne wurde von “kunde.de” auf “neu.kunde.de” upgegraded. Der NETBIOS Name der Domain ist somit “kunde.de” und der Full Qualified Domain Name (FQDN) ist “neu.kunde.de”. In der Vergangenheit hatte ich keine gute Erfahrung mit FQDN’s im Bezug auf den SQL Server gemacht. Mein Versuch den Server über den vollen Namen anzusprechend, ist gescheitert (Pre SP1 Erfahrung).
+Im aktuellen Fall haben wir versucht, den FQDN für die Angabe der Domain Accounts in der Form “neu.kunde.deaccountname” zu verwenden. Bis zur Provisionierung des Shared Service Provider hat das auch super funktioniert." /><meta property="og:image" content="https://marcoscheel.de/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marcoscheel.de/og.png" /><meta property="article:published_time" content="2009-06-25T06:26:00+00:00" /><meta property="article:modified_time" content="2009-06-25T06:26:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://marcoscheel.de/assets/css/fuji.min.css" />
+
+
+
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-391088-7', {'anonymize_ip': true});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
+
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <h1><a class="title-main" href="https://marcoscheel.de">Marco Scheel aka GeekDotNet</a></h1>
+            
+            <span class="title-sub">Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://marcoscheel.de/2009/06/25/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed/">SharePoint, FQDN, ServiceAccounts und SSP Provisioning failed</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2009-06-25</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1005 Wörter</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/xarchived">xArchived</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p>In meiner letzten SharePoint Installation wurde ich mit einem Active Directory mit Windows NT 4.0 Wurzeln begrüßt. Die Domäne wurde von “kunde.de” auf “neu.kunde.de” upgegraded. Der NETBIOS Name der Domain ist somit “kunde.de” und der Full Qualified Domain Name (FQDN) ist “neu.kunde.de”. In der Vergangenheit hatte ich keine gute Erfahrung mit FQDN’s im Bezug auf den SQL Server gemacht. Mein Versuch den Server über den vollen Namen anzusprechend, ist gescheitert (Pre SP1 Erfahrung).</p>
+<p>Im aktuellen Fall haben wir versucht, den FQDN für die Angabe der Domain Accounts in der Form “neu.kunde.deaccountname” zu verwenden. Bis zur Provisionierung des Shared Service Provider hat das auch super funktioniert. Das Erstellen des SSP endete mit folgender Seite:   <br>
+<a href="http://marcoscheel.de/files/2010/09/image_21.png" target="_blank"><img class="img-zoomable" src="http://marcoscheel.de/files/2010/09/image_2_thumb1.png" alt="image_2" />
+
+</a></p>
+<p>In der Liste der SSP’s gab es mehr Details:   <br>
+<a href="http://marcoscheel.de/files/2010/09/image_8.png" target="_blank"><img class="img-zoomable" src="http://marcoscheel.de/files/2010/09/image_8_thumb.png" alt="image_8" />
+
+</a></p>
+<p>Im Eventlog:   <br>
+A runtime exception was detected. Details follow.    <br>
+Message: Windows NT user or group &lsquo;ms.localsvcMossProd&rsquo; not found. Check the name again.</p>
+<pre><code>A runtime exception was detected. Details follow.
+Message: Windows NT user or group 'ms.localsvcMossProd' not found. Check the name again.
+Techinal Details:
+System.Data.SqlClient.SqlException: Windows NT user or group 'ms.localsvcMossProd' not found. Check the name again.
+at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)
+at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+at Microsoft.Office.Server.Data.SqlSession.ExecuteNonQuery(SqlCommand command)
+at Microsoft.Office.Server.Data.SqlServerManager.GrantLogin(String user)
+at Microsoft.Office.Server.Administration.SharedResourceProvider.SynchronizeConfigurationDatabaseAccess(SharedComponentSecurity security)
+at Microsoft.Office.Server.Administration.SharedResourceProvider.SynchronizeAccessControl(SharedComponentSecurity sharedApplicationSecurity)
+at Microsoft.Office.Server.Administration.SharedResourceProvider.Microsoft.Office.Server.Administration.ISharedComponent.Install()
+at Microsoft.Office.Server.Administration.SharedResourceProvider.Provision()
+</code></pre>
+<p>Die SharePoint Logs:</p>
+<pre><code>06/24/2009 17:32:42.34     OWSTIMER.EXE (0x0788)                       0x0DC4    Office Server                     Office Server General             6pqn    High        Granting user 'ms.localsvcMossProd' login access to server 'moss-prod-db'.
+06/24/2009 17:32:43.04     OWSTIMER.EXE (0x0788)                       0x0DC4                                      484                               880i    High        System.Data.SqlClient.SqlException: Windows NT user or group 'ms.localsvcMossProd' not found. Check the name again.     at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)     at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)     at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)     at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)     at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)     at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(C...
+06/24/2009 17:32:43.04*    OWSTIMER.EXE (0x0788)                       0x0DC4                                      484                               880i    High        ...ommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)     at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)     at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)     at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()     at Microsoft.Office.Server.Data.SqlSession.ExecuteNonQuery(SqlCommand command)
+06/24/2009 17:32:43.04     OWSTIMER.EXE (0x0788)                       0x0DC4                                      484                               880j    High        SqlError: 'Windows NT user or group 'ms.localsvcMossProd' not found. Check the name again.'    Source: '.Net SqlClient Data Provider' Number: 15401 State: 1 Class: 11 Procedure: 'sp_grantlogin' LineNumber: 49 Server: 'W2K8-PROD-SQL'
+06/24/2009 17:32:43.04     OWSTIMER.EXE (0x0788)                       0x0DC4                                      484                               880k    High           at Microsoft.Office.Server.Data.SqlServerManager.GrantLogin(String user)     at Microsoft.Office.Server.Administration.SharedResourceProvider.SynchronizeConfigurationDatabaseAccess(SharedComponentSecurity security)     at Microsoft.Office.Server.Administration.SharedResourceProvider.SynchronizeAccessControl(SharedComponentSecurity sharedApplicationSecurity)     at Microsoft.Office.Server.Administration.SharedResourceProvider.Microsoft.Office.Server.Administration.ISharedComponent.Install()     at Microsoft.Office.Server.Administration.SharedResourceProvider.Provision()     at Microsoft.Office.Server.Administration.SharedResourceProviderJob.Execute(Guid targetInstanceId)     at Microsoft.SharePoint.Administration.SPTimerJobInvoke.Invoke(TimerJobExecuteData&amp; data, Int32&amp; result)
+06/24/2009 17:32:43.05     OWSTIMER.EXE (0x0788)                       0x0DC4                                      484                               880l    High        ConnectionString: 'Data Source=moss-prod-db;Initial Catalog=master;Integrated Security=True;Enlist=False;Pooling=False'    ConnectionState: Open ConnectionTimeout: 15
+06/24/2009 17:32:43.06     OWSTIMER.EXE (0x0788)                       0x0DC4                                      484                               880m    High        SqlCommand: 'sp_grantlogin'     CommandType: StoredProcedure CommandTimeout: 0     Parameter: '@loginame' Type: NVarChar Size: 128 Direction: Input Value: 'ms.localsvcMossProd'
+06/24/2009 17:32:43.12     OWSTIMER.EXE (0x0788)                       0x0DC4    Office Server                     Office Server General             900n    Critical    A runtime exception was detected. Details follow.  Message: Windows NT user or group 'ms.localsvcMossProd' not found. Check the name again.  Techinal Details: System.Data.SqlClient.SqlException: Windows NT user or group 'ms.localsvcMossProd' not found. Check the name again.     at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)     at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)     at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)     at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)     at System.Data.SqlClient.Sq...
+06/24/2009 17:32:43.12*    OWSTIMER.EXE (0x0788)                       0x0DC4    Office Server                     Office Server General             900n    Critical    ...lCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)     at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean re
+06/24/2009 17:32:43.13     OWSTIMER.EXE (0x0788)                       0x0DC4    Office Server                     Office Server Shared Services     7fxr    Exception    (Watson Reporting Cancelled) System.Data.SqlClient.SqlException: Windows NT user or group 'ms.localsvcMossProd' not found. Check the name again.     at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)     at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)     at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)     at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)     at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)     at System.Data.SqlClient.Sql...
+06/24/2009 17:32:43.13*    OWSTIMER.EXE (0x0788)                       0x0DC4    Office Server                     Office Server Shared Services     7fxr    Exception    ...Command.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)     at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)     at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)     at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()     at Microsoft.Office.Server.Data.SqlSession.ExecuteNonQuery(SqlCommand command)     at Microsoft.Office.Server.Data.SqlServerManager.GrantLogin(String user)     at Microsoft.Office.Server.Administration.SharedResourceProvider.SynchronizeConfigurationDatabaseAccess(SharedComponentSecurity security)     at Microsoft.Office.Se...
+06/24/2009 17:32:43.13*    OWSTIMER.EXE (0x0788)                       0x0DC4    Office Server                     Office Server Shared Services     7fxr    Exception    ...rver.Administration.SharedResourceProvider.SynchronizeAccessControl(SharedComponentSecurity sharedApplicationSecurity)     at Microsoft.Office.Server.Administration.SharedResourceProvider.Microsoft.Office.Server.Administration.ISharedComponent.Install()     at Microsoft.Office.Server.Administration.SharedResourceProvider.Provision()     
+</code></pre>
+<p>Aus irgendeinem Grund konnte der Account nicht korrekt auf den SQL Server zugreifen. Eine Analyse der IIS Application Pool Accouts hat gezeigt, dass dort einige Accounts in der Form “neu.kunde.deaccountname” (FQDN) und andere in der Form “neu.kundeaccountname” (NETBIOS) gespeichert wurden:</p>
+<p><a href="http://marcoscheel.de/files/2010/09/image_10.png" target="_blank"><img class="img-zoomable" src="http://marcoscheel.de/files/2010/09/image_10_thumb.png" alt="image_10" />
+
+</a></p>
+<p>In der Datenbank werden die User wie folgt gelistet (NETBIOS):</p>
+<p><a href="http://marcoscheel.de/files/2010/09/image_6.png" target="_blank"><img class="img-zoomable" src="http://marcoscheel.de/files/2010/09/image_6_thumb.png" alt="image_6" />
+
+</a></p>
+<p><strong><em>Lösung:</em></strong></p>
+<p>Das Problem ist also der FQDN. Das Provisioning des SSP wird jede Minute erneut versucht und hinterläßt die entsprechenden Spuren im Eventlog und im SharePoint Log. Jetzt ist die Hilfe von STSADM gefragt, damit die Accounts wieder gerade gezogen werden können. Einfach alle Accounts nach Anleitung des folgenden KB auf die Form “kunde.deaccountanme” (NETBIOS) ändern:</p>
+<p><a href="http://support.microsoft.com/kb/934838" target="_blank">KB 934838: How to change service accounts and service account passwords in SharePoint Server 2007 and in Windows SharePoint Services 3.0</a></p>
+<p>Nach den Änderungen wurde der SSP provisioniert und ich konnte weiter machen :-)</p>
+<p>Erst heute mit der Lösung “in der Hand” bin ich mit den richtigen Schlagwörtern über Bing.com zu folgendem Blog Post gekommen:</p>
+<p><a href="http://thaddparker.spaces.live.com/blog/cns!ECFD9E8CDB82F694!183.entry" target="_blank">Thaddparker: Error in using FQDN Domain Names and MOSS 2007</a></p>
+<p>Ein kurzer Check hat gezeigt, dass die Verwendung in Form von <a href="mailto:%e2%80%9caccountname@neu.kunde.de">“accountname@neu.kunde.de</a>” ebenfalls beim Provisionieren des SSP nicht funktioniert:</p>
+<pre><code>Application Server Administration job failed for service instance Microsoft.Office.Server.Search.Administration.SearchAdminSharedWebServiceInstance (15226029-e4cd-4ad6-aefc-965019284510).
+Reason: The specified account name is invalid.
+Parameter name: account
+Techinal Support Details:
+System.ArgumentException: The specified account name is invalid.
+Parameter name: account ---&gt; System.Security.Principal.IdentityNotMappedException: Some or all identity references could not be translated.
+at System.Security.Principal.NTAccount.Translate(IdentityReferenceCollection sourceAccounts, Type targetType, Boolean forceSuccess)
+at System.Security.Principal.NTAccount.Translate(Type targetType)
+at Microsoft.Office.Server.Utilities.WindowsSecurity.ValidateAccount(NTAccount account, Boolean throwIfInvalid)
+--- End of inner exception stack trace ---
+at Microsoft.Office.Server.Utilities.WindowsSecurity.ValidateAccount(NTAccount account, Boolean throwIfInvalid)
+at Microsoft.Office.Server.Administration.SharedAccessRule.Validate()
+at Microsoft.Office.Server.Administration.SharedComponentSecurity.SetAccessRule(SharedAccessRule accessRule)
+at Microsoft.Office.Server.Administration.SharedResourceProvider.GetApplicationSecurity()
+at Microsoft.Office.Server.Administration.SharedWebServiceInstance.ProvisionSharedResourceProviderWebConfigSettings(SharedResourceProvider srp)
+at Microsoft.Office.Server.Administration.SharedWebServiceInstance.Synchronize()
+at Microsoft.Office.Server.Administration.ApplicationServerJob.ProvisionLocalSharedServiceInstances(Boolean isAdministrationServiceJob)
+</code></pre>
+<p>Leason learned? Es steckt halt immer noch zu viel <a href="http://en.wikipedia.org/wiki/Tahoe_%28disambiguation%29" target="_blank">Tahoe</a> in SharePoint und <a href="http://en.wikipedia.org/wiki/NetBIOS" target="_blank">NETBIOS</a> rulez :-(</p>
+<p>Ciao Marco</p>
+
+    </div>
+</article>
+
+
+<div class="license markdown-body">
+    <blockquote>
+        <p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
+               target="_blank">CC BY 4.0</a>.</p>
+    </blockquote>
+</div>
+
+
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = 'https:\/\/marcoscheel.de\/2009\/06\/25\/sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed\/';
+                this.page.identifier = '2009-06-25-sharepoint-fqdn-serviceaccounts-und-ssp-provisioning-failed';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'marcoscheel' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <sidebarh3>Seiten</sidebarh3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/impressum/">Impressum</a>
+            </li>
+            
+            <li>
+                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <sidebarh3>Links</sidebarh3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+            <li>
+                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <sidebarh3>Tags</sidebarh3>
+        <div>
+            
+            <span>
+                <a href="/tags/azure-ad/">Azure AD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/development/">Development</a>
+            </span>
+            
+            <span>
+                <a href="/tags/equipment/">Equipment</a>
+            </span>
+            
+            <span>
+                <a href="/tags/groups/">Groups</a>
+            </span>
+            
+            <span>
+                <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-365/">Microsoft 365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mip/">MIP</a>
+            </span>
+            
+            <span>
+                <a href="/tags/office365/">Office365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sharepoint/">SharePoint</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">Tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/work/">Work</a>
+            </span>
+            
+            <span>
+                <a href="/tags/xarchived/">xArchived</a>
+            </span>
+            
+        </div>
+    </div>
+    <div class="sidebar-item sidebar">
+        <a class="twitter-timeline" data-height="400" href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="sidebar-item sidebar-toc">
+        <sidebarh3>Inhalt</sidebarh3><nav id="TableOfContents"></nav></div>
+</aside>
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <sidebarh3>Seiten</sidebarh3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/impressum/">Impressum</a>
+            </li>
+            
+            <li>
+                <a href="http://feeds.marcoscheel.de/marcoscheel">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <sidebarh3>Links</sidebarh3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/marcoscheel" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/marcoscheel" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/marcoscheel" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+            <li>
+                <a href="https://hairlessinthecloud.com" target="_blank"><span>Hairless in the cloud</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <sidebarh3>Tags</sidebarh3>
+        <div>
+            
+            <span>
+                <a href="/tags/azure-ad/">Azure AD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/development/">Development</a>
+            </span>
+            
+            <span>
+                <a href="/tags/equipment/">Equipment</a>
+            </span>
+            
+            <span>
+                <a href="/tags/groups/">Groups</a>
+            </span>
+            
+            <span>
+                <a href="/tags/meta/">Meta</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-365/">Microsoft 365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-graph/">Microsoft Graph</a>
+            </span>
+            
+            <span>
+                <a href="/tags/microsoft-teams/">Microsoft Teams</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mip/">MIP</a>
+            </span>
+            
+            <span>
+                <a href="/tags/office365/">Office365</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sharepoint/">SharePoint</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">Tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/work/">Work</a>
+            </span>
+            
+            <span>
+                <a href="/tags/xarchived/">xArchived</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <sidebarh3>Inhalt</sidebarh3>
+        <nav id="TableOfContents"></nav>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2021-2022
+                <a href="https://marcoscheel.de">Marco Scheel</a>
+                 | <a href="https://github.com/marcoscheel/marcoscheel.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>
