@@ -1,357 +1,53 @@
-<!doctype html><html lang=de>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=HandheldFriendly content="True">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta http-equiv=cache-control content="no-transform">
-<meta http-equiv=cache-control content="no-siteapp">
-<meta name=generator content="Hugo 0.92.1">
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/site.webmanifest>
-<meta name=msapplication-TileColor content="#da532c">
-<meta name=theme-color content="#ffffff">
-<title>Manage Microsoft Teams membership with Azure AD Access Review - Marco Scheel aka GeekDotNet</title>
-<meta name=author content="Marco Scheel">
-<meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud">
-<meta name=keywords content="Microsoft 365,Azure AD,Microsoft Teams">
-<meta property="og:title" content="Manage Microsoft Teams membership with Azure AD Access Review">
-<meta name=twitter:title content="Manage Microsoft Teams membership with Azure AD Access Review">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/"><meta property="og:description" content="This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).
+<!doctype html><html lang=de><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=HandheldFriendly content="True"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=generator content="Hugo 0.128.1"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>Manage Microsoft Teams membership with Azure AD Access Review - Marco Scheel aka GeekDotNet</title>
+<meta name=author content="Marco Scheel"><meta name=description content="Marco Scheel. Microsoft 365 Modern Collaboration. Podcast Co-Host of Hairless in the Cloud"><meta name=keywords content="Microsoft 365,Azure AD,Microsoft Teams"><meta property="og:title" content="Manage Microsoft Teams membership with Azure AD Access Review"><meta name=twitter:title content="Manage Microsoft Teams membership with Azure AD Access Review"><meta property="og:type" content="article"><meta property="og:url" content="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/"><meta property="og:description" content="This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).
 <DE>Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.</DE>
 Microsoft has great resources to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called Identity Governance) on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.
 Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
 
-">
-<meta name=twitter:description content="This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).
+"><meta name=twitter:description content="This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).
 <DE>Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.</DE>
 Microsoft has great resources to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called Identity Governance) on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.
 Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
 
-"><meta property="og:image" content="https://marcoscheel.de/og.png">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="article:published_time" content="2019-08-02T19:41:30+00:00"><meta property="article:modified_time" content="2019-08-02T19:41:30+00:00">
-<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
-<link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-391088-7',{anonymize_ip:!0})</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-391088-7"></script>
-<link rel=stylesheet href=/css/custom.css>
-</head>
-<body data-theme=auto data-theme-auto=false>
-<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
-<header>
-<div class="container-lg clearfix">
-<div class="col-12 header">
-<h1><a class=title-main href=https://marcoscheel.de>Marco Scheel aka GeekDotNet</a></h1>
-<span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span>
-</div>
-</div>
-</header>
-<main>
-<div class="container-lg clearfix">
-<div class="col-12 col-md-9 float-left content">
-<article>
-<h2 class="post-item post-title">
-<a href=https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/>Manage Microsoft Teams membership with Azure AD Access Review</a>
-</h2>
-<div class="post-item post-meta">
-<span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-08-02</span>
+"><meta property="og:image" content="https://marcoscheel.de/og.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://marcoscheel.de/og.png"><meta property="article:published_time" content="2019-08-02T19:41:30+00:00"><meta property="article:modified_time" content="2019-08-02T19:41:30+00:00"><style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style><link rel=stylesheet href=https://marcoscheel.de/assets/css/fuji.min.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ772EN3ZY"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-MJ772EN3ZY")}</script><link rel=stylesheet href=/css/custom.css></head><body data-theme=auto data-theme-auto=false><script data-cfasync=false>var fujiThemeData=localStorage.getItem("fuji_data-theme");fujiThemeData?fujiThemeData!=="auto"&&document.body.setAttribute("data-theme",fujiThemeData==="dark"?"dark":"light"):localStorage.setItem("fuji_data-theme","auto")</script><header><div class="container-lg clearfix"><div class="col-12 header"><h1><a class=title-main href=https://marcoscheel.de/>Marco Scheel aka GeekDotNet</a></h1><span class=title-sub>Früher SharePoint. Heute Microsoft 365 Modern Collaboration. Co-Host of Hairless in the cloud.</span></div></div></header><main><div class="container-lg clearfix"><div class="col-12 col-md-9 float-left content"><article><h2 class="post-item post-title"><a href=https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/>Manage Microsoft Teams membership with Azure AD Access Review</a></h2><div class="post-item post-meta"><span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-08-02</span>
 <span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1764 Wörter</span>
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/microsoft-365>Microsoft 365</a>&nbsp;<a href=/tags/azure-ad>Azure AD</a>&nbsp;<a href=/tags/microsoft-teams>Microsoft Teams</a>&nbsp;</span>
-</div>
-<div class="post-content markdown-body">
-<p>This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).</p>
-<p>&lt;DE>Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&lt;/DE></p>
-<p>Microsoft has great <a href=https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview target=_blank>resources</a> to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called <a href=https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview target=_blank>Identity Governance)</a> on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.</p>
-<p>Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
-<img class=img-zoomable src=/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png alt=image>
-</p>
-<p>In our modern collaboration (Teams, SharePoint, &mldr;) implementation we strongly recommend to leverage full self service group creation that is already built into the system. With this setup everyone is able to create and manage/own a group. Permanent user education is needed for everyone to understand the concept behind modern groups. Many organizations also have a strong set of internal rules that forces a so called information owner (could be equal to the owner of a group) to review who has access to their data. Most organization rely on the fact people are fulfilling their duties as demanded, but lets face it owners are just human beings that need to do their “real” job. With the introduction of Azure AD Access Review we can support these owner duties and make the process documented and easy to execute.</p>
-<p>AAD Access Review can do the following to support an up to date group membership:</p>
-<ul>
-<li>Setup an Access Review for an Azure AD Group</li>
-<li>Specify the duration (start date, recurrence, duration, &mldr;)</li>
-<li>Specify who will do the review (owner, self, specific people, &mldr;)</li>
-<li>Specify who will be reviewed (all members, guests, &mldr;)</li>
-<li>Specify what will happen if the review is not executed (remove members, &mldr;)</li>
-</ul>
-<p>Before we start we need to talk about licensing. It is obvious that M365 E5 is the best SKU to start with ;) but if you are not that lucky, you need at least an Azure AD P2 license. It is not a “very” common license as it was only part of the EMS E5 SKU, but Microsoft started some time ago <a href=https://www.microsoft.com/en-us/microsoft-365/blog/2019/01/02/introducing-new-advanced-security-and-compliance-offerings-for-microsoft-365/ target=_blank>really attractive license bundles</a>. Many orgs with strong security requirements will at some point hit a license SKU that will include AAD P2. For your trusty lab tenants start a EMS E5 trial to test these features today. To be precise only the accounts reviewing (executing the Access Review) need the license, at least this is my understanding and as always with licensing ask your usual licensing people to get the definitive answer.</p>
-<p>The setup of an Access Review (if not automated through <a href="https://docs.microsoft.com/en-us/graph/api/resources/accessreviews-root?view=graph-rest-beta" target=_blank>MS Graph</a> Beta) is setup in the Azure Portal in the <a href=https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview#onboard-access-reviews target=_blank>identity governance blade</a> of AAD. To create our first Access Review we need to on-board to this feature.
-<img class=img-zoomable src=/tmblr/a3/ad/cecc7fb97787e08c4f87f978dbc0.png alt=image>
-</p>
-<p>Please note we are looking at Access Review in the context of modern collaboration (groups created by Teams, SharePoint, Outlook, &mldr;). Access Review can be used to review any AAD group that you use to grant access to a specific resource or keep a list of trusted users for an infrastructure piece of tech in Azure. The following information might not always be valid for your scenario!</p>
-<p>This is the first half of the screen we need to fill-out for a new Access Review:
-<img class=img-zoomable src=/tmblr/b8/37/a8885e7c2352530bc0dc64f242e6.png alt=image>
-</p>
-<p><strong>Review name</strong>: This is a really important piece! The Review name will be the “only” visible clue for the reviewer once they get the email about the outstanding review. With self service setup and with the nature of how people name their groups we need to ensure people are understanding what they review. We try to automate the creation of the reviews so we put the review timing, the group name and the groups object id in the review name. The ID is helping during support if you send out 4000 Access Reviews and people ask why they got this email they can provide you with the ID and things get easier. For example: 2019-Q1 GRP New Order (af01a33c-df0b-4a97-a7de-c6954bd569ef)</p>
-<p><strong>Frequency</strong>: Also very important! You have to understand that an Access Review is somehow static. You could do a recurring review, but some information will be out of sync. For example the group could be renamed, but the title will not be updated and people might get confused about misleading information in the email that is send out. If you choose to let the owner of a group do the review, the owners will be “copied” to the Access Review config and not updated for future reviews. Technically this could be fixed by Microsoft, but as of now we ran into problems in the context of modern collaboration.
-<img class=img-zoomable src=/tmblr/43/67/e83f0e7133dbdea25ad0ab293014.png alt=image>
-</p>
-<p><strong>Users</strong>: &ldquo;Members of a group” is our choice for collaboration. The other option is “Assigned to an application” and not our focus. For a group we have the option to do a guest only review or review everybody as a member of a group. Based on organizational needs and information like the confidentiality we can make a decision. As a starting point it could be a good option to go with guests only because guests are not very well controlled in most environments. An employee at least has a contract and the general trust level should be higher.</p>
-<p><strong>Group</strong>: Select a group the review should apply to. The latest changes to the Access Review feature allowed to select multiple groups at once. From a collaboration perspective I would avoid it, because at the end of the creation process each group will have its own Access Review instance and the settings are no longer shared. Once again from a collab point of view we need some kind of automation because it is not feasible to create these reviews by an manual task in a foreseeable future.</p>
-<p><strong>Reviewers</strong>: The natural choice for an Office 365 Group (Team) is to go with the “Group owners” option. Especially if we automate the process and don’t have an extra database to lookup who is the information owner. For static groups or highly confidential groups the option “Selected users” could make sense. An interesting option is also the last one called “Members (self)”. This option will &ldquo;force” each member to take a decision if the user is any longer part of this project, team or group. We at <a href=https://glueckkanja.com target=_blank>Glück & Kanja</a> are currently thinking about doing this for some of our internal clients teams. Most of our groups are public and accessible by most of the employee, but membership will document some kind of current involvement for the client represented by the group. This could also naturally reduce the number of teams that show up in your Microsoft Teams client app. As mentioned earlier at the moment it seems that the option “Group owners” will be resolved once the Access Review starts and the instance of the review is then fixed. So any owner change could be not reflected in future instances in recurring reviews. Hopefully this will be fixed by Microsoft.</p>
-<p><strong>Program</strong>: This is a logical grouping of access reviews. For example we could add all collaboration related reviews to one program vs administration reviews with a more static route.
-<img class=img-zoomable src=/tmblr/81/2b/50d2ee022a8bf0412503f18d974d.png alt=image>
-</p>
-<p>More advanced settings are collapsed, but should definitely be reviews.</p>
-<p><strong>Upon completion settings</strong>: Allows to automatically apply the review results. I would suggest to try this settings, because it will not only document the review but take the required action on the membership. If group owners are not aware what these Access Review email are, then we talk about potential loss of access for members not reviewed, but at the end that is what we want. People need to take this part of identity governance for real and take care of their data. Any change by the system is document (Audit log of the group) and can be reverse manually. If the system is not executing the results of the review, someone must look up results regularly and then ensure to remove the users based on the outcome. If you go for Access Review, I strongly recommend on automatically applying the results (after you own internal tests).</p>
-<p>Lets take a look on the created Access Review.
-<img class=img-zoomable src=/tmblr/8c/9d/2372c6b805906d8da4d8cedad814.png alt=image>
-</p>
-<p><strong>Azure Portal</strong>: This is an overview for the admin (non recurring access review).
-<img class=img-zoomable src=/tmblr/28/60/d0b7362d036eb07d9b4310cbf592.png alt=image>
-</p>
-<p><strong>Email</strong>: As you can see the prominent Review name is what is standing out to the user. The group name (also highlighted red) is buried within all other text.
-<img class=img-zoomable src=/tmblr/b4/b4/92ec7111904b2875457c90a4959f.png alt=image>
-</p>
-<p><strong>Click on “Start Review” from the email</strong>: The user now can take action based on recommendations (missing in my lab tenant due to inactivity of my lab users).
-<img class=img-zoomable src=/tmblr/c8/31/d612013164d7119004bbc1e078f5.png alt=image>
-</p>
-<p><strong>Take Review</strong>: Accept 6 users.</p>
-<p><img class=img-zoomable src=/tmblr/b3/14/91e4c324a1df66f16ebb9bfed94d.png alt=image>
-</p>
-<p><strong>Review Summary</strong>: This is the summary if the owner has taken all actions.
-<img class=img-zoomable src=/tmblr/1e/a2/61923832e72d07f5d077100ba3ee.png alt=image>
-</p>
-<p><strong>Azure Portal</strong>: Audit log information for the group.</p>
-<p>After the user completed the review the system didn’t make a change to the group. Based on the configuration if actions should be automatically applied the results apply at the end of the review process! Until this time the owners can change their mind. Once the review period is over the system will apply the needed changes.</p>
-<p>I really love this feature in the context of modern collaboration. The process of keeping a current list of involved members in a team is a big benefit for productivity and security. The “need to know” principal is supported by a technical implementation “free of cost” (a mentioned everyone should have AAD P2 through some SKU 😎).</p>
-<p>Our GK O365 Lifecycle tool was extended to allow the creation of Access Reviews through the Microsoft Graph based on the Group/Team classification. Once customers read or get a demo about this feature and own the license we immediately start a POC implementation. If our tool is already in place it is only a matter of some JSON configuration to be up and running.</p>
-</div>
-</article>
-<div class="license markdown-body">
-<blockquote>
-<p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel=license href=https://creativecommons.org/licenses/by/4.0/ target=_blank>CC BY 4.0</a>.</p>
-</blockquote>
-</div>
-<div class=post-comment data-comment=disqus>
-<span class=post-comment-notloaded>
-<i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare
-</span>
-<div id=disqus_thread style=display:none></div>
-<script>function loadComment(){var b=document.querySelector('.post-comment'),c=function(){this.page.url='https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/',this.page.identifier='186728523052-manage-microsoft-teams-membership-with-azure-ad'},a=document.createElement('script');a.src='https://marcoscheel.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),document.querySelector('#disqus_thread').removeAttribute('style'),(document.body||document.head).appendChild(a),document.querySelector('span.post-comment-notloaded').setAttribute('style','display: none;')}</script>
-</div>
-</div>
-<aside class="col-12 col-md-3 float-left sidebar">
-<div class="sidebar-item sidebar-pages">
-<sidebarh3>Seiten</sidebarh3>
-<ul>
-<li>
-<a href=/>Home</a>
-</li>
-<li>
-<a href=/archives/>Archives</a>
-</li>
-<li>
-<a href=/about/>About</a>
-</li>
-<li>
-<a href=/search/>Search</a>
-</li>
-<li>
-<a href=/impressum/>Impressum</a>
-</li>
-<li>
-<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
-</li>
-</ul>
-</div>
-<div class="sidebar-item sidebar-links">
-<sidebarh3>Links</sidebarh3>
-<ul>
-<li>
-<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
-</li>
-<li>
-<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
-</li>
-<li>
-<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
-</li>
-<li>
-<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
-</li>
-</ul>
-</div>
-<div class="sidebar-item sidebar-tags">
-<sidebarh3>Tags</sidebarh3>
-<div>
-<span>
-<a href=/tags/azure-ad/>Azure AD</a>
-</span>
-<span>
-<a href=/tags/development/>Development</a>
-</span>
-<span>
-<a href=/tags/equipment/>Equipment</a>
-</span>
-<span>
-<a href=/tags/groups/>Groups</a>
-</span>
-<span>
-<a href=/tags/meta/>Meta</a>
-</span>
-<span>
-<a href=/tags/microsoft-365/>Microsoft 365</a>
-</span>
-<span>
-<a href=/tags/microsoft-graph/>Microsoft Graph</a>
-</span>
-<span>
-<a href=/tags/microsoft-teams/>Microsoft Teams</a>
-</span>
-<span>
-<a href=/tags/mip/>MIP</a>
-</span>
-<span>
-<a href=/tags/office365/>Office365</a>
-</span>
-<span>
-<a href=/tags/sharepoint/>SharePoint</a>
-</span>
-<span>
-<a href=/tags/tools/>Tools</a>
-</span>
-<span>
-<a href=/tags/work/>Work</a>
-</span>
-<span>
-<a href=/tags/xarchived/>xArchived</a>
-</span>
-</div>
-</div>
-<div class="sidebar-item sidebar">
-<a class=twitter-timeline data-height=400 href="https://twitter.com/marcoscheel?ref_src=twsrc%5Etfw">Tweets by marcoscheel</a> <script async src=https://platform.twitter.com/widgets.js></script>
-</div>
-<div class="sidebar-item sidebar-toc">
-<sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents></nav></div>
-</aside>
-</div>
-<div class=btn>
-<div class=btn-menu id=btn-menu>
-<i class="iconfont icon-grid-sharp"></i>
-</div>
-<div class=btn-toggle-mode>
-<i class="iconfont icon-contrast-sharp"></i>
-</div>
-<div class=btn-scroll-top>
-<i class="iconfont icon-chevron-up-circle-sharp"></i>
-</div>
-</div>
-<aside class=sidebar-mobile style=display:none>
-<div class=sidebar-wrapper>
-<div class="sidebar-item sidebar-pages">
-<sidebarh3>Seiten</sidebarh3>
-<ul>
-<li>
-<a href=/>Home</a>
-</li>
-<li>
-<a href=/archives/>Archives</a>
-</li>
-<li>
-<a href=/about/>About</a>
-</li>
-<li>
-<a href=/search/>Search</a>
-</li>
-<li>
-<a href=/impressum/>Impressum</a>
-</li>
-<li>
-<a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a>
-</li>
-</ul>
-</div>
-<div class="sidebar-item sidebar-links">
-<sidebarh3>Links</sidebarh3>
-<ul>
-<li>
-<a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a>
-</li>
-<li>
-<a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a>
-</li>
-<li>
-<a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a>
-</li>
-<li>
-<a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a>
-</li>
-</ul>
-</div>
-<div class="sidebar-item sidebar-tags">
-<sidebarh3>Tags</sidebarh3>
-<div>
-<span>
-<a href=/tags/azure-ad/>Azure AD</a>
-</span>
-<span>
-<a href=/tags/development/>Development</a>
-</span>
-<span>
-<a href=/tags/equipment/>Equipment</a>
-</span>
-<span>
-<a href=/tags/groups/>Groups</a>
-</span>
-<span>
-<a href=/tags/meta/>Meta</a>
-</span>
-<span>
-<a href=/tags/microsoft-365/>Microsoft 365</a>
-</span>
-<span>
-<a href=/tags/microsoft-graph/>Microsoft Graph</a>
-</span>
-<span>
-<a href=/tags/microsoft-teams/>Microsoft Teams</a>
-</span>
-<span>
-<a href=/tags/mip/>MIP</a>
-</span>
-<span>
-<a href=/tags/office365/>Office365</a>
-</span>
-<span>
-<a href=/tags/sharepoint/>SharePoint</a>
-</span>
-<span>
-<a href=/tags/tools/>Tools</a>
-</span>
-<span>
-<a href=/tags/work/>Work</a>
-</span>
-<span>
-<a href=/tags/xarchived/>xArchived</a>
-</span>
-</div>
-</div>
-<div class="sidebar-item sidebar-toc">
-<sidebarh3>Inhalt</sidebarh3>
-<nav id=TableOfContents></nav>
-</div>
-</div>
-</aside>
-</main>
-<footer>
-<div class="container-lg clearfix">
-<div class="col-12 footer">
-<span>&copy; 2021-2022
-<a href=https://marcoscheel.de>Marco Scheel</a>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/microsoft-365>Microsoft 365</a>&nbsp;<a href=/tags/azure-ad>Azure AD</a>&nbsp;<a href=/tags/microsoft-teams>Microsoft Teams</a>&nbsp;</span></div><div class="post-content markdown-body"><p>This post will introduce you to the Azure AD Access Review feature. With the introduction of modern collaboration through Microsoft 365 and Microsoft Teams being the main tool it is important to mange who is a member to the underlying Office 365 Group (Azure AD Group).</p><p>&lt;DE>Für eine erhöhte Reichweite wird der Post heute auf Englisch erscheinen. Es geht um die Einführung von Access Reviews (Azure AD) im Zusammenspiel mit Microsoft Teams. Das Verwalten der Mitgliedschaft eines Teams wird durch den Einsatz von diesem Feature unterstützt und stellt die Besitzer weiter in den Mittelpunkt. Sollte großes Interesse an einer komplett deutschen Version bestehen, dann lasst es mich bitte wissen.&lt;/DE></p><p>Microsoft has great <a href=https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview target=_blank>resources</a> to get started on a technical level. The feature enables a set of people to review another set of people. Azure AD is leveraging this capability (all under the bigger umbrella called <a href=https://docs.microsoft.com/en-us/azure/active-directory/governance/identity-governance-overview target=_blank>Identity Governance)</a> on two assets: Azure AD Groups and Azure AD Apps. Microsoft Teams as a hub for collaboration is build on top of Office 365 Groups and so we will have a closer look at the Access Review part for Azure AD Groups.</p><p>Each Office 365 Group (each Team) is build from a set of owners and members. With the open nature of Office 365, members can be employees, contractors, or people outside of the organization.
+<img class=img-zoomable src=/tmblr/76/bd/e538a30288a1511ad21a1fa8800e.png alt=image></p><p>In our modern collaboration (Teams, SharePoint, &mldr;) implementation we strongly recommend to leverage full self service group creation that is already built into the system. With this setup everyone is able to create and manage/own a group. Permanent user education is needed for everyone to understand the concept behind modern groups. Many organizations also have a strong set of internal rules that forces a so called information owner (could be equal to the owner of a group) to review who has access to their data. Most organization rely on the fact people are fulfilling their duties as demanded, but lets face it owners are just human beings that need to do their “real” job. With the introduction of Azure AD Access Review we can support these owner duties and make the process documented and easy to execute.</p><p>AAD Access Review can do the following to support an up to date group membership:</p><ul><li>Setup an Access Review for an Azure AD Group</li><li>Specify the duration (start date, recurrence, duration, &mldr;)</li><li>Specify who will do the review (owner, self, specific people, &mldr;)</li><li>Specify who will be reviewed (all members, guests, &mldr;)</li><li>Specify what will happen if the review is not executed (remove members, &mldr;)</li></ul><p>Before we start we need to talk about licensing. It is obvious that M365 E5 is the best SKU to start with ;) but if you are not that lucky, you need at least an Azure AD P2 license. It is not a “very” common license as it was only part of the EMS E5 SKU, but Microsoft started some time ago <a href=https://www.microsoft.com/en-us/microsoft-365/blog/2019/01/02/introducing-new-advanced-security-and-compliance-offerings-for-microsoft-365/ target=_blank>really attractive license bundles</a>. Many orgs with strong security requirements will at some point hit a license SKU that will include AAD P2. For your trusty lab tenants start a EMS E5 trial to test these features today. To be precise only the accounts reviewing (executing the Access Review) need the license, at least this is my understanding and as always with licensing ask your usual licensing people to get the definitive answer.</p><p>The setup of an Access Review (if not automated through <a href="https://docs.microsoft.com/en-us/graph/api/resources/accessreviews-root?view=graph-rest-beta" target=_blank>MS Graph</a> Beta) is setup in the Azure Portal in the <a href=https://docs.microsoft.com/en-us/azure/active-directory/governance/access-reviews-overview#onboard-access-reviews target=_blank>identity governance blade</a> of AAD. To create our first Access Review we need to on-board to this feature.
+<img class=img-zoomable src=/tmblr/a3/ad/cecc7fb97787e08c4f87f978dbc0.png alt=image></p><p>Please note we are looking at Access Review in the context of modern collaboration (groups created by Teams, SharePoint, Outlook, &mldr;). Access Review can be used to review any AAD group that you use to grant access to a specific resource or keep a list of trusted users for an infrastructure piece of tech in Azure. The following information might not always be valid for your scenario!</p><p>This is the first half of the screen we need to fill-out for a new Access Review:
+<img class=img-zoomable src=/tmblr/b8/37/a8885e7c2352530bc0dc64f242e6.png alt=image></p><p><strong>Review name</strong>: This is a really important piece! The Review name will be the “only” visible clue for the reviewer once they get the email about the outstanding review. With self service setup and with the nature of how people name their groups we need to ensure people are understanding what they review. We try to automate the creation of the reviews so we put the review timing, the group name and the groups object id in the review name. The ID is helping during support if you send out 4000 Access Reviews and people ask why they got this email they can provide you with the ID and things get easier. For example: 2019-Q1 GRP New Order (af01a33c-df0b-4a97-a7de-c6954bd569ef)</p><p><strong>Frequency</strong>: Also very important! You have to understand that an Access Review is somehow static. You could do a recurring review, but some information will be out of sync. For example the group could be renamed, but the title will not be updated and people might get confused about misleading information in the email that is send out. If you choose to let the owner of a group do the review, the owners will be “copied” to the Access Review config and not updated for future reviews. Technically this could be fixed by Microsoft, but as of now we ran into problems in the context of modern collaboration.
+<img class=img-zoomable src=/tmblr/43/67/e83f0e7133dbdea25ad0ab293014.png alt=image></p><p><strong>Users</strong>: &ldquo;Members of a group” is our choice for collaboration. The other option is “Assigned to an application” and not our focus. For a group we have the option to do a guest only review or review everybody as a member of a group. Based on organizational needs and information like the confidentiality we can make a decision. As a starting point it could be a good option to go with guests only because guests are not very well controlled in most environments. An employee at least has a contract and the general trust level should be higher.</p><p><strong>Group</strong>: Select a group the review should apply to. The latest changes to the Access Review feature allowed to select multiple groups at once. From a collaboration perspective I would avoid it, because at the end of the creation process each group will have its own Access Review instance and the settings are no longer shared. Once again from a collab point of view we need some kind of automation because it is not feasible to create these reviews by an manual task in a foreseeable future.</p><p><strong>Reviewers</strong>: The natural choice for an Office 365 Group (Team) is to go with the “Group owners” option. Especially if we automate the process and don’t have an extra database to lookup who is the information owner. For static groups or highly confidential groups the option “Selected users” could make sense. An interesting option is also the last one called “Members (self)”. This option will &ldquo;force” each member to take a decision if the user is any longer part of this project, team or group. We at <a href=https://glueckkanja.com target=_blank>Glück & Kanja</a> are currently thinking about doing this for some of our internal clients teams. Most of our groups are public and accessible by most of the employee, but membership will document some kind of current involvement for the client represented by the group. This could also naturally reduce the number of teams that show up in your Microsoft Teams client app. As mentioned earlier at the moment it seems that the option “Group owners” will be resolved once the Access Review starts and the instance of the review is then fixed. So any owner change could be not reflected in future instances in recurring reviews. Hopefully this will be fixed by Microsoft.</p><p><strong>Program</strong>: This is a logical grouping of access reviews. For example we could add all collaboration related reviews to one program vs administration reviews with a more static route.
+<img class=img-zoomable src=/tmblr/81/2b/50d2ee022a8bf0412503f18d974d.png alt=image></p><p>More advanced settings are collapsed, but should definitely be reviews.</p><p><strong>Upon completion settings</strong>: Allows to automatically apply the review results. I would suggest to try this settings, because it will not only document the review but take the required action on the membership. If group owners are not aware what these Access Review email are, then we talk about potential loss of access for members not reviewed, but at the end that is what we want. People need to take this part of identity governance for real and take care of their data. Any change by the system is document (Audit log of the group) and can be reverse manually. If the system is not executing the results of the review, someone must look up results regularly and then ensure to remove the users based on the outcome. If you go for Access Review, I strongly recommend on automatically applying the results (after you own internal tests).</p><p>Lets take a look on the created Access Review.
+<img class=img-zoomable src=/tmblr/8c/9d/2372c6b805906d8da4d8cedad814.png alt=image></p><p><strong>Azure Portal</strong>: This is an overview for the admin (non recurring access review).
+<img class=img-zoomable src=/tmblr/28/60/d0b7362d036eb07d9b4310cbf592.png alt=image></p><p><strong>Email</strong>: As you can see the prominent Review name is what is standing out to the user. The group name (also highlighted red) is buried within all other text.
+<img class=img-zoomable src=/tmblr/b4/b4/92ec7111904b2875457c90a4959f.png alt=image></p><p><strong>Click on “Start Review” from the email</strong>: The user now can take action based on recommendations (missing in my lab tenant due to inactivity of my lab users).
+<img class=img-zoomable src=/tmblr/c8/31/d612013164d7119004bbc1e078f5.png alt=image></p><p><strong>Take Review</strong>: Accept 6 users.</p><p><img class=img-zoomable src=/tmblr/b3/14/91e4c324a1df66f16ebb9bfed94d.png alt=image></p><p><strong>Review Summary</strong>: This is the summary if the owner has taken all actions.
+<img class=img-zoomable src=/tmblr/1e/a2/61923832e72d07f5d077100ba3ee.png alt=image></p><p><strong>Azure Portal</strong>: Audit log information for the group.</p><p>After the user completed the review the system didn’t make a change to the group. Based on the configuration if actions should be automatically applied the results apply at the end of the review process! Until this time the owners can change their mind. Once the review period is over the system will apply the needed changes.</p><p>I really love this feature in the context of modern collaboration. The process of keeping a current list of involved members in a team is a big benefit for productivity and security. The “need to know” principal is supported by a technical implementation “free of cost” (a mentioned everyone should have AAD P2 through some SKU 😎).</p><p>Our GK O365 Lifecycle tool was extended to allow the creation of Access Reviews through the Microsoft Graph based on the Group/Team classification. Once customers read or get a demo about this feature and own the license we immediately start a POC implementation. If our tool is already in place it is only a matter of some JSON configuration to be up and running.</p></div></article><div class="license markdown-body"><blockquote><p>Falls nicht anders angegeben, ist der Inhalt dieser Seite lizensiert unter <a rel=license href=https://creativecommons.org/licenses/by/4.0/ target=_blank>CC BY 4.0</a>.</p></blockquote></div><div class=post-comment data-comment=disqus><span class=post-comment-notloaded><i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Lade Kommentare</span><div id=disqus_thread style=display:none></div><script>function loadComment(){var t=document.querySelector(".post-comment"),n=function(){this.page.url="https://marcoscheel.de/post/2019/08/186728523052-manage-microsoft-teams-membership-with-azure-ad/",this.page.identifier="186728523052-manage-microsoft-teams-membership-with-azure-ad"},e=document.createElement("script");e.src="https://marcoscheel.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),document.querySelector("#disqus_thread").removeAttribute("style"),(document.body||document.head).appendChild(e),document.querySelector("span.post-comment-notloaded").setAttribute("style","display: none;")}</script></div></div><aside class="col-12 col-md-3 float-left sidebar"><div class="sidebar-item sidebar-pages"><sidebarh3>Seiten</sidebarh3><ul><li><a href=/>Home</a></li><li><a href=/archives/>Archives</a></li><li><a href=/about/>About</a></li><li><a href=/search/>Search</a></li><li><a href=/impressum/>Impressum</a></li><li><a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a></li></ul></div><div class="sidebar-item sidebar-links"><sidebarh3>Links</sidebarh3><ul><li><a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a></li><li><a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a></li><li><a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a></li><li><a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><sidebarh3>Tags</sidebarh3><div><span><a href=/tags/azure-ad/>Azure AD</a>
+</span><span><a href=/tags/development/>Development</a>
+</span><span><a href=/tags/equipment/>Equipment</a>
+</span><span><a href=/tags/groups/>Groups</a>
+</span><span><a href=/tags/meta/>Meta</a>
+</span><span><a href=/tags/microsoft-365/>Microsoft 365</a>
+</span><span><a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span><span><a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span><span><a href=/tags/mip/>MIP</a>
+</span><span><a href=/tags/office365/>Office365</a>
+</span><span><a href=/tags/sharepoint/>SharePoint</a>
+</span><span><a href=/tags/tools/>Tools</a>
+</span><span><a href=/tags/work/>Work</a>
+</span><span><a href=/tags/xarchived/>XArchived</a></span></div></div><div class="sidebar-item sidebar-toc"><sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents></nav></div></aside></div><div class=btn><div class=btn-menu id=btn-menu><i class="iconfont icon-grid-sharp"></i></div><div class=btn-toggle-mode><i class="iconfont icon-contrast-sharp"></i></div><div class=btn-scroll-top><i class="iconfont icon-chevron-up-circle-sharp"></i></div></div><aside class=sidebar-mobile style=display:none><div class=sidebar-wrapper><div class="sidebar-item sidebar-pages"><sidebarh3>Seiten</sidebarh3><ul><li><a href=/>Home</a></li><li><a href=/archives/>Archives</a></li><li><a href=/about/>About</a></li><li><a href=/search/>Search</a></li><li><a href=/impressum/>Impressum</a></li><li><a href=http://feeds.marcoscheel.de/marcoscheel>RSS</a></li></ul></div><div class="sidebar-item sidebar-links"><sidebarh3>Links</sidebarh3><ul><li><a href=https://github.com/marcoscheel target=_blank><span>GitHub</span></a></li><li><a href=https://twitter.com/marcoscheel target=_blank><span>Twitter</span></a></li><li><a href=https://www.linkedin.com/in/marcoscheel target=_blank><span>LinkedIn</span></a></li><li><a href=https://hairlessinthecloud.com target=_blank><span>Hairless in the cloud</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><sidebarh3>Tags</sidebarh3><div><span><a href=/tags/azure-ad/>Azure AD</a>
+</span><span><a href=/tags/development/>Development</a>
+</span><span><a href=/tags/equipment/>Equipment</a>
+</span><span><a href=/tags/groups/>Groups</a>
+</span><span><a href=/tags/meta/>Meta</a>
+</span><span><a href=/tags/microsoft-365/>Microsoft 365</a>
+</span><span><a href=/tags/microsoft-graph/>Microsoft Graph</a>
+</span><span><a href=/tags/microsoft-teams/>Microsoft Teams</a>
+</span><span><a href=/tags/mip/>MIP</a>
+</span><span><a href=/tags/office365/>Office365</a>
+</span><span><a href=/tags/sharepoint/>SharePoint</a>
+</span><span><a href=/tags/tools/>Tools</a>
+</span><span><a href=/tags/work/>Work</a>
+</span><span><a href=/tags/xarchived/>XArchived</a></span></div></div><div class="sidebar-item sidebar-toc"><sidebarh3>Inhalt</sidebarh3><nav id=TableOfContents></nav></div></div></aside></main><footer><div class="container-lg clearfix"><div class="col-12 footer"><span>&copy; 2021-2024
+<a href=https://marcoscheel.de/>Marco Scheel</a>
 | <a href=https://github.com/marcoscheel/marcoscheel.github.io>Source code</a>
-| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
-</span>
-</div>
-</div>
-</footer>
-<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
-<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script>
-<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
-<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
-<script defer src=/assets/js/fuji.min.js></script>
-</body>
-</html>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a></span></div></div></footer><script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script><script defer src=/assets/js/fuji.min.js></script></body></html>
